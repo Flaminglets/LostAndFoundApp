@@ -1,0 +1,53 @@
+.titleform{
+
+  position: absolute;
+  width: 902px;
+  height: 133px;
+  left: 55px;
+  top: 82px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  
+  color: #000000;
+  }
+  .form1 {
+    position: absolute;
+    width: 346px;
+    height: 45px;
+    left: 43px;
+    top: 40px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .formSelect{
+      position: absolute;
+      width: 1180px;
+      height: 45px;
+      left: 45px;
+      top: 90px;
+
+      background: #FFFFFF;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      border-radius: 5px;
+      opacity: 0.5;
+   }
+
+
+
+
