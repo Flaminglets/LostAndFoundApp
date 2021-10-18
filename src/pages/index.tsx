@@ -1,16 +1,29 @@
 import styles from '../styles/Home.module.css'
+import Router from 'next/dist/server/router';
+import { useRouter } from 'next/router';
+
+
+
 
 export default function Home() {
+
+
+  const router = useRouter();
+
+  const goLoginPage= () => {
+    router.push('/loginregister');
+  };
+
+
   return (
     <div className={styles.home}>
-      <h2>Home</h2>
+      <h1>Welcome to lost and found app! </h1>
       <div>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis deleniti
-          rem aspernatur odit hic autem neque repellat alias? Debitis veniam inventore 
-          ipsum similique quos animi ipsa asperiores fuga dolor id. Lorem ipsum dolor sit 
-          fuga dolor id.
+          Please press below to enter the website
         </p>
+
+        <button className="handlenextpage" onClick={goLoginPage}> login/register </button>
       </div>
     </div>
   );

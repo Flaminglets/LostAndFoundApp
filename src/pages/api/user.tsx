@@ -34,6 +34,7 @@ function createUser(db, email, password, callback) {
     });
 }
 
+
 export default (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         /// Signup, checks for user inputs 

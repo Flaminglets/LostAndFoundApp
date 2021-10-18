@@ -3,4 +3,20 @@
     margin: 40px auto;
     letter-spacing: 1px;
     line-height: 1.6em;
+    text-align: center;
+    
   }
+
+button.handlenextpage {
+  
+  border-color: #ffffff;
+  border-radius: 20px;
+  border: 2.5px solid #18608a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
+}
