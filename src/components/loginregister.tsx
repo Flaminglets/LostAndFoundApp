@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const LoginRegister = () => {
     const [event, setEvent] = useState("");
     return (
-        <div className={`container ${event}`} id="container">
+        <div className={`L_container ${event}`} id="container">
             <div className="form-container  sign-up-container">
                 <form>
                     <h1>Create Account</h1>
@@ -18,7 +18,7 @@ const LoginRegister = () => {
                     <h1>Login</h1>
                     <input type="email" placeholder="EMAIL" />
                     <input type="password" placeholder="PASSWORD" />
-                    <p>Forgot Your Password?</p>
+                    <p className="L_p">Forgot Your Password?</p>
                     <button type="submit">LOG IN</button>
                 </form>
             </div>
