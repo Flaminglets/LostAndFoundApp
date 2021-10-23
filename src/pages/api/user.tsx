@@ -1,5 +1,6 @@
 import { uri, dbName, assert, bcrypt, jwt, jwtSecret, v4, saltRounds } from "../../../lib/database";
-import type { NextApiRequest, NextApiResponse } from 'next';
+//abbe still getting errors with nextapirequest nextapireponse 
+import  type { NextApiRequest, NextApiResponse } from 'next';
 
 // The endpoint that the frontend hits when the users signs up.
 
@@ -34,7 +35,8 @@ function createUser(db, email, password, callback) {
     });
 }
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+//gives error for abbe here with the nextapiresponse and nextapirequest as well
+export default (req : NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         /// Signup, checks for user inputs 
         try {

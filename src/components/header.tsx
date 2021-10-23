@@ -30,7 +30,7 @@ const Header = () => {
 
                 <div className="header_left">
                     <div className="header_search">
-                        <p>search</p>
+                        <input placeholder="search" id="search"></input>
                     </div>
                     <div className="header_user">
                         <ul>
