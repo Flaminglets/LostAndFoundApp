@@ -2,6 +2,7 @@ import '../styles/global.css';
 import '../styles/loginregister.sass';
 import '../styles/headerfooter.sass';
 import '../styles/homepage.sass';
+import '../styles/userpage.sass';
 
 import { Provider } from 'next-auth/client'
 
