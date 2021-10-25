@@ -8,7 +8,7 @@
     display: flex
     align-items: center
     justify-content: space-between
-    width: 25%
+    width: 29rem
 
 .header_left
     display: flex
@@ -21,13 +21,9 @@
     justify-content: space-between
     width: 100%
 
-.header_nav a
-    font-size: 1vw
-    
-
 .header_logo 
-    font-size: 1.7vw
-    margin: 0 0 0 3vw
+    font-size: 1.7rem
+    margin: 0 0 0 2.5rem
     color: white
     display: flex
     align-items: center
@@ -42,73 +38,73 @@
 .header_hamburger_wrapper 
     display: none
 
-.hamburger-btn 
+.hamburger-btn
     padding: 0
     background: none
     border: none
     cursor: pointer
-
-.hamburger-inner 
-    width: 3vw
-    height: 0.3vw
-    background-color: white
-    margin: 0.6vw 0
-    border-radius: 5px
 
 .header_list
     list-style-type: none
 
 .header_list a 
     color: white
+    font-size: 1rem
+    margin: 0 1.5rem
 
 .header_search
-    margin-right: 1vw
+    margin-right: 1rem
 
 .header_user
-    margin: 0 3vw 0 0 
+    margin: 0 2.5rem 0 0 
 
 
 // Footer
 .footer_div
     background-color: #5F7470
-    padding: 4vw 0 1.5vw
+    padding: 3.5rem 0 1rem
 
 .footer_div p 
     color: white
 
 .footer_about_title, .footer_contact_title
-    font-size: 1.5vw
-    padding: 0.7vw 5vw
+    font-size: 1.3rem
+    padding: 0.7rem 4.5rem
 
 .footer_about_content, .footer_contact_content
-    font-size: 1vw
-    padding: 0.3vw 5vw
+    font-size: 1rem
+    padding: 0.3rem 4.5rem
 
 .footer_line1
-    height: 0.05vw
-    width: 50%
-    margin: 2vw 0 2vw 4vw
+    height: 0.05rem
+    width: 45rem
+    margin: 2vw 0 2vw 3.5rem
     background-color: white
 
 .footer_line2
-    height: 0.05vw
+    height: 0.05rem
     width: 95%
     margin: 2vw auto 1.5vw
     background-color: white
 
 .footer_copyright
     text-align: center
-    font-size: 1vw
+    font-size: 1rem
     color: #ADADAD !important
 
+.divider
+    background: white
+    height: 1rem
 
+.mobile_nav
+    display: none
 
 @media screen and (max-width: 1024px)
     .header_right
         width: 100
     .header_logo 
-        font-size: 2vw
-        margin: 0 0 0 6vw
+        font-size: 1.7rem
+        margin: 0 0 0 6rem
 
     .header_hamburger_wrapper 
         display: flex
@@ -118,7 +114,13 @@
 
     .header_nav_wrapper, .header_user
         display: none
+    
+    .footer_line1
+        width: 80%
 
+@media screen and (max-width: 700px)
+    .mobile_nav
+        display: initial
     
     
 
