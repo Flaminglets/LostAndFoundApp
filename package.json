@@ -12,6 +12,7 @@
     "@material-ui/styles": "^4.11.4",
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.4",
+    "bcryptjs": "^2.4.3",
     "mongodb": "^3.5.9",
     "mongoose": "^6.0.12",
     "next": "latest",
