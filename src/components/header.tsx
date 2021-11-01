@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/client";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Divider from '@mui/material/Divider';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -21,6 +22,8 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
+    const [session] = useSession()
+
     const [state, setState] = React.useState({
         left: false
     });
@@ -88,15 +91,34 @@ const Header = () => {
                     </div>
                 </div>
 
+                
+                
                 <div className="header_left">
                     <div className="header_search">
                         <input placeholder="search" id="search"></input>
                     </div>
-                    <div className="header_user">
-                        <ul>
-                            <li className="header_list"><a href="/loginregister">LogIn / Register</a></li>
-                        </ul>
-                    </div>
+                    
+                    {!session && (
+                        <>
+                            <div className="header_user">
+                                <ul>
+                                    <li className="header_list"><a href="/loginregister">LogIn / Register</a></li>
+                                </ul>
+                            </div>
+                        </>
+                    )}
+                    {session && (
+                        <>
+                            <div className="header_user">
+                                <ul>
+                                    <li className="header_list"><a href="">New Post</a></li>
+                                    <li className="header_list"><a href="/user"><AccountCircleRoundedIcon /></a></li>
+                                    <li className="header_list">Logout</li>
+                                </ul>
+                            </div>
+                        </>
+                    )}
+                    
                 </div>
             </div>
             <CssBaseline />
