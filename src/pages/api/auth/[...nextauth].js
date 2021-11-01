@@ -58,8 +58,9 @@ export default NextAuth({
       // if (!aUser) {
       //   createUser(user.name, user.email, user.image);
       // }
+      session = {user};
 
-      return session
+      return session;
     },
   }
 
