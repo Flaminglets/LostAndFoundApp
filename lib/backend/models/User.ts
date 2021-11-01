@@ -2,12 +2,15 @@
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
-        {
-                fname: String,
-                lname: String,
-                email: String,
-                age: Number,
-        }
+    {
+        name: String,
+        email: String,
+        image: String,
+        password: String,
+        // posts : [
+        //     {type: mongoose.Schema.Types.ObjectId,ref:'Car'}
+        // ],
+    }
 );
 
 export default mongoose.models.User || mongoose.model('User', userSchema);

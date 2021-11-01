@@ -3,6 +3,7 @@ import Header from "../components/header";
 import { providers, signIn, getSession, csrfToken } from "next-auth/client";
 
 export default function LoginRegister({ providers, csrfToken }) {
+
     const [event, setEvent] = useState("");
 
     return (
@@ -11,7 +12,7 @@ export default function LoginRegister({ providers, csrfToken }) {
             <div className={`L_container ${event}`} id="container">
 
                 <div className="form-container  sign-up-container">
-                    <form className="login-signup-form">
+                    <form className="login-signup-form" method="post" action="/api/auth/signup">
                         <h1 className="h1-title">Create Account</h1>
                         <input className="input-fields" type="text" placeholder="NAME" />
                         <input className="input-fields" type="email" placeholder="EMAIL" />
@@ -70,18 +71,18 @@ export default function LoginRegister({ providers, csrfToken }) {
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });
-  
+
     if (session && res && session.accessToken) {
-      res.writeHead(200, {
-        Location: "/",
-      });
-      res.end();
-      return;
+        res.writeHead(301, {
+            Location: "/",
+        });
+        res.end();
+        return;
     }
-  
+
     return {
-      session: undefined,
-      providers: await providers(context),
-      csrfToken: await csrfToken(context),
+        providers: await providers(),
+        session: await getSession(context),
+        csrfToken: await csrfToken(context),
     };
-  };
+};
