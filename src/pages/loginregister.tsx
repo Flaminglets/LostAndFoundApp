@@ -73,7 +73,8 @@ LoginRegister.getInitialProps = async (context) => {
     const session = await getSession({ req });
 
     if (session && res && session.accessToken) {
-        res.writeHead(301, {
+        console.log("This Session", session);
+        res.writeHead(302, {
             Location: "/",
         });
         res.end();

@@ -1,7 +1,7 @@
 import { get } from 'mongoose';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
-import { createUser, getUsers } from '../../../../lib/backend/database';
+import { createUser, getUser } from '../../../../lib/backend/database';
 import { verifyPassword } from '../../../../lib/backend/hashpass';
 
 export default NextAuth({
@@ -54,15 +54,15 @@ export default NextAuth({
     async session({ session, user }) {
       // Send properties to the client, like an access_token from a provider.
       console.log("Current Session", user);
-      const aUser = await getUsers(user);
+      const aUser = await getUser(user);
       if (!aUser) {
         createUser(user.name, user.email, user.image);
       }
 
       const sessionUser = {
-        name: user.name,
-        email: user.email,
-        image: user.image,
+        name: aUser.name,
+        email: aUser.email,
+        image: aUser.image,
       }
 
       session = sessionUser;

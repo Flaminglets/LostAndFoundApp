@@ -21,7 +21,7 @@ export async function createCredentialsForUser(name, email, password) {
     return user.save();
 }
 
-export async function getUsers(aUser) {
+export async function getUser(aUser) {
     // connect to the client
     const client = mongoose.connect(uri);
     const users = await User.findOne(aUser);
