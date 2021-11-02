@@ -10,8 +10,8 @@ export default function Page ({ session }) {
     <div>
       <h1>Protected Page</h1>
       <h2>Welcome</h2>
-      <p><strong>Name: {session.user.name}</strong></p>
-      <p><strong>Email: {session.user.email}</strong></p>
+      <p><strong>Name: {session.name}</strong></p>
+      <p><strong>Email: {session.email}</strong></p>
       <button onClick={() => signOut()}>Sign out</button>
     </div>
   )
