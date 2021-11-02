@@ -5,9 +5,9 @@ import { createUser, getUser } from '../../../../lib/backend/database';
 import { verifyPassword } from '../../../../lib/backend/hashpass';
 
 export default NextAuth({
-  session: {
-    jwt: true,
-  },
+  // session: {
+  //   jwt: true,
+  // },
   providers: [
     // OAuth authentication providers...
     Providers.Google({
@@ -51,9 +51,10 @@ export default NextAuth({
   //database: process.env.MONGODB_URL,
 
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, user, token }) {
       // Send properties to the client, like an access_token from a provider.
-      console.log("Current Session", user);
+      //session.accessToken = token.accessToken;
+      //console.log("Current Session", user);
       const aUser = await getUser(user);
       if (!aUser) {
         createUser(user.name, user.email, user.image);
@@ -66,7 +67,7 @@ export default NextAuth({
       }
 
       session = sessionUser;
-
+      
       return session;
     },
   }
