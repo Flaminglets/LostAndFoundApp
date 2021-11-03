@@ -295,9 +295,11 @@ export default function NewPost_web () {
                                 className="myimage"
                             />
                         </div>
-                        <Button variant="contained" onClick={handleNextPage} className="newpost_button_next">
-                            Next
-                        </Button>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handleNextPage} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
                     </div>
                     </>
                 )}
@@ -343,12 +345,14 @@ export default function NewPost_web () {
                             onChange={handleSetEmail}
                             value={email}
                         />
-                    <Button variant="contained" onClick={handlePreviousPage} className="newpost_button_next">
-                        Previous
-                    </Button>
-                    <Button variant="contained" color="success" onClick={handleSubmit} className="newpost_button_next">
-                        Submit
-                    </Button>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePreviousPage} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" color="success" onClick={handleSubmit} className="newpost_button_next newpost_button_submit">
+                                Submit
+                            </Button>
+                        </div>
                     </div>
                     </>
                 )}
