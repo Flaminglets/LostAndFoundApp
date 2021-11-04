@@ -7,6 +7,20 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import {useSession} from 'next-auth/client';
 import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+// import Button from '@mui/material/Button';
+
+const FlamingoEditButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#B0B7AB'
+    },
+})
+
+const FlamingoFoundButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#455451'
+    },
+})
 
 export default function UserPage(props) {
     const [session, loadingSession] = useSession();
@@ -34,9 +48,9 @@ export default function UserPage(props) {
                             <p>Email: {session.email}</p>
                         </div>
                         <div className="user_edit_button">
-                            <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                            <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
                             Edit
-                            </Button>
+                            </FlamingoEditButton>
                         </div>
                     </div>
                     <Divider variant="middle" flexItem className="user_divider" style={{fill: "white"}}/>
@@ -46,22 +60,22 @@ export default function UserPage(props) {
                                 (post) => {
                                     <Card className="user_cards" elevation={5}>
                                         <CardActionArea>
-                                            <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                            <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                                 {post.title}
                                             </Typography>
-                                            <CardMedia className="home_card_media"
+                                            <CardMedia className="user_card_media"
                                             component="img"
                                             image={post.image}
                                             alt="missing pet/person image"
                                             />
                                         </CardActionArea>
                                         <CardActions className="user_card_buttons">
-                                            <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                            <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
                                             Edit
-                                            </Button>
-                                            <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                            </FlamingoEditButton>
+                                            <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found">
                                             FOUND
-                                            </Button>
+                                            </FlamingoFoundButton>
                                         </CardActions>
                                     </Card>
                                 }
@@ -69,104 +83,106 @@ export default function UserPage(props) {
                         } */}
                         <Card className="user_cards" elevation={5}>
                             <CardActionArea>
-                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                     Lizard
                                 </Typography>
-                                <CardMedia className="home_card_media"
+                                <CardMedia className="user_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                                 />
                             </CardActionArea>
                             <CardActions className="user_card_buttons">
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                <FlamingoEditButton size="small" variant="contained" className="Button user_card_button user_card_button_edit">
                                 Edit
-                                </Button>
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                </FlamingoEditButton>
+                                <FlamingoFoundButton size="small" variant="contained" className="Button user_card_button user_card_button_found">
                                 FOUND
-                                </Button>
+                                </FlamingoFoundButton>
                             </CardActions>
                         </Card>
                         <Card className="user_cards" elevation={5}>
                             <CardActionArea>
-                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                     Lizard
                                 </Typography>
-                                <CardMedia className="home_card_media"
+                                <CardMedia className="user_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                                 />
                             </CardActionArea>
                             <CardActions className="user_card_buttons">
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                <FlamingoEditButton size="small" variant="contained" className="Button user_card_button user_card_button_edit">
                                 Edit
-                                </Button>
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                </FlamingoEditButton>
+                                <FlamingoFoundButton size="small" variant="contained" className="Button user_card_button user_card_button_found">
                                 FOUND
-                                </Button>
+                                </FlamingoFoundButton>
                             </CardActions>
                         </Card>
                         <Card className="user_cards" elevation={5}>
                             <CardActionArea>
-                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                     Lizard
                                 </Typography>
-                                <CardMedia className="home_card_media"
+                                <CardMedia className="user_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                                 />
                             </CardActionArea>
                             <CardActions className="user_card_buttons">
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                <FlamingoEditButton size="small" variant="contained" className="Button user_card_button user_card_button_edit">
                                 Edit
-                                </Button>
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                </FlamingoEditButton>
+                                <FlamingoFoundButton size="small" variant="contained" className="Button user_card_button user_card_button_found">
                                 FOUND
-                                </Button>
+                                </FlamingoFoundButton>
                             </CardActions>
                         </Card>
                         <Card className="user_cards" elevation={5}>
                             <CardActionArea>
-                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                     Lizard
                                 </Typography>
-                                <CardMedia className="home_card_media"
+                                <CardMedia className="user_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                                 />
                             </CardActionArea>
                             <CardActions className="user_card_buttons">
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                <FlamingoEditButton size="small" variant="contained" className="Button user_card_button user_card_button_edit">
                                 Edit
-                                </Button>
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                </FlamingoEditButton>
+                                <FlamingoFoundButton size="small" variant="contained" className="Button user_card_button user_card_button_found">
                                 FOUND
-                                </Button>
+                                </FlamingoFoundButton>
                             </CardActions>
                         </Card>
                         <Card className="user_cards" elevation={5}>
                             <CardActionArea>
-                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
                                     Lizard
                                 </Typography>
-                                <CardMedia className="home_card_media"
+                                <CardMedia className="user_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                                 />
                             </CardActionArea>
                             <CardActions className="user_card_buttons">
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_edit">
+                                <FlamingoEditButton size="small" variant="contained" className="Button user_card_button user_card_button_edit">
                                 Edit
-                                </Button>
-                                <Button size="small" variant="contained" className="user_card_button user_card_button_found">
+                                </FlamingoEditButton>
+                                <FlamingoFoundButton size="small" variant="contained" className="Button user_card_button user_card_button_found">
                                 FOUND
-                                </Button>
+                                </FlamingoFoundButton>
                             </CardActions>
                         </Card>
+                        
+                        
                         
                     </div>
                 </div>
