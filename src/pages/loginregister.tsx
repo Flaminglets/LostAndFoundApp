@@ -71,9 +71,13 @@ export default function LoginRegister({ providers, csrfToken }) {
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });
+    console.log("This Session", session);
 
     if (session && res) {
+<<<<<<< HEAD
         console.log("This Session", session);
+=======
+>>>>>>> 559c75936ced353fa976e044a3eee45951ca68f1
         res.writeHead(302, {
             Location: "/",
         });
@@ -82,8 +86,8 @@ LoginRegister.getInitialProps = async (context) => {
     }
 
     return {
+        session: undefined,
         providers: await providers(),
-        session: await getSession(context),
         csrfToken: await csrfToken(context),
     };
 };
