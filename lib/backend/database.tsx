@@ -28,7 +28,7 @@ export async function getUser(aUser) {
     // console.log("aUserName:", aUser.name);
     // console.log("aUserEmail:", aUser.email);
     // console.log("aUserImage:", aUser.image);
-
+    
     return users;
 };
 

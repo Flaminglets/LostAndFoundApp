@@ -1,13 +1,12 @@
-import { get } from 'mongoose';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { createUser, getUser } from '../../../../lib/backend/database';
 import { verifyPassword } from '../../../../lib/backend/hashpass';
 
 export default NextAuth({
-  // session: {
-  //   jwt: true,
-  // },
+  session: {
+    jwt: true,
+  },
   providers: [
     // OAuth authentication providers...
     Providers.Google({
@@ -56,9 +55,10 @@ export default NextAuth({
       //session.accessToken = token.accessToken;
       //console.log("Current Session", user);
       const aUser = await getUser(user);
-      if (!aUser) {
+      if (!aUser && user != null) {
         createUser(user.name, user.email, user.image);
       }
+
 
       const sessionUser = {
         name: aUser.name,
@@ -67,7 +67,8 @@ export default NextAuth({
       }
 
       session = sessionUser;
-      
+
+
       return session;
     },
   }
