@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
+const FlamingoNextButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#A2AA9D'
+    },
+})
 
 export default function FifthPage(props) {
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(props.image || '');
     const handleSetImage = async (event) => { 
         props.handlePageData({image: event.target.value}); 
         const val = event.target.value; setImage(val); 
@@ -32,12 +39,12 @@ export default function FifthPage(props) {
                 </div>
             </div>
             <div className="newpost_buttons">
-                <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
                     Previous
-                </Button>
-                <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                </FlamingoNextButton>
+                <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
                     Next
-                </Button>
+                </FlamingoNextButton>
             </div>
         </div>
     )
