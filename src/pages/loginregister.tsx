@@ -74,10 +74,6 @@ LoginRegister.getInitialProps = async (context) => {
     console.log("This Session", session);
 
     if (session && res) {
-<<<<<<< HEAD
-        console.log("This Session", session);
-=======
->>>>>>> 559c75936ced353fa976e044a3eee45951ca68f1
         res.writeHead(302, {
             Location: "/",
         });
