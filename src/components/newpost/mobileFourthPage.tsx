@@ -5,8 +5,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 
 export default function FourthPage(props) {
-    const [l_fname, setL_fname] = useState('');
-    const [l_lname, setL_lname] = useState('');
+    const [lostFname, setLostFname] = useState('');
+    const [lostLname, setLostLname] = useState('');
     const [gender, setGender] = useState('');
     const [otherGender, setOtherGender] = useState('');
     const [age, setAge] = useState('');
@@ -15,16 +15,16 @@ export default function FourthPage(props) {
     const [eyecolor, setEyecolor] = useState('');
     const [ethnicity, setEthnicity] = useState('');
     const [additional, setAdditional] = useState('');
-    const handleSetL_fname = async (event) => { const val = event.target.value; setL_fname(val); }
-    const handleSetL_lname = async (event) => { const val = event.target.value; setL_lname(val); }
-    const handleSetGender = async (event) => { const val = event.target.value; setGender(val); }
-    const handleSetOtherGender = async (event) => { const val = event.target.value; setOtherGender(val); }
-    const handleSetAge = async (event) => { const val = event.target.value; setAge(val); }
-    const handleSetWeight = async (event) => { const val = event.target.value; setWeight(val); }
-    const handleSetHeight = async (event) => { const val = event.target.value; setHeight(val); }
-    const handleSetEyecolor = async (event) => { const val = event.target.value; setEyecolor(val); }
-    const handleSetEthnicity = async (event) => { const val = event.target.value; setEthnicity(val); }
-    const handleSetAdditional = async (event) => { const val = event.target.value; setAdditional(val); }
+    const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); const val = event.target.value; setLostFname(val); }
+    const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); const val = event.target.value; setLostLname(val); }
+    const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); const val = event.target.value; setGender(val); }
+    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); const val = event.target.value; setOtherGender(val); }
+    const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); const val = event.target.value; setAge(val); }
+    const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); const val = event.target.value; setWeight(val); }
+    const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); const val = event.target.value; setHeight(val); }
+    const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); const val = event.target.value; setEyecolor(val); }
+    const handleSetEthnicity = async (event) => { props.handlePageData({ethnicity: event.target.value}); const val = event.target.value; setEthnicity(val); }
+    const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); const val = event.target.value; setAdditional(val); }
 
 
     const handleNextClick = (event) => {
@@ -46,8 +46,8 @@ export default function FourthPage(props) {
                     label="First Name"
                     variant="filled"
                     className="newpost_form_element"
-                    onChange={handleSetL_fname}
-                    value={l_fname}
+                    onChange={handleSetLostFname}
+                    value={lostFname}
                 />
                 <TextField
                     required
@@ -56,8 +56,8 @@ export default function FourthPage(props) {
                     label="Last Name"
                     variant="filled"
                     className="newpost_form_element"
-                    onChange={handleSetL_lname}
-                    value={l_lname}
+                    onChange={handleSetLostLname}
+                    value={lostLname}
                 />
                 <div className="newpost_form_lostinfo">
                     <TextField

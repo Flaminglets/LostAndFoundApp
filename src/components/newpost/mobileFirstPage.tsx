@@ -2,17 +2,34 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+// import { useFormData } from '././index';
 
 export default function FirstPage(props) {
-    const [type, setType] = useState(() => {
-
-    });
-    const handleSetType = async (event) => { const val = event.target.value; setType(val); props.handleFirstPage(val) }
+    // const { setFormValues } = useFormData();
+    const [type, setType] = useState('');
+    // const newType = async () =>  {
+    //     const newType = props.getData(type);
+    //     setType(newType.type)
+    //     console.log("testing type: ", type)
+    // };
+    const handleSetType = (event) => { 
+        const val = event.target.value; setType(val); 
+        props.handlePageData({type: event.target.value});
+        const newType = props.getData(type);
+        setType(newType);
+        console.log("testing type: ", type)
+    }
 
     const handleNextClick = (event) => {
-        // const val = event.target.value; setType(val);
         props.handleNextClick();
-        console.log("new type ", type)
+        // console.log("new type ", props.getData(setType(type)))
+        // const newType = props.getData(type);
+        // // const {type: type} = newType;
+        // setType(newType.type);
+        // console.log("testing type: ", newType)
+        // setFormValues(newType)
+        // console.log(setFormValues(props.data.type))
+        
     };
 
     return (
@@ -28,7 +45,8 @@ export default function FirstPage(props) {
                     variant="filled"
                     className="newpost_form_element"
                     onChange={handleSetType}
-                    // value={type}
+                    value={type}
+                    // defaultValue={type}
                 >
                     <MenuItem className="newpost_form_element" value="pet">Pet</MenuItem>
                     <MenuItem className="newpost_form_element" value="person">Person</MenuItem>
@@ -42,3 +60,4 @@ export default function FirstPage(props) {
         </div>
     )
 }
+

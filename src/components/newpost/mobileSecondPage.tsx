@@ -5,8 +5,15 @@ import Button from '@mui/material/Button';
 export default function SecondPage(props) {
     const [date, setDate] = useState('2020-05-24');
     const [time, setTime] = useState('07:30');
-    const handleSetDate = async (event) => { const val = event.target.value; setDate(val); }
-    const handleSetTime = async (event) => { const val = event.target.value; setTime(val); }
+
+    const handleSetDate = async (event) => { 
+        props.handlePageData({date: event.target.value});
+        const val = event.target.value; setDate(val);
+    }
+    const handleSetTime = async (event) => { 
+        props.handlePageData({time: event.target.value});
+        const val = event.target.value; setTime(val);
+    }
 
     const handleNextClick = (event) => {
         props.handleNextClick();
@@ -39,7 +46,7 @@ export default function SecondPage(props) {
                         variant="filled"
                         className="newpost_form_element newpost_form_element_dt"
                         type="time"
-                        // defaultValue="07:30"
+                        //defaultValue="07:30"
                         onChange={handleSetTime}
                         value={time}
                     />

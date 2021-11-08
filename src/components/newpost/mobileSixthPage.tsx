@@ -3,14 +3,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 export default function SixthPage(props) {
-    const [c_fname, setC_fname] = useState('');
-    const [c_lname, setC_lname] = useState('');
+    const [userFname, setUserFname] = useState('');
+    const [userLname, setUserLname] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
     const [email, setEmail] = useState('');
-    const handleSetC_fname = async (event) => { const val = event.target.value; setC_fname(val); }
-    const handleSetC_lname = async (event) => { const val = event.target.value; setC_lname(val); }
-    const handleSetPhoneNum = async (event) => { const val = event.target.value; setPhoneNum(val); }
-    const handleSetEmail = async (event) => { const val = event.target.value; setEmail(val); }
+    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); const val = event.target.value; setUserFname(val); }
+    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); const val = event.target.value; setUserLname(val); }
+    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); const val = event.target.value; setPhoneNum(val); }
+    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); const val = event.target.value; setEmail(val); }
 
 
     const handleSubmitClick = (event) => {
@@ -31,8 +31,8 @@ export default function SixthPage(props) {
                     label="First Name"
                     variant="filled"
                     className="newpost_form_element"
-                    onChange={handleSetC_fname}
-                    value={c_fname}
+                    onChange={handleSetUserFname}
+                    value={userFname}
                 />
                 <TextField
                     name="c_lname"
@@ -40,8 +40,8 @@ export default function SixthPage(props) {
                     label="Last Name"
                     variant="filled"
                     className="newpost_form_element"
-                    onChange={handleSetC_lname}
-                    value={c_lname}
+                    onChange={handleSetUserLname}
+                    value={userLname}
                 />
                 <TextField
                     required

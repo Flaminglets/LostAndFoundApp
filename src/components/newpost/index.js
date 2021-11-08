@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, createContext, useContext } from 'react';
 import FirstPage from "./mobileFirstPage";
 import SecondPage from './mobileSecondPage';
 import ThirdPage from './mobileThirdPage';
@@ -6,12 +6,42 @@ import FourthPage from './mobileFourthPage';
 import FifthPage from './mobileFifthPage';
 import SixthPage from './mobileSixthPage';
 
+// export const FormContext = createContext();
+
 export default function NewPostMobile() {
     const [page, setPage] = useState(1);
-    const [newdata, setData] = useState({});
+    const [data, setData] = useState({});
+
+    // setData({
+    //     type: "",
+    //     date: "",
+    //     time: "",
+    //     location: "",
+    //     lostFname: "",
+    //     lostLname: "",
+    //     gender: "",
+    //     otherGender: "",
+    //     age: "",
+    //     weight: "",
+    //     height: "",
+    //     eyecolor: "",
+    //     ethnicity: "",
+    //     additional: "",
+    //     userFname: "",
+    //     userLname: "",
+    //     phoneNum: "",
+    //     email: ""
+    // })
+
+    // const setFormValues = (values) => {
+    //     setData((prevValues) => ({
+    //       ...prevValues,
+    //       ...values,
+    //     }));
+    //   };
     
-    const data = {
-        type: "",
+    const newdata = {
+        type: "", // data.type,
         date: "",
         time: "",
         location: "",
@@ -31,27 +61,15 @@ export default function NewPostMobile() {
         email: ""
     }
 
-    // const handleFirstClick = (type) => {
-    //     data.type == type;
-    //     console.log("firstpage clicked")
-    //     setPage("second");
-    //     type == data.type
-    //     console.log("last type", data);
-    // }
-
-    const handleFirstPage = (type) => {
-        data.type = type;
-        console.log("type", data);
+    const handlePageData = (newData) => {
+        setData({...data, ...newData});
+        data
     }
 
-    // const handleSecondClick = (date, time) => {
-    //     data.date = date;
-    //     data.time = time;
-    //     setPage("first");
-    // }
+    const getData = () => data.type
 
     const handleNextClick = () => {setPage((currentStep) => currentStep + 1); console.log("data is ", data);};
-    const handlePrevClick = () => setPage((currentStep) => currentStep - 1);
+    const handlePrevClick = () => {setPage((currentStep) => currentStep - 1); console.log("data is ", data);}
     const handleSubmitClick = () => {
 
     }
@@ -60,17 +78,21 @@ export default function NewPostMobile() {
         <div className="new_div">
             <div className="newpost">
                 <p className="newpost_title">Fill out the form to upload the post</p>
+                {/* <FormContext.Provider value={{ data, setFormValues }}> */}
                 {page == 1 && (
                     <>
                     <FirstPage
-                        handleFirstPage={handleFirstPage}
+                        handlePageData={handlePageData}
                         handleNextClick={handleNextClick}
+                        // setFormValues={setFormValues}
+                        getData={getData}
                     />
                     </>
                 )}
                 {page == 2 && (
                     <>
                     <SecondPage
+                        handlePageData={handlePageData}
                         handleNextClick={handleNextClick}
                         handlePrevClick={handlePrevClick}
                     />
@@ -79,6 +101,7 @@ export default function NewPostMobile() {
                 {page == 3 && (
                     <>
                     <ThirdPage
+                        handlePageData={handlePageData}
                         handleNextClick={handleNextClick}
                         handlePrevClick={handlePrevClick}
                     />
@@ -87,6 +110,7 @@ export default function NewPostMobile() {
                 {page == 4 && (
                     <>
                     <FourthPage
+                        handlePageData={handlePageData}
                         handleNextClick={handleNextClick}
                         handlePrevClick={handlePrevClick}
                     />
@@ -95,6 +119,7 @@ export default function NewPostMobile() {
                 {page == 5 && (
                     <>
                     <FifthPage
+                        handlePageData={handlePageData}
                         handleNextClick={handleNextClick}
                         handlePrevClick={handlePrevClick}
                     />
@@ -103,13 +128,16 @@ export default function NewPostMobile() {
                 {page == 6 && (
                     <>
                     <SixthPage
+                        handlePageData={handlePageData}
                         handleSubmitClick={handleSubmitClick}
                         handlePrevClick={handlePrevClick}
                     />
                     </>
                 )}
-                
+                {/* </FormContext.Provider> */}
             </div>
         </div>
     )
 }
+
+// export const useFormData = () => useContext(FormContext);

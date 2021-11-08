@@ -3,8 +3,10 @@ import Button from '@mui/material/Button';
 
 export default function FifthPage(props) {
     const [image, setImage] = useState('');
-    const handleSetImage = async (event) => { const val = event.target.value; setImage(val); }
-
+    const handleSetImage = async (event) => { 
+        props.handlePageData({image: event.target.value}); 
+        const val = event.target.value; setImage(val); 
+    }
 
     const handleNextClick = (event) => {
         props.handleNextClick();
@@ -25,6 +27,7 @@ export default function FifthPage(props) {
                         type="file"
                         accept="image/*"
                         className="myimage"
+                        onChange={handleSetImage}
                     />
                 </div>
             </div>

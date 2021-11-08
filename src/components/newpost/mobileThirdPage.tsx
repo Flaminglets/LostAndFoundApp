@@ -4,7 +4,10 @@ import Button from '@mui/material/Button';
 
 export default function ThirdPage(props) {
     const [location, setLocation] = useState('');
-    const handleSetLocation = async (event) => { const val = event.target.value; setLocation(val); }
+    const handleSetLocation = async (event) => { 
+        props.handlePageData({location: event.target.value});
+        const val = event.target.value; setLocation(val); 
+    }
 
 
     const handleNextClick = (event) => {
