@@ -46,40 +46,16 @@ export default function NewPost_mobile () {
     const handleSetEmail = async (event) => { const val = event.target.value; setEmail(val); }
 
     // handling next / previous page
-    const [page, setPage] = useState('first');
-    const handleNextPage = async (event) => {
-        setPage("next");
-    }
-
-    const handleFirstPage = async (event) => {
-        setPage("first");
-    }
-
-    const handleSecondPage = async (event) => {
-        setPage("second");
-    }
-
-    const handleThirdPage = async (event) => {
-        setPage("third");
-    }
-
-    const handleFourthPage = async (event) => {
-        setPage("fourth");
-    }
-
-    const handleFifthPage = async (event) => {
-        setPage("fifth");
-    }
-    const handleSixthPage = async (event) => {
-        setPage("sixth");
-    }
+    const [page, setPage] = useState(1);
+    const handleNextClick = () => setPage((currentStep) => currentStep + 1);
+    const handlePrevClick = () => setPage((currentStep) => currentStep - 1);
 
     // handling submit (fetch api, create data, and send to backend)
     const handleSubmit = async (event) => {
         var data = {};
         if(gender == 'other') {
             data = {
-                type: type,
+                type,
                 date: date,
                 time: time,
                 location: location,
@@ -128,285 +104,309 @@ export default function NewPost_mobile () {
             <div className="newpost">
                 <p className="newpost_title">Fill out the form to upload the post</p>
                 <div className="newpost_form">
-                {page == "first" && (
+                {page == 1 && (
                     <>
-                        <p className="newpost_form_label">What have you lost?</p>
-                        <TextField
-                            name="type"
-                            required
-                            select
-                            id="outlined-required"
-                            label="Pet / Person"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetType}
-                            value={type}
-                        >
-                            <MenuItem value="pet">Pet</MenuItem>
-                            <MenuItem value="person">Person</MenuItem>
-                        </TextField>
-                        <Button variant="contained" onClick={handleSecondPage} className="newpost_button_next">
-                            Next
-                        </Button>
-                    </>
-                )}
-                {page == "second" && (
-                    <>
-                        <p className="newpost_form_label">When was the last time you saw your missing pet/person?</p>
-                        <div className="newpost_form_lasttime">
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">What have you lost?</p>
                             <TextField
-                                name="date"
-                                id="outlined-required"
-                                label="Select date"
-                                variant="filled"
-                                className="newpost_form_element newpost_form_element_dt"
-                                type="date"
-                                //defaultValue="2020-05-24"
-                                onChange={handleSetDate}
-                                value={date}
-                            />
-                            <TextField
-                                name="time"
-                                id="outlined-required"
-                                label="Select date"
-                                variant="filled"
-                                className="newpost_form_element newpost_form_element_dt"
-                                type="time"
-                                // defaultValue="07:30"
-                                onChange={handleSetTime}
-                                value={time}
-                            />
-                        </div>
-                        <Button variant="contained" onClick={handleFirstPage} className="newpost_button_next">
-                            Previous
-                        </Button>
-                        <Button variant="contained" onClick={handleThirdPage} className="newpost_button_next">
-                            Next
-                        </Button>
-                    </>
-                )}
-                {page == "third" && (
-                    <>
-                        <p className="newpost_form_label">Where have you lost pet/person?</p>
-                        <TextField
-                            name="location"
-                            id="outlined-required"
-                            label="Location"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetLocation}
-                            value={location}
-                        />
-                        <Button variant="contained" onClick={handleSecondPage} className="newpost_button_next">
-                            Previous
-                        </Button>
-                        <Button variant="contained" onClick={handleFourthPage} className="newpost_button_next">
-                            Next
-                        </Button>
-                    </>
-                )}
-                {page == "fourth" && (
-                    <>
-                        <p className="newpost_form_label">Lost pet/person information</p>
-                        <TextField
-                            required
-                            name="l_fname"
-                            id="outlined-required"
-                            label="First Name"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetL_fname}
-                            value={l_fname}
-                        />
-                        <TextField
-                            required
-                            name="l_lname"
-                            id="outlined-required"
-                            label="Last Name"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetL_lname}
-                            value={l_lname}
-                        />
-                        <div className="newpost_form_lostinfo">
-                            <TextField
-                                name="gender"
+                                name="type"
+                                required
                                 select
                                 id="outlined-required"
-                                label="Gender"
-                                variant="filled"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                onChange={handleSetGender}
-                                value={gender}
-                            >
-                                <MenuItem value="male">Male</MenuItem>
-                                <MenuItem value="female">Female</MenuItem>
-                                <MenuItem value="other">Other</MenuItem>
-                            </TextField>
-                            
-                            <TextField
-                                name="age"
-                                id="outlined-required"
-                                label="Age"
-                                variant="filled"
-                                type="number"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                onChange={handleSetAge}
-                                value={age}
-                            />
-                            <TextField
-                                name="weight"
-                                id="outlined-required"
-                                label="Weight"
-                                variant="filled"
-                                type="number"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                InputProps={{
-                                    startAdornment: (
-                                      <InputAdornment position="start">kg
-                                      </InputAdornment>
-                                    ),
-                                }}
-                                onChange={handleSetWeight}
-                                value={weight}
-                            />
-                            <TextField
-                                name="height"
-                                id="outlined-required"
-                                label="Height"
-                                variant="filled"
-                                type="number"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                InputProps={{
-                                    startAdornment: (
-                                      <InputAdornment position="start">cm
-                                      </InputAdornment>
-                                    ),
-                                }}
-                                onChange={handleSetHeight}
-                                value={height}
-                            />
-                            <TextField
-                                name="eyecolor"
-                                id="outlined-required"
-                                label="Eye colour"
-                                variant="filled"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                onChange={handleSetEyecolor}
-                                value={eyecolor}
-                            />
-                            <TextField
-                                name="ethnicity"
-                                select
-                                id="outlined-required"
-                                label="Ethnicity"
-                                variant="filled"
-                                className="newpost_form_element newpost_form_lostinfo_element"
-                                onChange={handleSetEthnicity}
-                                value={ethnicity}
-                            >
-                                <MenuItem value="male">Male</MenuItem>
-                                <MenuItem value="female">Female</MenuItem>
-                                <MenuItem value="other">Other</MenuItem>
-                            </TextField>
-                        </div>
-                        {gender == "other" && (
-                            <TextField
-                                name="otherGender"
-                                id="outlined-required"
-                                label="Other Gender"
+                                label="Pet / Person"
                                 variant="filled"
                                 className="newpost_form_element"
-                                onChange={handleSetOtherGender}
-                                value={otherGender}
-                            />
-                        )}
-                        <TextField
-                            name="additional"
-                            multiline
-                            rows={4}
-                            id="outlined-required"
-                            label="Additional Description"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetAdditional}
-                            value={additional}
-                        />
-                        <Button variant="contained" onClick={handleThirdPage} className="newpost_button_next">
-                            Previous
-                        </Button>
-                        <Button variant="contained" onClick={handleFifthPage} className="newpost_button_next">
-                            Next
-                        </Button>
+                                onChange={handleSetType}
+                                value={type}
+                            >
+                                <MenuItem value="pet">Pet</MenuItem>
+                                <MenuItem value="person">Person</MenuItem>
+                            </TextField>
+                        </div>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
                     </>
                 )}
-                {page == "fifth" && (
+                {page == 2 && (
                     <>
-                        <p className="newpost_form_label">Uplouad a most recent photo of the missing pet/person</p>
-                        <div className="newpost_form_image">
-                            <input
-                                name="image"
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">When was the last time you saw your missing pet/person?</p>
+                            <div className="newpost_form_lasttime">
+                                <TextField
+                                    name="date"
+                                    id="outlined-required"
+                                    label="Select date"
+                                    variant="filled"
+                                    className="newpost_form_element newpost_form_element_dt"
+                                    type="date"
+                                    //defaultValue="2020-05-24"
+                                    onChange={handleSetDate}
+                                    value={date}
+                                />
+                                <TextField
+                                    name="time"
+                                    id="outlined-required"
+                                    label="Select date"
+                                    variant="filled"
+                                    className="newpost_form_element newpost_form_element_dt"
+                                    type="time"
+                                    // defaultValue="07:30"
+                                    onChange={handleSetTime}
+                                    value={time}
+                                />
+                            </div>
+                        </div>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                )}
+                {page == 3 && (
+                    <>
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">Where have you lost pet/person?</p>
+                            <TextField
+                                name="location"
                                 id="outlined-required"
-                                type="file"
-                                accept="image/*"
-                                className="myimage"
+                                label="Location"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetLocation}
+                                value={location}
                             />
                         </div>
-                        <Button variant="contained" onClick={handleFourthPage} className="newpost_button_next">
-                            Previous
-                        </Button>
-                        <Button variant="contained" onClick={handleSixthPage} className="newpost_button_next">
-                            Next
-                        </Button>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
                     </>
                 )}
-                {page == "sixth" && (
+                {page == 4 && (
                     <>
-                        <p className="newpost_form_label">Your Contact information</p>
-                        <TextField
-                            name="c_fname"
-                            id="outlined-required"
-                            label="First Name"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetC_fname}
-                            value={c_fname}
-                        />
-                        <TextField
-                            name="c_lname"
-                            id="outlined-required"
-                            label="Last Name"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetC_lname}
-                            value={c_lname}
-                        />
-                        <TextField
-                            required
-                            name="phoneNum"
-                            id="outlined-required"
-                            label="Phone Number"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetPhoneNum}
-                            value={phoneNum}
-                        />
-                        <TextField
-                            required
-                            name="email"
-                            id="outlined-required"
-                            label="Email"
-                            variant="filled"
-                            className="newpost_form_element"
-                            onChange={handleSetEmail}
-                            value={email}
-                        />
-                        <Button variant="contained" onClick={handleFifthPage} className="newpost_button_next">
-                            Previous
-                        </Button>
-                        <Button variant="contained" onClick={handleSubmit} className="newpost_button_next">
-                            Submit
-                        </Button>
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">Lost pet/person information</p>
+                            <TextField
+                                required
+                                name="l_fname"
+                                id="outlined-required"
+                                label="First Name"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetL_fname}
+                                value={l_fname}
+                            />
+                            <TextField
+                                required
+                                name="l_lname"
+                                id="outlined-required"
+                                label="Last Name"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetL_lname}
+                                value={l_lname}
+                            />
+                            <div className="newpost_form_lostinfo">
+                                <TextField
+                                    name="gender"
+                                    select
+                                    id="outlined-required"
+                                    label="Gender"
+                                    variant="filled"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    onChange={handleSetGender}
+                                    value={gender}
+                                >
+                                    <MenuItem value="male">Male</MenuItem>
+                                    <MenuItem value="female">Female</MenuItem>
+                                    <MenuItem value="other">Other</MenuItem>
+                                </TextField>
+                                
+                                <TextField
+                                    name="age"
+                                    id="outlined-required"
+                                    label="Age"
+                                    variant="filled"
+                                    type="number"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    onChange={handleSetAge}
+                                    value={age}
+                                />
+                                <TextField
+                                    name="weight"
+                                    id="outlined-required"
+                                    label="Weight"
+                                    variant="filled"
+                                    type="number"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    InputProps={{
+                                        startAdornment: (
+                                        <InputAdornment position="start">kg
+                                        </InputAdornment>
+                                        ),
+                                    }}
+                                    onChange={handleSetWeight}
+                                    value={weight}
+                                />
+                                <TextField
+                                    name="height"
+                                    id="outlined-required"
+                                    label="Height"
+                                    variant="filled"
+                                    type="number"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    InputProps={{
+                                        startAdornment: (
+                                        <InputAdornment position="start">cm
+                                        </InputAdornment>
+                                        ),
+                                    }}
+                                    onChange={handleSetHeight}
+                                    value={height}
+                                />
+                                <TextField
+                                    name="eyecolor"
+                                    id="outlined-required"
+                                    label="Eye colour"
+                                    variant="filled"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    onChange={handleSetEyecolor}
+                                    value={eyecolor}
+                                />
+                                <TextField
+                                    name="ethnicity"
+                                    select
+                                    id="outlined-required"
+                                    label="Ethnicity"
+                                    variant="filled"
+                                    className="newpost_form_element newpost_form_lostinfo_element"
+                                    onChange={handleSetEthnicity}
+                                    value={ethnicity}
+                                >
+                                    <MenuItem value="male">Male</MenuItem>
+                                    <MenuItem value="female">Female</MenuItem>
+                                    <MenuItem value="other">Other</MenuItem>
+                                </TextField>
+                            </div>
+                            {gender == "other" && (
+                                <TextField
+                                    name="otherGender"
+                                    id="outlined-required"
+                                    label="Other Gender"
+                                    variant="filled"
+                                    className="newpost_form_element"
+                                    onChange={handleSetOtherGender}
+                                    value={otherGender}
+                                />
+                            )}
+                            <TextField
+                                name="additional"
+                                multiline
+                                rows={4}
+                                id="outlined-required"
+                                label="Additional Description"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetAdditional}
+                                value={additional}
+                            />
+                        </div>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                )}
+                {page == 5 && (
+                    <>
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">Uplouad a most recent photo of the missing pet/person</p>
+                            <div className="newpost_form_image">
+                                <input
+                                    name="image"
+                                    id="outlined-required"
+                                    type="file"
+                                    accept="image/*"
+                                    className="myimage"
+                                />
+                            </div>
+                        </div>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                )}
+                {page == 6 && (
+                    <>
+                        <div className="newpost_pages">
+                            <p className="newpost_form_label">Your Contact information</p>
+                            <TextField
+                                name="c_fname"
+                                id="outlined-required"
+                                label="First Name"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetC_fname}
+                                value={c_fname}
+                            />
+                            <TextField
+                                name="c_lname"
+                                id="outlined-required"
+                                label="Last Name"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetC_lname}
+                                value={c_lname}
+                            />
+                            <TextField
+                                required
+                                name="phoneNum"
+                                id="outlined-required"
+                                label="Phone Number"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetPhoneNum}
+                                value={phoneNum}
+                            />
+                            <TextField
+                                required
+                                name="email"
+                                id="outlined-required"
+                                label="Email"
+                                variant="filled"
+                                className="newpost_form_element"
+                                onChange={handleSetEmail}
+                                value={email}
+                            />
+                        </div>
+                        <div className="newpost_buttons">
+                            <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                                Previous
+                            </Button>
+                            <Button variant="contained" onClick={handleSubmit} className="newpost_button_next newpost_button_submit">
+                                Submit
+                            </Button>
+                        </div>
                     </>
                 )}
                 </div>
