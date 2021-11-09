@@ -1,5 +1,6 @@
 import { getSession, signOut } from 'next-auth/client'
 import AccessDenied from '../components/accessDenied'
+import Header from '../components/header';
 
 export default function Page ({ session }) {
   // If no session exists, display access denied message
@@ -8,6 +9,7 @@ export default function Page ({ session }) {
   // If session exists, display content
   return (
     <div>
+      <Header/>
       <h1>Protected Page</h1>
       <h2>Welcome</h2>
       <p><strong>Name: {session.name}</strong></p>
