@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import User from './models/User';
+import Addpost from './models/Addpost';
 
 const uri = process.env.MONGODB_URL;
 
@@ -45,3 +46,31 @@ export async function createUser(name, email, image) {
 
     return user.save();
 };
+
+
+export async function getAddPosts() {
+    const client = mongoose.connect(uri);
+    const addposts = await Addpost.find()
+    return addposts;
+}
+
+export async function createAddPosts( type, date, time, location,
+    lostFname, lostLname, gender, otherGender,
+    age, weight, height, eyecolor, ethnicity,
+    additional, userFname, userLname, phoneNum,
+    email)
+{
+    const client = mongoose.connect(uri);
+    const addpost = await new Addpost(
+        {
+            type, date, time, location,
+            lostFname, lostLname, gender, otherGender,
+            age, weight, height, eyecolor, ethnicity,
+            additional, userFname, userLname, phoneNum,
+            email
+        }
+    )
+
+    return addpost.save()
+}
+
