@@ -56,7 +56,7 @@ export default NextAuth({
       //console.log("Current Session", user);
       const aUser = await getUser(user);
       if (!aUser && user != null) {
-        createUser(user.name, user.email, user.image);
+        await createUser(user.name, user.email, user.image);
       }
 
 
