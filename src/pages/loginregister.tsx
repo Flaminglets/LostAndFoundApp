@@ -8,7 +8,6 @@ export default function LoginRegister({ providers, csrfToken }) {
 
     return (
         <div>
-            <Header />
             <div className={`L_container ${event}`} id="container">
 
                 <div className="form-container  sign-up-container">

@@ -45,7 +45,7 @@ export async function createUser(name, email, image) {
     )
 
     return user.save();
-
+}
 
 export async function getAddPosts() {
     const client = mongoose.connect(uri);

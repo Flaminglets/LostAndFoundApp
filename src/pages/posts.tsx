@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../components/header";
 import Footer from '../components/footer';
 import Card from '@mui/material/Card';
@@ -7,12 +8,11 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 
-export default function Posts() {
+export default function Posts(props) {
     return (
         <div>
-            <Header/>
             <div className="posts_div">
-                <h1>All / Pets / People</h1>
+                <h1 onClick={() => console.log(props)}>All / Pets / People</h1>
             </div>
             <div className="home_content">
                 <Card className="home_cards" elevation={5}>

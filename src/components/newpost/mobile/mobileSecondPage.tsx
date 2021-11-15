@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
+const FlamingoNextButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#A2AA9D'
+    },
+})
 
 export default function SecondPage(props) {
-    const [date, setDate] = useState('2020-05-24');
-    const [time, setTime] = useState('07:30');
+    const [date, setDate] = useState(props.date || '2021-01-01');
+    const [time, setTime] = useState(props.time || '00:00');
 
     const handleSetDate = async (event) => { 
         props.handlePageData({date: event.target.value});
@@ -53,12 +60,12 @@ export default function SecondPage(props) {
                 </div>
             </div>
             <div className="newpost_buttons">
-                <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
                     Previous
-                </Button>
-                <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                </FlamingoNextButton>
+                <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
                     Next
-                </Button>
+                </FlamingoNextButton>
             </div>
         </div>
     )
