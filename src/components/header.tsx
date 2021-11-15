@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/client";
+import { useRouter } from 'next/router'
+import { useSession, signOut } from "next-auth/client";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Divider from '@mui/material/Divider';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -13,6 +14,12 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import { makeStyles } from '@material-ui/core/styles';
+import { createContext, useContext } from 'react'
+import Link from 'next/link'
+
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles({
     paper: {
@@ -20,8 +27,69 @@ const useStyles = makeStyles({
     }
 });
 
-const Header = () => {
+const typeContext = createContext(() => {})
+
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        width: '12ch',
+        '&:focus': {
+        width: '20ch',
+        },
+    },
+    },
+}));
+
+export default function Header (props) {
     const [session] = useSession()
+    const router = useRouter();
+
+    const handleTypePet = () => {
+        // props.handlePageData('pet')
+        // console.log('pet clicked')
+        router.push('/posts');
+    }
+
+    const handleTypePeople = () => {
+        // props.handlePageData('people')
+        router.push('/posts');
+    }
+
+    const handleTypeNone = () => {
+        // props.handlePageData('')
+        router.push('/');
+    }
 
     const [state, setState] = React.useState({
         left: false
@@ -50,7 +118,7 @@ const Header = () => {
                 <ul className="header_drawer_list">
                     <li><a href="/newpost">New Post</a></li>
                     <li><a href="/user">User</a></li>
-                    <li><a href="" onClick={() => signOut()}>Logout</a></li>
+                    <li><Link href="/"><button className="header_logout_button header_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
             )}
@@ -59,8 +127,8 @@ const Header = () => {
         <List className="header_drawer_list">
             <p>Category</p>
             <ul>
-                <li><a href="/posts">Pets</a></li>
-                <li><a href="/posts">People</a></li>
+                <li><button className="header_logout_button header_button" onClick={handleTypePet}>Pets</button></li>
+                <li><button className="header_logout_button header_button" onClick={handleTypePeople}>People</button></li>
             </ul>
         </List>
         </Box>
@@ -91,23 +159,32 @@ const Header = () => {
 
                 <div className="header_right">
                     <div className="header_logo_div">
-                        <a className="header_logo" href="/">Lost and Found</a>
+                        <p className="header_logo" onClick={handleTypeNone}>Lost and Found</p>
                     </div>
 
                     <div className="header_nav_wrapper">
                         <ul className="header_nav">
-                            <li className="header_list"><a href="/posts">Pets</a></li>
+                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePet}>Pets</button></li>
                             <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
-                            <li className="header_list"><a href="/posts">People</a></li>
+                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePeople}>People</button></li>
                         </ul>
                     </div>
                 </div>
-
-                
                 
                 <div className="header_left">
-                    <div className="header_search">
-                        <input placeholder="search" id="search"></input>
+                    <div className="header_search_web">
+                        <Search>
+                            <SearchIconWrapper>
+                            <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                            placeholder="Search…"
+                            inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Search>
+                    </div>
+                    <div className="header_search_mobile">
+                        <SearchIcon sx={{ fill: "white" }} />
                     </div>
                     
                     {!session && (
@@ -124,11 +201,10 @@ const Header = () => {
                             <div className="header_user">
                                 <ul>
                                     <li className="header_list"><a href="/newpost">New Post</a></li>
-                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
                                     <li className="header_list"><a href="/user">User</a></li>  
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
-                                    {/* <AccountCircleRoundedIcon /> */}
-                                    <li className="header_list"><a href="" onClick={() => signOut()}>Logout</a></li>
+                                    <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>
                             </div>
                         </>
@@ -146,14 +222,12 @@ const Header = () => {
                 //     setValue(newValue);
                 // }}
                 >
-                <BottomNavigationAction label="Add Post" icon={<AddCircleRoundedIcon />} />
-                <BottomNavigationAction label="Home" icon={<HomeRoundedIcon />} />
-                <BottomNavigationAction label="User" icon={<AccountCircleRoundedIcon />} />
+                <BottomNavigationAction label="Add Post" onClick={() => (router.push('/newpost'))} icon={<AddCircleRoundedIcon />} />
+                <BottomNavigationAction label="Home" onClick={() => (router.push('/'))} icon={<HomeRoundedIcon />} />
+                <BottomNavigationAction label="User" onClick={() => (router.push('/user'))} icon={<AccountCircleRoundedIcon />} />
                 </BottomNavigation>
             </Paper>
             </div>
         </div>
     );
 };
-
-export default Header;

@@ -9,7 +9,6 @@ export default function Page ({ session }) {
   // If session exists, display content
   return (
     <div>
-      <Header/>
       <h1>Protected Page</h1>
       <h2>Welcome</h2>
       <p><strong>Name: {session.name}</strong></p>

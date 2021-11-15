@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import FirstPage from "./mobile/mobileFirstPage";
 import SecondPage from './mobile/mobileSecondPage';
 import ThirdPage from './mobile/mobileThirdPage';
@@ -10,51 +11,63 @@ import WebSecondPage from './web/webSecondPage';
 import LastPage from './mobileLastPage';
 
 export default function NewPost() {
+    const myRef = {};
+    const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
 
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
-    const handleNextClick = () => {setPage((currentStep) => currentStep + 1); console.log("data is ", data);};
-    const handlePrevClick = () => {setPage((currentStep) => currentStep - 1); console.log("data is ", data);}
-    const handleWebPrevClick = () => {setPage(1); console.log("data is ", data);}
-    const handleSubmitClick = () => {setPage(10);}
+    const handleNextClick = (event) => {
+        // myRef.current.reportValidity(); 
+        setPage((currentStep) => currentStep + 1); 
+        // if (event.target.value.length = 0) {
+        //     setState({ helperText: '', error: false })
+        // } else {
+        //     setState({ helperText: 'Invalid format: ##########', error: true })
+        // }
+    };
+    const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
+    const handleWebPrevClick = () => {setPage(1);}
+    const handleSubmitClick = () => {myRef.current.reportValidity(); setPage(10);}
     const handleSubmitPrevClick = () => {setPage(6);}
 
-    const handleFinalClick = () => {
-        // const newData = {
-        //     type: data.type,
-        //     date: data.date,
-        //     time: data.time,
-        //     location: data.location,
-        //     lostFname: data.lostFname,
-        //     lostLname: data.lostLname,
-        //     gender: data.gender,
-        //     otherGender: data.otherGender,
-        //     age: data.age,
-        //     weight: data.weight,
-        //     height: data.height,
-        //     eyecolor: data.eyecolor,
-        //     ethnicity: data.ethnicity,
-        //     additional: data.additional,
-        //     userFname: data.userFname,
-        //     userLname: data.userLname,
-        //     phoneNum: data.phoneNum,
-        //     email: data.email
-        // };
+    const handleFinalClick = async () => {
+        const newData = {
+            type: data.type,
+            date: data.date,
+            time: data.time,
+            location: data.location,
+            lostFname: data.lostFname,
+            lostLname: data.lostLname,
+            gender: data.gender,
+            otherGender: data.otherGender,
+            age: data.age,
+            weight: data.weight,
+            height: data.height,
+            eyecolor: data.eyecolor,
+            ethnicity: data.ethnicity,
+            additional: data.additional,
+            image: data.image,
+            userFname: data.userFname,
+            userLname: data.userLname,
+            phoneNum: data.phoneNum,
+            email: data.email
+        };
 
-        // const body = JSON.stringify(newData);
+        const body = JSON.stringify(newData);
 
-        // const requestOptions = {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: body
-        // };
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: body
+        };
 
-        // const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        // const json = await response.json();
+        const response = await fetch("http://localhost:3000/api/post", requestOptions);
+        const json = await response.json();
+        router.push('/user');
     }
 
     return(

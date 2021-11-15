@@ -70,6 +70,7 @@ export default function SixthPage(props) {
                     required
                     name="email"
                     id="outlined-required"
+                    type="email"
                     label="Email"
                     variant="filled"
                     className="newpost_form_element"

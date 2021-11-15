@@ -18,6 +18,7 @@ const FlamingoSubmitButton = styled(Button)({
 
 
 export default function WebSecondPage(props) {
+    
     const [userFname, setUserFname] = useState(props.userFname || '');
     const [userLname, setUserLname] = useState(props.userLname || '');
     const [phoneNum, setPhoneNum] = useState(props.phoneNum || '');
@@ -28,6 +29,7 @@ export default function WebSecondPage(props) {
     const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); const val = event.target.value; setEmail(val); }
 
     const handleSubmitClick = (event) => {
+        
         props.handleSubmitClick();
     };
 
@@ -35,8 +37,23 @@ export default function WebSecondPage(props) {
         props.handlePrevClick();
     }
 
+    const initialState = {helperText: '', error: false};
+    const [state, setState] = useState(initialState);
+
+    const onChange = (event) => {
+        props.handlePageData({phoneNum: event.target.value}); const val = event.target.value; setPhoneNum(val);
+        if (event.target.value.length >= 10) {
+            setState({ helperText: '', error: false })
+        } else {
+            setState({ helperText: 'Invalid format: ##########', error: true })
+        }
+    }
+
+    
+
     return (
         <div className="newpost_form">
+            
             <p className="newpost_form_label">Your Contact information</p>
             <TextField
                 name="c_fname"
@@ -57,19 +74,23 @@ export default function WebSecondPage(props) {
                 value={userLname}
             />
             <TextField
-                required
+                required={true}
                 name="phoneNum"
                 id="outlined-required"
                 label="Phone Number"
                 variant="filled"
+                placeholder="(000) 000-0000"
                 className="newpost_form_element"
-                onChange={handleSetPhoneNum}
+                onChange={onChange}
                 value={phoneNum}
+                error={state.error}
+                helperText={state.helperText}
             />
             <TextField
                 required
                 name="email"
                 id="outlined-required"
+                type="email"
                 label="Email"
                 variant="filled"
                 className="newpost_form_element"
@@ -80,7 +101,7 @@ export default function WebSecondPage(props) {
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
                     Previous
                 </FlamingoNextButton>
-                <FlamingoSubmitButton variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
+                <FlamingoSubmitButton type="submit" variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
                     Submit
                 </FlamingoSubmitButton>
             </div>

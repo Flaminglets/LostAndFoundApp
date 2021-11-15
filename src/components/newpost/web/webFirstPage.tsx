@@ -60,7 +60,8 @@ export default function WebFirstPage(props) {
             <p className="newpost_form_label">What have you lost?</p>
             <TextField
                 name="type"
-                required
+                required={true}
+                inputRef={props.myRef}
                 select
                 id="outlined-required"
                 label="Pet / Person"
@@ -109,7 +110,8 @@ export default function WebFirstPage(props) {
             />
             <p className="newpost_form_label">Lost pet/person information</p>
             <TextField
-                required
+                required={true}
+                inputRef={props.myRef}
                 name="l_fname"
                 id="outlined-required"
                 label="First Name"
@@ -119,7 +121,8 @@ export default function WebFirstPage(props) {
                 value={lostFname}
             />
             <TextField
-                required
+                required={true}
+                inputRef={props.myRef}
                 name="l_lname"
                 id="outlined-required"
                 label="Last Name"
