@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import User from './models/User';
+import Addpost from './models/Addpost';
 
 const uri = process.env.MONGODB_URL;
 
@@ -44,14 +45,10 @@ export async function createUser(name, email, image) {
     )
 
     return user.save();
-<<<<<<< Updated upstream
-};
-=======
-};
 
-///User Posting///
+
 export async function getAddPosts() {
-    const client = await mongoose.connect(uri);
+    const client = mongoose.connect(uri);
     const addposts = await Addpost.find()
     return addposts;
 }
@@ -88,5 +85,4 @@ export async function deletePost(postID) {
     return post;
 }
 
-///End of User Posting///
->>>>>>> Stashed changes
+

@@ -1,6 +1,7 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import NewPost_web from '../components/newpost_web';
+import NewPostMobile from '../components/newpost/index';
 import NewPost_mobile from '../components/newpost_mobile';
 
 export default function newPost () {
@@ -13,7 +14,8 @@ export default function newPost () {
                 <Footer/>
             </div>
             <div className="post_mobile">
-                <NewPost_mobile/>
+                <NewPostMobile/>
+                {/* <NewPost_mobile/> */}
             </div>
         </div>
     )

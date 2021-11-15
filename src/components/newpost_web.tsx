@@ -4,6 +4,20 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+// import Button from '@mui/material/Button';
+
+const FlamingoNextButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#A2AA9D'
+    },
+})
+
+const FlamingoSubmitButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#455451'
+    },
+})
 
 export default function NewPost_web () {
     const [type, setType] = useState('');
@@ -295,9 +309,11 @@ export default function NewPost_web () {
                                 className="myimage"
                             />
                         </div>
-                        <Button variant="contained" onClick={handleNextPage} className="newpost_button_next">
-                            Next
-                        </Button>
+                        <div className="newpost_buttons">
+                            <FlamingoNextButton variant="contained" onClick={handleNextPage} className="newpost_button_next">
+                                Next
+                            </FlamingoNextButton>
+                        </div>
                     </div>
                     </>
                 )}
@@ -343,12 +359,14 @@ export default function NewPost_web () {
                             onChange={handleSetEmail}
                             value={email}
                         />
-                    <Button variant="contained" onClick={handlePreviousPage} className="newpost_button_next">
-                        Previous
-                    </Button>
-                    <Button variant="contained" color="success" onClick={handleSubmit} className="newpost_button_next">
-                        Submit
-                    </Button>
+                        <div className="newpost_buttons">
+                            <FlamingoNextButton variant="contained" onClick={handlePreviousPage} className="newpost_button_next">
+                                Previous
+                            </FlamingoNextButton>
+                            <FlamingoSubmitButton variant="contained" color="success" onClick={handleSubmit} className="newpost_button_next newpost_button_submit">
+                                Submit
+                            </FlamingoSubmitButton>
+                        </div>
                     </div>
                     </>
                 )}

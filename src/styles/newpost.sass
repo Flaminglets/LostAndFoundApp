@@ -48,6 +48,24 @@
     height: 3.5rem
     padding: 1rem
 
+.newpost_button_next
+    background-color: #B8BDB5
+    color: black
+    margin: 1rem 0 1rem 1rem
+    width: 6.5rem
+    height: 1.6rem
+    font-size: 0.7rem
+    // width: 4.5rem
+
+.newpost_button_submit
+    background-color: #5F7470
+    color: white
+
+.newpost_buttons
+    margin-top: 1rem
+    display: flex
+    justify-content: flex-end
+
 // .myimage[type="file"] 
 //     visibility: hidden
 //     width: 1px
@@ -57,7 +75,41 @@
     display: none
 
 @media screen and (max-width: 1024px)
+    .newpost
+        width: 95vw
+        
+    .newpost_form
+        padding: 5vw
+        margin: 1vw auto
 
+    .newpost_title
+        font-size: 3vw
+        margin: 5vw 0 0 5vw
+
+    .newpost_form_label
+        font-size: 2vw
+        margin: 0.8vw 1.2vw 0
+        
+    .newpost_form_element 
+        margin: 0.9vw auto
+
+    .newpost_form_element_dt
+        margin: 0.9vw 0
+
+    .newpost_form_lostinfo_element
+        margin: 0.9vw 0
+
+    .newpost_form_image
+        margin: 0.9vw auto
+        height: 6vw
+        padding: 2vw
+
+    .newpost_button_next
+        margin: 1.5vw 0 1.5vw 1.5vw
+        width: 6.5rem
+
+    .newpost_buttons
+        margin-top: 1.6vw
 
 @media screen and (max-width: 700px)
     .post_web
@@ -71,21 +123,21 @@
 
     .newpost_form
         padding: 3vw
-        margin: 1rem auto
+        margin: 1rem auto 20vw
         border-radius: 10px
-        min-height: 50vw
+        min-height: 70vw
         display: flex
         flex-direction: column
-        justify-content: center
+        justify-content: space-between
 
     .newpost_title
-        font-size: 3vw
+        font-size: 4.5vw
         margin: 3vw 0 0 3vw
         font-weight: 500
         text-align: center
 
     .newpost_form_label
-        font-size: 4vw
+        font-size: 4.5vw
         font-weight: 600
         margin: 0.5vw 0 3vw
         text-align: center
@@ -94,7 +146,8 @@
         width: 100%
         background-color: white
         border-radius: 5px
-        margin: 0.5rem auto
+        margin: 1vw auto
+        font-size: 2vw
 
     .newpost_form_lasttime
         display: flex
@@ -102,7 +155,7 @@
 
     .newpost_form_element_dt
         width: 49%
-        margin: 0.5rem 0
+        margin: 1vw 0
 
     .newpost_form_lostinfo
         display: flex
@@ -110,12 +163,24 @@
 
     .newpost_form_lostinfo_element
         width: 15%
-        margin: 0.5rem 0
+        margin: 1vw 0
 
     .newpost_form_image
-        width: 100%
-        background-color: white
-        border-radius: 5px
-        margin: 0.5rem auto
-        height: 3.5rem
-        padding: 1rem
+        margin: 1vw auto
+        height: 12vw
+        padding: 3vw
+
+    .newpost_button_next
+        margin: 1vw
+        width: 40vw
+        font-size: 2.5vw
+        height: 2.3rem
+
+    .newpost_buttons
+        margin-top: 6vw
+        display: flex
+        justify-content: flex-end
+        margin-bottom: 10vw
+
+    .newpost_pages
+        margin-top: 10vw

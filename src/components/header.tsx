@@ -38,10 +38,23 @@ const Header = () => {
         onClick={toggleDrawer("left", false)}
         >
         <List className="header_drawer_list">
-            <ListItem button>
-            <a href="/loginregister">LogIn</a>
-            <a href="/loginregister">Register</a>
-            </ListItem>
+            {!session && (
+                <>
+                <ul className="header_drawer_list">
+                    <li><a href="/loginregister">LogIn</a></li>
+                    <li><a href="/loginregister">Register</a></li>
+                </ul>
+                </>
+            )}
+            {session && (
+                <>
+                <ul className="header_drawer_list">
+                    <li><a href="/newpost">New Post</a></li>
+                    <li><a href="/user">User</a></li>
+                    <li><a href="" onClick={() => signOut()}>Logout</a></li>
+                </ul>
+                </>
+            )}
         </List>
         <Divider variant="middle"/>
         <List className="header_drawer_list">
@@ -111,9 +124,12 @@ const Header = () => {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><a href="">New Post</a></li>
-                                    <li className="header_list"><a href="/user"><AccountCircleRoundedIcon /></a></li>
-                                    <li className="header_list">Logout</li>
+                                    <li className="header_list"><a href="/newpost">New Post</a></li>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                                    <li className="header_list"><a href="/user">User</a></li>  
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                                    {/* <AccountCircleRoundedIcon /> */}
+                                    <li className="header_list"><a href="" onClick={() => signOut()}>Logout</a></li>
                                 </ul>
                             </div>
                         </>

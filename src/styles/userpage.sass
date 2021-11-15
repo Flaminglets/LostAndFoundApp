@@ -1,6 +1,177 @@
+.user_div
+    min-height: 50rem
+    
 .user_backcolor
     background-color: #889696 
-    height: 30vw
+    height: 33rem
     width: 100%
     position: absolute
     z-index: -5
+
+.user_profile
+    margin: auto
+    display: flex
+    justify-content: space-between
+    width: 60rem
+    padding: 6rem 1rem 3rem
+
+.user_image_div
+    background-color: grey
+    width: 10rem
+    height: 10rem
+    border-radius: 100px
+    margin: 0.5rem 0 0 0
+
+.user_image
+    font-size: 12rem
+
+.user_profile_info
+    width: 38rem
+    padding: 3.5rem 1rem
+    //background-color: blue
+
+.user_edit_button
+    margin-top: 1rem
+
+.user_profile_info p
+    margin: 0.5rem 0
+    font-size: 1rem
+    color: white
+
+
+.user_divider
+    background: white
+    margin: auto
+    width: 65rem
+    height: 0.08rem
+    
+.user_content
+    width: 60rem
+    margin: 3rem auto 
+    display: flex
+    // grid-template-columns: auto auto auto auto
+    // background-color: #2196F3
+    padding: 0
+    // justify-content: space-between
+    flex-wrap: wrap
+
+.user_cards
+    margin: 1rem 0.5rem
+    width: 14rem
+    height: 17rem
+
+.user_card_title
+    margin: 0.5rem 0
+    text-align: center
+    font-size: 1.5rem
+
+.user_card_media
+    width: 95%
+    height: 10rem
+    background-color: grey
+    margin: 0 auto
+
+.user_card_buttons
+    display: flex
+    justify-content: space-around
+    margin-top: 0.7rem
+
+.user_card_button
+    color: black
+    background-color: #D2D4C8
+    height: 1.6rem
+    font-size: 0.7rem
+    width: 4.5rem
+
+.user_card_button_found
+    color: white
+    background-color: #5F7470
+
+@media screen and (max-width: 1050px)
+    .user_div
+        min-height: 70vw
+
+    .user_profile
+        width: 45rem
+        // background-color: red
+
+    .user_profile_info
+        width: 25rem
+
+    .user_edit_button
+        margin-top: 1.5vw
+
+    .user_profile_info p
+        font-size: 1.2rem
+
+    .user_divider
+        width: 90vw
+        
+    .user_content
+        width: 45rem
+
+
+@media screen and (max-width: 730px)
+    .user_div
+        min-height: 70vw
+        
+    .user_backcolor
+        height: 70vw
+
+    .user_profile
+        width: 90vw
+        padding: 12vw 2vw 6vw
+
+    .user_image_div
+        width: 20vw
+        height: 20vw
+        margin: 0.5vw 0 0 0
+
+    .user_image
+        font-size: 12rem
+
+    .user_profile_info
+        width: 60vw
+        padding: 5vw 1vw
+
+    .user_edit_button
+        margin-top: 1vw
+        position: absolute
+        display: flex
+        margin-left: 70%
+
+    .user_profile_info p
+        margin: 0.5vw 0
+        font-size: 3vw
+
+    .user_divider
+        width: 94vw
+        
+    .user_content
+        width: 90vw
+        margin: 4.5vw auto 
+        display: flex
+        padding: 0
+        justify-content: space-between
+        flex-wrap: wrap
+
+    .user_cards
+        margin: 1.5vw 0vw
+        width: 43vw
+        height: 54vw
+
+    .user_card_title
+        margin: 1.1vw 0
+        font-size: 4vw
+
+    .user_card_media
+        width: 95%
+        height: 35.2vw
+
+    .user_card_buttons
+        margin-top: 2vw
+
+    .user_card_button
+        height: 5vw
+        font-size: 2vw
+        width: 12vw

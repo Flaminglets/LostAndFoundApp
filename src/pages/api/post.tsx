@@ -1,6 +1,5 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
 
-//step 3, create the API
 export default async function handler(req, res) {
     try {
         if (req.method == 'POST') {
@@ -57,4 +56,3 @@ export default async function handler(req, res) {
     } catch {
         res.status(404).send({ error: "Error with post" })
     }
-}
