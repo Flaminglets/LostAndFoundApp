@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
         email: String,
         image: String,
         // posts : [
-        //     {type: mongoose.Schema.Types.ObjectId,ref:'Car'}
+        //     {type: mongoose.Schema.Types.ObjectId,ref:'addpost'}
         // ],
     }
 );

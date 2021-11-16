@@ -17,7 +17,8 @@ const addpostSchema = new mongoose.Schema(
         userFname: String,
         userLname: String,
         phoneNum: Number,
-        email: String
+        email: String,
+        // user : {type: mongoose.Schema.Types.ObjectId,ref:'User'}
     }
 )
 

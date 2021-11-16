@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
+const FlamingoNextButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#A2AA9D'
+    },
+})
+
+const FlamingoSubmitButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#455451'
+    },
+})
 
 export default function SixthPage(props) {
-    const [userFname, setUserFname] = useState('');
-    const [userLname, setUserLname] = useState('');
-    const [phoneNum, setPhoneNum] = useState('');
-    const [email, setEmail] = useState('');
+    const [userFname, setUserFname] = useState(props.userFname || '');
+    const [userLname, setUserLname] = useState(props.userLname || '');
+    const [phoneNum, setPhoneNum] = useState(props.phoneNum || '');
+    const [email, setEmail] = useState(props.email || '');
     const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); const val = event.target.value; setUserFname(val); }
     const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); const val = event.target.value; setUserLname(val); }
     const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); const val = event.target.value; setPhoneNum(val); }
@@ -57,6 +70,7 @@ export default function SixthPage(props) {
                     required
                     name="email"
                     id="outlined-required"
+                    type="email"
                     label="Email"
                     variant="filled"
                     className="newpost_form_element"
@@ -65,12 +79,12 @@ export default function SixthPage(props) {
                 />
             </div>
             <div className="newpost_buttons">
-                <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
                     Previous
-                </Button>
-                <Button variant="contained" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
+                </FlamingoNextButton>
+                <FlamingoSubmitButton variant="contained" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
                     Submit
-                </Button>
+                </FlamingoSubmitButton>
             </div>
         </div>
     )

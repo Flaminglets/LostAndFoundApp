@@ -8,7 +8,7 @@
     display: flex
     align-items: center
     justify-content: space-between
-    width: 29rem
+    width: 27rem
 
 .header_left
     display: flex
@@ -27,6 +27,11 @@
     color: white
     display: flex
     align-items: center
+    background: none
+    color: white
+    border: none
+    padding: 0
+    cursor: pointer
     
 .header_container
     margin: auto 
@@ -46,22 +51,36 @@
 .header_list
     list-style-type: none
 
-.header_list a 
+.header_list a, .header_button
     color: white
     font-size: 0.9rem
     margin: 0 1.5rem
 
-.header_search
-    margin-right: 1rem
-
 .header_user
-    margin: 0 2.5rem 0 0 
+    margin: 0 1rem 0 0 
 
 .header_user ul
     display: flex
 
 .header_user .divider
+    width: 0.1rem
     margin-top: 0.3rem
+
+.header_logout_button
+    background: none
+    color: white
+    border: none
+    padding: 0
+    font: inherit
+    cursor: pointer
+    outline: inherit
+    font-size: 0.9rem
+
+.header_search_web
+    margin-right: -1rem
+
+.header_search_mobile
+    display: none
 
 
 // Footer
@@ -101,16 +120,22 @@
     background: white
     height: 1rem
     margin-bottom: 0.5rem
+    width: 0.1rem
 
 .mobile_nav
     display: none
 
 @media screen and (max-width: 1024px)
+    .header_div 
+        margin: 0
+        padding: 0.5rem 0.5rem
+
     .header_right
         width: 100
+        
     .header_logo 
         font-size: 1.7rem
-        margin: 0 0 0 6rem
+        margin: 0 0 0 8rem
 
     .header_hamburger_wrapper 
         display: flex
@@ -126,10 +151,46 @@
     
     .header_drawer_list
         list-style-type: none
+
+    .header_button
+        color: black
+
+    .header_search_web
+        display: none
+
+    .header_search_mobile
+        display: inline
       
 @media screen and (max-width: 700px)
     .mobile_nav
         display: initial
+        z-index: 10
+
+    .header_logo 
+        font-size: 3vw
+        margin: 0 0
+
+    .header_right
+        width: 22.5vw
+
+    .footer_about_title, .footer_contact_title
+        font-size: 2.5vw
+        padding: 1vw 6vw
+
+    .footer_about_content, .footer_contact_content
+        font-size: 2vw
+        padding: 0.6vw 6vw
+
+    .footer_line1
+        height: 0.05rem
+        width: 75vw
+        margin: 1.5vw 0 1.5vw 5vw
+
+    .footer_div
+        padding: 2.5rem 0 4rem
+
+    .footer_copyright
+        font-size: 2.5vw
 
     
     

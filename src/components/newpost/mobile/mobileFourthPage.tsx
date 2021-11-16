@@ -3,18 +3,25 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
+const FlamingoNextButton = styled(Button)({
+    '&:hover': {
+        backgroundColor: '#A2AA9D'
+    },
+})
 
 export default function FourthPage(props) {
-    const [lostFname, setLostFname] = useState('');
-    const [lostLname, setLostLname] = useState('');
-    const [gender, setGender] = useState('');
-    const [otherGender, setOtherGender] = useState('');
-    const [age, setAge] = useState('');
-    const [weight, setWeight] = useState('');
-    const [height, setHeight] = useState('');
-    const [eyecolor, setEyecolor] = useState('');
-    const [ethnicity, setEthnicity] = useState('');
-    const [additional, setAdditional] = useState('');
+    const [lostFname, setLostFname] = useState(props.lostFname || '');
+    const [lostLname, setLostLname] = useState(props.lostLname || '');
+    const [gender, setGender] = useState(props.gender || '');
+    const [otherGender, setOtherGender] = useState(props.otherGender || '');
+    const [age, setAge] = useState(props.age || '');
+    const [weight, setWeight] = useState(props.weight || '');
+    const [height, setHeight] = useState(props.height || '');
+    const [eyecolor, setEyecolor] = useState(props.eyecolor || '');
+    const [ethnicity, setEthnicity] = useState(props.ethnicity || '');
+    const [additional, setAdditional] = useState(props.additional || '');
     const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); const val = event.target.value; setLostFname(val); }
     const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); const val = event.target.value; setLostLname(val); }
     const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); const val = event.target.value; setGender(val); }
@@ -165,12 +172,12 @@ export default function FourthPage(props) {
                 />
             </div>
             <div className="newpost_buttons">
-                <Button variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
                     Previous
-                </Button>
-                <Button variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                </FlamingoNextButton>
+                <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
                     Next
-                </Button>
+                </FlamingoNextButton>
             </div>
         </div>
     )
