@@ -54,24 +54,23 @@ export async function getAddPosts() {
 }
 
 export async function createAddPosts( type, date, time, location,
-    lostFname, lostLname, gender, otherGender,
-    age, weight, height, eyecolor, ethnicity,
-    additional, userFname, userLname, phoneNum,
-    email)
+    lostFname, lostLname, gender, age, weight, height, eyecolor, 
+    additional, userFname, userLname, phoneNum, email)
 {
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
             type, date, time, location,
-            lostFname, lostLname, gender, otherGender,
-            age, weight, height, eyecolor, ethnicity,
-            additional, userFname, userLname, phoneNum,
-            email
+            lostFname, lostLname, gender, age, weight, 
+            height, eyecolor, additional, userFname, 
+            userLname, phoneNum, email
         }
     )
 
     return addpost.save()
+
 }
+
 
 export async function updatePost(postID, newData) {
     const client = await mongoose.connect(uri);
@@ -84,5 +83,6 @@ export async function deletePost(postID) {
     const post = await Addpost.findByIdAndDelete(postID);
     return post;
 }
+
 
 

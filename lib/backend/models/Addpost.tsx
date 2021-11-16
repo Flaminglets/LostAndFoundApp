@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 
 const addpostSchema = new mongoose.Schema(
     {
@@ -9,12 +9,10 @@ const addpostSchema = new mongoose.Schema(
         lostFname: String,
         lostLname: String,
         gender: String,
-        otherGender: String,
         age: Number,
         weight: Number,
         height: Number,
         eyecolor: String,
-        ethnicity: String,
         additional: String,
         userFname: String,
         userLname: String,
