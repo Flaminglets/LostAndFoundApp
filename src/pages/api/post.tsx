@@ -5,17 +5,15 @@ export default async function handler(req, res) {
     if (req.method == 'POST') {
         const data = req.body;
         const { type, date, time, location,
-            lostFname, lostLname, gender, otherGender,
-            age, weight, height, eyecolor, ethnicity,
-            additional, userFname, userLname, phoneNum,
-            email } = data; // destructuring
+            lostFname, lostLname, gender, age, weight, 
+            height, eyecolor, additional, userFname, 
+            userLname, phoneNum, email } = data; // destructuring
 
         // step 4, connect to db and create cheetah
         await createAddPosts(type, date, time, location,
-            lostFname, lostLname, gender, otherGender,
-            age, weight, height, eyecolor, ethnicity,
-            additional, userFname, userLname, phoneNum,
-            email);
+            lostFname, lostLname, gender, age, weight, 
+            height, eyecolor, additional, userFname, 
+            userLname, phoneNum, email);
         res.status(200).json(
             {
                 success : true
