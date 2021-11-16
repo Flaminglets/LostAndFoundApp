@@ -22,16 +22,16 @@ export default function FourthPage(props) {
     const [eyecolor, setEyecolor] = useState(props.eyecolor || '');
     const [ethnicity, setEthnicity] = useState(props.ethnicity || '');
     const [additional, setAdditional] = useState(props.additional || '');
-    const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); const val = event.target.value; setLostFname(val); }
-    const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); const val = event.target.value; setLostLname(val); }
-    const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); const val = event.target.value; setGender(val); }
-    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); const val = event.target.value; setOtherGender(val); }
-    const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); const val = event.target.value; setAge(val); }
-    const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); const val = event.target.value; setWeight(val); }
-    const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); const val = event.target.value; setHeight(val); }
-    const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); const val = event.target.value; setEyecolor(val); }
-    const handleSetEthnicity = async (event) => { props.handlePageData({ethnicity: event.target.value}); const val = event.target.value; setEthnicity(val); }
-    const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); const val = event.target.value; setAdditional(val); }
+    const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); setLostFname(event.target.value); }
+    const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); setLostLname(event.target.value); }
+    const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); setGender(event.target.value); }
+    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value); }
+    const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); setAge(event.target.value); }
+    const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); setWeight(event.target.value); }
+    const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); }
+    const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); }
+    const handleSetEthnicity = async (event) => { props.handlePageData({ethnicity: event.target.value}); setEthnicity(event.target.value); }
+    const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
 
 
     const handleNextClick = (event) => {
@@ -52,6 +52,7 @@ export default function FourthPage(props) {
                     id="outlined-required"
                     label="First Name"
                     variant="filled"
+                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetLostFname}
                     value={lostFname}
@@ -62,6 +63,7 @@ export default function FourthPage(props) {
                     id="outlined-required"
                     label="Last Name"
                     variant="filled"
+                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetLostLname}
                     value={lostLname}
@@ -73,6 +75,7 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Gender"
                         variant="filled"
+                        color="success"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         onChange={handleSetGender}
                         value={gender}
@@ -87,6 +90,7 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Age"
                         variant="filled"
+                        color="success"
                         type="number"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         onChange={handleSetAge}
@@ -97,6 +101,7 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Weight"
                         variant="filled"
+                        color="success"
                         type="number"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         InputProps={{
@@ -113,6 +118,7 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Height"
                         variant="filled"
+                        color="success"
                         type="number"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         InputProps={{
@@ -129,6 +135,7 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Eye colour"
                         variant="filled"
+                        color="success"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         onChange={handleSetEyecolor}
                         value={eyecolor}
@@ -139,12 +146,17 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Ethnicity"
                         variant="filled"
+                        color="success"
                         className="newpost_form_element newpost_form_lostinfo_element"
                         onChange={handleSetEthnicity}
                         value={ethnicity}
                     >
-                        <MenuItem value="male">Male</MenuItem>
-                        <MenuItem value="female">Female</MenuItem>
+                        <MenuItem value="American Indian">American Indian</MenuItem>
+                        <MenuItem value="Asian">Asian</MenuItem>
+                        <MenuItem value="African American">African American</MenuItem>
+                        <MenuItem value="Hispanic">Hispanic</MenuItem>
+                        <MenuItem value="Native Hawaiian">Native Hawaiian</MenuItem>
+                        <MenuItem value="White">White</MenuItem>
                         <MenuItem value="other">Other</MenuItem>
                     </TextField>
                 </div>
@@ -154,9 +166,22 @@ export default function FourthPage(props) {
                         id="outlined-required"
                         label="Other Gender"
                         variant="filled"
+                        color="success"
                         className="newpost_form_element"
                         onChange={handleSetOtherGender}
-                        value={otherGender}
+                        value={gender}
+                    />
+                )}
+                {ethnicity == "other" && (
+                    <TextField
+                        name="otherEthnicity"
+                        id="outlined-required"
+                        label="Other Ethnicity"
+                        variant="filled"
+                        color="success"
+                        className="newpost_form_element"
+                        onChange={handleSetOtherGender}
+                        value={ethnicity}
                     />
                 )}
                 <TextField
@@ -166,6 +191,7 @@ export default function FourthPage(props) {
                     id="outlined-required"
                     label="Additional Description"
                     variant="filled"
+                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetAdditional}
                     value={additional}

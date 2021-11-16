@@ -21,25 +21,25 @@ export async function getServerSideProps() {
         (post) => {
             return {
                 id: post.id.toString(),
-                type: post.type,
-                date: post.date,
-                time: post.time,
-                location: post.location,
-                lostFname: post.lostFname,
-                lostLname: post.lostLname,
-                gender: post.gender,
+                type: post.type || null,
+                date: post.date || null,
+                time: post.time || null,
+                location: post.location || null,
+                lostFname: post.lostFname || null,
+                lostLname: post.lostLname || null,
+                gender: post.gender || null,
                 otherGender: post.otherGender || null,
-                age: post.age,
-                weight: post.weight,
-                height: post.height,
-                eyecolor: post.eyecolor,
-                ethnicity: post.ethnicity,
-                additional: post.additional,
+                age: post.age || null,
+                weight: post.weight || null,
+                height: post.height || null,
+                eyecolor: post.eyecolor || null,
+                ethnicity: post.ethnicity || null,
+                additional: post.additional || null,
                 image: post.image || null,
-                userFname: post.userFname,
-                userLname: post.userLname,
-                phoneNum: post.phoneNum,
-                email: post.email
+                userFname: post.userFname || null,
+                userLname: post.userLname || null,
+                phoneNum: post.phoneNum || null,
+                email: post.email || null
             };
         }
     )
