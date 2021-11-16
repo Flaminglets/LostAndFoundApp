@@ -23,30 +23,33 @@ export default function WebSecondPage(props) {
     const [userLname, setUserLname] = useState(props.userLname || '');
     const [phoneNum, setPhoneNum] = useState(props.phoneNum || '');
     const [email, setEmail] = useState(props.email || '');
-    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); const val = event.target.value; setUserFname(val); }
-    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); const val = event.target.value; setUserLname(val); }
-    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); const val = event.target.value; setPhoneNum(val); }
-    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); const val = event.target.value; setEmail(val); }
+    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); setUserFname(event.target.value); setUserFnameError('')}
+    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); setUserLname(event.target.value); setUserLnameError('')}
+    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError('')}
+    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError('')}
+
+    const [userFnameError, setUserFnameError] = useState('');
+    const [userLnameError, setUserLnameError] = useState('');
+    const [phoneNumError, setPhoneNumError] = useState('');
+    const [emailError, setEmailError] = useState('');
 
     const handleSubmitClick = (event) => {
-        
-        props.handleSubmitClick();
+        if (userFname == '') {setUserFnameError("Please enter first name")}
+        else if (userLname == '') {setUserLnameError("Please enter last name")}
+        else if (phoneNum == '') {setPhoneNumError("Please enter phone number")}
+        else if (phoneNum === String) {setPhoneNumError("Please enter phone number")}
+        else if (email == '') {setEmailError("Please enter email")}
+
+        if (userFname != '' && 
+        userLname != '' &&
+        phoneNum != '' &&
+        email != '') {
+            props.handleSubmitClick();
+        }
     };
 
     const handlePrevClick = (event) => {
         props.handlePrevClick();
-    }
-
-    const initialState = {helperText: '', error: false};
-    const [state, setState] = useState(initialState);
-
-    const onChange = (event) => {
-        props.handlePageData({phoneNum: event.target.value}); const val = event.target.value; setPhoneNum(val);
-        if (event.target.value.length >= 10) {
-            setState({ helperText: '', error: false })
-        } else {
-            setState({ helperText: 'Invalid format: ##########', error: true })
-        }
     }
 
     
@@ -56,7 +59,7 @@ export default function WebSecondPage(props) {
             
             <p className="newpost_form_label">Your Contact information</p>
             <TextField
-                name="c_fname"
+                name="userFname"
                 id="outlined-required"
                 label="First Name"
                 variant="filled"
@@ -64,9 +67,11 @@ export default function WebSecondPage(props) {
                 className="newpost_form_element"
                 onChange={handleSetUserFname}
                 value={userFname}
+                error={!!userFnameError}
+                helperText={userFnameError}
             />
             <TextField
-                name="c_lname"
+                name="userLname"
                 id="outlined-required"
                 label="Last Name"
                 variant="filled"
@@ -74,6 +79,8 @@ export default function WebSecondPage(props) {
                 className="newpost_form_element"
                 onChange={handleSetUserLname}
                 value={userLname}
+                error={!!userLnameError}
+                helperText={userLnameError}
             />
             <TextField
                 required={true}
@@ -84,10 +91,10 @@ export default function WebSecondPage(props) {
                 color="success"
                 placeholder="(000) 000-0000"
                 className="newpost_form_element"
-                onChange={onChange}
+                onChange={handleSetPhoneNum}
                 value={phoneNum}
-                error={state.error}
-                helperText={state.helperText}
+                error={!!phoneNumError}
+                helperText={phoneNumError}
             />
             <TextField
                 required
@@ -100,6 +107,8 @@ export default function WebSecondPage(props) {
                 className="newpost_form_element"
                 onChange={handleSetEmail}
                 value={email}
+                error={!!emailError}
+                helperText={emailError}
             />
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">

@@ -63,21 +63,28 @@ export default function WebFirstPage(props) {
     const handleNextClick = (event) => {
         
         if(type == '') { setTypeError("Please select type"); }
-        if(date == '2021-01-01') {setDateError("Please select date"); }
-        if(time == '00:00') { setTimeError("Please select time"); }
-        if(location == '') { setLocationError("Please enter location"); }
-        if(lostFname == '') { setLostFnameError("Please enter first name"); }
-        if(lostLname == '') { setLostLnameError("Please enter first name"); }
-        if(gender == '') { setGenderError("Please select gender"); }
-        if(age == '') { setAgeError("Please enter age"); }
-        if(weight == '') { setWeightError("Please enter weight"); }
-        if(height == '') { setHeightError("Please enter height"); }
-        if(age == string) { setAgeError("Please enter age"); }
-        if(weight == '') { setWeightError("Please enter weight"); }
-        if(height == '') { setHeightError("Please enter height"); }
-        if(eyecolor == '') { setEyecolorError("Please enter eye colour"); }
+        else if(date == '2021-01-01') {setDateError("Please select date"); }
+        else if(time == '00:00') { setTimeError("Please select time"); }
+        else if(location == '') { setLocationError("Please enter location"); }
+        else if(lostFname == '') { setLostFnameError("Please enter first name"); }
+        else if(lostLname == '') { setLostLnameError("Please enter last name"); }
+        else if(gender == '') { setGenderError("Please select gender"); }
+        else if(age == '') { setAgeError("Please enter age"); }
+        else if(weight == '') { setWeightError("Please enter weight"); }
+        else if(height == '') { setHeightError("Please enter height"); }
+        else if(eyecolor == '') { setEyecolorError("Please enter eye colour"); }
 
-        if (type != '' && date != '2021-01-01' && time != '00:00' && location != '') {
+        if (type != '' && 
+        date != '2021-01-01' && 
+        time != '00:00' && 
+        location != '' &&
+        lostFname != '' &&
+        lostLname != '' &&
+        gender != '' &&
+        age != '' &&
+        weight != '' &&
+        height != '' &&
+        eyecolor != '') {
             props.handleNextClick();
         }
         
