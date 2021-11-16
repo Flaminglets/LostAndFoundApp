@@ -114,7 +114,7 @@ export async function getServerSideProps() {
                 weight: post.weight,
                 height: post.height,
                 eyecolor: post.eyecolor,
-                ethnicity: post.ethnicity,
+                ethnicity: post.ethnicity || null,
                 additional: post.additional,
                 image: post.image || null,
                 userFname: post.userFname,

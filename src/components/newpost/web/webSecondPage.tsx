@@ -60,6 +60,7 @@ export default function WebSecondPage(props) {
                 id="outlined-required"
                 label="First Name"
                 variant="filled"
+                color="success"
                 className="newpost_form_element"
                 onChange={handleSetUserFname}
                 value={userFname}
@@ -69,6 +70,7 @@ export default function WebSecondPage(props) {
                 id="outlined-required"
                 label="Last Name"
                 variant="filled"
+                color="success"
                 className="newpost_form_element"
                 onChange={handleSetUserLname}
                 value={userLname}
@@ -79,6 +81,7 @@ export default function WebSecondPage(props) {
                 id="outlined-required"
                 label="Phone Number"
                 variant="filled"
+                color="success"
                 placeholder="(000) 000-0000"
                 className="newpost_form_element"
                 onChange={onChange}
@@ -93,6 +96,7 @@ export default function WebSecondPage(props) {
                 type="email"
                 label="Email"
                 variant="filled"
+                color="success"
                 className="newpost_form_element"
                 onChange={handleSetEmail}
                 value={email}

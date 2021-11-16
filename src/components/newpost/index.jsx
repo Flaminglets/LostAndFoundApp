@@ -29,7 +29,7 @@ export default function NewPost() {
     };
     const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
     const handleWebPrevClick = () => {setPage(1);}
-    const handleSubmitClick = () => {myRef.current.reportValidity(); setPage(10);}
+    const handleSubmitClick = () => {setPage(10);}
     const handleSubmitPrevClick = () => {setPage(6);}
 
     const handleFinalClick = async () => {

@@ -33,6 +33,7 @@ export default function ThirdPage(props) {
                     id="outlined-required"
                     label="Location"
                     variant="filled"
+                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetLocation}
                     value={location}
