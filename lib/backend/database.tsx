@@ -70,4 +70,3 @@ export async function createAddPosts( type, date, time, location,
 
     return addpost.save()
 }
-
