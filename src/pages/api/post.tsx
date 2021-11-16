@@ -21,6 +21,10 @@ export default async function handler(req, res) {
         );
         return;
     }
+<<<<<<< Updated upstream
     const data = await getAddPosts();
     res.status(200).json(data);
 }
+=======
+}
+>>>>>>> Stashed changes
