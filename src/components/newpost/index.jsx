@@ -19,17 +19,11 @@ export default function NewPost() {
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
     const handleNextClick = (event) => {
-        // myRef.current.reportValidity(); 
         setPage((currentStep) => currentStep + 1); 
-        // if (event.target.value.length = 0) {
-        //     setState({ helperText: '', error: false })
-        // } else {
-        //     setState({ helperText: 'Invalid format: ##########', error: true })
-        // }
     };
     const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
     const handleWebPrevClick = () => {setPage(1);}
-    const handleSubmitClick = () => {myRef.current.reportValidity(); setPage(10);}
+    const handleSubmitClick = () => {setPage(10);}
     const handleSubmitPrevClick = () => {setPage(6);}
 
     const handleFinalClick = async () => {

@@ -32,6 +32,7 @@ export default function FirstPage(props) {
                     id="type"
                     label="Pet / Person"
                     variant="filled"
+                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetType}
                     value={type}
