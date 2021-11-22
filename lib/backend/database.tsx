@@ -60,6 +60,7 @@ export async function getSinglePost(aPostID) {
 }
 
 // Create a post
+
 export async function createAddPosts(type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, image, userFname, userLname, phoneNum, email, userID) {
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
