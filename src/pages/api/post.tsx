@@ -14,6 +14,7 @@ interface PostRequestBody {
     weight: number,
     height: number,
     eyecolor: string,
+    image: string,
     additional: string,
     userFname: string,
     userLname: string,
@@ -36,13 +37,13 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
             const { type, date, time, location,
                 lostFname, lostLname, gender, otherGender,
                 age, weight, height, eyecolor,
-                additional, userFname, userLname, phoneNum,
+                additional, image, userFname, userLname, phoneNum,
                 email, userID } = data; // destructuring
 
             await createAddPosts(type, date, time, location,
                 lostFname, lostLname, gender, otherGender,
                 age, weight, height, eyecolor,
-                additional, userFname, userLname, phoneNum,
+                additional, image, userFname, userLname, phoneNum,
                 email, userID);
             res.status(200).json(
                 {

@@ -15,11 +15,15 @@ const addpostSchema = new mongoose.Schema(
         height: Number,
         eyecolor: String,
         additional: String,
+        image: String,
         userFname: String,
         userLname: String,
         phoneNum: String,
         email: String,
-        user : {type: mongoose.Schema.Types.ObjectId, ref:'User'}
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
     }
 )
 
