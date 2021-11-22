@@ -47,13 +47,23 @@ export async function createUser(name, email, image) {
     return user.save();
 }
 
+// Get multiple post 
 export async function getAddPosts() {
     const client = mongoose.connect(uri);
     const addposts = await Addpost.find()
     return addposts;
 }
 
-export async function createAddPosts( type, date, time, location,
+// Find one post
+export async function getSinglePost(aPostID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findById(aPostID);
+
+    return post;
+}
+
+// Create a post
+export async function createAddPosts(type, date, time, location,
     lostFname, lostLname, gender, age, weight, height, eyecolor, 
     additional, userFname, userLname, phoneNum, email)
 {
