@@ -18,7 +18,7 @@ const addpostSchema = new mongoose.Schema(
         userLname: String,
         phoneNum: Number,
         email: String,
-        // user : {type: mongoose.Schema.Types.ObjectId,ref:'User'}
+        user : {type: mongoose.Schema.Types.ObjectId, ref:'User'}
     }
 )
 
