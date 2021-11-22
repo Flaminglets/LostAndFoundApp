@@ -9,8 +9,10 @@ import SixthPage from './mobile/mobileSixthPage';
 import WebFirstPage from './web/webFirstPage';
 import WebSecondPage from './web/webSecondPage';
 import LastPage from './mobileLastPage';
+import {useSession} from 'next-auth/client';
 
 export default function NewPost() {
+    const [session, loadingSession] = useSession();
     const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
@@ -26,6 +28,7 @@ export default function NewPost() {
     const handleSubmitPrevClick = () => {setPage(6);}
 
     const handleFinalClick = async () => {
+        console.log(session.id)
         const newData = {
             type: data.type,
             date: data.date,
@@ -39,13 +42,13 @@ export default function NewPost() {
             weight: data.weight,
             height: data.height,
             eyecolor: data.eyecolor,
-            ethnicity: data.ethnicity,
             additional: data.additional,
             image: data.image,
             userFname: data.userFname,
             userLname: data.userLname,
             phoneNum: data.phoneNum,
-            email: data.email
+            email: data.email,
+            userID: session.id
         };
 
         const body = JSON.stringify(newData);
@@ -232,6 +235,7 @@ export default function NewPost() {
                             userLname={data.userLname}
                             phoneNum={data.phoneNum}
                             email={data.email}
+                            userID={session.id}
                         />
                         </>
                     )}

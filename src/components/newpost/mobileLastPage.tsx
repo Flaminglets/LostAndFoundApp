@@ -32,8 +32,9 @@ export default function LastPage(props) {
             <p>{props.lostFname}</p>
             <p>{props.lostLname}</p>
             <p>{props.gender}</p>
+            <p>{props.otherGender}</p>
             <p>{props.age}</p>
-            <p>{props.weihgt}</p>
+            <p>{props.weight}</p>
             <p>{props.height}</p>
             <p>{props.eyecolor}</p>
             <p>{props.ethnicity}</p>
@@ -42,6 +43,7 @@ export default function LastPage(props) {
             <p>{props.userLname}</p>
             <p>{props.phoneNum}</p>
             <p>{props.email}</p>
+            <p>{props.userID}</p>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleSubmitPrevClick} className="newpost_button_next">
                     Previous

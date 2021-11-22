@@ -91,9 +91,9 @@ export default function WebSecondPage(props) {
                 label="Phone Number"
                 variant="filled"
                 color="success"
-                type="tel"
+                // type="tel"
                 className="newpost_form_element"
-                inputProps={{ minLength: 10, maxLength: 10, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}"}}
+                inputProps={{ minLength: 10, maxLength: 10, }}
                 onChange={handleSetPhoneNum}
                 value={phoneNum}
                 error={!!phoneNumError}

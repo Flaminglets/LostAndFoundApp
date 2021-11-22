@@ -1,6 +1,6 @@
 import NotLoggedIn from '../components/notLoggedIn';
 import {useSession} from 'next-auth/client';
-import UpdatePost from '../components/updatepost/updatePost';
+// import UpdatePost from '../components/updatepost/updatePost';
 
 export default function UpdatePostPage() {
     const [session, loadingSession] = useSession();
@@ -14,7 +14,7 @@ export default function UpdatePostPage() {
             )}
             {session && (
                 <>
-                <UpdatePost/>
+                {/* <UpdatePost/> */}
                 </>
             )}
         </div>
