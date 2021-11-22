@@ -1,13 +1,19 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import { createUser, getUser } from '../../../../lib/backend/database';
+import { verifyPassword } from '../../../../lib/backend/hashpass';
 
 export default NextAuth({
+  session: {
+    jwt: true,
+  },
   providers: [
     // OAuth authentication providers...
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
+
     Providers.Credentials({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
@@ -21,42 +27,51 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+        const user = await getUsers(credentials);
+        const validInput = await verifyPassword(
+          credentials.password,
+          user.password,
+        );
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user
-        } else {
-          // If you return null or false then the credentials will be rejected
-          return null
-          // You can also Reject this callback with an Error or with a URL:
-          // throw new Error('error message') // Redirect to error page
-          // throw '/path/to/redirect'        // Redirect to a URL
+        if (!user && !validInput) {
+          throw new Error('Login failed')
         }
+
+        return user;
       }
     }),
+
   ],
+
   pages: {
     signIn: "/loginregister",
   },
-  session: {
-    jwt: true,
-  },
-  database: process.env.MONGODB_URL,
-  secret: process.env.NEXT_AUTH_SECRET,
+
+  //database: process.env.MONGODB_URL,
+
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, user, token }) {
       // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken
-      return session
-    },
-    async jwt({ token, account, profile, isNewUser }) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token
+      //session.accessToken = token.accessToken;
+      //console.log("Current Session", user);
+      const aUser = await getUser(user);
+      if (!aUser && user != null) {
+        await createUser(user.name, user.email, user.image);
       }
-      return token
-    }
+
+
+      const sessionUser = {
+        name: aUser.name,
+        email: aUser.email,
+        image: aUser.image,
+      }
+
+      session = sessionUser;
+
+
+      return session;
+    },
   }
+
 });
 
