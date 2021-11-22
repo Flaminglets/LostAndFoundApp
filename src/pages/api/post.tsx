@@ -1,6 +1,35 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req, res) {
+interface PostRequestBody {
+    type: string,
+    date: string,
+    time: string,
+    location: string,
+    lostFname: string,
+    lostLname: string,
+    gender: string,
+    otherGender: string,
+    age: number,
+    weight: number,
+    height: number,
+    eyecolor: string,
+    additional: string,
+    userFname: string,
+    userLname: string,
+    phoneNum: string,
+    email: string,
+    userID: any,
+    postID: any,
+    newData: any
+}
+
+interface PostRequestBody extends NextApiRequest {
+    body: PostRequestBody;
+}
+
+
+export default async function handler(req: PostRequestBody, res: NextApiResponse) {
     try {
         if (req.method == 'POST') {
             const data = req.body;
@@ -8,14 +37,13 @@ export default async function handler(req, res) {
                 lostFname, lostLname, gender, otherGender,
                 age, weight, height, eyecolor,
                 additional, userFname, userLname, phoneNum,
-                email} = data; // destructuring
+                email, userID } = data; // destructuring
 
-            // step 4, connect to db and create cheetah
             await createAddPosts(type, date, time, location,
                 lostFname, lostLname, gender, otherGender,
                 age, weight, height, eyecolor,
                 additional, userFname, userLname, phoneNum,
-                email);
+                email, userID);
             res.status(200).json(
                 {
                     success: true

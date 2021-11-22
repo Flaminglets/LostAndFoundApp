@@ -26,10 +26,7 @@ export async function getUser(aUser) {
     // connect to the client
     const client = await mongoose.connect(uri);
     const users = await User.findOne(aUser);
-    // console.log("aUserName:", aUser.name);
-    // console.log("aUserEmail:", aUser.email);
-    // console.log("aUserImage:", aUser.image);
-    
+
     return users;
 };
 
@@ -63,22 +60,26 @@ export async function getSinglePost(aPostID) {
 }
 
 // Create a post
-export async function createAddPosts(type, date, time, location,
-    lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email)
-{
+export async function createAddPosts(type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email, userID) {
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
-            type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email
+            type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email, userID
         }
     )
 
-    return addpost.save()
+    await addpost.save();
+
+    const userByID = await User.findById(userID);
+    userByID.posts.push(addpost);
+    await userByID.save();
+
+    return;
 }
 
 export async function updatePost(postID, newData) {
     const client = await mongoose.connect(uri);
-    const post = await Addpost.findByIdAndUpdate(postID, newData, {new: true})
+    const post = await Addpost.findByIdAndUpdate(postID, newData, { new: true })
     return post;
 }
 
