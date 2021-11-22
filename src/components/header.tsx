@@ -108,16 +108,16 @@ export default function Header (props) {
             {!session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><a href="/loginregister">LogIn</a></li>
-                    <li><a href="/loginregister">Register</a></li>
+                    <li><Link href="/loginregister">LogIn</Link></li>
+                    <li><Link href="/loginregister">Register</Link></li>
                 </ul>
                 </>
             )}
             {session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><a href="/newpost">New Post</a></li>
-                    <li><a href="/user">User</a></li>
+                    <li><Link href="/newpost">New Post</Link></li>
+                    <li><Link href="/user">User</Link></li>
                     <li><Link href="/"><button className="header_logout_button header_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
@@ -191,7 +191,7 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><a href="/loginregister">LogIn / Register</a></li>
+                                    <li className="header_list"><Link href="/loginregister">LogIn / Register</Link></li>
                                 </ul>
                             </div>
                         </>
@@ -200,9 +200,9 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><a href="/newpost">New Post</a></li>
+                                    <li className="header_list"><Link href="/newpost">New Post</Link></li>
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
-                                    <li className="header_list"><a href="/user">User</a></li>  
+                                    <li className="header_list"><Link href="/user">User</Link></li>  
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>

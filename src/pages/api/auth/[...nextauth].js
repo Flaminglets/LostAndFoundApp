@@ -61,6 +61,7 @@ export default NextAuth({
 
 
       const sessionUser = {
+        id: aUser.id.toString(),
         name: aUser.name,
         email: aUser.email,
         image: aUser.image,
