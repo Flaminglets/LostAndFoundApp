@@ -6,7 +6,3 @@ export default async function UpdatePost(){
         {new: true}
     )
 }
-
-Addpost.modelName.addpostSchema; 
-
-//test txt

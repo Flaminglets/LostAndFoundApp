@@ -9,6 +9,7 @@ const addpostSchema = new mongoose.Schema(
         lostFname: String,
         lostLname: String,
         gender: String,
+        otherGender: String,
         age: Number,
         weight: Number,
         height: Number,
@@ -16,7 +17,7 @@ const addpostSchema = new mongoose.Schema(
         additional: String,
         userFname: String,
         userLname: String,
-        phoneNum: Number,
+        phoneNum: String,
         email: String,
         user : {type: mongoose.Schema.Types.ObjectId, ref:'User'}
     }
