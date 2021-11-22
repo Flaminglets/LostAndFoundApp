@@ -1,21 +1,22 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
 
+
+
 export default async function handler(req, res) {
     try {
         if (req.method == 'POST') {
             const data = req.body;
             const { type = 'test', date = 'test', time = 'test', location = 'test',
-                lostFname = 'test', lostLname = 'test', gender = 'test',
-                age = 1, weight = 1, height = 1, eyecolor = 'test',
-                additional = 'test', userFname = 'test', userLname = 'test', phoneNum = 1,
+                lostFname = 'test', lostLname = 'test', gender = 'test', otherGender = 'test',
+                age = 1, weight = 1, height = 1, eyecolor = 'test', additional = 'test', 
+                image = 'test', userFname = 'test', userLname = 'test', phoneNum = 1,
                 email = 'test' } = data; // destructuring
 
             // step 4, connect to db and create cheetah
             await createAddPosts(type, date, time, location,
-                lostFname, lostLname, gender,
+                lostFname, lostLname, gender, otherGender,
                 age, weight, height, eyecolor,
-                additional, userFname, userLname, phoneNum,
-                email);
+                additional, image, userFname, userLname, phoneNum, email);
             res.status(200).json(
                 {
                     success: true

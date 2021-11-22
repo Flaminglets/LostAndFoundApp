@@ -33,7 +33,6 @@ export async function getUser(aUser) {
     return users;
 };
 
-
 export async function createUser(name, email, image) {
     const client = await mongoose.connect(uri);
     const user = new User(
@@ -64,17 +63,31 @@ export async function getSinglePost(aPostID) {
 
 // Create a post
 export async function createAddPosts(type, date, time, location,
-    lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email)
+    lostFname, lostLname, gender, age, weight, height, eyecolor, 
+    additional, image, userFname, userLname, phoneNum, email)
 {
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
-            type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, userFname, userLname, phoneNum, email
+            type, date, time, location,
+            lostFname, lostLname, gender, age, weight, 
+            height, eyecolor, additional, image, userFname, 
+            userLname, phoneNum, email
         }
     )
 
     return addpost.save()
+
 }
+
+// views the posts of a single user
+export async function arrayPosts(userID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findById(userID);
+
+    return post;
+}
+
 
 export async function updatePost(postID, newData) {
     const client = await mongoose.connect(uri);
