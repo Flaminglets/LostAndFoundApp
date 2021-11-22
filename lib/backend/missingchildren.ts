@@ -28,7 +28,7 @@ export async function createMissingChildrenPost(
 
 export async function getMissingChildrens() {
      const client = mongoose.connect(uri);
-     const kids = await MissingChildren.findOne();
+     const kids = await MissingChildren.find();
 
      return kids;
 }
