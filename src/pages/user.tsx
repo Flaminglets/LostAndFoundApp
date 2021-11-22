@@ -9,6 +9,8 @@ import {useSession} from 'next-auth/client';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router'
+import { useState } from 'react';
+import UserPostCard from '../components/card';
 
 const FlamingoEditButton = styled(Button)({
     '&:hover': {
@@ -25,6 +27,11 @@ const FlamingoFoundButton = styled(Button)({
 export default function UserPage(props) {
     const [session, loadingSession] = useSession();
     const router = useRouter();
+    const [postId, setPostId] = useState();
+
+    const handleEditClick = (event) => {
+        console.log(event.key)
+    }
 
     return (
         <div>
@@ -59,28 +66,12 @@ export default function UserPage(props) {
                             props.posts.map(
                                 (post) => {
                                     return (
-                                    <div key={post.id}>
-                                        <Card className="user_cards" elevation={5}>
-                                            <CardActionArea>
-                                                <Typography gutterBottom variant="h5" component="div" className="user_card_title">
-                                                    {post.lostFname} {post.lostLname}
-                                                </Typography>
-                                                <CardMedia className="user_card_media"
-                                                component="img"
-                                                image={post.image}
-                                                alt="missing pet/person image"
-                                                />
-                                            </CardActionArea>
-                                            <CardActions className="user_card_buttons">
-                                                <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
-                                                Edit
-                                                </FlamingoEditButton>
-                                                <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found">
-                                                FOUND
-                                                </FlamingoFoundButton>
-                                            </CardActions>
-                                        </Card>
-                                    </div>
+                                        <UserPostCard 
+                                            id={post.id}
+                                            image={post.image}
+                                            lostFname={post.lostFname}
+                                            lostLname={post.lostLname}
+                                        />  
                                     )
                                 }
                             )

@@ -10,7 +10,7 @@ import WebFirstPage from './web/webFirstPage';
 import WebSecondPage from './web/webSecondPage';
 import LastPage from './mobileLastPage';
 
-export default function NewPost() {
+export default function UpdatePost(props) {
     const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
@@ -240,3 +240,13 @@ export default function NewPost() {
         </div>
     )
 }
+
+// export async function getServerSideProps(context) {
+//     const session = await getSession(context)
+  
+//     return {
+//       props: {
+//         session
+//       }
+//     }
+//   }

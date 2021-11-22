@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema(
         name: String,
         email: String,
         image: String,
-        posts : [
-            {type: mongoose.Schema.Types.ObjectId, ref:'addpost'}
-        ],
+        // posts : [
+        //     {type: mongoose.Schema.Types.ObjectId, ref:'addpost'}
+        // ],
     }
 );
 
