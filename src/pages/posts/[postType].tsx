@@ -1,10 +1,8 @@
-import { useState } from "react";
 import Footer from '../../components/footer';
-import { getAddPosts } from '../../../lib/backend/database';
 import Pagination from '@mui/material/Pagination';
 import PostCard from '../../components/cards';
 
-export default function Posts(props) {
+export default function Posts({props}) {
     return (
         <div>
             <div className="posts_div">
@@ -50,12 +48,17 @@ export default function Posts(props) {
     );
 };
 
-export async function getServerSideProps() {
-    const postdata = await getAddPosts();
+Posts.getInitialProps = async (ctx) => {
+    // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
+    const {query} = ctx;
+    
+    const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
+    const postdata = await response.json()
+
     const posts = postdata.map(
         (post) => {
             return {
-                id: post.id.toString(),
+                id: post._id,
                 type: post.type || null,
                 date: post.date || null,
                 time: post.time || null,
@@ -84,39 +87,3 @@ export async function getServerSideProps() {
         }
     }
 }
-
-// Posts.getInitialProps = async (ctx) => {
-//     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
-//     const {query} = ctx;
-
-//     const response = await fetch('http://localhost:3000/api/' + query.posts);
-//     const postdata = await response.json()
-
-//     const post = {
-//         id: postdata._id,
-//         type: postdata.type || null,
-//         date: postdata.date || null,
-//         time: postdata.time || null,
-//         location: postdata.location || null,
-//         lostFname: postdata.lostFname || null,
-//         lostLname: postdata.lostLname || null,
-//         gender: postdata.gender || null,
-//         otherGender: postdata.otherGender || null,
-//         age: postdata.age || null,
-//         weight: postdata.weight || null,
-//         height: postdata.height || null,
-//         eyecolor: postdata.eyecolor || null,
-//         additional: postdata.additional || null,
-//         image: postdata.image || null,
-//         userFname: postdata.userFname || null,
-//         userLname: postdata.userLname || null,
-//         phoneNum: postdata.phoneNum || null,
-//         email: postdata.email || null
-//     }
-
-//     return {
-//         props : {
-//             post
-//         }
-//     }
-// }

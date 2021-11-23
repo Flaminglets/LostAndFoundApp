@@ -20,14 +20,13 @@ export default function PostCard(props) {
                         {props.lostFname} {props.lostLname}
                     </Typography>
                     <CardMedia className="home_card_media"
-                    component="img"
-                    image={props.image}
-                    alt="green iguana"
+                        component="img"
+                        image={props.image}
+                        alt="lost pet/person image"
                     />
                     <CardContent>
-                    
                     <Typography variant="body2" color="text.secondary">
-                        Location: {props.location}
+                        Location: {props.location} <br />
                         Last seen: {props.date}, {props.time}
                     </Typography>
                     </CardContent>

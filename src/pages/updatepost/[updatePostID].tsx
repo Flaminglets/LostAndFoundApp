@@ -15,26 +15,26 @@ export default function UpdatePostPage({props}) {
             {session && (
                 <>
                 <UpdatePost
-                        id={props.post.id}
-                        type={props.post.type}
-                        date={props.post.date}
-                        time={props.post.time}
-                        location={props.post.location}
-                        lostFname={props.post.lostFname}
-                        lostLname={props.post.lostLname}
-                        gender={props.post.gender}
-                        otherGender={props.post.otherGender}
-                        age={props.post.age}
-                        weight={props.post.weight}
-                        height={props.post.height}
-                        eyecolor={props.post.eyecolor}
-                        additional={props.post.additional}
-                        image={props.post.image}
-                        userFname={props.post.userFname}
-                        userLname={props.post.userLname}
-                        phoneNum={props.post.phoneNum}
-                        email={props.post.email}
-                    />
+                    id={props.post.id}
+                    type={props.post.type}
+                    date={props.post.date}
+                    time={props.post.time}
+                    location={props.post.location}
+                    lostFname={props.post.lostFname}
+                    lostLname={props.post.lostLname}
+                    gender={props.post.gender}
+                    otherGender={props.post.otherGender}
+                    age={props.post.age}
+                    weight={props.post.weight}
+                    height={props.post.height}
+                    eyecolor={props.post.eyecolor}
+                    additional={props.post.additional}
+                    image={props.post.image}
+                    userFname={props.post.userFname}
+                    userLname={props.post.userLname}
+                    phoneNum={props.post.phoneNum}
+                    email={props.post.email}
+                />
                 </>
             )}
         </div>
@@ -47,7 +47,7 @@ UpdatePostPage.getInitialProps = async (ctx) => {
 
     const response = await fetch('http://localhost:3000/api/updatePost/' + query.updatePostID);
     const postdata = await response.json()
-
+    
     const post = {
         id: postdata._id,
         type: postdata.type || null,

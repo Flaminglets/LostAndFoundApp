@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 import {useSession} from 'next-auth/client';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 
 const FlamingoEditButton = styled(Button)({
@@ -33,8 +34,16 @@ export default function UserPage(props) {
                     <div className="user_profile">
 
                         <div className="user_image_div">
-                            {/* <img src={session.image} alt={session.name} /> */}
-                            {/* <AccountCircleRoundedIcon className="user_image"/> */}
+                            {session.image != null && (
+                                <>
+                                <img src={session.image} alt={session.name} className="user_image"/>
+                                </>
+                            )}
+                            {session.image == null && (
+                                <>
+                                <AccountCircleRoundedIcon className="user_image"/>
+                                </>
+                            )}
                         </div>
                         <div className="user_profile_info">
                             <p>User ID: {session.name}</p>

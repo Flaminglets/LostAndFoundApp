@@ -4,7 +4,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function Homepage() {
+export default function Homepage(props) {
+    props = props.props
     return (
         <div className="home_div">
             <div className="home_backcolor"></div>
@@ -15,12 +16,12 @@ export default function Homepage() {
                         <Card className="dashboard_cards card_1" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[0].lostFname} {props.posts[0].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                image={props.posts[0].image}
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -32,12 +33,12 @@ export default function Homepage() {
                         <Card className="dashboard_cards card_2" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[1].lostFname} {props.posts[1].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                image={props.posts[1].image}
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -51,12 +52,12 @@ export default function Homepage() {
                         <Card className="dashboard_cards card_3" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[2].lostFname} {props.posts[2].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                image={props.posts[2].image}
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -75,7 +76,7 @@ export default function Homepage() {
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -92,7 +93,7 @@ export default function Homepage() {
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -111,7 +112,7 @@ export default function Homepage() {
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -130,7 +131,7 @@ export default function Homepage() {
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -147,7 +148,7 @@ export default function Homepage() {
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
                                 image="/static/images/cards/contemplative-reptile.jpg"
-                                alt="green iguana"
+                                alt="lost pet/person image"
                                 />
                             </CardActionArea>
                             <CardActions>
@@ -162,3 +163,4 @@ export default function Homepage() {
         </div>
     );
 };
+

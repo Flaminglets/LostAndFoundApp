@@ -77,7 +77,7 @@ export async function deletePost(postID) {
 // Find a post by type (pet/person). 
 export async function getPostByType(postType) {
     const client = await mongoose.connect(uri);
-    const post = await Addpost.find({ type: postType }).exec();
+    let post = await Addpost.find({ type: postType });
 
     return post;
 }

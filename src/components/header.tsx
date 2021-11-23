@@ -73,11 +73,11 @@ export default function Header (props) {
     const router = useRouter();
 
     const handleTypePet = () => {
-        router.push('/posts/pets')
+        router.push('/posts/pet')
     }
 
     const handleTypePeople = () => {
-        router.push('/posts/people');
+        router.push('/posts/person');
     }
 
     const handleTypeNone = () => {

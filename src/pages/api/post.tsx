@@ -72,11 +72,8 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         else if (req.method == "PUT") {
             const data = req.body;
             const { postID, newData } = data;
-            // console.log("it's working", postID)
-            // console.log("newdata", newData)
 
             await updatePost(postID, newData);
-            // console.log("it's working now again")
             res.status(200).json(
                 {
                     success: true
