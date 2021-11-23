@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
         image: String,
         posts : [
             {type: mongoose.Schema.Types.ObjectId, ref:'addpost'}
-        ],
+        ]
     }
 );
 
