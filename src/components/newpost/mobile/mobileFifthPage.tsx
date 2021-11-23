@@ -10,14 +10,16 @@ const FlamingoNextButton = styled(Button)({
 
 export default function FifthPage(props) {
     const [image, setImage] = useState(props.image || '');
-    const handleSetImage = async (event) => { 
-        props.handlePageData({image: event.target.value}); 
-        const val = event.target.value; setImage(val); 
-    }
-
-    const handleNextClick = (event) => {
-        props.handleNextClick();
-    };
+     // const handleSetImage = async (event) => { 
+    //     props.handlePageData({image: event.target.value}); 
+    //     const val = event.target.value; setImage(val); 
+    // }
+    const handleSetImage = async (event) => {
+        debugger;
+        props.handlePageData({ image: event.target.value });
+        const val = event.target.value;
+        setImage(val);
+      };
 
     const handlePrevClick = (event) => {
         props.handlePrevClick();
