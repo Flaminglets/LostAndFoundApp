@@ -45,6 +45,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
                 age, weight, height, eyecolor,
                 additional, image, userFname, userLname, phoneNum,
                 email, userID);
+
             res.status(200).json(
                 {
                     success: true
@@ -68,9 +69,9 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         }
 
         // updatePost - pass the poster id and new data to modify an exisitng post's information.
-        else if (req.method == "PATCH") {
+        else if (req.method == 'PUT') {
             const data = req.body;
-            const { postID, newData } = data;
+            const { postID = "619c1943a406a85e93ee987e", newData = { "location": "Canada" } } = data;
 
             await updatePost(postID, newData);
             res.status(200).json(
@@ -80,8 +81,12 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
             )
         }
 
-        const data = await getAddPosts();
-        res.status(200).json(data);
+        // getPost - gets all the existing post from the database
+        else if (req.method == 'GET') {
+            const data = await getAddPosts();
+            res.status(200).json(data);
+        }
+
     } catch {
         res.status(404).send({ error: "Error with post" })
     }
