@@ -15,28 +15,22 @@ export default NextAuth({
     }),
 
     Providers.Credentials({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
-      name: 'Credentials',
-      // The credentials is used to generate a suitable form on the sign in page.
-      // You can specify whatever fields you are expecting to be submitted.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
+      name: "credentials",
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "EMAIL" },
+        email: { label: "Email", type: "text", placeholder: "email" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // Add logic here to look up the user from the credentials supplied
-        const user = await getUsers(credentials);
-        const validInput = await verifyPassword(
-          credentials.password,
-          user.password,
-        );
-
-        if (!user && !validInput) {
-          throw new Error('Login failed')
+        const response = await fetch("http://localhost:3000/api/credlogin", {
+          method: "POST",
+          body: JSON.stringify(credentials),
+          headers: { "Content-Type": "application/json" }
+        })
+        const user = await response.json();
+        if (response && user) {
+          return user;
         }
-
         return user;
       }
     }),
@@ -47,18 +41,15 @@ export default NextAuth({
     signIn: "/loginregister",
   },
 
-  //database: process.env.MONGODB_URL,
-
   callbacks: {
     async session({ session, user, token }) {
       // Send properties to the client, like an access_token from a provider.
-      //session.accessToken = token.accessToken;
-      //console.log("Current Session", user);
+      // session.accessToken = token.accessToken;
+      // console.log("Current Session", user);
       const aUser = await getUser(user);
       if (!aUser && user != null) {
         await createUser(user.name, user.email, user.image);
       }
-
 
       const sessionUser = {
         id: aUser.id.toString(),
@@ -69,10 +60,15 @@ export default NextAuth({
 
       session = sessionUser;
 
-
       return session;
     },
+    // async jwt({ token, account }) {
+    //   // Persist the OAuth access_token to the token right after signin
+    //   if (account) {
+    //     token.accessToken = account.access_token
+    //   }
+    //   return token
+    // }
   }
-
 });
 
