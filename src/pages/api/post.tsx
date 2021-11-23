@@ -45,6 +45,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
                 age, weight, height, eyecolor,
                 additional, image, userFname, userLname, phoneNum,
                 email, userID);
+
             res.status(200).json(
                 {
                     success: true
@@ -82,11 +83,13 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
                 }
             )
         }
-        else if (req.method == "GET") {
+
+        // getPost - gets all the existing post from the database
+        else if (req.method == 'GET') {
             const data = await getAddPosts();
             res.status(200).json(data);
         }
-        
+
     } catch {
         res.status(404).send({ error: "Error with post" })
     }

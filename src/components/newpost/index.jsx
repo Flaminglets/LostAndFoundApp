@@ -29,7 +29,6 @@ export default function NewPost() {
     const handleSubmitPrevClick = () => {setPage(6);}
 
     const handleFinalClick = async () => {
-        console.log(session.id)
         const newData = {
             type: data.type,
             date: data.date,
@@ -49,7 +48,7 @@ export default function NewPost() {
             userLname: data.userLname,
             phoneNum: data.phoneNum,
             email: data.email,
-            userID: session.id
+            userID: session.id,
         };
 
         const body = JSON.stringify(newData);
@@ -236,7 +235,6 @@ export default function NewPost() {
                             userLname={data.userLname}
                             phoneNum={data.phoneNum}
                             email={data.email}
-                            userID={session.id}
                         />
                         </>
                     )}
