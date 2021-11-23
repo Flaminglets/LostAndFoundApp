@@ -15,11 +15,11 @@ export default function FifthPage(props) {
         const val = event.target.value; setImage(val); 
     }
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         props.handleNextClick();
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 

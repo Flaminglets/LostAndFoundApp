@@ -42,7 +42,7 @@ export default function WebFirstPage(props) {
     const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); setLostFname(event.target.value); setLostFnameError('')}
     const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); setLostLname(event.target.value); setLostLnameError('')}
     const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); setGender(event.target.value); setGenderError('')}
-    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value); setOtherGenderError('')}
+    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value)}
     const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); setAge(event.target.value); setAgeError('')}
     const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); setWeight(event.target.value); setWeightError('')}
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError('')}
@@ -57,14 +57,12 @@ export default function WebFirstPage(props) {
     const [lostFnameError, setLostFnameError] = useState('');
     const [lostLnameError, setLostLnameError] = useState('');
     const [genderError, setGenderError] = useState('');
-    const [otherGenderError, setOtherGenderError] = useState('');
     const [ageError, setAgeError] = useState('');
     const [weightError, setWeightError] = useState('');
     const [heightError, setHeightError] = useState('');
     const [eyecolorError, setEyecolorError] = useState('');
 
-    const handleNextClick = (event) => {
-        
+    const handleNextClick = () => {
         if(type == '') { setTypeError("Please select type"); }
         else if(date == '2021-01-01') {setDateError("Please select date"); }
         else if(time == '00:00') { setTimeError("Please select time"); }

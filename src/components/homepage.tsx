@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import { getAddPosts } from "../../lib/backend/database";
 
-export default function Homepage(props) {
-    
+export default function Homepage() {
     return (
         <div className="home_div">
             <div className="home_backcolor"></div>
@@ -164,40 +162,3 @@ export default function Homepage(props) {
         </div>
     );
 };
-
-// export async function getServerSideProps() {
-//     const postdata = await getAddPosts();
-//     console.log('postdata', postdata);
-//     const posts = postdata.map(
-//         (post) => {
-//             return {
-//                 id: post.id.toString(),
-//                 type: post.type,
-//                 date: post.date,
-//                 time: post.time,
-//                 location: post.location,
-//                 lostFname: post.lostFname,
-//                 lostLname: post.lostLname,
-//                 gender: post.gender,
-//                 otherGender: post.otherGender || null,
-//                 age: post.age,
-//                 weight: post.weight,
-//                 height: post.height,
-//                 eyecolor: post.eyecolor,
-//                 ethnicity: post.ethnicity,
-//                 additional: post.additional,
-//                 image: post.image || null,
-//                 userFname: post.userFname,
-//                 userLname: post.userLname,
-//                 phoneNum: post.phoneNum,
-//                 email: post.email
-//             };
-//         }
-//     )
-
-//     return {
-//         props : {
-//             posts
-//         }
-//     }
-// }

@@ -1,16 +1,14 @@
-import NotLoggedIn from '../components/notLoggedIn';
-import { getAddPosts } from '../../lib/backend/database';
+import React from "react";
 import Footer from '../components/footer';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import NotLoggedIn from '../components/notLoggedIn';
+import UserPostCard from '../components/userCard';
+import { getAddPosts } from '../../lib/backend/database';
+
+import { Button } from '@mui/material';
 import {useSession} from 'next-auth/client';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
-import { useRouter } from 'next/router'
-import { useState } from 'react';
-import UserPostCard from '../components/card';
+
 
 const FlamingoEditButton = styled(Button)({
     '&:hover': {
@@ -18,20 +16,8 @@ const FlamingoEditButton = styled(Button)({
     },
 })
 
-const FlamingoFoundButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
-    },
-})
-
 export default function UserPage(props) {
-    const [session, loadingSession] = useSession();
-    const router = useRouter();
-    const [postId, setPostId] = useState();
-
-    const handleEditClick = (event) => {
-        console.log(event.key)
-    }
+    const [session] = useSession();
 
     return (
         <div>
@@ -68,9 +54,24 @@ export default function UserPage(props) {
                                     return (
                                         <UserPostCard 
                                             id={post.id}
-                                            image={post.image}
+                                            type={post.type}
+                                            date={post.date}
+                                            time={post.time}
+                                            location={post.location}
                                             lostFname={post.lostFname}
                                             lostLname={post.lostLname}
+                                            gender={post.gender}
+                                            otherGender={post.otherGender}
+                                            age={post.age}
+                                            weight={post.weight}
+                                            height={post.height}
+                                            eyecolor={post.eyecolor}
+                                            additional={post.additional}
+                                            image={post.image}
+                                            userFname={post.userFname}
+                                            userLname={post.userLname}
+                                            phoneNum={post.phoneNum}
+                                            email={post.email}
                                         />  
                                     )
                                 }
@@ -88,7 +89,6 @@ export default function UserPage(props) {
 
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
-    // console.log('data', postdata);
     const posts = postdata.map(
         (post) => {
             return {
@@ -105,7 +105,6 @@ export async function getServerSideProps() {
                 weight: post.weight || null,
                 height: post.height || null,
                 eyecolor: post.eyecolor || null,
-                ethnicity: post.ethnicity || null,
                 additional: post.additional || null,
                 image: post.image || null,
                 userFname: post.userFname || null,
@@ -115,7 +114,6 @@ export async function getServerSideProps() {
             };
         }
     )
-    console.log('posts', posts)
 
     return {
         props : {

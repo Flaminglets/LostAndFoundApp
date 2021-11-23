@@ -33,12 +33,11 @@ export default function WebSecondPage(props) {
     const [phoneNumError, setPhoneNumError] = useState('');
     const [emailError, setEmailError] = useState('');
 
-    const handleSubmitClick = (event) => {
+    const handleSubmitClick = () => {
         if (userFname == '') {setUserFnameError("Please enter first name")}
         else if (userLname == '') {setUserLnameError("Please enter last name")}
         else if (phoneNum == '') {setPhoneNumError("Please enter phone number")}
         else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
-        // else if (parseInt(phoneNum) != Number) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
         else if (email == '') {setEmailError("Please enter email")}
 
         if (userFname != '' && 
@@ -49,7 +48,7 @@ export default function WebSecondPage(props) {
         }
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 
@@ -93,7 +92,7 @@ export default function WebSecondPage(props) {
                 color="success"
                 // type="tel"
                 className="newpost_form_element"
-                inputProps={{ minLength: 10, maxLength: 10, }}
+                inputProps={{ minLength: 10, maxLength: 12, }}
                 onChange={handleSetPhoneNum}
                 value={phoneNum}
                 error={!!phoneNumError}

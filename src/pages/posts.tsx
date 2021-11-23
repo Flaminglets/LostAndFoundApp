@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Header from "../components/header";
 import Footer from '../components/footer';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

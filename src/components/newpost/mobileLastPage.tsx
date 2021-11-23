@@ -14,17 +14,17 @@ const FlamingoSubmitButton = styled(Button)({
 })
 
 export default function LastPage(props) {
-    const handleFinalClick = (event) => {
+    const handleFinalClick = () => {
         props.handleFinalClick();
     };
 
-    const handleSubmitPrevClick = (event) => {
+    const handleSubmitPrevClick = () => {
         props.handleSubmitPrevClick();
     }
 
     return (
         <div className="newpost_form">
-            {/* <p className="newpost_form_label">Where have you lost pet/person?</p> */}
+            <p className="newpost_form_label">Where have you lost pet/person?</p>
             <p>{props.type}</p>
             <p>{props.date}</p>
             <p>{props.time}</p>

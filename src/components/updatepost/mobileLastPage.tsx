@@ -14,34 +14,37 @@ const FlamingoSubmitButton = styled(Button)({
 })
 
 export default function LastPage(props) {
-    const handleFinalClick = (event) => {
+    const handleFinalClick = () => {
         props.handleFinalClick();
     };
 
-    const handleSubmitPrevClick = (event) => {
+    const handleSubmitPrevClick = () => {
         props.handleSubmitPrevClick();
     }
 
     return (
         <div className="newpost_form">
-            {/* <p className="newpost_form_label">Where have you lost pet/person?</p> */}
-            <p>{props.type}</p>
-            <p>{props.date}</p>
-            <p>{props.time}</p>
-            <p>{props.location}</p>
-            <p>{props.lostFname}</p>
-            <p>{props.lostLname}</p>
-            <p>{props.gender}</p>
-            <p>{props.age}</p>
-            <p>{props.weihgt}</p>
-            <p>{props.height}</p>
-            <p>{props.eyecolor}</p>
-            <p>{props.ethnicity}</p>
-            <p>{props.additional}</p>
-            <p>{props.userFname}</p>
-            <p>{props.userLname}</p>
-            <p>{props.phoneNum}</p>
-            <p>{props.email}</p>
+            <p className="newpost_form_label">Do you want to submit?</p>
+            <div className="newpost_form_last_info">
+                <p>Type: {props.type}</p>
+                <p>Lost date: {props.date}</p>
+                <p>Lost time: {props.time}</p>
+                <p>Last seen: {props.location}</p>
+                <p>Lost {props.type} firstname: {props.lostFname}</p>
+                <p>Lost {props.type} lastname: {props.lostLname}</p>
+                <p>Gender: {props.gender} {props.otherGender}</p>
+                <p>Age: {props.age}</p>
+                <p>Weight: {props.weihgt}</p>
+                <p>Height: {props.height}</p>
+                <p>Eye color: {props.eyecolor}</p>
+                <p>Additional information: {props.additional}</p>
+                <p>User firstname: {props.userFname}</p>
+                <p>User lastname: {props.userLname}</p>
+                <p>Contact info</p>
+                <p>Phone number: {props.phoneNum}</p>
+                <p>Email: {props.email}</p>
+            </div>
+            
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleSubmitPrevClick} className="newpost_button_next">
                     Previous

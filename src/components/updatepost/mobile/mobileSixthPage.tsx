@@ -30,12 +30,11 @@ export default function SixthPage(props) {
     const [phoneNumError, setPhoneNumError] = useState('');
     const [emailError, setEmailError] = useState('');
 
-    const handleSubmitClick = (event) => {
+    const handleSubmitClick = () => {
         if (userFname == '') {setUserFnameError("Please enter first name")}
         else if (userLname == '') {setUserLnameError("Please enter last name")}
         else if (phoneNum == '') {setPhoneNumError("Please enter phone number")}
         else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
-        // else if (parseInt(phoneNum) != Number) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
         else if (email == '') {setEmailError("Please enter email")}
 
         if (userFname != '' && 
@@ -46,7 +45,7 @@ export default function SixthPage(props) {
         }
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 
@@ -89,7 +88,7 @@ export default function SixthPage(props) {
                     color="success"
                     type="tel"
                     className="newpost_form_element"
-                    inputProps={{ minLength: 10, maxLength: 10, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}"}}
+                    inputProps={{ minLength: 10, maxLength: 12, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}"}}
                     onChange={handleSetPhoneNum}
                     value={phoneNum}
                     error={!!phoneNumError}

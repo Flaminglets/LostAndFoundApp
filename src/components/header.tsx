@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from 'react';
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useSession, signOut } from "next-auth/client";
+
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Divider from '@mui/material/Divider';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -14,9 +16,6 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import { makeStyles } from '@material-ui/core/styles';
-import { createContext, useContext } from 'react'
-import Link from 'next/link'
-
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,8 +25,6 @@ const useStyles = makeStyles({
       color: '#889696'
     }
 });
-
-const typeContext = createContext(() => {})
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -76,18 +73,14 @@ export default function Header (props) {
     const router = useRouter();
 
     const handleTypePet = () => {
-        // props.handlePageData('pet')
-        // console.log('pet clicked')
-        router.push('/posts');
+        router.push('/posts/pets')
     }
 
     const handleTypePeople = () => {
-        // props.handlePageData('people')
-        router.push('/posts');
+        router.push('/posts/people');
     }
 
     const handleTypeNone = () => {
-        // props.handlePageData('')
         router.push('/');
     }
 

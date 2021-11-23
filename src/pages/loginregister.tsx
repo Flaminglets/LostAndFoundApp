@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/header";
 import { providers, signIn, getSession, csrfToken } from "next-auth/client";
 
 export default function LoginRegister({ providers, csrfToken }) {
@@ -70,7 +69,6 @@ export default function LoginRegister({ providers, csrfToken }) {
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });
-    //console.log("This Session", session);
 
     if (session && res) {
         res.writeHead(302, {

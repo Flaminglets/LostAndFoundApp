@@ -68,6 +68,7 @@ export async function createAddPosts(type, date, time, location, lostFname, lost
         }
     )
 
+    addpost.user = userID;
     await addpost.save();
 
     const userByID = await User.findById(userID);
