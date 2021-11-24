@@ -166,6 +166,7 @@ export default function Header (props) {
                 
                 <div className="header_left">
                     <div className="header_search_web">
+                        {/* search bar */}
                         <Search>
                             <SearchIconWrapper>
                             <SearchIcon />

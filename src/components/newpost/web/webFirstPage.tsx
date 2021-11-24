@@ -47,24 +47,23 @@ export default function WebFirstPage(props) {
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError('')}
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError('')}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
-    //const handleSetImage = async (event) => { props.handlePageData({image: event.target.value}); setImage(event.target.value); }
     
     const handleSetImage = async (event) => {
         await getImageToBase64(event.target.files[0], (result) => {
-          props.handlePageData({ image: result });
-          setImage(result);
+            props.handlePageData({ image: result });
+            setImage(result);
         });
-      };
-      const getImageToBase64 = (file: any, cb: any) => {
+    };
+    const getImageToBase64 = (file: any, cb: any) => {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
-          cb(reader.result);
+            cb(reader.result);
         };
         reader.onerror = function (error) {
-          console.log("Error: ", error);
+            console.log("Error: ", error);
         };
-      };
+    };
 
     const [typeError, setTypeError] = useState('');
     const [dateError, setDateError] = useState('');
@@ -340,10 +339,10 @@ export default function WebFirstPage(props) {
                     accept="image/*"
                     className="myimage"
                     onChange={handleSetImage}
-                    //value={image}
                     required
                 />
             </div>
+            <img src={image} alt="" className="input_image"/>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
                     Next

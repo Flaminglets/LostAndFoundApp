@@ -119,7 +119,6 @@ export default function UpdatePost(props) {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                         />
                         </>
@@ -165,7 +164,6 @@ export default function UpdatePost(props) {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}
@@ -195,7 +193,6 @@ export default function UpdatePost(props) {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                         />
@@ -232,7 +229,6 @@ export default function UpdatePost(props) {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}

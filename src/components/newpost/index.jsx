@@ -62,7 +62,6 @@ export default function NewPost() {
         };
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        const json = await response.json();
         router.push('/user');
     }
 
@@ -115,7 +114,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                         />
                         </>
@@ -161,7 +159,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}
@@ -191,7 +188,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                         />
@@ -228,7 +224,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}

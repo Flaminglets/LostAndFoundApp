@@ -43,6 +43,7 @@ export default function LastPage(props) {
                 <p>Contact info</p>
                 <p>Phone number: {props.phoneNum}</p>
                 <p>Email: {props.email}</p>
+                <img src={props.image} className="input_image"/>
             </div>
             
             <div className="newpost_buttons">

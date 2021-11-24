@@ -44,7 +44,7 @@ export default function LastPage(props) {
             <p>{props.phoneNum}</p>
             <p>{props.email}</p>
             <p>{props.userID}</p>
-            <img src={props.image} />
+            <img src={props.image} className="input_image"/>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleSubmitPrevClick} className="newpost_button_next">
                     Previous

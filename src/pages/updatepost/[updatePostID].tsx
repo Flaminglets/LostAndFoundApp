@@ -47,7 +47,7 @@ UpdatePostPage.getInitialProps = async (ctx) => {
 
     const response = await fetch('http://localhost:3000/api/updatePost/' + query.updatePostID);
     const postdata = await response.json()
-    
+
     const post = {
         id: postdata._id,
         type: postdata.type || null,
