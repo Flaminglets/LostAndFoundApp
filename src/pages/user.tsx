@@ -11,6 +11,7 @@ import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import UserPostCard from '../components/card';
+import User from '../../lib/backend/models/User';
 
 const FlamingoEditButton = styled(Button)({
     '&:hover': {
@@ -87,7 +88,7 @@ export default function UserPage(props) {
 }
 
 export async function getServerSideProps() {
-    const postdata = await getAddPosts();
+    const postdata = await getAddPosts(User);
     // console.log('data', postdata);
     const posts = postdata.map(
         (post) => {
