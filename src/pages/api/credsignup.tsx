@@ -10,13 +10,13 @@ export default async function handler(req, res) {
      const { username, email, password } = data;
 
      if (!username || !email || !email.includes('@') || !password || password.trim().length < 7) {
-          res.status(422).json({ message: 'Invalid inputs', });
+          res.status(400).json({ message: 'Invalid inputs', });
           return;
      }
 
      const existingUser = await findUserCredentialEmail(email);
      if (existingUser) {
-          res.status(422).json({ message: 'User exists already!' });
+          res.status(400).json({ message: 'User exists already!' });
           return;
      }
 

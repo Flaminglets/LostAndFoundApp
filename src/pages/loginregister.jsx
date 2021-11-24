@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Header from "../components/header";
-import { providers, signIn, getSession, csrfToken } from "next-auth/client";
+import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 
 async function createCustomUser(name, email, password) {
     const data = {
@@ -19,7 +19,7 @@ async function createCustomUser(name, email, password) {
         body: body
     }
 
-    const response = await fetch("http://localhost:3000/api/signup", requestOptions);
+    const response = await fetch("http://localhost:3000/api/credsignup", requestOptions);
     const json = await response.json();
 };
 
@@ -30,13 +30,12 @@ export default function LoginRegister({ providers, csrfToken }) {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-    async function submitHandler(event) {
+    async function handleRegister(event) {
         event.preventDefault();
 
         const enteredName = nameInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
         const enterPassword = passwordInputRef.current.value;
-        console.log(enteredName, enteredEmail, enterPassword);
 
         await createCustomUser(enteredName, enteredEmail, enterPassword);
     }
@@ -46,7 +45,7 @@ export default function LoginRegister({ providers, csrfToken }) {
             <div className={`L_container ${event}`} id="container">
 
                 <div className="form-container  sign-up-container">
-                    <form className="login-signup-form" onSubmit={submitHandler}>
+                    <form className="login-signup-form" onSubmit={(e) => handleRegister(e)}>
                         <h1 className="h1-title">Create Account</h1>
                         <input className="input-fields" type="text" placeholder="NAME" required ref={nameInputRef} />
                         <input className="input-fields" type="email" placeholder="EMAIL" required ref={emailInputRef} />
@@ -57,14 +56,14 @@ export default function LoginRegister({ providers, csrfToken }) {
                 </div>
 
                 <div className="form-container sign-in-container">
-                    <form className="login-signup-form">
+                    <form className="login-signup-form" method="post" action="/api/auth/callback/credentials">
                         <h1 className="h1-title">Login</h1>
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         <input className="input-fields" type="email" placeholder="EMAIL" />
                         <input className="input-fields" type="password" placeholder="PASSWORD" />
                         <a className="forgot-password" href="#">Forgot Your Password?</a>
                         {Object.values(providers).map((provider) => {
-                            if (provider.name === "Credentials") {
+                            if (provider.name === "credentials") {
                                 return;
                             }
                             return (
@@ -101,10 +100,12 @@ export default function LoginRegister({ providers, csrfToken }) {
     );
 };
 
+
+// Get initial props to check if there is already a session,
+// otherwise return the providers.
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });
-    //console.log("This Session", session);
 
     if (session && res) {
         res.writeHead(302, {
@@ -117,6 +118,6 @@ LoginRegister.getInitialProps = async (context) => {
     return {
         session: undefined,
         providers: await providers(),
-        csrfToken: await csrfToken(context),
+        csrfToken: await getCsrfToken(context),
     };
 };

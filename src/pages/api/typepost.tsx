@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         }
 
         const data = req.body;
-        const { postType = 'pet' } = data;
+        const { postType } = data;
 
         if (postType !== 'person' && postType !== 'pet') {
             res.status(422).json({message: 'Invalid inputs'});
