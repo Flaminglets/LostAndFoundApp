@@ -88,7 +88,7 @@ export default function UserPage(props) {
 }
 
 export async function getServerSideProps() {
-    const postdata = await getAddPosts(User);
+    const postdata = await getAddPosts();
     // console.log('data', postdata);
     const posts = postdata.map(
         (post) => {

@@ -27,6 +27,14 @@ export async function getPostByType(postType) {
     return post;
 }
 
+// Find a post by type (pet/person). 
+// export async function getPostByType(postType) {
+//     const client = await mongoose.connect(uri);
+//     const post = await Addpost.find({ type: postType }).exec();
+
+//     return post;
+// }
+
 export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
@@ -50,9 +58,9 @@ export async function createUser(name, email, image) {
 }
 
 // Get multiple post 
-export async function getAddPosts(userID) {
+export async function getAddPosts() {
     const client = mongoose.connect(uri);
-    const addposts = await Addpost.find(userID)
+    const addposts = await Addpost.find()
     return addposts;
 }
 
