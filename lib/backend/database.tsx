@@ -4,10 +4,33 @@ import Addpost from './models/Addpost';
 
 const uri = process.env.MONGODB_URL;
 
-export async function getUser(aUser) {
+
+// Finds a post by ID and puts in new data.
+export async function updatePost(postID, newData) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findByIdAndUpdate(postID, newData, { new: true })
+    return post;
+}
+
+// Finds a post by ID and deletes it.
+export async function deletePost(postID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findByIdAndDelete(postID);
+    return post;
+}
+
+// Find a post by type (pet/person). 
+export async function getPostByType(postType) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.find({ type: postType }).exec();
+
+    return post;
+}
+
+export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
-    const users = await User.findOne(aUser);
+    const users = await User.findOne(user);
 
     return users;
 };
@@ -27,6 +50,12 @@ export async function createUser(name, email, image) {
 }
 
 // Get multiple post 
+export async function getUserAddPosts(userID) {
+    const client = mongoose.connect(uri);
+    const addposts = await Addpost.find(userID)
+    return addposts;
+}
+
 export async function getAddPosts() {
     const client = mongoose.connect(uri);
     const addposts = await Addpost.find()
@@ -46,7 +75,25 @@ export async function createAddPosts(type, date, time, location, lostFname, lost
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
-            type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, image, userFname, userLname, phoneNum, email, userID
+            type, 
+            date, 
+            time, 
+            location, 
+            lostFname, 
+            lostLname, 
+            gender, 
+            otherGender, 
+            age, 
+            weight, 
+            height, 
+            eyecolor, 
+            additional, 
+            image,
+            userFname, 
+            userLname, 
+            phoneNum, 
+            email, 
+            userID
         }
     )
 
@@ -59,28 +106,4 @@ export async function createAddPosts(type, date, time, location, lostFname, lost
 
     return;
 }
-
-// Finds a post by ID and puts in new data.
-export async function updatePost(postID, newData) {
-    const client = await mongoose.connect(uri);
-    const post = await Addpost.findByIdAndUpdate(postID, newData, { new: true })
-    return post;
-}
-
-// Finds a post by ID and deletes it.
-export async function deletePost(postID) {
-    const client = await mongoose.connect(uri);
-    const post = await Addpost.findByIdAndDelete(postID);
-    return post;
-}
-
-// Find a post by type (pet/person). 
-export async function getPostByType(postType) {
-    const client = await mongoose.connect(uri);
-    let post = await Addpost.find({ type: postType });
-
-    return post;
-}
-
-
 

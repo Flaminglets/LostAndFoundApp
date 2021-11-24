@@ -1,5 +1,7 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
 import { NextApiRequest, NextApiResponse } from 'next';
+import User from '../../../lib/backend/models/User';
+
 
 interface PostRequestBody {
     type: string,
@@ -83,7 +85,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
 
         // getPost - gets all the existing post from the database
         else if (req.method == 'GET') {
-            const data = await getAddPosts();
+            const data = await getAddPosts(User);
             res.status(200).json(data);
         }
 
