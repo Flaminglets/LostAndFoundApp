@@ -27,13 +27,13 @@ export async function getPostByType(postType) {
     return post;
 }
 
-// Find a post by type (pet/person). 
-// export async function getPostByType(postType) {
-//     const client = await mongoose.connect(uri);
-//     const post = await Addpost.find({ type: postType }).exec();
+//separating user data from other user data
+export async function getPostByUserID(userID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.find({ type: userID }).exec();
 
-//     return post;
-// }
+    return post;
+}
 
 export async function getUser(user) {
     // connect to the client
