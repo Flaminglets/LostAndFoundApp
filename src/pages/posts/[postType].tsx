@@ -97,135 +97,41 @@ Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
 
-    if(query.postType === "all") {
-        const requestOptions = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
-        const response = await fetch('http://localhost:3000/api/post', requestOptions);
-        const postdata = await response.json()
+    const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
+    const postdata = await response.json()
 
-        const posts = postdata.map(
-            (post) => {
-                return {
-                    id: post._id,
-                    type: post.type || null,
-                    date: post.date || null,
-                    time: post.time || null,
-                    location: post.location || null,
-                    lostFname: post.lostFname || null,
-                    lostLname: post.lostLname || null,
-                    gender: post.gender || null,
-                    otherGender: post.otherGender || null,
-                    age: post.age || null,
-                    weight: post.weight || null,
-                    height: post.height || null,
-                    eyecolor: post.eyecolor || null,
-                    additional: post.additional || null,
-                    image: post.image || null,
-                    userFname: post.userFname || null,
-                    userLname: post.userLname || null,
-                    phoneNum: post.phoneNum || null,
-                    email: post.email || null
-                };
-            }
-        )
-
-        const search = ""
-
-        return {
-            props : {
-                posts,
-                search
-            }
+    const posts = postdata.map(
+        (post) => {
+            return {
+                id: post._id,
+                type: post.type || null,
+                date: post.date || null,
+                time: post.time || null,
+                location: post.location || null,
+                lostFname: post.lostFname || null,
+                lostLname: post.lostLname || null,
+                gender: post.gender || null,
+                otherGender: post.otherGender || null,
+                age: post.age || null,
+                weight: post.weight || null,
+                height: post.height || null,
+                eyecolor: post.eyecolor || null,
+                additional: post.additional || null,
+                image: post.image || null,
+                userFname: post.userFname || null,
+                userLname: post.userLname || null,
+                phoneNum: post.phoneNum || null,
+                email: post.email || null
+            };
         }
-    }
+    )
 
-    else if(query.postType === 'pet' || query.postType === 'person') {
-        const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
-        const postdata = await response.json()
+    const search = query.postType
 
-        const posts = postdata.map(
-            (post) => {
-                return {
-                    id: post._id,
-                    type: post.type || null,
-                    date: post.date || null,
-                    time: post.time || null,
-                    location: post.location || null,
-                    lostFname: post.lostFname || null,
-                    lostLname: post.lostLname || null,
-                    gender: post.gender || null,
-                    otherGender: post.otherGender || null,
-                    age: post.age || null,
-                    weight: post.weight || null,
-                    height: post.height || null,
-                    eyecolor: post.eyecolor || null,
-                    additional: post.additional || null,
-                    image: post.image || null,
-                    userFname: post.userFname || null,
-                    userLname: post.userLname || null,
-                    phoneNum: post.phoneNum || null,
-                    email: post.email || null
-                };
-            }
-        )
-
-        const search = query.postType
-
-        return {
-            props : {
-                posts,
-                search
-            }
-        }
-    }
-    
-    else {
-        const requestOptions = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
-        const response = await fetch('http://localhost:3000/api/post', requestOptions);
-        const postdata = await response.json()
-
-        const posts = postdata.map(
-            (post) => {
-                return {
-                    id: post._id,
-                    type: post.type || null,
-                    date: post.date || null,
-                    time: post.time || null,
-                    location: post.location || null,
-                    lostFname: post.lostFname || null,
-                    lostLname: post.lostLname || null,
-                    gender: post.gender || null,
-                    otherGender: post.otherGender || null,
-                    age: post.age || null,
-                    weight: post.weight || null,
-                    height: post.height || null,
-                    eyecolor: post.eyecolor || null,
-                    additional: post.additional || null,
-                    image: post.image || null,
-                    userFname: post.userFname || null,
-                    userLname: post.userLname || null,
-                    phoneNum: post.phoneNum || null,
-                    email: post.email || null
-                };
-            }
-        )
-
-        const search = query.postType
-
-        return {
-            props : {
-                posts,
-                search
-            }
+    return {
+        props : {
+            posts,
+            search
         }
     }
 }

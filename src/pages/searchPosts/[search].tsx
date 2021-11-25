@@ -34,7 +34,7 @@ export default function Posts({props}) {
     return (
         <div>
             <div className="posts_div">
-                <h1>{props.search}</h1>
+                <h1>Searched with '{props.search}'</h1>
             </div>
             <div className="home_content">
                 {posts.posts.reverse().map(
@@ -104,18 +104,8 @@ Posts.getInitialProps = async (ctx) => {
         } else if (
             posts.lostFname.toLowerCase().includes(query.search.toLowerCase()) ||
             posts.lostLname.toLowerCase().includes(query.search.toLowerCase()) || 
-            posts.date.toLowerCase().includes(query.search.toLowerCase())
-            ) {
-            // if (posts.gender != null) {
-            //     console.log("22", posts.age)
-            //     posts.gender.toLowerCase().includes(query.search.toLowerCase())
-            //     return posts
-            // } else if (posts.age != "") {
-            //     console.log("33", posts.age)
-            //     parseInt(posts.age) == parseInt(query.search)
-            //     return posts
-            // }
-            // console.log("22", posts.age)
+            posts.location.toLowerCase().includes(query.search.toLowerCase()) || 
+            posts.date.toLowerCase().includes(query.search.toLowerCase())) {
             return posts
         }
     }).map(
