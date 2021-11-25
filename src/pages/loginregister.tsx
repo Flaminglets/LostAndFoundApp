@@ -1,54 +1,21 @@
 import React, { useRef, useState } from "react";
 import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 
-async function createCustomUser(name, email, password) {
-    const data = {
-        username: name,
-        email: email,
-        password: password,
-    };
-
-    const body = JSON.stringify(data);
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: body
-    }
-
-    const response = await fetch("http://localhost:3000/api/credsignup", requestOptions);
-    const json = await response.json();
-};
 
 export default function LoginRegister({ providers, csrfToken }) {
 
     const [event, setEvent] = useState("");
-    const nameInputRef = useRef();
-    const emailInputRef = useRef();
-    const passwordInputRef = useRef();
-
-    async function handleRegister(event) {
-        event.preventDefault();
-
-        const enteredName = nameInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enterPassword = passwordInputRef.current.value;
-
-        await createCustomUser(enteredName, enteredEmail, enterPassword);
-    }
 
     return (
         <div>
             <div className={`L_container ${event}`} id="container">
 
                 <div className="form-container  sign-up-container">
-                    <form className="login-signup-form" onSubmit={(e) => handleRegister(e)}>
+                    <form className="login-signup-form">
                         <h1 className="h1-title">Create Account</h1>
-                        <input className="input-fields" type="text" placeholder="NAME" required ref={nameInputRef} />
-                        <input className="input-fields" type="email" placeholder="EMAIL" required ref={emailInputRef} />
-                        <input className="input-fields" type="password" placeholder="PASSWORD" required ref={passwordInputRef} />
+                        <input className="input-fields" type="text" placeholder="NAME" />
+                        <input className="input-fields" type="email" placeholder="EMAIL" />
+                        <input className="input-fields" type="password" placeholder="PASSWORD" />
                         <br />
                         <button className="submit-button" type="submit">REGISTER</button>
                     </form>
@@ -61,7 +28,7 @@ export default function LoginRegister({ providers, csrfToken }) {
                         <input className="input-fields" type="email" placeholder="EMAIL" />
                         <input className="input-fields" type="password" placeholder="PASSWORD" />
                         <a className="forgot-password" href="#">Forgot Your Password?</a>
-                        {Object.values(providers).map((provider) => {
+                        {Object.values(providers).map((provider: any) => {
                             if (provider.name === "credentials") {
                                 return;
                             }

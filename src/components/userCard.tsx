@@ -1,16 +1,11 @@
 import React from "react";
-import NotLoggedIn from '../components/notLoggedIn';
-import { getAddPosts } from '../../lib/backend/database';
-import Footer from '../components/footer';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/client';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import {useSession} from 'next-auth/client';
-import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
-import { useRouter } from 'next/router'
-import { useState } from 'react';
 
 const FlamingoEditButton = styled(Button)({
     '&:hover': {
@@ -25,9 +20,27 @@ const FlamingoFoundButton = styled(Button)({
 })
 
 export default function UserPostCard(props) {
-    console.log(props.id)
-    const handleEditClick = (event) => {
-        console.log(props.id)
+    const [session] = useSession();
+    const router = useRouter();
+    const handleEditClick = () => {
+        router.push(`/updatepost/${props.id}`)
+    }
+
+    const handleFoundClick = async () => {
+        const postID = props.id
+
+        const body = postID;
+
+        const requestOptions = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application"
+            },
+            body: body
+        };
+
+        const response = await fetch("http://localhost:3000/api/post", requestOptions);
+        router.push("/user");
     }
 
     return (
@@ -48,7 +61,8 @@ export default function UserPostCard(props) {
                     onClick={handleEditClick}>
                     Edit
                     </FlamingoEditButton>
-                    <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found">
+                    <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found"
+                    onClick={handleFoundClick}>
                     FOUND
                     </FlamingoFoundButton>
                 </CardActions>

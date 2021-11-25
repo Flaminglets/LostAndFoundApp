@@ -12,11 +12,11 @@ import WebSecondPage from './web/webSecondPage';
 import LastPage from './lastPage';
 
 
-export default function NewPost() {
+export default function UpdatePost(props) {
     const [session] = useSession();
     const router = useRouter();
     const [page, setPage] = useState(1);
-    const [data, setData] = useState({});
+    const [data, setData] = useState(props);
 
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
@@ -29,6 +29,7 @@ export default function NewPost() {
     const handleSubmitPrevClick = () => {setPage(6);}
 
     const handleFinalClick = async () => {
+        const postID = props.id
         const newData = {
             type: data.type,
             date: data.date,
@@ -47,14 +48,17 @@ export default function NewPost() {
             userFname: data.userFname,
             userLname: data.userLname,
             phoneNum: data.phoneNum,
-            email: data.email,
-            userID: session.id,
+            email: data.email
+        }
+        const myData = {
+            postID,
+            newData
         };
 
-        const body = JSON.stringify(newData);
+        const body = JSON.stringify(myData);
 
         const requestOptions = {
-            method: 'POST',
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -62,6 +66,7 @@ export default function NewPost() {
         };
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
+        const json = await response.json();
         router.push(`/user/${session.id}`);
     }
 
@@ -230,6 +235,7 @@ export default function NewPost() {
                             userLname={data.userLname}
                             phoneNum={data.phoneNum}
                             email={data.email}
+                            userID={session.id}
                         />
                         </>
                     )}
@@ -238,3 +244,6 @@ export default function NewPost() {
         </div>
     )
 }
+
+
+

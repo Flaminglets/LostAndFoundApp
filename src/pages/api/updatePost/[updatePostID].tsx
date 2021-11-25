@@ -1,15 +1,12 @@
-import { getSinglePost } from '../../../lib/backend/database';
+import { getSinglePost } from '../../../../lib/backend/database';
 
  // Finds a single post by ID
 export default async function handler(req, res) {
+    const { updatePostID } = req.query
     try {
         if (req.method == 'GET') {
-            const data = req.body;
-            const { postID } = data;
-
-            const singleData = await getSinglePost(postID);
+            const singleData = await getSinglePost(updatePostID);
             res.status(200).json(singleData);
-
             return;
         }
     } catch {

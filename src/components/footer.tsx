@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from 'react';
 
-const Footer = () => {
-    const [event, setEvent] = useState("");
+export default function Footer() {
     return (
         <div className="footer_div">
             <p className="footer_about_title">ABOUT US</p>
@@ -23,5 +22,3 @@ const Footer = () => {
         </div>
     );
 };
-
-export default Footer;

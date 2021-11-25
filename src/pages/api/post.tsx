@@ -59,7 +59,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         // deletePost - pass the poster id to delete the poster.
         else if (req.method == 'DELETE') {
             const data = req.body;
-            const { postID } = data;
+            const postID = data;
 
             await deletePost(postID);
             res.status(200).json(
@@ -71,9 +71,9 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         }
 
         // updatePost - pass the poster id and new data to modify an exisitng post's information.
-        else if (req.method == 'PUT') {
+        else if (req.method == "PUT") {
             const data = req.body;
-            const { postID = "619c1943a406a85e93ee987e", newData = { "location": "Canada" } } = data;
+            const { postID, newData } = data;
 
             await updatePost(postID, newData);
             res.status(200).json(
@@ -87,6 +87,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         else if (req.method == 'GET') {
             const data = await getAddPosts();
             res.status(200).json(data);
+            return
         }
 
     } catch {
