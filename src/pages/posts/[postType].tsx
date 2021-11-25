@@ -10,7 +10,7 @@ export default function Posts({props}) {
             </div>
             <div className="home_content">
                 {props.posts.filter((posts) => {
-                    if (props.search == "") {
+                    if (props.search == "" || props.search == "pet" || props.search == "person") {
                         return posts
                     } else if (
                         posts.lostFname.toLowerCase().includes(props.search.toLowerCase()) ||
@@ -95,7 +95,7 @@ Posts.getInitialProps = async (ctx) => {
             }
         )
 
-        const search = "test"
+        const search = ""
 
         return {
             props : {
@@ -136,7 +136,6 @@ Posts.getInitialProps = async (ctx) => {
         )
 
         const search = query.postType
-        console.log(posts)
 
         return {
             props : {
@@ -183,7 +182,6 @@ Posts.getInitialProps = async (ctx) => {
         )
 
         const search = query.postType
-        console.log("test")
 
         return {
             props : {
