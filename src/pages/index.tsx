@@ -3,20 +3,44 @@ import Footer from '../components/footer';
 import Homepage from '../components/homepage';
 import { getAddPosts } from '../../lib/backend/database';
 import React from 'react';
+import {useState, useEffect} from 'react';
 import Posts from '../components/posts';
 import Pagination from '@mui/material/Pagination';
+import {ITEMS_PER_PAGE} from "../constants";
+
 
 export default function Home(props) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [posts, setPosts] = useState({posts: []});
+    const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
+
+    useEffect(() => {
+        let data = [];
+        if (props.posts && props.posts.length > 0) {
+            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+            setPosts({posts: data});
+        }
+    }, [currentPage]);
+
     return (
         <div className={styles.home}>
-        <Homepage props={props}/>
-        <Posts props={props}/>
-        <div className="home_pagination_div">
-                <Pagination count={5} shape="rounded" className="home_pagination"/>
+            <Homepage props={props}/>
+            <Posts props={posts} />
+            <div className="home_pagination_div">
+                <Pagination
+                    count={pages}
+                    onChange={(event, page) => onChangePage(event, page)}
+                    shape="rounded"
+                    className="home_pagination"
+                />
             </div>
-        <Footer/>
+            <Footer/>
         </div>
     );
+
+    function onChangePage($event, page) {
+        setCurrentPage(page);
+    }
 };
 
 export async function getServerSideProps() {
