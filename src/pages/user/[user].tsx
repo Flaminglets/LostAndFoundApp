@@ -96,13 +96,8 @@ export default function UserPage(props) {
 }
 
 UserPage.getInitialProps = async (ctx) => {
-    // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
+    // resource: https://nextjs.org/docs/routing/dynamic-routes
     const {query} = ctx;
-    // const [session] = useSession();
-    
-    // const postdata = await getUserAddPosts(query.user);
-    // const postdata = await getAddPosts(User);
-    // console.log('data', postdata);
 
     const response = await fetch('http://localhost:3000/api/user/' + query.user);
     const postdata = await response.json()
@@ -139,40 +134,3 @@ UserPage.getInitialProps = async (ctx) => {
         }
     }
 }
-
-// export async function getServerSideProps() {
-//     const postdata = await getUserAddPosts();
-//     // const postdata = await getAddPosts(User);
-//     // console.log('data', postdata);
-//     const posts = postdata.map(
-//         (post) => {
-//             return {
-//                 id: post.id.toString(),
-//                 type: post.type || null,
-//                 date: post.date || null,
-//                 time: post.time || null,
-//                 location: post.location || null,
-//                 lostFname: post.lostFname || null,
-//                 lostLname: post.lostLname || null,
-//                 gender: post.gender || null,
-//                 otherGender: post.otherGender || null,
-//                 age: post.age || null,
-//                 weight: post.weight || null,
-//                 height: post.height || null,
-//                 eyecolor: post.eyecolor || null,
-//                 additional: post.additional || null,
-//                 image: post.image || null,
-//                 userFname: post.userFname || null,
-//                 userLname: post.userLname || null,
-//                 phoneNum: post.phoneNum || null,
-//                 email: post.email || null
-//             };
-//         }
-//     )
-
-//     return {
-//         props : {
-//             posts
-//         }
-//     }
-// }

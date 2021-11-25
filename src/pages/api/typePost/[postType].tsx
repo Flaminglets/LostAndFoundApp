@@ -2,6 +2,7 @@ import { getPostByType } from '../../../../lib/backend/database';
 
  // Finds posts by post type
 export default async function handler(req, res) {
+    // resource: https://nextjs.org/docs/api-routes/dynamic-api-routes
     const { postType } = req.query
     try {
         if (req.method !== 'GET') {

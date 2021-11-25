@@ -27,6 +27,14 @@ export async function getPostByType(postType) {
     return post;
 }
 
+//separating user data from other user data
+export async function getPostByUserID(userID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.find({ user: userID }).exec();
+
+    return post;
+}
+
 export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
@@ -50,12 +58,6 @@ export async function createUser(name, email, image) {
 }
 
 // Get multiple post 
-export async function getUserAddPosts(userID) {
-    const client = mongoose.connect(uri);
-    const addposts = await Addpost.find({user: userID})
-    return addposts;
-}
-
 export async function getAddPosts() {
     const client = mongoose.connect(uri);
     const addposts = await Addpost.find()

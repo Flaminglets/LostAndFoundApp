@@ -2,11 +2,18 @@ import styles from '../styles/Home.module.sass'
 import Footer from '../components/footer';
 import Homepage from '../components/homepage';
 import { getAddPosts } from '../../lib/backend/database';
+import React from 'react';
+import Posts from '../components/posts';
+import Pagination from '@mui/material/Pagination';
 
 export default function Home(props) {
     return (
         <div className={styles.home}>
         <Homepage props={props}/>
+        <Posts props={props}/>
+        <div className="home_pagination_div">
+                <Pagination count={5} shape="rounded" className="home_pagination"/>
+            </div>
         <Footer/>
         </div>
     );

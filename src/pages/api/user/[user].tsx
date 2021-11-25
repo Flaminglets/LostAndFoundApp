@@ -1,4 +1,4 @@
-import { getUserAddPosts } from '../../../../lib/backend/database';
+import { getPostByUserID } from '../../../../lib/backend/database';
 
  // Finds posts by post type
 export default async function handler(req, res) {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         
         if (req.method == 'GET') {
             console.log("working here")
-            const posts = await getUserAddPosts(user);
+            const posts = await getPostByUserID(user);
             res.status(200).json(posts);
             return;
         }
