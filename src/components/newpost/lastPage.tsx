@@ -42,8 +42,8 @@ export default function LastPage(props) {
                     <div className="lp_element_left">
                         <p>Gender: <strong>{props.gender} {props.otherGender}</strong></p>
                         <p>Age: <strong>{props.age}</strong></p>
-                        <p>Weight: <strong>{props.weight}</strong></p>
-                        <p>Height: <strong>{props.height}</strong></p>
+                        <p>Weight: <strong>{props.weight} cm</strong></p>
+                        <p>Height: <strong>{props.height} kg</strong></p>
                         <p>Eye color: <strong>{props.eyecolor}</strong></p>
                     </div>
                     <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}/>
@@ -57,12 +57,6 @@ export default function LastPage(props) {
                         <p>- Email: <strong>{props.email}</strong></p>
                     </div>
                 </div>
-                {props.additional != "" && (
-                    <div className="lp_adinfo">
-                        <p>Additional information: </p>
-                        <p><strong>{props.additional}</strong></p>
-                    </div>
-                )}
                 {props.additional != null && props.additional != "" && (
                     <div className="lp_adinfo">
                         <p>Additional information: </p>
