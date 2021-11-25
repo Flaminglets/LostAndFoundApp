@@ -28,9 +28,9 @@
     font-size: 2.5rem
     text-align: center
 
-.home_content
+.home_content, .posts_div
     width: 60rem
-    margin: 3rem auto 
+    margin: 1rem auto 3rem
     display: flex
     // grid-template-columns: auto auto auto auto
     padding: 0
@@ -47,6 +47,7 @@
     text-align: center
     text-overflow: clip
     font-size: 1.3rem
+    height: 1.5rem
 
 .home_card_info_div
     height: 4.5rem
@@ -74,11 +75,6 @@
     margin: 1rem
     width: 12rem
     height: 15rem
-
-.dashboard_card_title
-    margin: 0.5rem 0
-    text-align: center
-    font-size: 1.3rem
     
 .dashboard_card_media
     width: 95%
@@ -158,12 +154,12 @@
     .dashboard_cards button 
         font-size: 0.7rem
 
-    .home_content
+    .home_content, .posts_div
         width: 60rem
     
 
 @media screen and (max-width: 1024px)
-    .home_content
+    .home_content, .posts_div
         width: 45rem
 
     .home_dashboard
@@ -256,9 +252,9 @@
         
 
 @media screen and (max-width: 700px)
-    .home_content
+    .home_content, .posts_div
         width: 90vw
-        margin: 4.5vw auto 
+        margin: 2vw auto 4.5vw
         display: flex
         padding: 0
         justify-content: space-between

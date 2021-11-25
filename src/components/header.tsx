@@ -83,7 +83,7 @@ export default function Header (props) {
         if (event.key === 'Enter') {
             console.log("enter clicked: ", search)
             setSearch('');
-            router.push(`/posts/${search}`)
+            location.replace(`/searchPosts/${search}`)
         }
     }
 
@@ -146,7 +146,7 @@ export default function Header (props) {
 
     return (
         <div className="header_div">
-            <div className="header_container">
+            <div className="header_container" id="top">
                 <div className="header_hamburger_wrapper">
                     <React.Fragment key="left" >
                         <button className="hamburger-btn hamburger--collapse" id="hamburger" type="button" onClick={toggleDrawer("left", true)}>
@@ -167,14 +167,14 @@ export default function Header (props) {
 
                 <div className="header_right">
                     <div className="header_logo_div">
-                        <p className="header_logo" onClick={handleTypeNone}>Lost and Found</p>
+                        <a className="header_logo" href="/">Lost and Found</a>
                     </div>
 
                     <div className="header_nav_wrapper">
                         <ul className="header_nav">
-                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePet}>Pets</button></li>
+                            <li className="header_list"><a className="header_logout_button header_button" href='/posts/pet'>Pets</a></li>
                             <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
-                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePeople}>People</button></li>
+                            <li className="header_list"><a className="header_logout_button header_button" href='/posts/person'>People</a></li>
                         </ul>
                     </div>
                 </div>

@@ -16,9 +16,9 @@ export default function PostCard(props) {
         <div key={props.id}>
             <Card className="home_cards" elevation={5}>
                 <CardActionArea onClick={handleCardClick}>
-                    <p className="home_card_title">
+                    <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                         {props.lostFname} {props.lostLname}
-                    </p>
+                    </Typography>
                     <CardMedia className="home_card_media"
                         component="img"
                         image={props.image}

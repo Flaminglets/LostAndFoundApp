@@ -1,15 +1,43 @@
 import Footer from '../../components/footer';
 import Pagination from '@mui/material/Pagination';
 import PostCard from '../../components/cards';
+import {useState, useEffect} from 'react';
+import {ITEMS_PER_PAGE} from "../../constants";
 
 export default function Posts({props}) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [posts, setPosts] = useState({posts: []});
+    const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
+
+    useEffect(() => {
+        let data = [];
+        if (props.posts && props.posts.length > 0) {
+            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+            setPosts({posts: data});
+        }
+    }, [currentPage]);
+
+    // resource: https://mui.com/components/app-bar/#back-to-top
+    const handleClick = (event) => {
+        const anchor = (event.target.ownerDocument || document).querySelector(
+            '#top',
+        );
+    
+        if (anchor) {
+            anchor.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }
+    };
+
     return (
         <div>
             <div className="posts_div">
                 <h1>{props.search}</h1>
             </div>
             <div className="home_content">
-                {props.posts.filter((posts) => {
+                {posts.posts.filter((posts) => {
                     if (props.search == "" || props.search == "pet" || props.search == "person") {
                         return posts
                     } else if (
@@ -47,12 +75,22 @@ export default function Posts({props}) {
                 }
             </div>
             <div className="home_pagination_div">
-                <Pagination count={5} shape="rounded" className="home_pagination"/>
+                <Pagination
+                    count={pages}
+                    onChange={(event, page) => onChangePage(event, page)}
+                    shape="rounded"
+                    className="home_pagination"
+                    onClick={handleClick}
+                />
             </div>
             <Footer/>
         </div>
         
     );
+
+    function onChangePage($event, page) {
+        setCurrentPage(page);
+    }
 };
 
 Posts.getInitialProps = async (ctx) => {
