@@ -62,7 +62,7 @@ export default function NewPost() {
         };
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        router.push("/user");
+        router.push(`/user/${session.id}`);
     }
 
     return(

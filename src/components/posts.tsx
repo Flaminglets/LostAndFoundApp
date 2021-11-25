@@ -4,7 +4,7 @@ export default function Posts(props) {
     return (
         <div>
             <div className="home_content">
-                {props.props.posts.map(
+                {props.props.posts.reverse().map(
                         (post) => {
                             return (
                                 <PostCard 

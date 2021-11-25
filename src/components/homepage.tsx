@@ -6,6 +6,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function Homepage(props) {
     props = props.props
+    console.log(props.posts.length)
     return (
         <div className="home_div">
             <div className="home_backcolor"></div>
@@ -20,11 +21,11 @@ export default function Homepage(props) {
                                         <>
                                         </>
                                     )} */}
-                                    {props.posts[0].lostFname} {props.posts[0].lostLname}
+                                    {props.posts[props.posts.length-1].lostFname} {props.posts[props.posts.length-1].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image={props.posts[0].image}
+                                image={props.posts[props.posts.length-1].image}
                                 alt="lost pet/person image"
                                 />
                             </CardActionArea>

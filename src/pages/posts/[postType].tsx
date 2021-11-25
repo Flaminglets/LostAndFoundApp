@@ -17,7 +17,7 @@ export default function Posts({props}) {
                         posts.location.toLowerCase().includes(props.search.toLowerCase())) {
                         return posts
                     }
-                }).map(
+                }).reverse().map(
                         (post) => {
                             return (
                                 <PostCard 
