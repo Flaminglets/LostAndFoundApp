@@ -34,18 +34,10 @@ export default function Posts({props}) {
     return (
         <div>
             <div className="posts_div">
-                <h1>{props.search}</h1>
+                <h1>Searched with '{props.search}'</h1>
             </div>
             <div className="home_content">
-                {posts.posts.filter((posts) => {
-                    if (props.search == "" || props.search == "pet" || props.search == "person") {
-                        return posts
-                    } else if (
-                        posts.lostFname.toLowerCase().includes(props.search.toLowerCase()) ||
-                        posts.location.toLowerCase().includes(props.search.toLowerCase())) {
-                        return posts
-                    }
-                }).reverse().map(
+                {posts.posts.reverse().map(
                         (post) => {
                             return (
                                 <PostCard 
@@ -96,11 +88,27 @@ export default function Posts({props}) {
 Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
-
-    const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
+    
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+    const response = await fetch('http://localhost:3000/api/post', requestOptions);
     const postdata = await response.json()
 
-    const posts = postdata.map(
+    const posts = postdata.filter((posts) => {
+        if (query.search == "" || query.search == "pet" || query.search == "person") {
+            return posts
+        } else if (
+            posts.lostFname.toLowerCase().includes(query.search.toLowerCase()) ||
+            posts.lostLname.toLowerCase().includes(query.search.toLowerCase()) || 
+            posts.location.toLowerCase().includes(query.search.toLowerCase()) || 
+            posts.date.toLowerCase().includes(query.search.toLowerCase())) {
+            return posts
+        }
+    }).map(
         (post) => {
             return {
                 id: post._id,
@@ -126,7 +134,7 @@ Posts.getInitialProps = async (ctx) => {
         }
     )
 
-    const search = query.postType
+    const search = query.search
 
     return {
         props : {
@@ -134,4 +142,5 @@ Posts.getInitialProps = async (ctx) => {
             search
         }
     }
+    
 }
