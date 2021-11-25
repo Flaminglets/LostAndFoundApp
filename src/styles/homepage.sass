@@ -29,17 +29,17 @@
     text-align: center
 
 .home_content
-    width: 75%
-    margin: auto
+    width: 60rem
+    margin: 3rem auto 
     display: flex
     // grid-template-columns: auto auto auto auto
     // background-color: #2196F3
     padding: 0
-    justify-content: center
+    // justify-content: space-between
     flex-wrap: wrap
 
 .home_cards
-    margin: 1rem
+    margin: 1rem 0.5rem
     width: 14rem
     height: 21rem
 
@@ -148,11 +148,17 @@
     .dashboard_cards button 
         font-size: 0.7rem
 
+    .home_content
+        width: 45rem
+
+@media screen and (max-width: 1050px)
+    .home_content
+        width: 45rem
     
 
 @media screen and (max-width: 1024px)
     .home_content
-        width: 85%
+        width: 45rem
 
     .home_dashboard
         width: 90%
@@ -245,7 +251,12 @@
 
 @media screen and (max-width: 700px)
     .home_content
-        width: 95%
+        width: 90vw
+        margin: 4.5vw auto 
+        display: flex
+        padding: 0
+        justify-content: space-between
+        flex-wrap: wrap
 
     .home_dashboard
         width: 95%

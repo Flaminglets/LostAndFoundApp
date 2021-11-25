@@ -10,18 +10,28 @@ const FlamingoNextButton = styled(Button)({
 
 export default function FifthPage(props) {
     const [image, setImage] = useState(props.image || '');
-     // const handleSetImage = async (event) => { 
-    //     props.handlePageData({image: event.target.value}); 
-    //     const val = event.target.value; setImage(val); 
-    // }
     const handleSetImage = async (event) => {
-        debugger;
-        props.handlePageData({ image: event.target.value });
-        const val = event.target.value;
-        setImage(val);
-      };
+        await getImageToBase64(event.target.files[0], (result) => {
+            props.handlePageData({ image: result });
+            setImage(result);
+        });
+    };
+    const getImageToBase64 = (file: any, cb: any) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log("Error: ", error);
+        };
+    };
 
-    const handlePrevClick = (event) => {
+    const handleNextClick = () => {
+        props.handleNextClick();
+    };
+
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 
@@ -39,6 +49,7 @@ export default function FifthPage(props) {
                         onChange={handleSetImage}
                     />
                 </div>
+                <img src={image} alt="" className="input_image"/>
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">

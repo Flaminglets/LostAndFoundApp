@@ -30,7 +30,7 @@ export async function getPostByType(postType) {
 //separating user data from other user data
 export async function getPostByUserID(userID) {
     const client = await mongoose.connect(uri);
-    const post = await Addpost.find({ type: userID }).exec();
+    const post = await Addpost.find({ user: userID }).exec();
 
     return post;
 }

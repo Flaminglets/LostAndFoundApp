@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import Header from "../components/header";
 import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 
 async function createCustomUser(name, email, password) {
