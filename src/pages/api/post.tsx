@@ -85,8 +85,9 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
 
         // getPost - gets all the existing post from the database
         else if (req.method == 'GET') {
-            const data = await getAddPosts(User);
+            const data = await getAddPosts();
             res.status(200).json(data);
+            return
         }
 
     } catch {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useSession, signOut } from "next-auth/client";
+import { useState } from 'react';
 
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Divider from '@mui/material/Divider';
@@ -71,6 +72,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header (props) {
     const [session] = useSession()
     const router = useRouter();
+    const [search, setSearch] = useState('');
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value)
+        console.log(search)
+    }
+
+    const handleFinalSearch = (event) => {
+        if (event.key === 'Enter') {
+            console.log("enter clicked: ", search)
+            setSearch('');
+            router.push(`/posts/${search}`)
+        }
+    }
 
     const handleTypePet = () => {
         router.push('/posts/pet')
@@ -110,7 +125,7 @@ export default function Header (props) {
                 <>
                 <ul className="header_drawer_list">
                     <li><Link href="/newpost">New Post</Link></li>
-                    <li><Link href="/user">User</Link></li>
+                    <li><Link href={`/user/${session.id}`}>User</Link></li>
                     <li><Link href="/"><button className="header_logout_button header_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
@@ -172,9 +187,13 @@ export default function Header (props) {
                             <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                                value={search}
+                                onChange={handleSearch}
+                                onKeyDown={handleFinalSearch}
                             />
+                            
                         </Search>
                     </div>
                     <div className="header_search_mobile">
@@ -196,7 +215,7 @@ export default function Header (props) {
                                 <ul>
                                     <li className="header_list"><Link href="/newpost">New Post</Link></li>
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
-                                    <li className="header_list"><Link href="/user">User</Link></li>  
+                                    <li className="header_list"><Link href={`/user/${session.id}`}>User</Link></li>  
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>

@@ -52,7 +52,7 @@ export async function createUser(name, email, image) {
 // Get multiple post 
 export async function getUserAddPosts(userID) {
     const client = mongoose.connect(uri);
-    const addposts = await Addpost.find(userID)
+    const addposts = await Addpost.find({user: userID})
     return addposts;
 }
 

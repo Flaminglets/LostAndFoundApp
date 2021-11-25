@@ -1,8 +1,7 @@
 import React from "react";
-import Footer from '../components/footer';
-import NotLoggedIn from '../components/notLoggedIn';
-import UserPostCard from '../components/userCard';
-import { getAddPosts, getUserAddPosts } from '../../lib/backend/database';
+import Footer from '../../components/footer';
+import NotLoggedIn from '../../components/notLoggedIn';
+import UserPostCard from '../../components/userCard';
 
 import { Button } from '@mui/material';
 import {useSession} from 'next-auth/client';
@@ -18,6 +17,7 @@ const FlamingoEditButton = styled(Button)({
 
 export default function UserPage(props) {
     const [session] = useSession();
+    props = props.props
 
     return (
         <div>
@@ -33,9 +33,9 @@ export default function UserPage(props) {
                     <div className="user_profile">
 
                         <div className="user_image_div">
-                            {session.image != null && (
+                            {session.image != '' && (
                                 <>
-                                <img src={session.image} alt={session.name} className="user_image"/>
+                                <img src={session.image} className="user_image"/>
                                 </>
                             )}
                             {session.image == null && (
@@ -95,18 +95,22 @@ export default function UserPage(props) {
     )
 }
 
-UserPage.getInitialProps = async () => {
+UserPage.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
-    // const {query} = ctx;
-    const [session] = useSession();
+    const {query} = ctx;
+    // const [session] = useSession();
     
-    const postdata = await getUserAddPosts(session.userID);
+    // const postdata = await getUserAddPosts(query.user);
     // const postdata = await getAddPosts(User);
     // console.log('data', postdata);
+
+    const response = await fetch('http://localhost:3000/api/user/' + query.user);
+    const postdata = await response.json()
+
     const posts = postdata.map(
         (post) => {
             return {
-                id: post.id.toString(),
+                id: post._id,
                 type: post.type || null,
                 date: post.date || null,
                 time: post.time || null,

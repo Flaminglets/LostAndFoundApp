@@ -42,18 +42,33 @@
 
 .newpost_form_image
     width: 100%
-    background-color: white
+    background-color: #f1f1f1
     border-radius: 5px
     margin: 0.5rem auto
-    height: 3.5rem
+    min-height: 3.5rem
     padding: 1rem
+
+.input_image_div
+    margin: 1rem auto 0
+    display: flex
+    align-items: center
+    flex-direction: column
+
+.input_image_div p
+    display: inline
+    margin-bottom: 0.5rem
+    font-weight: 600
+
+.input_image
+    width: 13rem
+    height: 10rem
 
 .newpost_button_next
     background-color: #B8BDB5
     color: black
     margin: 1rem 0 1rem 1rem
     width: 6.5rem
-    height: 1.6rem
+    min-height: 1.6rem
     font-size: 0.7rem
 
 .newpost_button_submit
@@ -67,20 +82,68 @@
 
 .newpost_form_last_info
     background-color: white
-    padding: 2rem
+    padding: 2rem 6rem
     margin: 0.5rem
     border-radius: 10px
 
 .newpost_form_last_info p
-    font-size: 1.3rem
+    font-size: 1.1rem
 
-// .myimage[type="file"] 
-//     visibility: hidden
-//     width: 1px
-//     height: 1px
-.input_image
-    width: 15rem
-    height: 15rem
+.lp_image_div
+    margin: 1rem auto 0
+    display: flex
+    align-items: center
+    flex-direction: column
+
+.lp_image
+    width: 25rem
+    height: 20rem
+    border-radius: 5px
+
+.newpost_lp_name
+    display: flex
+    justify-content: center
+
+.newpost_lp_name p
+    font-size: 2.5rem
+    font-weight: 600
+    margin: 0.5rem
+
+.lp_elements
+    display: flex
+    margin: 1rem 0
+
+.lp_elements p, .lp_adinfo p
+    font-weight: 450
+
+.lp_element_left, .lp_element_right
+    padding: 1rem
+    width: 50%
+
+.lp_element_left
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.lp_element_right
+    width: 25rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.lp_divider
+    width: 0.3rem
+    margin-right: 0.5rem
+    color: black
+
+.lp_adinfo
+    margin: 1rem
+
+strong
+    font-weight: 550
+    
+
+
 
 .post_mobile
     display: none

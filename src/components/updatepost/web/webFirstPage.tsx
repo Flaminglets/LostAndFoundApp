@@ -5,16 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import CardMedia from '@mui/material/CardMedia';
 
 const FlamingoNextButton = styled(Button)({
     '&:hover': {
         backgroundColor: '#A2AA9D'
-    },
-})
-
-const FlamingoSubmitButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
     },
 })
 
@@ -341,8 +336,17 @@ export default function WebFirstPage(props) {
                     onChange={handleSetImage}
                     required
                 />
+                {image != "" && (
+                    <div className="input_image_div">
+                        <p>Chosen image</p>
+                        <CardMedia className="input_image"
+                            component="img"
+                            image={props.image}
+                            alt="missing pet/person image"
+                        />
+                    </div>
+                )}
             </div>
-            <img src={image} alt="" className="input_image"/>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
                     Next
