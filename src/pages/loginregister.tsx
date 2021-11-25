@@ -22,7 +22,7 @@ export default function LoginRegister({ providers, csrfToken }) {
                 </div>
 
                 <div className="form-container sign-in-container">
-                    <form className="login-signup-form" method="post" action="/api/auth/callback/credentials">
+                    <form className="login-signup-form">
                         <h1 className="h1-title">Login</h1>
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         <input className="input-fields" type="email" placeholder="EMAIL" />
