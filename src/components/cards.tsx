@@ -16,22 +16,23 @@ export default function PostCard(props) {
         <div key={props.id}>
             <Card className="home_cards" elevation={5}>
                 <CardActionArea onClick={handleCardClick}>
-                    <p className="home_card_title">
+                    <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                         {props.lostFname} {props.lostLname}
-                    </p>
+                    </Typography>
                     <CardMedia className="home_card_media"
                         component="img"
                         image={props.image}
                         alt="lost pet/person image"
                     />
-                    <CardContent>
-                    <div className="home_card_info_div"></div>
-                    <p className="home_card_info">Location: {props.location}</p>
-                    <p className="home_card_info">Last seen: {props.date}, {props.time}</p>
+                    <CardContent className="home_card_info_div">
+                    <div className="home_card_info_div">
+                        <p className="home_card_info">Location: {props.location}</p>
+                        <p className="home_card_info">Last seen: {props.date}, {props.time}</p>
+                    </div>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" className="home_card_button">
                     Contact
                     </Button>
                 </CardActions>

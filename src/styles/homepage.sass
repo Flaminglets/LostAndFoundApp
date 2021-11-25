@@ -28,12 +28,11 @@
     font-size: 2.5rem
     text-align: center
 
-.home_content
+.home_content, .posts_div
     width: 60rem
-    margin: 3rem auto 
+    margin: 1rem auto 3rem
     display: flex
     // grid-template-columns: auto auto auto auto
-    // background-color: #2196F3
     padding: 0
     // justify-content: space-between
     flex-wrap: wrap
@@ -48,15 +47,22 @@
     text-align: center
     text-overflow: clip
     font-size: 1.3rem
+    height: 1.5rem
+
+.home_card_info_div
+    height: 4.5rem
 
 .home_card_info
     font-size: 0.8rem
 
 .home_card_media
     width: 95%
-    height: 10rem
+    height: 11rem
     background-color: grey
     margin: 0 auto
+
+.home_card_button
+    margin-top: 0
 
 .home_pagination_div
     width: 75%
@@ -69,11 +75,6 @@
     margin: 1rem
     width: 12rem
     height: 15rem
-
-.dashboard_card_title
-    margin: 0.5rem 0
-    text-align: center
-    font-size: 1.3rem
     
 .dashboard_card_media
     width: 95%
@@ -153,16 +154,12 @@
     .dashboard_cards button 
         font-size: 0.7rem
 
-    .home_content
-        width: 45rem
-
-@media screen and (max-width: 1050px)
-    .home_content
-        width: 45rem
+    .home_content, .posts_div
+        width: 60rem
     
 
 @media screen and (max-width: 1024px)
-    .home_content
+    .home_content, .posts_div
         width: 45rem
 
     .home_dashboard
@@ -255,9 +252,9 @@
         
 
 @media screen and (max-width: 700px)
-    .home_content
+    .home_content, .posts_div
         width: 90vw
-        margin: 4.5vw auto 
+        margin: 2vw auto 4.5vw
         display: flex
         padding: 0
         justify-content: space-between
@@ -276,6 +273,29 @@
 
     .home_title 
         font-size: 6vw
+
+    .home_cards
+        margin: 1.5vw 0vw
+        width: 43vw
+        height: 60vw
+
+    .home_card_title
+        margin: 1.5vw 0
+        font-size: 4vw
+        height: 5vw
+        text-overflow: clip
+
+    .home_card_info_div
+        height: 11vw
+
+    .home_card_info
+        font-size: 2vw
+
+    .home_card_media
+        height: 33vw
+
+    .home_card_button
+        font-size: 2vw
 
     .dashboard_cards
         margin: 1.5vw 0vw
