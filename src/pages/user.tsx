@@ -1,10 +1,11 @@
 import React from "react";
-import Footer from '../../components/footer';
-import NotLoggedIn from '../../components/notLoggedIn';
-import UserPostCard from '../../components/userCard';
+import { useSession } from 'next-auth/client';
+import { getSession } from "next-auth/client"
+import Footer from '../components/footer';
+import NotLoggedIn from '../components/notLoggedIn';
+import UserPostCard from '../components/userCard';
 
 import { Button } from '@mui/material';
-import {useSession} from 'next-auth/client';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
@@ -96,10 +97,12 @@ export default function UserPage(props) {
 }
 
 UserPage.getInitialProps = async (ctx) => {
-    // resource: https://nextjs.org/docs/routing/dynamic-routes
-    const {query} = ctx;
+    const session = await getSession()
+    // const [session] = useSession();
+    console.log(session)
 
-    const response = await fetch('http://localhost:3000/api/user/' + query.user);
+    const response = await fetch('http://localhost:3000/api/user/' + session.id);
+    // const response = await getPostByUserID(session.id)
     const postdata = await response.json()
 
     const posts = postdata.map(

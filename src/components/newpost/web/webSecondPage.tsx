@@ -118,7 +118,7 @@ export default function WebSecondPage(props) {
                     Previous
                 </FlamingoNextButton>
                 <FlamingoSubmitButton type="submit" variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
-                    Submit
+                    Finish
                 </FlamingoSubmitButton>
             </div>
         </div>

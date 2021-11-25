@@ -59,7 +59,7 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
         // deletePost - pass the poster id to delete the poster.
         else if (req.method == 'DELETE') {
             const data = req.body;
-            const { postID } = data;
+            const postID = data;
 
             await deletePost(postID);
             res.status(200).json(

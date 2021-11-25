@@ -115,7 +115,7 @@ export default function SixthPage(props) {
                     Previous
                 </FlamingoNextButton>
                 <FlamingoSubmitButton variant="contained" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
-                    Submit
+                    Finish
                 </FlamingoSubmitButton>
             </div>
         </div>

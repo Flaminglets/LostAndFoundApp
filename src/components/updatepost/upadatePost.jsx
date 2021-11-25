@@ -67,7 +67,7 @@ export default function UpdatePost(props) {
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
         const json = await response.json();
-        router.push(`/user/${session.id}`);
+        router.push("/user");
     }
 
     return(

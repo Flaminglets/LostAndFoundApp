@@ -92,11 +92,11 @@ export default function Homepage(props) {
                         <Card className="dashboard_cards card_5" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[4].lostFname} {props.posts[4].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
+                                image={props.posts[4].image}
                                 alt="lost pet/person image"
                                 />
                             </CardActionArea>
@@ -111,11 +111,11 @@ export default function Homepage(props) {
                         <Card className="dashboard_cards card_6" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[5].lostFname} {props.posts[5].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
+                                image={props.posts[5].image}
                                 alt="lost pet/person image"
                                 />
                             </CardActionArea>
@@ -130,11 +130,11 @@ export default function Homepage(props) {
                         <Card className="dashboard_cards card_7" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[6].lostFname} {props.posts[6].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
+                                image={props.posts[6].image}
                                 alt="lost pet/person image"
                                 />
                             </CardActionArea>
@@ -147,11 +147,11 @@ export default function Homepage(props) {
                         <Card className="dashboard_cards card_8" elevation={5}>
                             <CardActionArea>
                                 <Typography gutterBottom variant="h5" component="div" className="dashboard_card_title">
-                                    Lizard
+                                    {props.posts[7].lostFname} {props.posts[7].lostLname}
                                 </Typography>
                                 <CardMedia className="dashboard_card_media"
                                 component="img"
-                                image="/static/images/cards/contemplative-reptile.jpg"
+                                image={props.posts[7].image}
                                 alt="lost pet/person image"
                                 />
                             </CardActionArea>

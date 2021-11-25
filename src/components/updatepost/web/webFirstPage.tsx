@@ -26,7 +26,6 @@ export default function WebFirstPage(props) {
     const [weight, setWeight] = useState(props.weight || '');
     const [height, setHeight] = useState(props.height || '');
     const [eyecolor, setEyecolor] = useState(props.eyecolor || '');
-    const [ethnicity, setEthnicity] = useState(props.ethnicity || '');
     const [additional, setAdditional] = useState(props.additional || '');
     const [image, setImage] = useState(props.image || '');
 
