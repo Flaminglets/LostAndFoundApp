@@ -10,7 +10,6 @@ export default async function handler(req, res) {
         }
         
         if (req.method == 'GET') {
-            console.log("working here")
             const posts = await getPostByType(postType);
             res.status(200).json(posts);
             return;

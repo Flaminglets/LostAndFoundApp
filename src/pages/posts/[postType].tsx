@@ -6,7 +6,7 @@ export default function Posts({props}) {
     return (
         <div>
             <div className="posts_div">
-                <h1 onClick={() => console.log(props)}>test</h1>
+                <h1>{props.search}</h1>
             </div>
             <div className="home_content">
                 {props.posts.filter((posts) => {
@@ -95,7 +95,7 @@ Posts.getInitialProps = async (ctx) => {
             }
         )
 
-        const search = ""
+        const search = "test"
 
         return {
             props : {
@@ -135,7 +135,8 @@ Posts.getInitialProps = async (ctx) => {
             }
         )
 
-        const search = ""
+        const search = query.postType
+        console.log(posts)
 
         return {
             props : {
@@ -182,6 +183,7 @@ Posts.getInitialProps = async (ctx) => {
         )
 
         const search = query.postType
+        console.log("test")
 
         return {
             props : {
