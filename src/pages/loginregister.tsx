@@ -18,7 +18,7 @@ export default function LoginRegister({ providers, csrfToken }) {
             <div className={`L_container ${event}`} id="container">
                 <div className="form-container sign-in-container">
                     <form className="login-signup-form">
-                        <h1 className="h1-title">Login</h1>
+                        <h1 className="h1-title">Login/Register</h1>
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         {Object.values(providers).map((provider: any) => {
                             return (
