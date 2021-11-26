@@ -5,16 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import CardMedia from '@mui/material/CardMedia';
 
 const FlamingoNextButton = styled(Button)({
     '&:hover': {
         backgroundColor: '#A2AA9D'
-    },
-})
-
-const FlamingoSubmitButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
     },
 })
 
@@ -31,7 +26,6 @@ export default function WebFirstPage(props) {
     const [weight, setWeight] = useState(props.weight || '');
     const [height, setHeight] = useState(props.height || '');
     const [eyecolor, setEyecolor] = useState(props.eyecolor || '');
-    const [ethnicity, setEthnicity] = useState(props.ethnicity || '');
     const [additional, setAdditional] = useState(props.additional || '');
     const [image, setImage] = useState(props.image || '');
 
@@ -42,13 +36,29 @@ export default function WebFirstPage(props) {
     const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); setLostFname(event.target.value); setLostFnameError('')}
     const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); setLostLname(event.target.value); setLostLnameError('')}
     const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); setGender(event.target.value); setGenderError('')}
-    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value); setOtherGenderError('')}
+    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value);}
     const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); setAge(event.target.value); setAgeError('')}
     const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); setWeight(event.target.value); setWeightError('')}
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError('')}
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError('')}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
-    const handleSetImage = async (event) => { props.handlePageData({image: event.target.value}); setImage(event.target.value); }
+    
+    const handleSetImage = async (event) => {
+        await getImageToBase64(event.target.files[0], (result) => {
+            props.handlePageData({ image: result });
+            setImage(result);
+        });
+    };
+    const getImageToBase64 = (file: any, cb: any) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log("Error: ", error);
+        };
+    };
 
     const [typeError, setTypeError] = useState('');
     const [dateError, setDateError] = useState('');
@@ -57,13 +67,12 @@ export default function WebFirstPage(props) {
     const [lostFnameError, setLostFnameError] = useState('');
     const [lostLnameError, setLostLnameError] = useState('');
     const [genderError, setGenderError] = useState('');
-    const [otherGenderError, setOtherGenderError] = useState('');
     const [ageError, setAgeError] = useState('');
     const [weightError, setWeightError] = useState('');
     const [heightError, setHeightError] = useState('');
     const [eyecolorError, setEyecolorError] = useState('');
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         
         if(type == '') { setTypeError("Please select type"); }
         else if(date == '2021-01-01') {setDateError("Please select date"); }
@@ -325,9 +334,18 @@ export default function WebFirstPage(props) {
                     accept="image/*"
                     className="myimage"
                     onChange={handleSetImage}
-                    value={image}
                     required
                 />
+                {image != "" && (
+                    <div className="input_image_div">
+                        <p>Chosen image</p>
+                        <CardMedia className="input_image"
+                            component="img"
+                            image={props.image}
+                            alt="missing pet/person image"
+                        />
+                    </div>
+                )}
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">

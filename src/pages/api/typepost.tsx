@@ -8,14 +8,14 @@ export default async function handler(req, res) {
         }
 
         const data = req.body;
-        const { postType = 'pet' } = data;
+        const { postType } = data;
 
         if (postType !== 'person' && postType !== 'pet') {
             res.status(422).json({message: 'Invalid inputs'});
             return;
         }
 
-        const posts = await getPostByType(postType);
+        const posts = await getPostByType('person');
         res.status(200).json(posts);
         return;
 

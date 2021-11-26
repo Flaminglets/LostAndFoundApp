@@ -19,7 +19,7 @@ export default function ThirdPage(props) {
 
     const [locationError, setLocationError] = useState('');
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         if(location == '') { setLocationError("Please enter location"); }
 
         if (location != '') {
@@ -27,7 +27,7 @@ export default function ThirdPage(props) {
         }
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 

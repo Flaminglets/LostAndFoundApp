@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useRouter } from 'next/router'
 
 const FlamingoEditButton = styled(Button)({
     '&:hover': {
@@ -16,8 +16,9 @@ export default function NotLoggedIn() {
             <div className="user_backcolor"></div>
             <h1>You are not logged in</h1>
             <h1>Please log in first</h1>
-            <p>click the button to go to login page</p>
-            <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit" onClick={() => (router.push('/loginregister'))}>
+            <p>Click the button to go to login page</p>
+            <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit" 
+                onClick={() => (router.push('/loginregister'))}>
                 Log In
             </FlamingoEditButton>
         </div>

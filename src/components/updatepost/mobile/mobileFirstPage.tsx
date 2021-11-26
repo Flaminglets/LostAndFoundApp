@@ -20,9 +20,9 @@ export default function FirstPage(props) {
 
     const [typeError, setTypeError] = useState('');
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         if(type == '') { setTypeError("Please select type"); }
-
+        
         if (type != '') {
             props.handleNextClick();
         }

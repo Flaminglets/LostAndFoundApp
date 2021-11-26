@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from 'react';
 
-const Footer = () => {
-    const [event, setEvent] = useState("");
+export default function Footer() {
     return (
         <div className="footer_div">
             <p className="footer_about_title">ABOUT US</p>
             <p className="footer_about_content">
-                We help you find what you've lost. We value your __ [something]
+                We help you find what you've lost.
+                <br/>
+                With this software you will be reunited with your lost pet or person.
+                <br/>
+                We know that you value them, so we will value you too.
             </p>
             <div className="footer_line1"></div>
             <p className="footer_contact_title">CONTACT US</p>
@@ -18,6 +21,4 @@ const Footer = () => {
             <p className="footer_copyright">Some other information that needs to be added - this is copy right</p>
         </div>
     );
-};
-
-export default Footer;
+}

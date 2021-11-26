@@ -27,7 +27,7 @@ export default function SecondPage(props) {
     const [dateError, setDateError] = useState('');
     const [timeError, setTimeError] = useState('');
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         if(date == '2021-01-01') {setDateError("Please select date"); }
         else if(time == '00:00') { setTimeError("Please select time"); }
 
@@ -36,7 +36,7 @@ export default function SecondPage(props) {
         }
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import FirstPage from "./mobile/mobileFirstPage";
+import { useSession } from 'next-auth/client';
+import FirstPage from './mobile/mobileFirstPage';
 import SecondPage from './mobile/mobileSecondPage';
 import ThirdPage from './mobile/mobileThirdPage';
 import FourthPage from './mobile/mobileFourthPage';
@@ -8,18 +9,18 @@ import FifthPage from './mobile/mobileFifthPage';
 import SixthPage from './mobile/mobileSixthPage';
 import WebFirstPage from './web/webFirstPage';
 import WebSecondPage from './web/webSecondPage';
-import LastPage from './mobileLastPage';
-import {useSession} from 'next-auth/client';
+import LastPage from './lastPage';
+
 
 export default function NewPost() {
-    const [session, loadingSession] = useSession();
+    const [session] = useSession();
     const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
 
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         setPage((currentStep) => currentStep + 1); 
     };
     const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
@@ -61,15 +62,14 @@ export default function NewPost() {
         };
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        const json = await response.json();
-        router.push('/user');
+        router.push(`/user/${session.id}`);
     }
 
     return(
         <div className="new_div">
             <div className="newpost">
                 <div className="post_mobile">
-                    <p className="newpost_title">Fill out the form to upload the post</p>
+                    <p className="newpost_title">Fill out the form to create the post</p>
                     {page == 1 && (
                         <>
                         <FirstPage
@@ -114,7 +114,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                         />
                         </>
@@ -160,7 +159,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}
@@ -190,7 +188,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                         />
@@ -227,7 +224,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}
