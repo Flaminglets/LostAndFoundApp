@@ -1,11 +1,12 @@
 import React from "react";
+import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import { useRouter } from 'next/router';
-import {useState} from 'react';
+import Popover from '@mui/material/Popover';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function PostCard(props) {
 
@@ -21,7 +22,7 @@ export default function PostCard(props) {
 
     return (
             <Card className="home_cards" elevation={5}>
-                <CardActionArea onClick={handleCardClick}>
+                <CardActionArea onClick={handleCardClick} className="home_card">
                     <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                         {props.lostFname} {props.lostLname}
                     </Typography>
@@ -37,10 +38,33 @@ export default function PostCard(props) {
                     </div>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary" className="home_card_button">
-                    Contact
-                    </Button>
+                <CardActions className="home_card_button_div">
+                    <PopupState variant="popover" popupId="demo-popup-popover" className="home_card_button_div">
+                        {(popupState) => (
+                            <div className="home_card_button_div">
+                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                Contact
+                            </Button>
+                            <Popover
+                                {...bindPopover(popupState)}
+                                anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                                }}
+                            >
+                                <Typography sx={{ p: 2 }}>
+                                    Contact Info <br />
+                                    PhoneNum: {props.phoneNum} <br />
+                                    Email: {props.email}
+                                </Typography>
+                            </Popover>
+                            </div>
+                        )}
+                    </PopupState>
                 </CardActions>
             </Card>
     

@@ -1,7 +1,7 @@
-import { StylesProvider } from '@material-ui/core';
+import styles from '../styles/popup.module.sass';
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
-import styles from '../styles/popup.module.sass';
+
 export default function PopUp(props) {
     const share = () => {
         console.log(window.location.href);
@@ -86,7 +86,6 @@ export default function PopUp(props) {
                    <h4>Additional Information: </h4> 
                    <p>{props.data.additional}</p>
                 </div>
-                
             </div>
         </div>
     )

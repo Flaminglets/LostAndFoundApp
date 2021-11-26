@@ -4,6 +4,8 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import Popover from '@mui/material/Popover';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function Homepage(props) {
     props = props.props
@@ -28,10 +30,33 @@ export default function Homepage(props) {
                                     alt="lost pet/person image"
                                     />
                                 </CardActionArea >
-                                <CardActions>
-                                    <Button size="small" color="primary">
-                                    Contact
-                                    </Button>
+                                <CardActions className="home_card_button_div home_card_button_div2">
+                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                        {(popupState) => (
+                                            <div className="home_card_button_div">
+                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                Contact
+                                            </Button>
+                                            <Popover
+                                                {...bindPopover(popupState)}
+                                                anchorOrigin={{
+                                                vertical: 'bottom',
+                                                horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'center',
+                                                }}
+                                            >
+                                                <Typography sx={{ p: 2 }}>
+                                                    Contact Info <br />
+                                                    PhoneNum: {props.posts[0].phoneNum} <br />
+                                                    Email: {props.posts[0].email}
+                                                </Typography>
+                                            </Popover>
+                                            </div>
+                                        )}
+                                    </PopupState>
                                 </CardActions>
                             </Card>
                             {props.posts.length > 1 && (
@@ -46,10 +71,33 @@ export default function Homepage(props) {
                                     alt="lost pet/person image"
                                     />
                                 </CardActionArea>
-                                <CardActions>
-                                    <Button size="small" color="primary">
-                                    Contact
-                                    </Button>
+                                <CardActions className="home_card_button_div home_card_button_div2">
+                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                        {(popupState) => (
+                                            <div className="home_card_button_div">
+                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                Contact
+                                            </Button>
+                                            <Popover
+                                                {...bindPopover(popupState)}
+                                                anchorOrigin={{
+                                                vertical: 'bottom',
+                                                horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'center',
+                                                }}
+                                            >
+                                                <Typography sx={{ p: 2 }}>
+                                                    Contact Info <br />
+                                                    PhoneNum: {props.posts[1].phoneNum} <br />
+                                                    Email: {props.posts[1].email}
+                                                </Typography>
+                                            </Popover>
+                                            </div>
+                                        )}
+                                    </PopupState>
                                 </CardActions>
                             </Card>
                             )}
@@ -68,10 +116,33 @@ export default function Homepage(props) {
                                         alt="lost pet/person image"
                                         />
                                     </CardActionArea>
-                                    <CardActions>
-                                        <Button size="small" color="primary">
-                                        Contact
-                                        </Button>
+                                    <CardActions className="home_card_button_div home_card_button_div2">
+                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                            {(popupState) => (
+                                                <div className="home_card_button_div">
+                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                    Contact
+                                                </Button>
+                                                <Popover
+                                                    {...bindPopover(popupState)}
+                                                    anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                    }}
+                                                    transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                    }}
+                                                >
+                                                    <Typography sx={{ p: 2 }}>
+                                                        Contact Info <br />
+                                                        PhoneNum: {props.posts[2].phoneNum} <br />
+                                                        Email: {props.posts[2].email}
+                                                    </Typography>
+                                                </Popover>
+                                                </div>
+                                            )}
+                                        </PopupState>
                                     </CardActions>
                                 </Card>
                             </div>
@@ -89,10 +160,33 @@ export default function Homepage(props) {
                                             alt="lost pet/person image"
                                             />
                                         </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                            Contact
-                                            </Button>
+                                        <CardActions className="home_card_button_div home_card_button_div2">
+                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                {(popupState) => (
+                                                    <div className="home_card_button_div">
+                                                    <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                        Contact
+                                                    </Button>
+                                                    <Popover
+                                                        {...bindPopover(popupState)}
+                                                        anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'center',
+                                                        }}
+                                                        transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'center',
+                                                        }}
+                                                    >
+                                                        <Typography sx={{ p: 2 }}>
+                                                            Contact Info <br />
+                                                            PhoneNum: {props.posts[3].phoneNum} <br />
+                                                            Email: {props.posts[3].email}
+                                                        </Typography>
+                                                    </Popover>
+                                                    </div>
+                                                )}
+                                            </PopupState>
                                         </CardActions>
                                     </Card>
                                     {props.posts.length > 4 && (
@@ -107,10 +201,33 @@ export default function Homepage(props) {
                                                 alt="lost pet/person image"
                                                 />
                                             </CardActionArea>
-                                            <CardActions>
-                                                <Button size="small" color="primary">
-                                                Contact
-                                                </Button>
+                                            <CardActions className="home_card_button_div home_card_button_div2">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
+                                                    {(popupState) => (
+                                                        <div className="home_card_button_div">
+                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                            Contact
+                                                        </Button>
+                                                        <Popover
+                                                            {...bindPopover(popupState)}
+                                                            anchorOrigin={{
+                                                            vertical: 'bottom',
+                                                            horizontal: 'center',
+                                                            }}
+                                                            transformOrigin={{
+                                                            vertical: 'top',
+                                                            horizontal: 'center',
+                                                            }}
+                                                        >
+                                                            <Typography sx={{ p: 2 }}>
+                                                                Contact Info <br />
+                                                                PhoneNum: {props.posts[4].phoneNum} <br />
+                                                                Email: {props.posts[4].email}
+                                                            </Typography>
+                                                        </Popover>
+                                                        </div>
+                                                    )}
+                                                </PopupState>
                                             </CardActions>
                                         </Card>
                                     )}
@@ -129,10 +246,33 @@ export default function Homepage(props) {
                                                 alt="lost pet/person image"
                                                 />
                                             </CardActionArea>
-                                            <CardActions>
-                                                <Button size="small" color="primary">
-                                                Contact
-                                                </Button>
+                                            <CardActions className="home_card_button_div home_card_button_div2">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
+                                                    {(popupState) => (
+                                                        <div className="home_card_button_div">
+                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                            Contact
+                                                        </Button>
+                                                        <Popover
+                                                            {...bindPopover(popupState)}
+                                                            anchorOrigin={{
+                                                            vertical: 'bottom',
+                                                            horizontal: 'center',
+                                                            }}
+                                                            transformOrigin={{
+                                                            vertical: 'top',
+                                                            horizontal: 'center',
+                                                            }}
+                                                        >
+                                                            <Typography sx={{ p: 2 }}>
+                                                                Contact Info <br />
+                                                                PhoneNum: {props.posts[5].phoneNum} <br />
+                                                                Email: {props.posts[5].email}
+                                                            </Typography>
+                                                        </Popover>
+                                                        </div>
+                                                    )}
+                                                </PopupState>
                                             </CardActions>
                                         </Card>
                                     </div>
@@ -150,10 +290,33 @@ export default function Homepage(props) {
                                                     alt="lost pet/person image"
                                                     />
                                                 </CardActionArea>
-                                                <CardActions>
-                                                    <Button size="small" color="primary">
-                                                    Contact
-                                                    </Button>
+                                                <CardActions className="home_card_button_div home_card_button_div2">
+                                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                                        {(popupState) => (
+                                                            <div className="home_card_button_div">
+                                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                                Contact
+                                                            </Button>
+                                                            <Popover
+                                                                {...bindPopover(popupState)}
+                                                                anchorOrigin={{
+                                                                vertical: 'bottom',
+                                                                horizontal: 'center',
+                                                                }}
+                                                                transformOrigin={{
+                                                                vertical: 'top',
+                                                                horizontal: 'center',
+                                                                }}
+                                                            >
+                                                                <Typography sx={{ p: 2 }}>
+                                                                    Contact Info <br />
+                                                                    PhoneNum: {props.posts[6].phoneNum} <br />
+                                                                    Email: {props.posts[6].email}
+                                                                </Typography>
+                                                            </Popover>
+                                                            </div>
+                                                        )}
+                                                    </PopupState>
                                                 </CardActions>
                                             </Card>
                                             {props.posts.length > 7 && (
@@ -168,10 +331,33 @@ export default function Homepage(props) {
                                                         alt="lost pet/person image"
                                                         />
                                                     </CardActionArea>
-                                                    <CardActions>
-                                                        <Button size="small" color="primary">
-                                                        Contact
-                                                        </Button>
+                                                    <CardActions className="home_card_button_div home_card_button_div2">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <div className="home_card_button_div">
+                                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                                    Contact
+                                                                </Button>
+                                                                <Popover
+                                                                    {...bindPopover(popupState)}
+                                                                    anchorOrigin={{
+                                                                    vertical: 'bottom',
+                                                                    horizontal: 'center',
+                                                                    }}
+                                                                    transformOrigin={{
+                                                                    vertical: 'top',
+                                                                    horizontal: 'center',
+                                                                    }}
+                                                                >
+                                                                    <Typography sx={{ p: 2 }}>
+                                                                        Contact Info <br />
+                                                                        PhoneNum: {props.posts[7].phoneNum} <br />
+                                                                        Email: {props.posts[7].email}
+                                                                    </Typography>
+                                                                </Popover>
+                                                                </div>
+                                                            )}
+                                                        </PopupState>
                                                     </CardActions>
                                                 </Card>
                                             )}
