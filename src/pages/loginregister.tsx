@@ -29,9 +29,6 @@ export default function LoginRegister({ providers, csrfToken }) {
                         <input className="input-fields" type="password" placeholder="PASSWORD" />
                         <a className="forgot-password" href="#">Forgot Your Password?</a> */}
                         {Object.values(providers).map((provider: any) => {
-                            if (provider.name === "credentials") {
-                                return;
-                            }
                             return (
                                 <div key={provider.name}>
                                     <button className="provider-button" onClick={() => signIn(provider.id)}>
