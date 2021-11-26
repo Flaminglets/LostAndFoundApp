@@ -140,7 +140,7 @@ export default function Homepage(props) {
                                         <>
                                         <div className="home_cards_div5">
                                             <Card className="dashboard_cards card_7" elevation={5}>
-                                                <CardActionArea>
+                                                <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[props.posts.length-7].id}`)}>
                                                     <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                                                         {props.posts[props.posts.length-7].lostFname} {props.posts[props.posts.length-7].lostLname}
                                                     </Typography>
@@ -158,7 +158,7 @@ export default function Homepage(props) {
                                             </Card>
                                             {props.posts.length > 7 && (
                                                 <Card className="dashboard_cards card_8" elevation={5}>
-                                                    <CardActionArea>
+                                                    <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[props.posts.length-8].id}`)}>
                                                         <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                                                             {props.posts[props.posts.length-8].lostFname} {props.posts[props.posts.length-8].lostLname}
                                                         </Typography>

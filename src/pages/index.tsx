@@ -17,7 +17,7 @@ export default function Home(props) {
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
-            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+            data = props.posts.slice((pages - 1) * ITEMS_PER_PAGE, (pages) * ITEMS_PER_PAGE);
             setPosts({posts: data});
         }
     }, [currentPage]);
