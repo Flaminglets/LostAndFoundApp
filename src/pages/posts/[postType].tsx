@@ -1,8 +1,8 @@
-import Footer from '../../components/footer';
-import Pagination from '@mui/material/Pagination';
-import PostCard from '../../components/cards';
 import {useState, useEffect} from 'react';
+import Footer from '../../components/footer';
+import PostCard from '../../components/cards';
 import {ITEMS_PER_PAGE} from "../../constants";
+import Pagination from '@mui/material/Pagination';
 
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +48,7 @@ export default function Posts({props}) {
                 }).reverse().map(
                         (post) => {
                             return (
-                                    <PostCard
+                                <PostCard 
                                     id={post.id}
                                     type={post.type}
                                     date={post.date}
@@ -69,8 +69,6 @@ export default function Posts({props}) {
                                     phoneNum={post.phoneNum}
                                     email={post.email}
                                 />  
-                               
-                                
                             )
                         }
                     )
