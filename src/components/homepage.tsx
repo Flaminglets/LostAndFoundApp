@@ -50,8 +50,8 @@ export default function Homepage(props) {
                                             >
                                                 <Typography sx={{ p: 2 }}>
                                                     Contact Info <br />
-                                                    PhoneNum: {props.posts[0].phoneNum} <br />
-                                                    Email: {props.posts[0].email}
+                                                    PhoneNum: {props.posts[0].phoneNum ? `${props.posts[0].phoneNum}` : "N/A"} <br />
+                                                    Email: {props.posts[0].email ? `${props.posts[0].email}` : "N/A"}
                                                 </Typography>
                                             </Popover>
                                             </div>
@@ -91,8 +91,8 @@ export default function Homepage(props) {
                                             >
                                                 <Typography sx={{ p: 2 }}>
                                                     Contact Info <br />
-                                                    PhoneNum: {props.posts[1].phoneNum} <br />
-                                                    Email: {props.posts[1].email}
+                                                    PhoneNum: {props.posts[1].phoneNum ? `${props.posts[1].phoneNum}` : "N/A"} <br />
+                                                    Email: {props.posts[1].email ? `${props.posts[1].email}` : "N/A"}
                                                 </Typography>
                                             </Popover>
                                             </div>
@@ -136,8 +136,8 @@ export default function Homepage(props) {
                                                 >
                                                     <Typography sx={{ p: 2 }}>
                                                         Contact Info <br />
-                                                        PhoneNum: {props.posts[2].phoneNum} <br />
-                                                        Email: {props.posts[2].email}
+                                                        PhoneNum: {props.posts[2].phoneNum ? `${props.posts[2].phoneNum}` : "N/A"} <br />
+                                                        Email: {props.posts[2].email ? `${props.posts[2].email}` : "N/A"}
                                                     </Typography>
                                                 </Popover>
                                                 </div>
@@ -180,8 +180,8 @@ export default function Homepage(props) {
                                                     >
                                                         <Typography sx={{ p: 2 }}>
                                                             Contact Info <br />
-                                                            PhoneNum: {props.posts[3].phoneNum} <br />
-                                                            Email: {props.posts[3].email}
+                                                            PhoneNum: {props.posts[3].phoneNum ? `${props.posts[3].phoneNum}` : "N/A"} <br />
+                                                            Email: {props.posts[3].email ? `${props.posts[3].email}` : "N/A"}
                                                         </Typography>
                                                     </Popover>
                                                     </div>
@@ -221,8 +221,8 @@ export default function Homepage(props) {
                                                         >
                                                             <Typography sx={{ p: 2 }}>
                                                                 Contact Info <br />
-                                                                PhoneNum: {props.posts[4].phoneNum} <br />
-                                                                Email: {props.posts[4].email}
+                                                                PhoneNum: {props.posts[4].phoneNum ? `${props.posts[4].phoneNum}` : "N/A"} <br />
+                                                                Email: {props.posts[4].email ? `${props.posts[4].email}` : "N/A"}
                                                             </Typography>
                                                         </Popover>
                                                         </div>
@@ -266,8 +266,8 @@ export default function Homepage(props) {
                                                         >
                                                             <Typography sx={{ p: 2 }}>
                                                                 Contact Info <br />
-                                                                PhoneNum: {props.posts[5].phoneNum} <br />
-                                                                Email: {props.posts[5].email}
+                                                                PhoneNum: {props.posts[5].phoneNum ? `${props.posts[5].phoneNum}` : "N/A"} <br />
+                                                                Email: {props.posts[5].email ? `${props.posts[5].email}` : "N/A"}
                                                             </Typography>
                                                         </Popover>
                                                         </div>
@@ -310,8 +310,8 @@ export default function Homepage(props) {
                                                             >
                                                                 <Typography sx={{ p: 2 }}>
                                                                     Contact Info <br />
-                                                                    PhoneNum: {props.posts[6].phoneNum} <br />
-                                                                    Email: {props.posts[6].email}
+                                                                    PhoneNum: {props.posts[6].phoneNum ? `${props.posts[6].phoneNum}` : "N/A"} <br />
+                                                                    Email: {props.posts[6].email ? `${props.posts[6].email}` : "N/A"}
                                                                 </Typography>
                                                             </Popover>
                                                             </div>
@@ -351,8 +351,8 @@ export default function Homepage(props) {
                                                                 >
                                                                     <Typography sx={{ p: 2 }}>
                                                                         Contact Info <br />
-                                                                        PhoneNum: {props.posts[7].phoneNum} <br />
-                                                                        Email: {props.posts[7].email}
+                                                                        PhoneNum: {props.posts[7].phoneNum ? `${props.posts[7].phoneNum}` : "N/A"} <br />
+                                                                        Email: {props.posts[7].email ? `${props.posts[7].email}` : "N/A"}
                                                                     </Typography>
                                                                 </Popover>
                                                                 </div>
