@@ -21,4 +21,4 @@ export default function Footer() {
             <p className="footer_copyright">Some other information that needs to be added - this is copy right</p>
         </div>
     );
-};
+}

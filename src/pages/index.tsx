@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 import Posts from '../components/posts';
 import Pagination from '@mui/material/Pagination';
 import {ITEMS_PER_PAGE} from "../constants";
+import { useRouter } from 'next/router';
 
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -37,6 +38,7 @@ export default function Home(props) {
 
     return (
         <div className={styles.home}>
+            
             {currentPage == 1 && (
                 <Homepage props={props}/>
             )}
