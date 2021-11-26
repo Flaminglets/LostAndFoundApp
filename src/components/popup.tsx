@@ -1,6 +1,7 @@
-import styles from '../styles/popup.module.sass';
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
+import CardMedia from '@mui/material/CardMedia';
+import Divider from '@mui/material/Divider';
 
 export default function PopUp(props) {
     const share = () => {
@@ -18,73 +19,57 @@ export default function PopUp(props) {
         document.body.innerHTML = originalContent;
     }
     console.log(props.data);
+    props = props.data
     return (
-        <div id="missing-card" className={styles.boxwrapper}>
-            <div className={styles.box}>
-                <div className={styles.iconWrapper}>
-                    <div onClick={print} className={styles.printIcon}>
+        <div  >
+            <div className="newpost">
+                <div className="iconWrapper">
+                    <div onClick={print} className="printIcon">
                         <PrintIcon />  
                     </div>
-                    <div onClick={share} className={styles.shareIcon}>
+                    <div onClick={share} className="shareIcon">
                         <IosShareIcon />
                     </div>
                 </div>
-                  
-                <h3 className={styles.name}>{props.data.lostFname} {props.data.lostLname}</h3>
-                <img className={styles.img} alt="Not Avail" src={props.data.image}/>
-                <div className={styles.grid}>
-                    <div className={styles.left}>
-                        <ul className="list">
-                            <li className={styles.listitem}>
-                                Gender: <b>{props.data.gender ? `${props.data.gender}` : "N/A"}</b>
-                               
-                            </li>
-                            <li className={styles.listitem}>
-                                Date of Birth: <b>{props.data.dateOfBirth ? `${props.data.dateOfBirth}` : "N/A"}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                Height: <b>{props.data.strHeight ? `${props.data.strHeight}` : props.data.height ? `${props.data.height}` : " "} </b>
-                            </li>
-                            <li className={styles.listitem}>
-                                Weight: <b>{props.data.strWeight ? `${props.data.strWeight}` : props.data.weight ? `${props.data.weight}` : " "}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                Eye Color: <b>{props.data.eyecolor ? `${props.data.eyecolor}` : "N/A"}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                Hair Color: <b>{props.data.haircolor ? `${props.data.haircolor}` : "N/A"}</b>
-                            </li>
-                        </ul>
+                <div className="newpost_form" id="missing-card">
+                    <div className="newpost_form_last_info">
+                        
+                        <div className="newpost_lp_name">
+                            <p>{props.lostFname} {props.lostLname}</p>
+                        </div>
+                        <div className="lp_image_div">
+                            <CardMedia className="lp_image"
+                                component="img"
+                                image={props.image}
+                                alt="missing pet/person image"
+                            />
+                        </div>
+                        <div className="lp_elements">
+                            <div className="lp_element_left">
+                                <p>Gender: <strong>{props.gender ? `${props.gender}` : "N/A"} {props.otherGender}</strong></p>
+                                <p>Age: <strong>{props.age ? `${props.age}` : "N/A"}</strong></p>
+                                <p>Weight: <strong>{props.weight ? `${props.weight}` : "N/A"} kg</strong></p>
+                                <p>Height: <strong>{props.height ? `${props.height}` : "N/A"} cm</strong></p>
+                                <p>Eye color: <strong>{props.eyecolor ? `${props.eyecolor}` : "N/A"}</strong></p>
+                            </div>
+                            <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}/>
+                            <div className="lp_element_right">
+                                <p>Last seen</p>
+                                <p>- Location: <strong>{props.location ? `${props.location}` : "N/A"}</strong></p>
+                                <p>- Date: <strong>{props.date ? `${props.date}` : "N/A"}</strong></p>
+                                <p>- Time: <strong>{props.time ? `${props.time}` : "N/A"}</strong></p>
+                                <p>Contact info</p>
+                                <p>- Phone num: <strong>{props.phoneNum ? `${props.phoneNum}` : "N/A"}</strong></p>
+                                <p>- Email: <strong>{props.email ? `${props.email}` : "N/A"}</strong></p>
+                            </div>
+                        </div>
+                        {props.additional != null && props.additional != "" && (
+                            <div className="lp_adinfo">
+                                <p>Additional information: </p>
+                                <p><strong>{props.additional}</strong></p>
+                            </div>
+                        )}
                     </div>
-                    <div className={styles.right}>
-                    <ul className="list">
-                            <li className={styles.listitem}>
-                                Last Seen:
-                            </li>
-                            <li className={styles.listitem}>
-                                - Location: <b>{props.data.location}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                - Date: <b>{props.data.date ? props.data.date : "N/A"}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                - Time: <b>{props.data.time ? props.data.time : "N/A"}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                Contact Info:
-                            </li>
-                            <li className={styles.listitem}>
-                                - Phone Num: <b>{props.data.phoneNum ? props.data.phoneNum : "N/A"}</b>
-                            </li>
-                            <li className={styles.listitem}>
-                                - Email: <b>{props.data.email ? props.data.email : "N/A"}</b>
-                            </li>   
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.additionalInfoWrap}>
-                   <h4>Additional Information: </h4> 
-                   <p>{props.data.additional}</p>
                 </div>
             </div>
         </div>

@@ -5,11 +5,16 @@
     z-index: 1
     position: absolute
     padding-bottom: 25px
+    @media only screen and (max-width: 816px) 
+        height: 500px
+    
 
 .iconWrapper 
     width: 45%
     position: absolute
     z-index: 1
+    @media only screen and (max-width: 816px) 
+        width: 90%
 
 .printIcon 
     padding: 15px
@@ -29,6 +34,9 @@
     background-color: #FAFAFA
     margin: auto
     height: auto
+    @media only screen and (max-width: 850px) 
+        height: 500px
+        width: 90%
 
 .red
     color: red
@@ -47,6 +55,8 @@
     top: 10px
     text-align: center
     color: black    
+    @media only screen and (max-width: 816px) 
+        font-size: 3vw
 
 .img
     width: 30%
@@ -58,11 +68,23 @@
 .grid
     display: grid
     grid-template-columns: 1fr 1fr
-    height: 200px
+    height: auto
+    
+    z-index: -1
 
-.listitem
+.grid 
+    @media only screen and (max-width: 925px) 
+        grid-tempalte-columns: 1fr .5fr
+
+
+    
+
+
+.listitem   
     list-style-type: none
     text-decoration: none
+    @media only screen and (max-width: 816px) 
+        font-size: 2vw
 
 .listitemsub
     padding-left: 5px
@@ -76,3 +98,13 @@
 
 .additionalInfoWrap
     margin-top: 15px
+
+.additionalHeader
+    font-size: 15px
+    @media only screen and (max-width: 816px) 
+        font-size: 2.5vw
+
+.additionalSubHeader
+    font-size: 13px
+    @media only screen and (max-width: 816px) 
+        font-size: 2vw

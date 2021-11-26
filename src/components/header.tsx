@@ -202,7 +202,6 @@ export default function Header (props) {
                             </div>
                         </>
                     )}
-                    
                 </div>
             </div>
             <CssBaseline />
