@@ -12,10 +12,6 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
-    Providers.Facebook({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET,
-    })
   ],
 
   pages: {
@@ -25,6 +21,9 @@ export default NextAuth({
   callbacks: {
     async session({ session, user, token }) {
       const aUser = await getUser(user);
+      if (!aUser && user != null) {
+        await createUser(user.name, user.email, user.image);
+      }
 
       const sessionUser = {
         id: aUser.id.toString(),

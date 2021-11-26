@@ -74,7 +74,7 @@ export default function UpdatePost(props) {
         <div className="new_div">
             <div className="newpost">
                 <div className="post_mobile">
-                    <p className="newpost_title">Fill out the form to update the post</p>
+                    <p className="newpost_title">Fill out the form to upload the post</p>
                     {page == 1 && (
                         <>
                         <FirstPage

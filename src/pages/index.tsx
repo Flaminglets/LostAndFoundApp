@@ -5,9 +5,9 @@ import Homepage from '../components/homepage';
 import { getAddPosts } from '../../lib/backend/database';
 import {useState, useEffect} from 'react';
 import Posts from '../components/posts';
-import {ITEMS_PER_PAGE} from "../constants";
 import Pagination from '@mui/material/Pagination';
-
+import {ITEMS_PER_PAGE} from "../constants";
+import { useRouter } from 'next/router';
 
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +17,7 @@ export default function Home(props) {
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
-            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, (currentPage) * ITEMS_PER_PAGE);
+            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
             setPosts({posts: data});
         }
     }, [currentPage]);
@@ -38,6 +38,7 @@ export default function Home(props) {
 
     return (
         <div className={styles.home}>
+            
             {currentPage == 1 && (
                 <Homepage props={props}/>
             )}
@@ -63,7 +64,7 @@ export default function Home(props) {
 
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
-    const posts = postdata.reverse().map(
+    const posts = postdata.map(
         (post) => {
             return {
                 id: post.id.toString(),

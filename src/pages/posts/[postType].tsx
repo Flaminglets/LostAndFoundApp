@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
-import PostCard from '../../components/cards';
-import {ITEMS_PER_PAGE} from "../../constants";
 import Pagination from '@mui/material/Pagination';
+import PostCard from '../../components/cards';
+import {useState, useEffect} from 'react';
+import {ITEMS_PER_PAGE} from "../../constants";
 
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -45,10 +45,10 @@ export default function Posts({props}) {
                         posts.location.toLowerCase().includes(props.search.toLowerCase())) {
                         return posts
                     }
-                }).map(
+                }).reverse().map(
                         (post) => {
                             return (
-                                <PostCard 
+                                    <PostCard
                                     id={post.id}
                                     type={post.type}
                                     date={post.date}
@@ -69,6 +69,8 @@ export default function Posts({props}) {
                                     phoneNum={post.phoneNum}
                                     email={post.email}
                                 />  
+                               
+                                
                             )
                         }
                     )
@@ -85,6 +87,7 @@ export default function Posts({props}) {
             </div>
             <Footer/>
         </div>
+        
     );
 
     function onChangePage($event, page) {
@@ -99,7 +102,7 @@ Posts.getInitialProps = async (ctx) => {
     const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
     const postdata = await response.json()
 
-    const posts = postdata.reverse().map(
+    const posts = postdata.map(
         (post) => {
             return {
                 id: post._id,

@@ -17,9 +17,11 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
 
 // resource: https://mui.com/components/app-bar/#back-to-top
-// scroll to top button function
 function ScrollTop(props) {
     const { children, window } = props;
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    // This is only being set here because the demo is in an iframe.
     const trigger = useScrollTrigger({
         target: window ? window() : undefined,
         disableHysteresis: true,
@@ -62,7 +64,6 @@ export default function App ({ Component, pageProps }) {
         <Provider session={pageProps.session}>
         <Header/>
         <Component {...pageProps} />
-        {/* resource: https://mui.com/components/app-bar/#back-to-top */}
         <ScrollTop {...pageProps}>
             <Fab size="small" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />
