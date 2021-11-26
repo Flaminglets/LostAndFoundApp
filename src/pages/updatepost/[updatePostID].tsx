@@ -1,5 +1,5 @@
-import NotLoggedIn from '../../components/notLoggedIn';
 import {useSession} from 'next-auth/client';
+import NotLoggedIn from '../../components/notLoggedIn';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
 export default function UpdatePostPage({props}) {

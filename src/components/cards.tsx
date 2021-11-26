@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
+import { useRouter } from 'next/router';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import { useRouter } from 'next/router';
+
 
 export default function PostCard(props) {
     const router = useRouter();
