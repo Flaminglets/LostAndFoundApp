@@ -5,16 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import CardMedia from '@mui/material/CardMedia';
 
 const FlamingoNextButton = styled(Button)({
     '&:hover': {
         backgroundColor: '#A2AA9D'
-    },
-})
-
-const FlamingoSubmitButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
     },
 })
 
@@ -26,11 +21,11 @@ export default function WebFirstPage(props) {
     const [lostFname, setLostFname] = useState(props.lostFname || '');
     const [lostLname, setLostLname] = useState(props.lostLname || '');
     const [gender, setGender] = useState(props.gender || '');
+    const [otherGender, setOtherGender] = useState(props.otherGender || '');
     const [age, setAge] = useState(props.age || '');
     const [weight, setWeight] = useState(props.weight || '');
     const [height, setHeight] = useState(props.height || '');
     const [eyecolor, setEyecolor] = useState(props.eyecolor || '');
-    const [ethnicity, setEthnicity] = useState(props.ethnicity || '');
     const [additional, setAdditional] = useState(props.additional || '');
     const [image, setImage] = useState(props.image || '');
 
@@ -41,12 +36,29 @@ export default function WebFirstPage(props) {
     const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); setLostFname(event.target.value); setLostFnameError('')}
     const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); setLostLname(event.target.value); setLostLnameError('')}
     const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); setGender(event.target.value); setGenderError('')}
+    const handleSetOtherGender = async (event) => { props.handlePageData({otherGender: event.target.value}); setOtherGender(event.target.value);}
     const handleSetAge = async (event) => { props.handlePageData({age: event.target.value}); setAge(event.target.value); setAgeError('')}
     const handleSetWeight = async (event) => { props.handlePageData({weight: event.target.value}); setWeight(event.target.value); setWeightError('')}
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError('')}
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError('')}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
-    const handleSetImage = async (event) => { props.handlePageData({image: event.target.value}); setImage(event.target.value); }
+    
+    const handleSetImage = async (event) => {
+        await getImageToBase64(event.target.files[0], (result) => {
+            props.handlePageData({ image: result });
+            setImage(result);
+        });
+    };
+    const getImageToBase64 = (file: any, cb: any) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log("Error: ", error);
+        };
+    };
 
     const [typeError, setTypeError] = useState('');
     const [dateError, setDateError] = useState('');
@@ -60,7 +72,7 @@ export default function WebFirstPage(props) {
     const [heightError, setHeightError] = useState('');
     const [eyecolorError, setEyecolorError] = useState('');
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         
         if(type == '') { setTypeError("Please select type"); }
         else if(date == '2021-01-01') {setDateError("Please select date"); }
@@ -70,8 +82,11 @@ export default function WebFirstPage(props) {
         else if(lostLname == '') { setLostLnameError("Please enter last name"); }
         else if(gender == '') { setGenderError("Please select gender"); }
         else if(age == '') { setAgeError("Please enter age"); }
+        else if(parseInt(age) <= 0) { setAgeError("Please enter proper age"); }
         else if(weight == '') { setWeightError("Please enter weight"); }
+        else if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
         else if(height == '') { setHeightError("Please enter height"); }
+        else if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
         else if(eyecolor == '') { setEyecolorError("Please enter eye colour"); }
 
         if (type != '' && 
@@ -81,9 +96,12 @@ export default function WebFirstPage(props) {
         lostFname != '' &&
         lostLname != '' &&
         gender != '' &&
-        age != '' &&
-        weight != '' &&
-        height != '' &&
+        age != '' && 
+        parseInt(age) > 0 &&
+        weight != '' && 
+        parseInt(weight) > 0 &&
+        height != '' && 
+        parseInt(height) > 0 &&
         eyecolor != '') {
             props.handleNextClick();
         }
@@ -96,8 +114,7 @@ export default function WebFirstPage(props) {
             <p className="newpost_form_label">What have you lost?</p>
             <TextField
                 name="type"
-                required={true}
-                // inputRef={props.myRef}
+                required
                 select
                 color="success"
                 id="outlined-required"
@@ -115,6 +132,7 @@ export default function WebFirstPage(props) {
             <p className="newpost_form_label">When was the last time you saw your missing pet/person?</p>
             <div className="newpost_form_lasttime">
                 <TextField
+                    required
                     name="date"
                     id="outlined-required"
                     label="Select date"
@@ -128,6 +146,7 @@ export default function WebFirstPage(props) {
                     helperText={dateError}
                 />
                 <TextField
+                    required
                     name="time"
                     id="outlined-required"
                     label="Select time"
@@ -143,12 +162,14 @@ export default function WebFirstPage(props) {
             </div>
             <p className="newpost_form_label">Where have you lost pet/person?</p>
             <TextField
+                required
                 name="location"
                 id="outlined-required"
                 label="Location"
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  120}}
                 onChange={handleSetLocation}
                 value={location}
                 error={!!locationError}
@@ -156,28 +177,28 @@ export default function WebFirstPage(props) {
             />
             <p className="newpost_form_label">Lost pet/person information</p>
             <TextField
-                required={true}
-                inputRef={props.myRef}
+                required
                 name="l_fname"
                 id="outlined-required"
                 label="First Name"
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  25}}
                 onChange={handleSetLostFname}
                 value={lostFname}
                 error={!!lostFnameError}
                 helperText={lostFnameError}
             />
             <TextField
-                required={true}
-                inputRef={props.myRef}
+                required
                 name="l_lname"
                 id="outlined-required"
                 label="Last Name"
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  25}}
                 onChange={handleSetLostLname}
                 value={lostLname}
                 error={!!lostLnameError}
@@ -185,6 +206,7 @@ export default function WebFirstPage(props) {
             />
             <div className="newpost_form_lostinfo">
                 <TextField
+                    required
                     name="gender"
                     select
                     id="outlined-required"
@@ -203,6 +225,7 @@ export default function WebFirstPage(props) {
                 </TextField>
                 
                 <TextField
+                    required
                     name="age"
                     id="outlined-required"
                     label="Age"
@@ -210,12 +233,14 @@ export default function WebFirstPage(props) {
                     color="success"
                     type="number"
                     className="newpost_form_element newpost_form_lostinfo_element"
+                    InputProps={{ inputProps: { min: 0, max: 120 } }}
                     onChange={handleSetAge}
                     value={age}
                     error={!!ageError}
                     helperText={ageError}
                 />
                 <TextField
+                    required
                     name="weight"
                     id="outlined-required"
                     label="Weight"
@@ -228,6 +253,7 @@ export default function WebFirstPage(props) {
                             <InputAdornment position="start">kg
                             </InputAdornment>
                         ),
+                        inputProps: { min: 0, max: 300 }
                     }}
                     onChange={handleSetWeight}
                     value={weight}
@@ -235,6 +261,7 @@ export default function WebFirstPage(props) {
                     helperText={weightError}
                 />
                 <TextField
+                    required
                     name="height"
                     id="outlined-required"
                     label="Height"
@@ -247,6 +274,7 @@ export default function WebFirstPage(props) {
                             <InputAdornment position="start">cm
                             </InputAdornment>
                         ),
+                        inputProps: { min: 0, max: 300 }
                     }}
                     onChange={handleSetHeight}
                     value={height}
@@ -254,48 +282,32 @@ export default function WebFirstPage(props) {
                     helperText={heightError}
                 />
                 <TextField
+                    required
                     name="eyecolor"
                     id="outlined-required"
                     label="Eye colour"
                     variant="filled"
                     color="success"
                     className="newpost_form_element newpost_form_lostinfo_element"
+                    inputProps={{ maxLength:  10}}
                     onChange={handleSetEyecolor}
                     value={eyecolor}
                     error={!!eyecolorError}
                     helperText={eyecolorError}
                 />
-                {/* <TextField
-                    name="ethnicity"
-                    select
-                    id="outlined-required"
-                    label="Ethnicity"
-                    variant="filled"
-                    color="success"
-                    className="newpost_form_element newpost_form_lostinfo_element"
-                    onChange={handleSetEthnicity}
-                    value={ethnicity}
-                    error={typeError}
-                >
-                    <MenuItem value="American Indian">American Indian</MenuItem>
-                    <MenuItem value="Asian">Asian</MenuItem>
-                    <MenuItem value="African American">African American</MenuItem>
-                    <MenuItem value="Hispanic">Hispanic</MenuItem>
-                    <MenuItem value="Native Hawaiian">Native Hawaiian</MenuItem>
-                    <MenuItem value="White">White</MenuItem>
-                    <MenuItem value="other">Other</MenuItem>
-                </TextField> */}
             </div>
             {gender == "other" && (
                 <TextField
+                    required
                     name="otherGender"
                     id="outlined-required"
                     label="Other Gender"
                     variant="filled"
                     color="success"
                     className="newpost_form_element"
-                    onChange={handleSetGender}
-                    value={gender}
+                    inputProps={{ maxLength:  20}}
+                    onChange={handleSetOtherGender}
+                    value={otherGender}
                     error={!!genderError}
                     helperText={genderError}
                 />
@@ -309,6 +321,7 @@ export default function WebFirstPage(props) {
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  500}}
                 onChange={handleSetAdditional}
                 value={additional}
             />
@@ -321,9 +334,18 @@ export default function WebFirstPage(props) {
                     accept="image/*"
                     className="myimage"
                     onChange={handleSetImage}
-                    value={image}
                     required
                 />
+                {image != "" && (
+                    <div className="input_image_div">
+                        <p>Chosen image</p>
+                        <CardMedia className="input_image"
+                            component="img"
+                            image={props.image}
+                            alt="missing pet/person image"
+                        />
+                    </div>
+                )}
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">

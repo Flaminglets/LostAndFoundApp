@@ -4,61 +4,65 @@
 
 .home_backcolor
     background-color: #889696 
-    height: 30vw
+    height: 30rem
     width: 100%
     position: absolute
     z-index: -5
 
 .home_main
-    padding: 7vw 0
+    padding: 4rem 0
 
 .home_dashboard
-    width: 95%
-    margin: 2vw auto 0
+    width: 85rem
+    margin: 2rem auto 0
     background-color: #BCB8B1
-    padding: 3vw 10vw
+    padding: 4rem
     border-radius: 10px
     box-shadow: 0 5px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
-    height: 30vw
+    height: 40rem
+    display: flex
+    justify-content: center
 
 .home_title 
     color: white
-    font-size: 4vw
+    font-size: 2.5rem
     text-align: center
 
-.home_content
-    width: 75%
-    margin: auto
+.home_content, .posts_div
+    width: 60rem
+    margin: 1rem auto 3rem
     display: flex
     // grid-template-columns: auto auto auto auto
-    // background-color: #2196F3
     padding: 0
-    justify-content: center
+    // justify-content: space-between
     flex-wrap: wrap
 
-// .home_content
-//     width: 80%
-//     margin: auto
-//     display: grid
-//     grid-template-columns: auto auto auto auto
-//     background-color: #2196F3
-//     padding: 0
-//     justify-content: space-evenly
-
 .home_cards
-    margin: 1rem
+    margin: 1rem 0.5rem
     width: 14rem
     height: 21rem
 
 .home_card_title
     margin: 0.5rem 0
     text-align: center
-    
+    text-overflow: clip
+    font-size: 1.3rem
+    height: 1.5rem
+
+.home_card_info_div
+    height: 4.5rem
+
+.home_card_info
+    font-size: 0.8rem
+
 .home_card_media
     width: 95%
-    height: 10rem
+    height: 11rem
     background-color: grey
     margin: 0 auto
+
+.home_card_button
+    margin-top: 0
 
 .home_pagination_div
     width: 75%
@@ -66,34 +70,308 @@
 
 .home_pagination
     float: right
+
+.dashboard_cards
+    margin: 1rem
+    width: 12rem
+    height: 15rem
+    
+.dashboard_card_media
+    width: 95%
+    height: 9.5rem
+    background-color: grey
+    margin: 0 auto
+
+.home_cards_div2
+    margin-left: -2rem
+    margin-top: 1rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.home_cards_div3
+    margin-left: -2rem
+    margin-top: 1rem
+
+.home_cards_div4
+    margin-left: -2rem
+    margin-top: -1rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.home_cards_div5
+    margin-left: -2rem
+    margin-top: -1rem
+
+.card_1
+    transform: rotate(5deg)
+
+.card_2
+    transform: rotate(-4deg)
+
+.card_3
+    transform: rotate(-3deg)
+
+.card_4
+    transform: rotate(4deg)
+
+.card_5
+    transform: rotate(-3deg)
+
+.card_6
+    transform: rotate(3deg)
+
+.card_7
+    transform: rotate(-4deg)
+
+.card_8
+    transform: rotate(5deg)
+
+
     
 
 @media screen and (max-width: 1440px)
-//     .home_cards
-//         margin: 0.5rem
-//         width: 14rem
-//         height: 20rem
+    .home_dashboard
+        width: 95%
+        padding: 2rem
+        height: 36rem
 
-//     .home_card_media
-//         width: 90%
-//         height: 9rem
-//         margin: 1vw auto 0
+    .home_backcolor
+        height: 28rem
+
+    .dashboard_cards
+        width: 11.5rem
+        height: 14.5rem
+
+    .dashboard_card_title
+        margin: 0.5rem 0
+        font-size: 1.2rem
+        
+    .dashboard_card_media
+        height: 9rem
+
+    .dashboard_cards button 
+        font-size: 0.7rem
+
+    .home_content, .posts_div
+        width: 60rem
+    
 
 @media screen and (max-width: 1024px)
-    .home_content
-        width: 85%
-//     .home_content
-//         width: 80%
-//         margin: auto
-//         display: grid
-//         grid-template-columns: auto auto auto
-//         background-color: #2196F3
-//         padding: 0
-//         justify-content: space-evenly
+    .home_content, .posts_div
+        width: 45rem
+
+    .home_dashboard
+        width: 90%
+        padding: 2rem
+        height: 50rem
+        flex-direction: column
+
+    .home_backcolor
+        height: 35rem
+
+    .home_main
+        padding: 3rem 0
+
+    .home_title 
+        font-size: 2rem
+
+    .dashboard_cards
+        width: 11.5rem
+        height: 14.5rem
+
+    .dashboard_card_title
+        margin: 0.5rem 0
+        font-size: 1.2rem
+        
+    .dashboard_card_media
+        height: 9rem
+
+    .dashboard_cards button 
+        font-size: 0.7rem
+
+    .home_cards_div1
+        display: flex
+        flex-direction: row
+        justify-content: center
+        margin-left: -13rem
+
+    .home_cards_div2
+        margin-left: 24rem
+        margin-top: -17rem
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .home_cards_div3
+        // margin-left: -14rem
+        margin-top: -1rem
+        display: flex
+        flex-direction: row
+        justify-content: center
+
+    .home_cards_div4
+        margin-left: -25rem
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .home_cards_div5
+        margin-left: 11rem
+        margin-top: -16.5rem
+        display: flex
+        flex-direction: row
+        justify-content: center
+
+    .card_1
+        transform: rotate(5deg)
+
+    .card_2
+        transform: rotate(-4deg)
+        margin-left: -0.4rem
+
+    .card_3
+        transform: rotate(3deg)
+
+    .card_4
+        transform: rotate(-4deg)
+
+    .card_5
+        transform: rotate(5deg)
+
+    .card_6
+        transform: rotate(3deg)
+
+    .card_7
+        transform: rotate(-4deg)
+
+    .card_8
+        transform: rotate(5deg)
+        margin-left: -0.4rem
+        
 
 @media screen and (max-width: 700px)
-    .home_content
+    .home_content, .posts_div
+        width: 90vw
+        margin: 2vw auto 4.5vw
+        display: flex
+        padding: 0
+        justify-content: space-between
+        flex-wrap: wrap
+
+    .home_dashboard
         width: 95%
+        height: 230vw
+        margin: 2vw auto 0
+
+    .home_backcolor
+        height: 150vw
+
+    .home_main
+        padding: 5vw 0
+
+    .home_title 
+        font-size: 6vw
+
+    .home_cards
+        margin: 1.5vw 0vw
+        width: 43vw
+        height: 60vw
+
+    .home_card_title
+        margin: 1.5vw 0
+        font-size: 4vw
+        height: 5vw
+        text-overflow: clip
+
+    .home_card_info_div
+        height: 11vw
+
+    .home_card_info
+        font-size: 2vw
+
+    .home_card_media
+        height: 33vw
+
+    .home_card_button
+        font-size: 2vw
+
+    .dashboard_cards
+        margin: 1.5vw 0vw
+        width: 40vw
+        height: 52vw
+
+    .dashboard_card_title
+        margin: 1.1vw 0
+        font-size: 4vw
+        
+    .dashboard_card_media
+        width: 95%
+        height: 35.2vw
+
+    .dashboard_cards button 
+        font-size: 2vw
+
+    .home_cards_div1
+        display: flex
+        flex-direction: row
+        justify-content: center
+        margin-left: 0
+
+    .home_cards_div2
+        margin-left: -40vw
+        margin-top: 50vw
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .home_cards_div3
+        margin-left: 0
+        margin-top: -107vw
+        display: flex
+        flex-direction: row
+        justify-content: center
+
+    .home_cards_div4
+        margin-left: 40vw
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .home_cards_div5
+        margin-left: 0
+        margin-top: -1vw
+        display: flex
+        flex-direction: row
+        justify-content: center
+
+    .card_1
+        transform: rotate(5deg)
+
+    .card_2
+        transform: rotate(-2deg)
+        margin-left: -0.4vw
+
+    .card_3
+        transform: rotate(2deg)
+
+    .card_4
+        transform: rotate(-2deg)
+
+    .card_5
+        transform: rotate(3deg)
+        margin-left: -0.4vw
+
+    .card_6
+        transform: rotate(-5deg)
+
+    .card_7
+        transform: rotate(-4deg)
+
+    .card_8
+        transform: rotate(5deg)
+        margin-left: -0.4vw
 
 
 

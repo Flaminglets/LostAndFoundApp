@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React from 'react';
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useSession, signOut } from "next-auth/client";
+import { useState } from 'react';
+
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Divider from '@mui/material/Divider';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -14,9 +17,6 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import { makeStyles } from '@material-ui/core/styles';
-import { createContext, useContext } from 'react'
-import Link from 'next/link'
-
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,8 +26,6 @@ const useStyles = makeStyles({
       color: '#889696'
     }
 });
-
-const typeContext = createContext(() => {})
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -74,20 +72,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header (props) {
     const [session] = useSession()
     const router = useRouter();
+    const [search, setSearch] = useState('');
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value)
+        console.log(search)
+    }
+
+    const handleFinalSearch = (event) => {
+        if (event.key === 'Enter') {
+            console.log("enter clicked: ", search)
+            setSearch('');
+            location.replace(`/searchPosts/${search}`)
+        }
+    }
 
     const handleTypePet = () => {
-        // props.handlePageData('pet')
-        // console.log('pet clicked')
-        router.push('/posts');
+        router.push('/posts/pet')
     }
 
     const handleTypePeople = () => {
-        // props.handlePageData('people')
-        router.push('/posts');
+        router.push('/posts/person');
     }
 
     const handleTypeNone = () => {
-        // props.handlePageData('')
         router.push('/');
     }
 
@@ -108,16 +116,16 @@ export default function Header (props) {
             {!session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><a href="/loginregister">LogIn</a></li>
-                    <li><a href="/loginregister">Register</a></li>
+                    <li><Link href="/loginregister">LogIn</Link></li>
+                    <li><Link href="/loginregister">Register</Link></li>
                 </ul>
                 </>
             )}
             {session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><a href="/newpost">New Post</a></li>
-                    <li><a href="/user">User</a></li>
+                    <li><Link href="/newpost">New Post</Link></li>
+                    <li><Link href={`/user/${session.id}`}>User</Link></li>
                     <li><Link href="/"><button className="header_logout_button header_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
@@ -138,7 +146,7 @@ export default function Header (props) {
 
     return (
         <div className="header_div">
-            <div className="header_container">
+            <div className="header_container" id="top">
                 <div className="header_hamburger_wrapper">
                     <React.Fragment key="left" >
                         <button className="hamburger-btn hamburger--collapse" id="hamburger" type="button" onClick={toggleDrawer("left", true)}>
@@ -159,28 +167,33 @@ export default function Header (props) {
 
                 <div className="header_right">
                     <div className="header_logo_div">
-                        <p className="header_logo" onClick={handleTypeNone}>Lost and Found</p>
+                        <a className="header_logo" href="/">Lost and Found</a>
                     </div>
 
                     <div className="header_nav_wrapper">
                         <ul className="header_nav">
-                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePet}>Pets</button></li>
+                            <li className="header_list"><a className="header_logout_button header_button" href='/posts/pet'>Pets</a></li>
                             <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
-                            <li className="header_list"><button className="header_logout_button header_button" onClick={handleTypePeople}>People</button></li>
+                            <li className="header_list"><a className="header_logout_button header_button" href='/posts/person'>People</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div className="header_left">
                     <div className="header_search_web">
+                        {/* search bar */}
                         <Search>
                             <SearchIconWrapper>
                             <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                                value={search}
+                                onChange={handleSearch}
+                                onKeyDown={handleFinalSearch}
                             />
+                            
                         </Search>
                     </div>
                     <div className="header_search_mobile">
@@ -191,7 +204,7 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><a href="/loginregister">LogIn / Register</a></li>
+                                    <li className="header_list"><Link href="/loginregister">LogIn / Register</Link></li>
                                 </ul>
                             </div>
                         </>
@@ -200,9 +213,9 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><a href="/newpost">New Post</a></li>
+                                    <li className="header_list"><Link href="/newpost">New Post</Link></li>
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
-                                    <li className="header_list"><a href="/user">User</a></li>  
+                                    <li className="header_list"><Link href={`/user/${session.id}`}>User</Link></li>  
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>

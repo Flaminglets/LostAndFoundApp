@@ -13,12 +13,19 @@ const FlamingoNextButton = styled(Button)({
 export default function FirstPage(props) {
     const [type, setType] = useState(props.type || '');
     const handleSetType = (event) => { 
-        const val = event.target.value; setType(val); 
+        setType(event.target.value); 
         props.handlePageData({type: event.target.value});
+        setTypeError('')
     }
 
-    const handleNextClick = (event) => {
-        props.handleNextClick();
+    const [typeError, setTypeError] = useState('');
+
+    const handleNextClick = () => {
+        if(type == '') { setTypeError("Please select type"); }
+
+        if (type != '') {
+            props.handleNextClick();
+        }
     };
 
     return (
@@ -29,13 +36,15 @@ export default function FirstPage(props) {
                     name="type"
                     required
                     select
-                    id="type"
+                    color="success"
+                    id="outlined-required"
                     label="Pet / Person"
                     variant="filled"
-                    color="success"
                     className="newpost_form_element"
                     onChange={handleSetType}
                     value={type}
+                    error={!!typeError}
+                    helperText={typeError}
                 >
                     <MenuItem className="newpost_form_element" value="pet">Pet</MenuItem>
                     <MenuItem className="newpost_form_element" value="person">Person</MenuItem>

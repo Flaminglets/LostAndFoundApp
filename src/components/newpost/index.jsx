@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import FirstPage from "./mobile/mobileFirstPage";
+import { useSession } from 'next-auth/client';
+import FirstPage from './mobile/mobileFirstPage';
 import SecondPage from './mobile/mobileSecondPage';
 import ThirdPage from './mobile/mobileThirdPage';
 import FourthPage from './mobile/mobileFourthPage';
@@ -8,17 +9,18 @@ import FifthPage from './mobile/mobileFifthPage';
 import SixthPage from './mobile/mobileSixthPage';
 import WebFirstPage from './web/webFirstPage';
 import WebSecondPage from './web/webSecondPage';
-import LastPage from './mobileLastPage';
+import LastPage from './lastPage';
+
 
 export default function NewPost() {
-    const myRef = {};
+    const [session] = useSession();
     const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
 
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         setPage((currentStep) => currentStep + 1); 
     };
     const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
@@ -40,13 +42,13 @@ export default function NewPost() {
             weight: data.weight,
             height: data.height,
             eyecolor: data.eyecolor,
-            ethnicity: data.ethnicity,
             additional: data.additional,
             image: data.image,
             userFname: data.userFname,
             userLname: data.userLname,
             phoneNum: data.phoneNum,
-            email: data.email
+            email: data.email,
+            userID: session.id,
         };
 
         const body = JSON.stringify(newData);
@@ -60,8 +62,7 @@ export default function NewPost() {
         };
 
         const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        const json = await response.json();
-        router.push('/user');
+        router.push(`/user/${session.id}`);
     }
 
     return(
@@ -113,7 +114,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                         />
                         </>
@@ -159,7 +159,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}
@@ -189,7 +188,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                         />
@@ -226,7 +224,6 @@ export default function NewPost() {
                             weight={data.weight}
                             height={data.height}
                             eyecolor={data.eyecolor}
-                            ethnicity={data.ethnicity}
                             additional={data.additional}
                             image={data.image}
                             userFname={data.userFname}

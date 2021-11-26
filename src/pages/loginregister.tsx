@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Header from "../components/header";
-import { providers, signIn, getSession, csrfToken } from "next-auth/client";
+import React, { useRef, useState } from "react";
+import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
+
 
 export default function LoginRegister({ providers, csrfToken }) {
+
     const [event, setEvent] = useState("");
 
     return (
         <div>
-            <Header />
             <div className={`L_container ${event}`} id="container">
 
                 <div className="form-container  sign-up-container">
@@ -22,14 +22,14 @@ export default function LoginRegister({ providers, csrfToken }) {
                 </div>
 
                 <div className="form-container sign-in-container">
-                    <form className="login-signup-form" method="post" action="/api/auth/signin/credentials">
+                    <form className="login-signup-form">
                         <h1 className="h1-title">Login</h1>
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-                        <input className="input-fields" type="email" placeholder="EMAIL" />
+                        {/* <input className="input-fields" type="email" placeholder="EMAIL" />
                         <input className="input-fields" type="password" placeholder="PASSWORD" />
-                        <a className="forgot-password" href="#">Forgot Your Password?</a>
+                        <a className="forgot-password" href="#">Forgot Your Password?</a> */}
                         {Object.values(providers).map((provider: any) => {
-                            if (provider.name === "Credentials") {
+                            if (provider.name === "credentials") {
                                 return;
                             }
                             return (
@@ -40,7 +40,7 @@ export default function LoginRegister({ providers, csrfToken }) {
                                 </div>
                             );
                         })}
-                        <button className="submit-button" type="submit">LOG IN</button>
+                        {/* <button className="submit-button" type="submit">LOG IN</button> */}
                     </form>
                 </div>
 
@@ -52,12 +52,12 @@ export default function LoginRegister({ providers, csrfToken }) {
                                 LOGIN
                             </button>
                         </div>
-                        <div className="overlay-panel overlay-right">
+                        {/* <div className="overlay-panel overlay-right">
                             <h3>Need An Account?</h3>
                             <button className="switch-button" id="signUp" onClick={() => setEvent("right-panel-active")}>
                                 REGISTER
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -67,21 +67,23 @@ export default function LoginRegister({ providers, csrfToken }) {
 };
 
 
+// Get initial props to check if there is already a session,
+// otherwise return the providers.
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });
-  
-    if (session && res && session.accessToken) {
-      res.writeHead(200, {
-        Location: "/",
-      });
-      res.end();
-      return;
+
+    if (session && res) {
+        res.writeHead(302, {
+            Location: "/",
+        });
+        res.end();
+        return;
     }
-  
+
     return {
-      session: undefined,
-      providers: await providers(context),
-      csrfToken: await csrfToken(context),
+        session: undefined,
+        providers: await providers(),
+        csrfToken: await getCsrfToken(context),
     };
-  };
+};

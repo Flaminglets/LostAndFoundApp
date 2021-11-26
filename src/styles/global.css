@@ -2,29 +2,69 @@
 
 /* base styles */
 :root {
-  --primary: #166ae8;
+    --primary: #166ae8;
 }
+
 body {
-  padding: 0;
-  margin: 0 0;
-  font-family: 'Quicksand', sans-serif;
-  color: #444;
-  background: #f2f2f2;
+    padding: 0;
+    margin: 0 0;
+    font-family: 'Quicksand', sans-serif;
+    color: #444;
+    background: #f2f2f2;
 }
+
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
+
 .container {
-  max-width: 960px;
-  margin: 0 auto;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 p {
-  margin: 0;
+    margin: 0;
 }
 
 h2 {
-  margin: 0;
+    margin: 0;
 }
 
+.no_session {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    padding-bottom: 10rem;
+    color: white;
+}
+
+.no_session h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.no_session p {
+    margin: 3rem 0 1rem;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 720px) {
+
+    .no_session {
+        height: 150vw;
+        padding-bottom: 80vw;
+    }
+    
+    .no_session h1 {
+        margin: 0;
+        font-size: 4vw;
+    }
+    
+    .no_session p {
+        margin: 7vw 0 3vw;
+        font-size: 2vw;
+    }
+}

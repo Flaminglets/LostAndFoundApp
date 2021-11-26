@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "downlevelIteration": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,9 +23,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src/pages/api/auth/[...nextauth].js"
-  ],
+    "**/*.tsx", 
+    "src/pages/api/auth/[...nextauth].js", 
+    "src/components/newpost/mobileFirstPage.tsx", 
+    "src/components/newpost/index.jsx", "src/pages/posts.js", "src/pages/_app.jsx", "src/components/updatepost/[updatePostID]., jsx"  ],
   "exclude": [
     "node_modules"
   ]

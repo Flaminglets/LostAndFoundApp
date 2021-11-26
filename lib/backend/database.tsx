@@ -4,32 +4,42 @@ import Addpost from './models/Addpost';
 
 const uri = process.env.MONGODB_URL;
 
-export async function findUserCredentialEmail(credentials) {
-    const client = await mongoose.connect(uri);
-    const emailCredential = await User.findOne({ credentials }).exec();
 
-    return emailCredential;
+// Finds a post by ID and puts in new data.
+export async function updatePost(postID, newData) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findByIdAndUpdate(postID, newData, { new: true })
+    return post;
 }
 
-export async function createCredentialsForUser(name, email, password) {
+// Finds a post by ID and deletes it.
+export async function deletePost(postID) {
     const client = await mongoose.connect(uri);
-    const user = new User(
-        name,
-        email,
-        password,
-    )
-
-    return user.save();
+    const post = await Addpost.findByIdAndDelete(postID);
+    return post;
 }
 
-export async function getUser(aUser) {
+// Find a post by type (pet/person). 
+export async function getPostByType(postType) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.find({ type: postType }).exec();
+
+    return post;
+}
+
+//separating user data from other user data
+export async function getPostByUserID(userID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.find({ user: userID }).exec();
+
+    return post;
+}
+
+export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
-    const users = await User.findOne(aUser);
-    // console.log("aUserName:", aUser.name);
-    // console.log("aUserEmail:", aUser.email);
-    // console.log("aUserImage:", aUser.image);
-    
+    const users = await User.findOne(user);
+
     return users;
 };
 
@@ -47,42 +57,55 @@ export async function createUser(name, email, image) {
     return user.save();
 }
 
+// Get multiple post 
 export async function getAddPosts() {
     const client = mongoose.connect(uri);
     const addposts = await Addpost.find()
     return addposts;
 }
 
-export async function createAddPosts( type, date, time, location,
-    lostFname, lostLname, gender, age, weight, height, eyecolor, 
-    additional, userFname, userLname, phoneNum, email)
-{
+// Find one post
+export async function getSinglePost(aPostID) {
+    const client = await mongoose.connect(uri);
+    const post = await Addpost.findById(aPostID);
+
+    return post;
+}
+
+// Create a post
+export async function createAddPosts(type, date, time, location, lostFname, lostLname, gender, otherGender, age, weight, height, eyecolor, additional, image, userFname, userLname, phoneNum, email, userID) {
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
-            type, date, time, location,
-            lostFname, lostLname, gender, age, weight, 
-            height, eyecolor, additional, userFname, 
-            userLname, phoneNum, email
+            type, 
+            date, 
+            time, 
+            location, 
+            lostFname, 
+            lostLname, 
+            gender, 
+            otherGender, 
+            age, 
+            weight, 
+            height, 
+            eyecolor, 
+            additional, 
+            image,
+            userFname, 
+            userLname, 
+            phoneNum, 
+            email, 
+            userID
         }
     )
 
-    return addpost.save()
+    addpost.user = userID;
+    await addpost.save();
 
+    const userByID = await User.findById(userID);
+    userByID.posts.push(addpost);
+    await userByID.save();
+
+    return;
 }
-
-
-export async function updatePost(postID, newData) {
-    const client = await mongoose.connect(uri);
-    const post = await Addpost.findByIdAndUpdate(postID, newData, {new: true})
-    return post;
-}
-
-export async function deletePost(postID) {
-    const client = await mongoose.connect(uri);
-    const post = await Addpost.findByIdAndDelete(postID);
-    return post;
-}
-
-
 

@@ -33,22 +33,22 @@ export default function WebSecondPage(props) {
     const [phoneNumError, setPhoneNumError] = useState('');
     const [emailError, setEmailError] = useState('');
 
-    const handleSubmitClick = (event) => {
+    const handleSubmitClick = () => {
         if (userFname == '') {setUserFnameError("Please enter first name")}
         else if (userLname == '') {setUserLnameError("Please enter last name")}
         else if (phoneNum == '') {setPhoneNumError("Please enter phone number")}
-        else if (phoneNum === String) {setPhoneNumError("Please enter phone number")}
+        else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
         else if (email == '') {setEmailError("Please enter email")}
 
         if (userFname != '' && 
         userLname != '' &&
-        phoneNum != '' &&
+        phoneNum != ''  &&
         email != '') {
             props.handleSubmitClick();
         }
     };
 
-    const handlePrevClick = (event) => {
+    const handlePrevClick = () => {
         props.handlePrevClick();
     }
 
@@ -56,7 +56,6 @@ export default function WebSecondPage(props) {
 
     return (
         <div className="newpost_form">
-            
             <p className="newpost_form_label">Your Contact information</p>
             <TextField
                 name="userFname"
@@ -65,6 +64,7 @@ export default function WebSecondPage(props) {
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  25}}
                 onChange={handleSetUserFname}
                 value={userFname}
                 error={!!userFnameError}
@@ -77,20 +77,22 @@ export default function WebSecondPage(props) {
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  25}}
                 onChange={handleSetUserLname}
                 value={userLname}
                 error={!!userLnameError}
                 helperText={userLnameError}
             />
             <TextField
-                required={true}
+                required
                 name="phoneNum"
                 id="outlined-required"
                 label="Phone Number"
                 variant="filled"
                 color="success"
-                placeholder="(000) 000-0000"
+                // type="tel"
                 className="newpost_form_element"
+                inputProps={{ minLength: 10, maxLength: 12, }}
                 onChange={handleSetPhoneNum}
                 value={phoneNum}
                 error={!!phoneNumError}
@@ -105,6 +107,7 @@ export default function WebSecondPage(props) {
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                inputProps={{ maxLength:  50 }}
                 onChange={handleSetEmail}
                 value={email}
                 error={!!emailError}
@@ -115,7 +118,7 @@ export default function WebSecondPage(props) {
                     Previous
                 </FlamingoNextButton>
                 <FlamingoSubmitButton type="submit" variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
-                    Submit
+                    Finish
                 </FlamingoSubmitButton>
             </div>
         </div>
