@@ -3,13 +3,14 @@
 
 - We worked on this [Lost and Found website application](https://github.com/Flaminglets/LostAndFoundApp)
 
-- In this program, we learned **React Next.js, Typescript, sass, MongoDB, Mongoose, Prisma, Grapgql and many more**
+- In this project, we implemented **React Next.js, Typescript, Sass, Material UI, MongoDB, and Mongoose **
 
 - The MVP features of our application are: Login Authentication, Dashboard, Filling up a Form, Search Bar
 - 
 
 <h3 align="left">About the Project</h3>
 <p align="left">
+   efwefw ef
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
