@@ -116,7 +116,7 @@ export default function Header (props) {
             {!session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><Link href="/loginregister">LogIn</Link></li>
+                    <li><Link href="/loginregister">Log In</Link></li>
                     <li><Link href="/loginregister">Register</Link></li>
                 </ul>
                 </>
@@ -204,7 +204,7 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><Link href="/loginregister">LogIn / Register</Link></li>
+                                    <li className="header_list"><Link href="/loginregister">Log In / Register</Link></li>
                                 </ul>
                             </div>
                         </>

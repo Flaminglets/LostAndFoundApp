@@ -27,20 +27,8 @@ export default function UserPostCard(props) {
     }
 
     const handleFoundClick = async () => {
-        const postID = props.id
-
-        const body = postID;
-
-        const requestOptions = {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application"
-            },
-            body: body
-        };
-
-        const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        router.push("/user");
+        const postID = props.id;
+        router.push(`/delete/${postID}`);
     }
 
     return (
