@@ -48,7 +48,7 @@ export default function Posts({props}) {
                 }).reverse().map(
                         (post) => {
                             return (
-                                <PostCard 
+                                    <PostCard
                                     id={post.id}
                                     type={post.type}
                                     date={post.date}
@@ -69,6 +69,8 @@ export default function Posts({props}) {
                                     phoneNum={post.phoneNum}
                                     email={post.email}
                                 />  
+                               
+                                
                             )
                         }
                     )
