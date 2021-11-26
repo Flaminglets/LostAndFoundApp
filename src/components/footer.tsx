@@ -18,7 +18,7 @@ export default function Footer() {
             <p className="footer_contact_content">Email : lnf@lnfinc.com</p>
             <p className="footer_contact_content">Operating hours : Monday to Friday, 9:00am to 5:00pm</p>
             <div className="footer_line2"></div>
-            <p className="footer_copyright">Some other information that needs to be added - this is copy right</p>
+            <p className="footer_copyright">Flaminglets - Lost and Found - Copyright© 2021</p>
         </div>
     );
 }
