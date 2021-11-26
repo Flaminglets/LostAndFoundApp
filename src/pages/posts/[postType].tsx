@@ -45,7 +45,7 @@ export default function Posts({props}) {
                         posts.location.toLowerCase().includes(props.search.toLowerCase())) {
                         return posts
                     }
-                }).reverse().map(
+                }).map(
                         (post) => {
                             return (
                                 <PostCard 
@@ -85,7 +85,6 @@ export default function Posts({props}) {
             </div>
             <Footer/>
         </div>
-        
     );
 
     function onChangePage($event, page) {
@@ -100,7 +99,7 @@ Posts.getInitialProps = async (ctx) => {
     const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
     const postdata = await response.json()
 
-    const posts = postdata.map(
+    const posts = postdata.reverse().map(
         (post) => {
             return {
                 id: post._id,

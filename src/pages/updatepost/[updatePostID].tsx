@@ -1,4 +1,5 @@
 import {useSession} from 'next-auth/client';
+import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
@@ -37,6 +38,7 @@ export default function UpdatePostPage({props}) {
                 />
                 </>
             )}
+            <Footer/>
         </div>
     )
 }
