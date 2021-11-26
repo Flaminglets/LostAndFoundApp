@@ -5,7 +5,11 @@ export default function Footer() {
         <div className="footer_div">
             <p className="footer_about_title">ABOUT US</p>
             <p className="footer_about_content">
-                We help you find what you've lost. We value your __ [something]
+                We help you find what you've lost.
+                <br/>
+                With this software you will be reunited with your lost pet or person.
+                <br/>
+                We know that you value them, so we will value you too.
             </p>
             <div className="footer_line1"></div>
             <p className="footer_contact_title">CONTACT US</p>
@@ -17,4 +21,4 @@ export default function Footer() {
             <p className="footer_copyright">Some other information that needs to be added - this is copy right</p>
         </div>
     );
-};
+}
