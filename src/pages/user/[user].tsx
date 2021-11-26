@@ -1,5 +1,6 @@
 import React from "react";
 import { useSession } from 'next-auth/client';
+import { getSession } from "next-auth/client"
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UserPostCard from '../../components/userCard';
@@ -49,10 +50,9 @@ export default function UserPage(props) {
                             <p>Email: {session.email}</p>
                         </div>
                         <div className="user_edit_button">
-                            {/* function to edit user can be added later */}
-                            {/* <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
+                            <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
                             Edit
-                            </FlamingoEditButton> */}
+                            </FlamingoEditButton>
                         </div>
                     </div>
                     <Divider variant="middle" flexItem className="user_divider" style={{fill: "white"}}/>
@@ -86,6 +86,7 @@ export default function UserPage(props) {
                                 }
                             )
                         }
+                        
                     </div>
                 </div>
                 </>
@@ -99,6 +100,7 @@ UserPage.getInitialProps = async (ctx) => {
     const {query} = ctx;
 
     const response = await fetch('http://localhost:3000/api/user/' + query.user);
+    // const response = await getPostByUserID(session.id)
     const postdata = await response.json()
 
     const posts = postdata.map(

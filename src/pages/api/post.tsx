@@ -1,5 +1,7 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
 import { NextApiRequest, NextApiResponse } from 'next';
+import User from '../../../lib/backend/models/User';
+
 
 interface PostRequestBody {
     type: string,

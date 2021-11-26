@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
-import PostCard from '../../components/cards';
-import {ITEMS_PER_PAGE} from "../../constants";
 import Pagination from '@mui/material/Pagination';
+import PostCard from '../../components/cards';
+import {useState, useEffect} from 'react';
+import {ITEMS_PER_PAGE} from "../../constants";
 
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);

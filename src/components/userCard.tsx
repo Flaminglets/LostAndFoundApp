@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from 'next/router';
-
+import { useSession } from 'next-auth/client';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -20,6 +20,7 @@ const FlamingoFoundButton = styled(Button)({
 })
 
 export default function UserPostCard(props) {
+    const [session] = useSession();
     const router = useRouter();
     const handleEditClick = () => {
         router.push(`/updatepost/${props.id}`)

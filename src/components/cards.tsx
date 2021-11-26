@@ -1,21 +1,27 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-
+import React from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-
+import { useRouter } from 'next/router';
+import {useState} from 'react';
 
 export default function PostCard(props) {
+
     const router = useRouter();
     const handleCardClick = () => {
-        router.push(`/detailpage/${props.id}`)
+        router.push({
+            pathname: `/detailpage/${props.id}`,
+            query: {
+                id: props.id
+            }
+        })
     }
 
     return (
-        <div key={props.id}>
+        
+
             <Card className="home_cards" elevation={5}>
                 <CardActionArea onClick={handleCardClick}>
                     <Typography gutterBottom variant="h5" component="div" className="home_card_title">
@@ -39,6 +45,6 @@ export default function PostCard(props) {
                     </Button>
                 </CardActions>
             </Card>
-        </div>
+    
     )
 }
