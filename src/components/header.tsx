@@ -16,11 +16,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
+import { makeStyles } from '@material-ui/core/styles';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-// resource: https://mui.com
+const useStyles = makeStyles({
+    paper: {
+      color: '#889696'
+    }
+});
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -81,6 +87,18 @@ export default function Header (props) {
         }
     }
 
+    const handleTypePet = () => {
+        router.push('/posts/pet')
+    }
+
+    const handleTypePeople = () => {
+        router.push('/posts/person');
+    }
+
+    const handleTypeNone = () => {
+        router.push('/');
+    }
+
     const [state, setState] = React.useState({
         left: false
     });
@@ -98,7 +116,7 @@ export default function Header (props) {
             {!session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><Link href="/loginregister">Log In</Link></li>
+                    <li><Link href="/loginregister">LogIn</Link></li>
                     <li><Link href="/loginregister">Register</Link></li>
                 </ul>
                 </>
@@ -108,7 +126,7 @@ export default function Header (props) {
                 <ul className="header_drawer_list">
                     <li><Link href="/newpost">New Post</Link></li>
                     <li><Link href={`/user/${session.id}`}>User</Link></li>
-                    <li><button className="header_logout_button header_button logout_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></li>
+                    <li><Link href="/"><button className="header_logout_button header_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
             )}
@@ -117,18 +135,19 @@ export default function Header (props) {
         <List className="header_drawer_list">
             <p>Category</p>
             <ul>
-                <li><a className="header_logout_button header_button" href='/posts/pet'>Pets</a></li>
-                <li><a className="header_logout_button header_button" href='/posts/person'>People</a></li>
+                <li><button className="header_logout_button header_button" onClick={handleTypePet}>Pets</button></li>
+                <li><button className="header_logout_button header_button" onClick={handleTypePeople}>People</button></li>
             </ul>
         </List>
         </Box>
     );
 
+    const styles = useStyles();
+
     return (
         <div className="header_div">
             <div className="header_container" id="top">
                 <div className="header_hamburger_wrapper">
-                    {/* resource: https://mui.com/components/drawers/#main-content */}
                     <React.Fragment key="left" >
                         <button className="hamburger-btn hamburger--collapse" id="hamburger" type="button" onClick={toggleDrawer("left", true)}>
                             <div className="hamburger-box">
@@ -141,6 +160,7 @@ export default function Header (props) {
                         onClose={toggleDrawer("left", false)}
                         >
                         {list()}
+                        {/* classes={{ paper: styles.paper }} */}
                         </Drawer>
                     </React.Fragment>
                 </div>
@@ -184,7 +204,7 @@ export default function Header (props) {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><Link href="/loginregister">Log In / Register</Link></li>
+                                    <li className="header_list"><Link href="/loginregister">LogIn / Register</Link></li>
                                 </ul>
                             </div>
                         </>
@@ -207,16 +227,17 @@ export default function Header (props) {
             </div>
             <CssBaseline />
             <div className="mobile_nav">
-            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 'tooltip'}} elevation={3}>
-                <BottomNavigation sx={{bgcolor: '#5F7470'}}>
-                <BottomNavigationAction label="Add Post" onClick={() => (router.push('/newpost'))} icon={<AddCircleRoundedIcon />} sx={{color: 'white'}}/>
-                <BottomNavigationAction label="Home" onClick={() => (router.push('/'))} icon={<HomeRoundedIcon />} sx={{color: 'white'}}/>
-                {!session && (
-                    <BottomNavigationAction label="User" onClick={() => (router.push(`/user/noSession`))} icon={<AccountCircleRoundedIcon />} sx={{color: 'white'}}/>
-                )}
-                {session && (
-                    <BottomNavigationAction label="User" onClick={() => (router.push(`/user/${session.id}`))} icon={<AccountCircleRoundedIcon />} sx={{color: 'white'}}/>
-                )}
+            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} >
+                <BottomNavigation
+                // showLabels
+                // value={value}
+                // onChange={(event, newValue) => {
+                //     setValue(newValue);
+                // }}
+                >
+                <BottomNavigationAction label="Add Post" onClick={() => (router.push('/newpost'))} icon={<AddCircleRoundedIcon />} />
+                <BottomNavigationAction label="Home" onClick={() => (router.push('/'))} icon={<HomeRoundedIcon />} />
+                <BottomNavigationAction label="User" onClick={() => (router.push('/user'))} icon={<AccountCircleRoundedIcon />} />
                 </BottomNavigation>
             </Paper>
             </div>

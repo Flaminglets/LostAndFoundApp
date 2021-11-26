@@ -1,7 +1,7 @@
-import styles from '../styles/popup.module.sass';
+import { StylesProvider } from '@material-ui/core';
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
-
+import styles from '../styles/popup.module.sass';
 export default function PopUp(props) {
     const share = () => {
         console.log(window.location.href);
@@ -23,7 +23,7 @@ export default function PopUp(props) {
             <div className={styles.box}>
                 <div className={styles.iconWrapper}>
                     <div onClick={print} className={styles.printIcon}>
-                        <PrintIcon />  
+                        <PrintIcon   />  
                     </div>
                     <div onClick={share} className={styles.shareIcon}>
                         <IosShareIcon />
@@ -83,9 +83,10 @@ export default function PopUp(props) {
                     </div>
                 </div>
                 <div className={styles.additionalInfoWrap}>
-                   <h4>Additional Information: </h4> 
-                   <p>{props.data.additional}</p>
+                   <h4 className={styles.additionalHeader}>Additional Information: </h4> 
+                   <p className={styles.additionalSubHeader}>{props.data.additional}</p>
                 </div>
+                
             </div>
         </div>
     )

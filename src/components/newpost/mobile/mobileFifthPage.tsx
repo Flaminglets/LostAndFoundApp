@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import CardMedia from '@mui/material/CardMedia';
 
 const FlamingoNextButton = styled(Button)({
     '&:hover': {
@@ -49,17 +48,8 @@ export default function FifthPage(props) {
                         className="myimage"
                         onChange={handleSetImage}
                     />
-                    {image != "" && (
-                        <div className="input_image_div">
-                            <p>Chosen image</p>
-                            <CardMedia className="input_image"
-                                component="img"
-                                image={props.image}
-                                alt="missing pet/person image"
-                            />
-                        </div>
-                    )}
                 </div>
+                <img src={image} alt="" className="input_image"/>
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">

@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
-import PostCard from '../../components/cards';
-import {ITEMS_PER_PAGE} from "../../constants";
 import Pagination from '@mui/material/Pagination';
+import PostCard from '../../components/cards';
+import {useState, useEffect} from 'react';
+import {ITEMS_PER_PAGE} from "../../constants";
 
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +37,7 @@ export default function Posts({props}) {
                 <h1>Searched with '{props.search}'</h1>
             </div>
             <div className="home_content">
-                {posts.posts.map(
+                {posts.posts.reverse().map(
                         (post) => {
                             return (
                                 <PostCard 
@@ -108,7 +108,7 @@ Posts.getInitialProps = async (ctx) => {
             posts.date.toLowerCase().includes(query.search.toLowerCase())) {
             return posts
         }
-    }).reverse().map(
+    }).map(
         (post) => {
             return {
                 id: post._id,
