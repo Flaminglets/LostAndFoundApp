@@ -9,6 +9,8 @@ export default function Posts({props}) {
     const [posts, setPosts] = useState({posts: []});
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
+    // props.posts = props.posts.reverse()
+
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -45,7 +47,7 @@ export default function Posts({props}) {
                         posts.location.toLowerCase().includes(props.search.toLowerCase())) {
                         return posts
                     }
-                }).reverse().map(
+                }).map(
                         (post) => {
                             return (
                                 <PostCard 
@@ -100,7 +102,7 @@ Posts.getInitialProps = async (ctx) => {
     const response = await fetch('http://localhost:3000/api/typePost/' + query.postType);
     const postdata = await response.json()
 
-    const posts = postdata.map(
+    const posts = postdata.reverse().map(
         (post) => {
             return {
                 id: post._id,

@@ -20,8 +20,6 @@ export default function PostCard(props) {
     }
 
     return (
-        
-
             <Card className="home_cards" elevation={5}>
                 <CardActionArea onClick={handleCardClick}>
                     <Typography gutterBottom variant="h5" component="div" className="home_card_title">
@@ -35,7 +33,7 @@ export default function PostCard(props) {
                     <CardContent className="home_card_info_div">
                     <div className="home_card_info_div">
                         <p className="home_card_info">Location: {props.location}</p>
-                        <p className="home_card_info">Last seen: {props.date}, {props.time}</p>
+                        <p className="home_card_info">Last seen: {props.date}. {props.time}</p>
                     </div>
                     </CardContent>
                 </CardActionArea>

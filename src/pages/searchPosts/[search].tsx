@@ -37,7 +37,7 @@ export default function Posts({props}) {
                 <h1>Searched with '{props.search}'</h1>
             </div>
             <div className="home_content">
-                {posts.posts.reverse().map(
+                {posts.posts.map(
                         (post) => {
                             return (
                                 <PostCard 
@@ -108,7 +108,7 @@ Posts.getInitialProps = async (ctx) => {
             posts.date.toLowerCase().includes(query.search.toLowerCase())) {
             return posts
         }
-    }).map(
+    }).reverse().map(
         (post) => {
             return {
                 id: post._id,

@@ -17,7 +17,7 @@ export default function Home(props) {
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
-            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+            data = props.posts.slice((currentPage - 1) * ITEMS_PER_PAGE, (currentPage) * ITEMS_PER_PAGE);
             setPosts({posts: data});
         }
     }, [currentPage]);
@@ -64,7 +64,7 @@ export default function Home(props) {
 
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
-    const posts = postdata.map(
+    const posts = postdata.reverse().map(
         (post) => {
             return {
                 id: post.id.toString(),
