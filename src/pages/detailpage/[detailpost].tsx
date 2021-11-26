@@ -1,11 +1,6 @@
-import { useRouter } from "next/router";
 import PopUp from '../../components/popup';
-export default function DetailPage({userData}) {
-    // get details based off user id
-    const { query } = useRouter();
-    
-    console.log(userData);
 
+export default function DetailPage({userData}) {
     return (
         <div>
             <PopUp data={userData} />

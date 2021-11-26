@@ -9,8 +9,6 @@ export default function Posts({props}) {
     const [posts, setPosts] = useState({posts: []});
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
-    // props.posts = props.posts.reverse()
-
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -87,7 +85,6 @@ export default function Posts({props}) {
             </div>
             <Footer/>
         </div>
-        
     );
 
     function onChangePage($event, page) {
