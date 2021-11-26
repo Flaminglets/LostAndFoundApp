@@ -3,9 +3,12 @@
 
 - We worked on this [Lost and Found website application](https://github.com/Flaminglets/LostAndFoundApp)
 
-- We learned **React Next.js, typescript, sass, MongoDB, Mongoose, Prisma, Grapgql**
+- In this program, we learned **React Next.js, Typescript, sass, MongoDB, Mongoose, Prisma, Grapgql and many more**
 
-<h3 align="left">Connect with me:</h3>
+- The MVP features of our application are: Login Authentication, Dashboard, Filling up a Form, Search Bar
+- 
+
+<h3 align="left">About the Project</h3>
 <p align="left">
 </p>
 
