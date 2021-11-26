@@ -5,7 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useRouter } from 'next/router';
-import {useState} from 'react';
 
 export default function PostCard(props) {
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -6,6 +7,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function Homepage(props) {
     props = props.props
+    const router = useRouter();
     return (
         <div className="home_div">
             <div className="home_backcolor"></div>
@@ -16,7 +18,7 @@ export default function Homepage(props) {
                         <>
                         <div className="home_cards_div1">
                             <Card className="dashboard_cards card_1" elevation={5}>
-                                <CardActionArea>
+                                <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[props.posts.length-1].id}`)}>
                                     <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                                         {props.posts[props.posts.length-1].lostFname} {props.posts[props.posts.length-1].lostLname}
                                     </Typography>
