@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
+import DeletePost from "../pages/delete/[deletePost]";
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -28,20 +29,22 @@ export default function UserPostCard(props) {
     }
 
     const handleFoundClick = async () => {
-        const postID = props.id
+        const postID = props.id;
+        router.push(`/delete/${postID}`);
+        // <DeletePost props={postID}/>
 
-        const body = postID;
+        // const body = postID;
 
-        const requestOptions = {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application"
-            },
-            body: body
-        };
+        // const requestOptions = {
+        //     method: "DELETE",
+        //     headers: {
+        //         "Content-Type": "application"
+        //     },
+        //     body: body
+        // };
 
-        const response = await fetch("http://localhost:3000/api/post", requestOptions);
-        router.push(`/user/${session.id}`);
+        // const response = await fetch("http://localhost:3000/api/post", requestOptions);
+        // router.push(`/user/${session.id}`);
     }
 
     return (
