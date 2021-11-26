@@ -58,8 +58,8 @@ export default function PostCard(props) {
                             >
                                 <Typography sx={{ p: 2 }}>
                                     Contact Info <br />
-                                    PhoneNum: {props.phoneNum} <br />
-                                    Email: {props.email}
+                                    PhoneNum: {props.phoneNum ? `${props.phoneNum}` : "N/A"} <br />
+                                    Email: {props.email ? `${props.email}` : "N/A"}
                                 </Typography>
                             </Popover>
                             </div>
