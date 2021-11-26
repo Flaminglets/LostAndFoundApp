@@ -1,6 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 
+// Sign in page for users
+// The providers are mapped based of [...nextauth].js content.
+// Only Google and Facebook is provided as a login method.
+
+// Also checks if there is already an existing session.
+// If there is then return the user to the homepage.
+// Otherwise prompt the login.
 
 export default function LoginRegister({ providers, csrfToken }) {
 
@@ -9,25 +16,10 @@ export default function LoginRegister({ providers, csrfToken }) {
     return (
         <div>
             <div className={`L_container ${event}`} id="container">
-
-                <div className="form-container  sign-up-container">
-                    <form className="login-signup-form">
-                        <h1 className="h1-title">Create Account</h1>
-                        <input className="input-fields" type="text" placeholder="NAME" />
-                        <input className="input-fields" type="email" placeholder="EMAIL" />
-                        <input className="input-fields" type="password" placeholder="PASSWORD" />
-                        <br />
-                        <button className="submit-button" type="submit">REGISTER</button>
-                    </form>
-                </div>
-
                 <div className="form-container sign-in-container">
                     <form className="login-signup-form">
                         <h1 className="h1-title">Login</h1>
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-                        {/* <input className="input-fields" type="email" placeholder="EMAIL" />
-                        <input className="input-fields" type="password" placeholder="PASSWORD" />
-                        <a className="forgot-password" href="#">Forgot Your Password?</a> */}
                         {Object.values(providers).map((provider: any) => {
                             return (
                                 <div key={provider.name}>
@@ -37,27 +29,14 @@ export default function LoginRegister({ providers, csrfToken }) {
                                 </div>
                             );
                         })}
-                        {/* <button className="submit-button" type="submit">LOG IN</button> */}
                     </form>
                 </div>
-
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left">
-                            <h3>Welcome Back!</h3>
-                            <button className="switch-button" id="signIn" onClick={() => setEvent("left-panel-active")}>
-                                LOGIN
-                            </button>
                         </div>
-                        {/* <div className="overlay-panel overlay-right">
-                            <h3>Need An Account?</h3>
-                            <button className="switch-button" id="signUp" onClick={() => setEvent("right-panel-active")}>
-                                REGISTER
-                            </button>
-                        </div> */}
                     </div>
                 </div>
-
             </div>
         </div>
     );
