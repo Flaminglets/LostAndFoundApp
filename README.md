@@ -21,7 +21,7 @@
    This website application is user friendly and straight forward. Users do not need to register to make an account, they can login with their active Google or Facebook account. Users do not to be registered to view the latest posts, they can just look up the website and be able to browse with having the hassle of signing-in. However, they won't be able to post, for that feature users would have to be logged in.
 </p>
 
-<h3 align="left">How to use the website application</h3>
+<h3 align="left">How to use our Lost and Found website application</h3>
 <p align="justified">
    This application will not prompt the user to make an account, they can browse through the cases wthout logging in but if they want to post a missing pet or person they can login with their Google account. Once logged in, user will see the homepage where the most latest cases and previous cases are found. When they click the cases it will lead thwm to a pop-up detail page to view all the information of the missing pet or person. Users will also see the contact information of the person who posted so that when and if they spot the missing pet or person they have a way to connect. On the pop-up detail page, that it also where the print and share button are located. Users can print the post or share the to spread the news.
    To go back to the homepage, click the "Lost and Found" title. Once back to the homepage, on the upper right corner of the header beside the "New post" button, user can see a search bar. This feature allows the user to look up only specifics they want to find out or look up. On the left corner, right beside the "Lost and Found" title, there is a Pet | Person filter. User will be able to filter if they only want to view missing pets or missing persons.
