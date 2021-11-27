@@ -28,7 +28,7 @@
    Time to fill up the form! As mentioned above, only logged in users will be able to make a post. Beside the search bar, is the "New Post" button. This feature is where the user will be able to make a post for their missing pet or person, information about the missing will be asked of in this section, all field will need to be filled up to proceed with the posting. User can also upload an image for more details to the viewers. The user will also be asked to fill up contact information about themselves so that viewers will be able to connect with them. Once the user clicks the submit button, the next screen will show all the field the filled up for verification and then they will be led to their profile. </br>
    In the profile page, the user will be able to view all posts they made. They can either edit and update their posts or they can delete it by clicking the "Found" button. Once the post is deleted it will no longer be on the page. </br>
    See? Our website application is very easy to maneuver around. It is user-friendly and straight forward even non-tech savvy users will be able to use it.
-   </br>
+   </br> </br>
    Thank you for viewing our project! See below of the language and tools that we used.
 </p>
 
