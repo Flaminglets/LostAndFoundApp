@@ -7,11 +7,14 @@
 
 - The MVP features of our application are: Login Authentication, Dashboard, Filling up a Form, Search Bar
 
-   -  
+   -  Login Authentication: The user won't have to make an account, and can use their Google or Facebook account instead. They don't have to worry about remembering another username or password when logging in to the website.
+   -  Dashboard: The homepage will consist of the dashboard where registered or non-registered users can view the top latest cases of the day, they view contact information and details of the missing pet or person. Registered users can make posts, edit posts and update posts.
+   -  Filling a up Form: Registered users can make posts in their accounts only they can edit, update or delete. The form consists of information about the missing pet or person that needs to filled out so that viewers can be able to find or spot the missing quicker.
+   -  Search Bar: The feature self-explanatory, the users whether registered or non-registered can quickly look up missing pet or person with the search bar in the upper right corner. Just look up a specific keyword and the application will look it up for the user and they won't have to scroll around to look it up.
 
 <h3 align="left">About the Project</h3>
 <p align="left">
-   efwefw ef
+   The concept of our project is to help you help others find what they've lost. We want make it more convenient and accessible to people to post online rather than going around      the neighborhoods posting "MISSING" papers on electrical posts. With this website application, they can now make a posting within the comforts of their home and with just a        click of their fingers.
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
