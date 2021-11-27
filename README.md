@@ -1,11 +1,11 @@
 <h1 align="center">Hi 👋, We are Danny, Nicole, Yoonseo, Sarina, Abbe and Harman</h1>
 <h3 align="center">Students of Computer System Technology Program at Vancouver Community College</h3>
 
-- We worked on this [Lost and Found website application](https://github.com/Flaminglets/LostAndFoundApp)
+- We worked on this [Lost and Found website application](https://github.com/Flaminglets/LostAndFoundApp) for our 2107 Adv Internet Programming course.
 
 - In this project, we implemented **React Next.js, Typescript, Sass, Material UI, MongoDB, and Mongoose **
 
-- The features of our application are: Login Authentication, Dashboard, Filling up a Form, Search Bar
+- The features of our application are: Login Authentication, Dashboard, Filling up a Form, Search Bar, Filter button, Print and Share button
 
    -  Login Authentication: The user won't have to make an account, and can use their Google or Facebook account instead. They don't have to worry about remembering another username or password when logging in to the website.
    -  Dashboard: The homepage will consist of the dashboard where registered or non-registered users can view the top latest cases of the day, they view contact information and details of the missing pet or person. Registered users can make posts, edit posts and update posts.
