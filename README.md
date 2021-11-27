@@ -12,8 +12,8 @@
    -  Filling a up Form: Registered users can make posts in their accounts only they can edit, update or delete. The form consists of information about the missing pet or person that needs to filled out so that viewers can be able to find or spot the missing quicker.
    -  Search Bar: The feature self-explanatory, the users whether registered or non-registered can quickly look up missing pet or person with the search bar in the upper right corner. Just look up a specific keyword and the application will look it up for the user and they won't have to scroll around to look it up.
    -  Filter button: Wherein the users can only look up either pets or people for better searching.
-   -  Print button: This feature can be found in the pop-up detail page. With a press of this button the user has the option to print their post.
-   -  Share button: This feature can also be found in the pop-up detail page. They can share their posts with the url attached.
+   -  Print button: This feature can be found in the pop-up detail page. With a press of this button the user registered or non-registered has the option to print the post.
+   -  Share button: This feature can also be found in the pop-up detail page. Users can share the posts with the url attached.
 
 <h3 align="left">About the Project</h3>
 <p align="justified">
