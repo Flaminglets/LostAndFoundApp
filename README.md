@@ -13,7 +13,7 @@
    -  Search Bar: The feature self-explanatory, the users whether registered or non-registered can quickly look up missing pet or person with the search bar in the upper right corner. Just look up a specific keyword and the application will look it up for the user and they won't have to scroll around to look it up.
 
 <h3 align="left">About the Project</h3>
-<p align="left">
+<p align="justified">
    The concept of our project is to help you help others find what they've lost. We want make it more convenient and accessible to people to post online rather than going around      the neighborhoods posting "MISSING" papers on electrical posts. With this website application, they can now make a posting within the comforts of their home and with just a        click of their fingers.
 </p>
 
