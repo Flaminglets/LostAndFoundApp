@@ -211,7 +211,7 @@ export default function Header () {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><Link href="/loginregister">Log In / Register</Link></li>
+                                    <li className="header_list"><Link href="auth/loginregister">Log In / Register</Link></li>
                                 </ul>
                             </div>
                         </>
