@@ -109,7 +109,7 @@ Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
 
-    const response = await fetch("/api/typePost/" + query.postType);
+    const response = await fetch("http://localhost:3000/api/typePost/" + query.postType);
     const postdata = await response.json()
 
     const posts = postdata.reverse().map(
