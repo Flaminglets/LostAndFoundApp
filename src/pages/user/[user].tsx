@@ -7,7 +7,6 @@ otherwise, it displays user info (image, userid, email), and posts that user cre
 
 import React from "react";
 import { useSession } from 'next-auth/client';
-import { getSession } from "next-auth/client";
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UserPostCard from '../../components/userCard';
