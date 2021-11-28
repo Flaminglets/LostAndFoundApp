@@ -17,6 +17,16 @@ import Pagination from '@mui/material/Pagination';
 
 // props: list of all the post datas in the database
 // imports Homepage function from homepage file
+
+/*
+Flaminglets
+Sarina
+The current page start at 1
+This function gets all the posts and stores it in an array then with the variable ITEMS_PER_PAGE
+first devides all the post by the variable so we get the number of pages 
+then we create another array data =[] for arranging numbers of posts per page
+this makes each page have certain posts (data) assigned to them.
+*/
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
