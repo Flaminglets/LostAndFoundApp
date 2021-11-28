@@ -49,7 +49,12 @@ export default function WebFirstPage(props) {
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError('')}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
     //const handleSetImage = async (event) => { props.handlePageData({image: event.target.value}); setImage(event.target.value); }
-    
+    /*
+Flaminglets
+Sarina
+ using the async function getImageToBase64(imageURL) converts the image url to base64 string of image
+*/
+ 
     const handleSetImage = async (event) => {
         await getImageToBase64(event.target.files[0], (result) => {
           props.handlePageData({ image: result });
