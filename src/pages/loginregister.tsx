@@ -56,6 +56,6 @@ LoginRegister.getInitialProps = async (context) => {
     return {
         session: undefined,
         providers: await providers(),
-        csrfToken: await getCsrfToken(context),
+        //csrfToken: await getCsrfToken(context),
     };
 };
