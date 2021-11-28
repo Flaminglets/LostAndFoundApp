@@ -41,9 +41,11 @@ export default function LoginRegister({ providers, csrfToken }) {
 // Get the initial props of LoginRegister based on the context.
 // @params context, context provides the props with a request or response
 // @return an undefined session, and a Promise for providers and csrftoken
-LoginRegister.getInitialProps = async (context) => {
+export async function getServerSideProps(context) {
     const { req, res } = context;
     const session = await getSession({ req });
+    const providers = await getProviders();
+    const csrfToken = await getCsrfToken(context);
 
     if (session && res) {
         res.writeHead(302, {
@@ -54,8 +56,10 @@ LoginRegister.getInitialProps = async (context) => {
     }
 
     return {
-        session: undefined,
-        providers: await getProviders(),
-        csrfToken: await getCsrfToken(context),
+        props: {
+            providers,
+            session,
+            csrfToken,
+        }
     };
 };
