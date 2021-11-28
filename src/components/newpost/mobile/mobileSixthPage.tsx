@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains sixth page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes: (user's) firstName, lastName, phoneNumber, email
 validates input and show error message when input value is not valid, and prevents from going to next page
@@ -23,7 +22,8 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
-// props: useState data.(userFname, userLname, phoneNum, email) from NewPost and UpdatePost functions
+// @params: useState data.(userFname, userLname, phoneNum, email) from NewPost and UpdatePost functions
+// @return: user contact information form
 export default function SixthPage(props) {
     const [userFname, setUserFname] = useState(props.userFname || "");
     const [userLname, setUserLname] = useState(props.userLname || "");

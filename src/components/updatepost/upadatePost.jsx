@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains update post form function
 gets a post information and after user update data that need to be updated,
 and update the post data in the database
@@ -19,7 +18,8 @@ import WebFirstPage from '../newpost/web/webFirstPage';
 import WebSecondPage from '../newpost/web/webSecondPage';
 import LastPage from './lastPage';
 
-// props: a post data that user selected to update
+// @params: a post data that user selected to update
+// @return: update post page with pages functions
 // handle updating data
 export default function UpdatePost(props) {
     const [session] = useSession();

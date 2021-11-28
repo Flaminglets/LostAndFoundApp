@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains lastpage of updatePost
 getting updated data from updatePost
 displays the data as what the detail page would look like for user to finalize
@@ -25,7 +24,8 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
-// props: updated post data from UpdatePost function
+// @params: updated post data from UpdatePost function
+// @return: last page displaying all the updated info as it will look like detail page
 export default function LastPage(props) {
     // submit update
     const handleFinalClick = () => {

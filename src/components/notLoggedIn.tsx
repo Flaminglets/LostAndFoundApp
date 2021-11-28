@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains function that tells user to login first
 and prevents from user to access certian pages without logging in
 */

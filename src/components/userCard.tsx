@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains post card function for user page
 which includes post data name, image, edit or delete button
 */
@@ -26,7 +25,8 @@ const FlamingoFoundButton = styled(Button)({
     },
 })
 
-// props: a post data of one of the user's posts
+// @params: a post data of one of the user's posts
+// @return: post card for user page
 export default function UserPostCard(props) {
     const router = useRouter();
     

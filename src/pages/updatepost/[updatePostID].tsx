@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page is update post page
 redirected from userCard
 similar to newpost page, but with the certian post information already filled out
@@ -13,8 +12,8 @@ import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
-// props: the post data
-// imports UpdatePost function from updatePost file, and pass the post data
+// @params: the post data
+// @return:  UpdatePost function from updatePost file, and pass the post data, NotLoggedIn when no session, and Footer
 export default function UpdatePostPage({props}) {
     const [session] = useSession();
 
@@ -56,6 +55,8 @@ export default function UpdatePostPage({props}) {
 }
 
 // getting one post data with post id
+// @params: one post id
+// @return: post data
 UpdatePostPage.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;

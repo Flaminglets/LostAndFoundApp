@@ -1,12 +1,13 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 api for getting all the posts that certain user created
 */
 
 import { getPostByUserID } from '../../../../lib/backend/database';
 
  // Finds posts by post type
+ // @params: user id
+ // @return: posts from user
 export default async function handler(req, res) {
     const { user } = req.query
     try {

@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page displays posts that includes the word that user wants to search
 */
 
@@ -10,8 +9,8 @@ import PostCard from '../../components/cards';
 import {ITEMS_PER_PAGE} from '../../constants';
 import Pagination from '@mui/material/Pagination';
 
-// props: user input word from search bar
-// imports PostCard function from cards file, and pass filtered posts data
+// @params: user input word from search bar
+// @return: posts with PostCard function from cards file, and pass filtered posts data, and Footer
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
@@ -97,6 +96,8 @@ export default function Posts({props}) {
 
 // getting all the posts from database
 // and filters posts that includes searched word
+// @params: search word
+// @return: filtered posts
 Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;

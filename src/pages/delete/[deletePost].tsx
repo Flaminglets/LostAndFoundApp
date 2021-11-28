@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page is for preventing user from deleting the post accidentally
 this page is redirected from userCard, when the 'Found' button is clicked
 user can choose to go back to user page or delete the post
@@ -24,7 +23,8 @@ const FlamingoFoundButton = styled(Button)({
     },
 })
 
-// props: a post id of a post that user selected to delete
+// @params: a post id of a post that user selected to delete
+// @return: delete page
 // deletes post when Delete button is clicked
 export default function DeletePost(props) {
     const [session] = useSession();
@@ -72,6 +72,8 @@ export default function DeletePost(props) {
 }
 
 // getting post id
+// @params: post id
+// @return: post id
 DeletePost.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;

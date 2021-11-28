@@ -10,6 +10,7 @@ import Footer from '../components/footer';
 import NewPost from '../components/newpost/index';
 import NotLoggedIn from '../components/notLoggedIn';
 
+// @return NotLooggedIn when no session, NewPost when user is logged in, and Footer
 export default function newPost () {
     const [session] = useSession();
 

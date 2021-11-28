@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Harman
+By Harman @Flaminglets
 this page displays a post detail information
 */
 
@@ -15,6 +14,8 @@ export default function DetailPage({userData}) {
 }
 
 // getting one post by post id from database
+// @params: post id
+// @return: a post get by post id
 DetailPage.getInitialProps = async (ctx) => {
     const { query } = ctx;
     const response = await fetch("http://localhost:3000/api/updatePost/" + query.detailpost);   

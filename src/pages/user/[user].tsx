@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page is User page
 if user is not logged in, it will tell user to login first
 otherwise, it displays user info (image, userid, email), and posts that user created
@@ -23,8 +22,8 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 //     },
 // })
 
-// props: posts that the user created
-// imports UserPostCard function from userCard file, and pass the posts data
+// @params: posts that the user created
+// @return: NotLoggedIn when no session, User page with UserPostCard function from userCard file, and pass the posts data, and Footer
 export default function UserPage(props) {
     const [session] = useSession();
     props = props.props
@@ -106,6 +105,8 @@ export default function UserPage(props) {
 }
 
 // getting posts of user in session created
+// @params: user id
+// @ return: list of posts data from user
 UserPage.getInitialProps = async (ctx) => {
     const {query} = ctx;
 

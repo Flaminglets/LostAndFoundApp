@@ -1,6 +1,6 @@
 /*
 Flaminglets
-Yoonseo
+Yoonseo, Sarina
 this file contains first page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes
  (type, date(lastSeen), time(lastSeen), location(lastSeen), 
@@ -24,7 +24,8 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
-// props: useState data from NewPost and UpdatePost functions
+// @params: useState data from NewPost and UpdatePost functions
+// @return: lost pet/person information form
 export default function WebFirstPage(props) {
     const [type, setType] = useState(props.type || "");
     const [date, setDate] = useState(props.date || "2021-01-01");
@@ -54,11 +55,8 @@ export default function WebFirstPage(props) {
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError("")}
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError("")}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value); }
-        /*
-Flaminglets
-Sarina
- using the async function getImageToBase64(imageURL) converts the image url to base64 string of image
-*/
+
+    // using the async function getImageToBase64(imageURL) converts the image url to base64 string of image
     const handleSetImage = async (event) => {
         await getImageToBase64(event.target.files[0], (result) => {
             props.handlePageData({ image: result });

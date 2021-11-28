@@ -15,24 +15,21 @@ import {ITEMS_PER_PAGE} from '../constants';
 import { getAddPosts } from '../../lib/backend/database';
 import Pagination from '@mui/material/Pagination';
 
-// props: list of all the post datas in the database
-// imports Homepage function from homepage file
-
-/*
-Flaminglets
-Sarina
-The current page start at 1
-This function gets all the posts and stores it in an array then with the variable ITEMS_PER_PAGE
-first devides all the post by the variable so we get the number of pages 
-then we create another array data =[] for arranging numbers of posts per page
-this makes each page have certain posts (data) assigned to them.
-*/
+// @params: list of all the post datas in the database
+// @return: Homepage function from homepage file, Posts from postType file, and Footer
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
     // pagination
+    /*
+    The current page start at 1
+    This function gets all the posts and stores it in an array then with the variable ITEMS_PER_PAGE
+    first devides all the post by the variable so we get the number of pages 
+    then we create another array data =[] for arranging numbers of posts per page
+    this makes each page have certain posts (data) assigned to them.
+    */
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -81,7 +78,7 @@ export default function Home(props) {
 };
 
 // getting all the posts from database
-// return list of posts
+// @return: list of posts data
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
     const posts = postdata.reverse().map(

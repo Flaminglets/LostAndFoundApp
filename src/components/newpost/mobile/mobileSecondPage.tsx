@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains second page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: last seen date and time
 validates input and show error message when input value is not valid, and prevents from going to next page
@@ -17,7 +16,8 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
-// props: useState data.(date, time) from NewPost and UpdatePost functions
+// @params: useState data.(date, time) from NewPost and UpdatePost functions
+// @return: last seen date and time form
 export default function SecondPage(props) {
     const [date, setDate] = useState(props.date || "2021-01-01");
     const [time, setTime] = useState(props.time || "00:00");

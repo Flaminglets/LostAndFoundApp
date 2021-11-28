@@ -1,6 +1,5 @@
 /* 
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page filters posts by type (pet and person)
 this page is redirected from header component
 */
@@ -11,8 +10,8 @@ import PostCard from '../../components/cards';
 import {ITEMS_PER_PAGE} from "../../constants";
 import Pagination from '@mui/material/Pagination';
 
-// props: posts filtered by type (pet/person)
-// imports PostCard function from cards file, and pass filtered posts data
+// @params: posts filtered by type (pet/person)
+// @return: posts with PostCard function from cards file, and pass filtered posts data, and Footer
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
@@ -104,6 +103,8 @@ export default function Posts({props}) {
 };
 
 // getting all the postsby type (pet, person) from database 
+// @params: post type (pet or person)
+// @return: filtered posts by type
 Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;

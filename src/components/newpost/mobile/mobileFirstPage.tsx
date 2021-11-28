@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains first page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: type (pet or person)
 validates input and show error message when input value is not valid, and prevents from going to next page
@@ -18,7 +17,8 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
-// props: useState data.type from NewPost and UpdatePost functions
+// @params: useState data.type from NewPost and UpdatePost functions
+// @return: type form
 export default function FirstPage(props) {
     const [type, setType] = useState(props.type || "");
     const handleSetType = (event) => { 
