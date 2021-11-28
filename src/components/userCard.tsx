@@ -56,10 +56,12 @@ export default function UserPostCard(props) {
                 </CardActionArea>
                 <CardActions className="user_card_buttons">
                     <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit"
+                    sx={{backgroundColor: "#D2D4C8", color:"black", height: "1.6rem"}}
                     onClick={handleEditClick}>
                     Edit
                     </FlamingoEditButton>
                     <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found"
+                    sx={{backgroundColor: "#5F7470"}}
                     onClick={handleFoundClick}>
                     FOUND
                     </FlamingoFoundButton>
