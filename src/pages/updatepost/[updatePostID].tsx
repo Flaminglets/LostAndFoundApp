@@ -61,7 +61,7 @@ UpdatePostPage.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
 
-    const response = await fetch("http://localhost:3000/api/updatePost/" + query.updatePostID);
+    const response = await fetch(`${process.env.PUBLIC_URL}/api/updatePost/` + query.updatePostID);
     const postdata = await response.json()
 
     const post = {
