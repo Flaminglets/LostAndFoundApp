@@ -29,5 +29,6 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.26"
-  }
+  },
+  "cacheDirectories": [".next/cache"]
 }
