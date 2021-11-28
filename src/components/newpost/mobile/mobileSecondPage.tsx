@@ -1,37 +1,45 @@
+/*
+Flaminglets
+Yoonseo
+this file contains second page of post form for mobile size window used in NewPost and UpdatePost function
+getting inputs from user that includes: last seen date and time
+validates input and show error message when input value is not valid, and prevents from going to next page
+*/
+
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 const FlamingoNextButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#A2AA9D'
+    "&:hover": {
+        backgroundColor: "#A2AA9D"
     },
 })
 
 export default function SecondPage(props) {
-    const [date, setDate] = useState(props.date || '2021-01-01');
-    const [time, setTime] = useState(props.time || '00:00');
+    const [date, setDate] = useState(props.date || "2021-01-01");
+    const [time, setTime] = useState(props.time || "00:00");
 
     const handleSetDate = async (event) => { 
         props.handlePageData({date: event.target.value});
         setDate(event.target.value);
-        setDateError('')
+        setDateError("")
     }
     const handleSetTime = async (event) => { 
         props.handlePageData({time: event.target.value});
         setTime(event.target.value);
-        setTimeError('')
+        setTimeError("")
     }
 
-    const [dateError, setDateError] = useState('');
-    const [timeError, setTimeError] = useState('');
+    const [dateError, setDateError] = useState("");
+    const [timeError, setTimeError] = useState("");
 
     const handleNextClick = () => {
-        if(date == '2021-01-01') {setDateError("Please select date"); }
-        else if(time == '00:00') { setTimeError("Please select time"); }
+        if(date == "2021-01-01") {setDateError("Please select date"); }
+        else if(time == "00:00") { setTimeError("Please select time"); }
 
-        if (date != '2021-01-01' && time != '00:00' ) {
+        if (date != "2021-01-01" && time != "00:00") {
             props.handleNextClick();
         }
     };

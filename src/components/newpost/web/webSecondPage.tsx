@@ -1,3 +1,12 @@
+/*
+Flaminglets
+Yoonseo
+this file contains second page of post form used in NewPost and UpdatePost function
+getting inputs from user that includes
+ ((user's) firstName, lastName, phoneNumber, email)
+validates input and show error message when input value is not valid, and prevents from going to next page
+*/
+
 import * as React from 'react';
 import {useState} from 'react';
 import TextField from '@mui/material/TextField';
@@ -5,45 +14,44 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 const FlamingoNextButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#A2AA9D'
+    "&:hover": {
+        backgroundColor: "#A2AA9D"
     },
 })
 
 const FlamingoSubmitButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
+    "&:hover": {
+        backgroundColor: "#455451"
     },
 })
 
 
 export default function WebSecondPage(props) {
-    
-    const [userFname, setUserFname] = useState(props.userFname || '');
-    const [userLname, setUserLname] = useState(props.userLname || '');
-    const [phoneNum, setPhoneNum] = useState(props.phoneNum || '');
-    const [email, setEmail] = useState(props.email || '');
-    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); setUserFname(event.target.value); setUserFnameError('')}
-    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); setUserLname(event.target.value); setUserLnameError('')}
-    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError('')}
-    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError('')}
+    const [userFname, setUserFname] = useState(props.userFname || "");
+    const [userLname, setUserLname] = useState(props.userLname || "");
+    const [phoneNum, setPhoneNum] = useState(props.phoneNum || "");
+    const [email, setEmail] = useState(props.email || "");
+    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); setUserFname(event.target.value); setUserFnameError("")}
+    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); setUserLname(event.target.value); setUserLnameError("")}
+    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError("")}
+    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError("")}
 
-    const [userFnameError, setUserFnameError] = useState('');
-    const [userLnameError, setUserLnameError] = useState('');
-    const [phoneNumError, setPhoneNumError] = useState('');
-    const [emailError, setEmailError] = useState('');
+    const [userFnameError, setUserFnameError] = useState("");
+    const [userLnameError, setUserLnameError] = useState("");
+    const [phoneNumError, setPhoneNumError] = useState("");
+    const [emailError, setEmailError] = useState("");
 
     const handleSubmitClick = () => {
-        if (userFname == '') {setUserFnameError("Please enter first name")}
-        else if (userLname == '') {setUserLnameError("Please enter last name")}
-        else if (phoneNum == '') {setPhoneNumError("Please enter phone number")}
+        if (userFname == "") {setUserFnameError("Please enter first name")}
+        else if (userLname == "") {setUserLnameError("Please enter last name")}
+        else if (phoneNum == "") {setPhoneNumError("Please enter phone number")}
         else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
-        else if (email == '') {setEmailError("Please enter email")}
+        else if (email == "") {setEmailError("Please enter email")}
 
-        if (userFname != '' && 
-        userLname != '' &&
-        phoneNum != ''  &&
-        email != '') {
+        if (userFname != "" && 
+        userLname != "" &&
+        phoneNum != ""  &&
+        email != "") {
             props.handleSubmitClick();
         }
     };

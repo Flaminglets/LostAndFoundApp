@@ -1,5 +1,13 @@
+/*
+Flaminglets
+Yoonseo
+this file contains function to display post cards
+passing each post information to postCard
+*/
+
 import PostCard from './cards';
 
+// Parameter: list of posts
 export default function Posts(props) {
     return (
         <div>

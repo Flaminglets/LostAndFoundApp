@@ -1,3 +1,11 @@
+/*
+Flaminglets
+Yoonseo
+this file contains first page of post form for mobile size window used in NewPost and UpdatePost function
+getting inputs from user that includes: type (pet or person)
+validates input and show error message when input value is not valid, and prevents from going to next page
+*/
+
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -5,25 +13,25 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 const FlamingoNextButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#A2AA9D'
+    "&:hover": {
+        backgroundColor: "#A2AA9D"
     },
 })
 
 export default function FirstPage(props) {
-    const [type, setType] = useState(props.type || '');
+    const [type, setType] = useState(props.type || "");
     const handleSetType = (event) => { 
         setType(event.target.value); 
         props.handlePageData({type: event.target.value});
-        setTypeError('')
+        setTypeError("")
     }
 
-    const [typeError, setTypeError] = useState('');
+    const [typeError, setTypeError] = useState("");
 
     const handleNextClick = () => {
-        if(type == '') { setTypeError("Please select type"); }
+        if(type == "") { setTypeError("Please select type"); }
 
-        if (type != '') {
+        if (type != "") {
             props.handleNextClick();
         }
     };

@@ -1,3 +1,11 @@
+/*
+Flaminglets
+Yoonseo
+this page is for creating new post
+if user is not logged in, it will tell user to login first
+if user is logged in, the creating new post page will be shown
+*/
+
 import { useSession } from 'next-auth/client';
 import Footer from '../components/footer';
 import NewPost from '../components/newpost/index';

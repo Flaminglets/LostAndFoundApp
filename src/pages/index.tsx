@@ -1,3 +1,11 @@
+/*
+Flaminglets
+Yoonseo, Sarina
+this page is main page
+it displays dashboard and all posts
+dashboard will only be displayed if the currentPage is == 1
+*/
+
 import * as React from 'react';
 import styles from '../styles/Home.module.sass'
 import Footer from '../components/footer';
@@ -5,9 +13,8 @@ import Homepage from '../components/homepage';
 import { getAddPosts } from '../../lib/backend/database';
 import {useState, useEffect} from 'react';
 import Posts from '../components/posts';
-import {ITEMS_PER_PAGE} from "../constants";
+import {ITEMS_PER_PAGE} from '../constants';
 import Pagination from '@mui/material/Pagination';
-
 
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,16 +29,21 @@ export default function Home(props) {
         }
     }, [currentPage]);
 
+    function onChangePage($event, page) {
+        setCurrentPage(page);
+    }
+
     // resource: https://mui.com/components/app-bar/#back-to-top
+    // goes to the top of the page when pagination buttons are clicked
     const handleClick = (event) => {
         const anchor = (event.target.ownerDocument || document).querySelector(
-            '#top',
+            "#top",
         );
     
         if (anchor) {
             anchor.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
+                behavior: "smooth",
+                block: "center",
             });
         }
     };
@@ -41,7 +53,6 @@ export default function Home(props) {
             {currentPage == 1 && (
                 <Homepage props={props}/>
             )}
-            
             <Posts props={posts} />
             <div className="home_pagination_div">
                 <Pagination
@@ -55,12 +66,9 @@ export default function Home(props) {
             <Footer/>
         </div>
     );
-
-    function onChangePage($event, page) {
-        setCurrentPage(page);
-    }
 };
 
+// getting all the posts from database
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
     const posts = postdata.reverse().map(

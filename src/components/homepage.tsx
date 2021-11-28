@@ -1,3 +1,11 @@
+/*
+Flaminglets
+Yoonseo
+this file contains function for dashboard for the homepage
+dashboard displays 8 recent posts
+if the number of posts in database is less then 8, it will only show that number of posts on dashboard
+*/
+
 import React from 'react';
 import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';

@@ -1,30 +1,39 @@
-import React from "react";
-import { useRouter } from 'next/router';
+/*
+Flaminglets
+Yoonseo
+this file contains post card function for user page
+which includes post data name, image, edit or delete button
+*/
 
+import React from 'react';
+import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+// button style
 const FlamingoEditButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#B0B7AB'
+    "&:hover": {
+        backgroundColor: "#B0B7AB"
     },
 })
 
 const FlamingoFoundButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
+    "&:hover": {
+        backgroundColor: "#455451"
     },
 })
 
 export default function UserPostCard(props) {
     const router = useRouter();
+    // redirect to update post page with post id
     const handleEditClick = () => {
         router.push(`/updatepost/${props.id}`)
     }
 
+    // redirect to delete page with post id
     const handleFoundClick = async () => {
         const postID = props.id;
         router.push(`/delete/${postID}`);

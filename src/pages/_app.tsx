@@ -6,10 +6,9 @@ import '../styles/userpage.sass';
 import '../styles/newpost.sass';
 import Header from "../components/header";
 import React from "react";
-
 import { Provider } from 'next-auth/client'
-
 import PropTypes from 'prop-types';
+
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -28,13 +27,13 @@ function ScrollTop(props) {
 
     const handleClick = (event) => {
         const anchor = (event.target.ownerDocument || document).querySelector(
-        '#top',
+        "#top",
         );
 
         if (anchor) {
         anchor.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
+            behavior: "smooth",
+            block: "center",
         });
         }
     };
@@ -44,7 +43,7 @@ function ScrollTop(props) {
         <Box
             onClick={handleClick}
             role="presentation"
-            sx={{ position: 'fixed', bottom: 16, right: 16 }}
+            sx={{ position: "fixed", bottom: 16, right: 16 }}
         >
             {children}
         </Box>
@@ -63,6 +62,7 @@ export default function App ({ Component, pageProps }) {
         <Header/>
         <Component {...pageProps} />
         {/* resource: https://mui.com/components/app-bar/#back-to-top */}
+        {/* scroll to top button */}
         <ScrollTop {...pageProps}>
             <Fab size="small" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />
