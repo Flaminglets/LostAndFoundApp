@@ -44,7 +44,7 @@ export default function UserPage(props) {
                         <div className="user_image_div">
                             {session.image != '' && (
                                 <>
-                                <img src={session.image} className="user_image"/>
+                                <img src={session.image.toString()} className="user_image"/>
                                 </>
                             )}
                             {session.image == null && (
