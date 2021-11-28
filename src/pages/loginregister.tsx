@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
+import { getProviders, signIn, getSession, getCsrfToken } from "next-auth/client";
 
 // By Danny @Flaminglets
 // Sign in page for users
@@ -55,7 +55,7 @@ LoginRegister.getInitialProps = async (context) => {
 
     return {
         session: undefined,
-        providers: await providers(),
-        //csrfToken: await getCsrfToken(context),
+        providers: await getProviders(),
+        csrfToken: await getCsrfToken(context),
     };
 };
