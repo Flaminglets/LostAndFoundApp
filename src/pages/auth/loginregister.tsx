@@ -6,7 +6,7 @@ import { getProviders, signIn, getSession, getCsrfToken } from "next-auth/client
 // The providers are mapped based of [...nextauth].js content.
 // Only Google and Facebook is provided as a login method.
 
-export default function LoginRegister({ providers, csrfToken }) {
+export default function LoginRegister({ providers }) {
     const [event] = useState("");
 
     return (
@@ -15,7 +15,6 @@ export default function LoginRegister({ providers, csrfToken }) {
                 <div className="form-container sign-in-container">
                     <form className="login-signup-form">
                         <h1 className="h1-title">Login/Register</h1>
-                        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         {Object.values(providers).map((provider: any) => {
                             return (
                                 <div key={provider.name}>
@@ -38,7 +37,7 @@ export default function LoginRegister({ providers, csrfToken }) {
 };
 
 
-// Get the initial props of LoginRegister based on the context.
+// Get the LoginRegister based on the context.
 // @params context, context provides the props with a request or response
 // @return an undefined session, and a Promise for providers and csrftoken
 export async function getServerSideProps(context) {
@@ -58,8 +57,8 @@ export async function getServerSideProps(context) {
     return {
         props: {
             providers,
-            session,
             csrfToken,
+            session: null,
         }
     };
 };
