@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Harman
+this page displays a post detail information
+*/
+
 import PopUp from '../../components/popup';
 
 export default function DetailPage({userData}) {
@@ -8,6 +14,7 @@ export default function DetailPage({userData}) {
     )
 }
 
+// getting one post by post id from database
 DetailPage.getInitialProps = async (ctx) => {
     const { query } = ctx;
     const response = await fetch("http://localhost:3000/api/updatePost/" + query.detailpost);   

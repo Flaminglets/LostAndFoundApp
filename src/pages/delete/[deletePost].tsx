@@ -1,24 +1,32 @@
+/*
+Flaminglets
+Yoonseo
+this page is for preventing user from deleting the post accidentally
+this page is redirected from userCard, when the 'Found' button is clicked
+user can choose to go back to user page or delete the post
+*/
+
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import { Button, CardActions } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+// button style
 const FlamingoEditButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#B0B7AB'
+    "&:hover": {
+        backgroundColor: "#B0B7AB"
     },
 })
 
 const FlamingoFoundButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
+    "&:hover": {
+        backgroundColor: "#455451"
     },
 })
 
 export default function DeletePost(props) {
     const [session] = useSession();
     const router = useRouter();
-    console.log("88", props.props.id)
 
     const handleCancelClick = () => {
         router.push(`/user/${session.id}`);
@@ -60,6 +68,7 @@ export default function DeletePost(props) {
     )
 }
 
+// getting post id
 DeletePost.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;

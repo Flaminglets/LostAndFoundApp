@@ -1,3 +1,13 @@
+/*
+Flaminglets
+Yoonseo
+this page is update post page
+redirected from userCard
+similar to newpost page, but with the certian post information already filled out
+for user to check the update information
+if not logged in, it tells user to login first
+*/
+
 import {useSession} from 'next-auth/client';
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
@@ -43,11 +53,12 @@ export default function UpdatePostPage({props}) {
     )
 }
 
+// getting one post data with post id
 UpdatePostPage.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
 
-    const response = await fetch('http://localhost:3000/api/updatePost/' + query.updatePostID);
+    const response = await fetch("http://localhost:3000/api/updatePost/" + query.updatePostID);
     const postdata = await response.json()
 
     const post = {

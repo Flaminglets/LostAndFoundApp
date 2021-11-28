@@ -1,14 +1,23 @@
+/*
+Flaminglets
+Yoonseo
+this page displays posts that includes the word that user wants to search
+*/
+
 import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
 import PostCard from '../../components/cards';
-import {ITEMS_PER_PAGE} from "../../constants";
+import {ITEMS_PER_PAGE} from '../../constants';
 import Pagination from '@mui/material/Pagination';
+
+
 
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
+    // pagination
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -17,16 +26,21 @@ export default function Posts({props}) {
         }
     }, [currentPage]);
 
+    function onChangePage($event, page) {
+        setCurrentPage(page);
+    }
+
     // resource: https://mui.com/components/app-bar/#back-to-top
+    // back to top button function
     const handleClick = (event) => {
         const anchor = (event.target.ownerDocument || document).querySelector(
-            '#top',
+            "#top",
         );
     
         if (anchor) {
             anchor.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
+                behavior: "smooth",
+                block: "center",
             });
         }
     };
@@ -79,12 +93,10 @@ export default function Posts({props}) {
         </div>
         
     );
-
-    function onChangePage($event, page) {
-        setCurrentPage(page);
-    }
 };
 
+// getting all the posts from database
+// and filters posts that includes searched word
 Posts.getInitialProps = async (ctx) => {
     // resources: https://www.youtube.com/watch?v=Os3JZc2CtwY
     const {query} = ctx;
@@ -95,7 +107,7 @@ Posts.getInitialProps = async (ctx) => {
             "Content-Type": "application/json"
         }
     };
-    const response = await fetch('http://localhost:3000/api/post', requestOptions);
+    const response = await fetch("http://localhost:3000/api/post", requestOptions);
     const postdata = await response.json()
 
     const posts = postdata.filter((posts) => {

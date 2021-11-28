@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Harman, Yoonseo
+this file contains function to display detial information of one post
+*/
+
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import CardMedia from '@mui/material/CardMedia';

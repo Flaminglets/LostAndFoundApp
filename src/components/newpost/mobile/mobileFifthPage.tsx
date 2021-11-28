@@ -1,16 +1,24 @@
+/*
+Flaminglets
+Yoonseo
+this file contains fifth page of post form for mobile size window used in NewPost and UpdatePost function
+getting inputs from user that includes: (lost pet/person's) image
+validates input and show error message when input value is not valid, and prevents from going to next page
+*/
+
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 
 const FlamingoNextButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#A2AA9D'
+    "&:hover": {
+        backgroundColor: "#A2AA9D"
     },
 })
 
 export default function FifthPage(props) {
-    const [image, setImage] = useState(props.image || '');
+    const [image, setImage] = useState(props.image || "");
     const handleSetImage = async (event) => {
         await getImageToBase64(event.target.files[0], (result) => {
             props.handlePageData({ image: result });

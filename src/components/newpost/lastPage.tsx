@@ -1,17 +1,26 @@
+/*
+Flaminglets
+Yoonseo
+this file contains lastpage of newpost
+getting new data from newpost
+displays the data as what the detail page would look like for user to finalize
+when submit button is clicked, it Submit function is called from NewPost function
+*/
+
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 
 const FlamingoNextButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#A2AA9D'
+    "&:hover": {
+        backgroundColor: "#A2AA9D"
     },
 })
 
 const FlamingoSubmitButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#455451'
+    "&:hover": {
+        backgroundColor: "#455451"
     },
 })
 

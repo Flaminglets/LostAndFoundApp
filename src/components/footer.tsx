@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Yoonseo
+this file contains footer function that is used in other pages
+*/
+
 import React from 'react';
 
 export default function Footer() {

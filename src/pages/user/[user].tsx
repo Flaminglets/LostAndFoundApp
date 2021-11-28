@@ -1,19 +1,28 @@
+/*
+Flaminglets
+Yoonseo
+this page is User page
+if user is not logged in, it will tell user to login first
+otherwise, it displays user info (image, userid, email), and posts that user created
+*/
+
 import React from "react";
 import { useSession } from 'next-auth/client';
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UserPostCard from '../../components/userCard';
 
-import { Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import { styled } from '@mui/material/styles';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
-const FlamingoEditButton = styled(Button)({
-    '&:hover': {
-        backgroundColor: '#B0B7AB'
-    },
-})
+// these are for later use for user edit button
+// import { Button } from '@mui/material';
+// import { styled } from '@mui/material/styles';
+// const FlamingoEditButton = styled(Button)({
+//     "&:hover": {
+//         backgroundColor: "#B0B7AB"
+//     },
+// })
 
 export default function UserPage(props) {
     const [session] = useSession();
@@ -95,10 +104,11 @@ export default function UserPage(props) {
     )
 }
 
+// getting posts of user in session created
 UserPage.getInitialProps = async (ctx) => {
     const {query} = ctx;
 
-    const response = await fetch('http://localhost:3000/api/user/' + query.user);
+    const response = await fetch("http://localhost:3000/api/user/" + query.user);
     const postdata = await response.json()
 
     const posts = postdata.map(

@@ -1,14 +1,22 @@
+/*
+Flaminglets
+Yoonseo
+this file contains update post form function
+gets a post information and after user update data that need to be updated,
+and update the post data in the database
+*/
+
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
-import FirstPage from './mobile/mobileFirstPage';
-import SecondPage from './mobile/mobileSecondPage';
-import ThirdPage from './mobile/mobileThirdPage';
-import FourthPage from './mobile/mobileFourthPage';
-import FifthPage from './mobile/mobileFifthPage';
-import SixthPage from './mobile/mobileSixthPage';
-import WebFirstPage from './web/webFirstPage';
-import WebSecondPage from './web/webSecondPage';
+import FirstPage from '../newpost/mobile/mobileFirstPage';
+import SecondPage from '../newpost/mobile/mobileSecondPage';
+import ThirdPage from '../newpost/mobile/mobileThirdPage';
+import FourthPage from '../newpost/mobile/mobileFourthPage';
+import FifthPage from '../newpost/mobile/mobileFifthPage';
+import SixthPage from '../newpost/mobile/mobileSixthPage';
+import WebFirstPage from '../newpost/web/webFirstPage';
+import WebSecondPage from '../newpost/web/webSecondPage';
 import LastPage from './lastPage';
 
 

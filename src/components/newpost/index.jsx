@@ -1,3 +1,10 @@
+/*
+Flaminglets
+Yoonseo
+this file contains create new post form function
+get post information inputs from user and creates new post data to database
+*/
+
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
@@ -54,7 +61,7 @@ export default function NewPost() {
         const body = JSON.stringify(newData);
 
         const requestOptions = {
-            method: 'POST',
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
