@@ -19,7 +19,8 @@ import WebFirstPage from '../newpost/web/webFirstPage';
 import WebSecondPage from '../newpost/web/webSecondPage';
 import LastPage from './lastPage';
 
-
+// props: a post data that user selected to update
+// handle updating data
 export default function UpdatePost(props) {
     const [session] = useSession();
     const router = useRouter();
@@ -28,14 +29,15 @@ export default function UpdatePost(props) {
 
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
-    const handleNextClick = () => {
-        setPage((currentStep) => currentStep + 1); 
-    };
-    const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);}
-    const handleWebPrevClick = () => {setPage(1);}
-    const handleSubmitClick = () => {setPage(10);}
-    const handleSubmitPrevClick = () => {setPage(6);}
+    // set page number to switch page functions
+    const handleNextClick = () => {setPage((currentStep) => currentStep + 1);}; // go to next page
+    const handlePrevClick = () => {setPage((currentStep) => currentStep - 1);} // go to previous page
+    const handleWebPrevClick = () => {setPage(1);} // go to previous page for web size window
+    const handleSubmitClick = () => {setPage(10);} // go to last page
+    const handleSubmitPrevClick = () => {setPage(6);} // go back to form page
 
+    // submit the updated data to the database
+    // this is called in lastPage
     const handleFinalClick = async () => {
         const postID = props.id
         const newData = {
@@ -81,6 +83,7 @@ export default function UpdatePost(props) {
     return(
         <div className="new_div">
             <div className="newpost">
+                {/* mobile size window */}
                 <div className="post_mobile">
                     <p className="newpost_title">Fill out the form to update the post</p>
                     {page == 1 && (
@@ -182,6 +185,7 @@ export default function UpdatePost(props) {
                         </>
                     )}
                 </div>
+                {/* web size window */}
                 <div className="post_web">
                     <p className="newpost_title">Fill out the form to upload the post</p>
                     {page == 1 && (

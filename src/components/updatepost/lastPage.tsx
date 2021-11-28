@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
@@ -24,11 +25,14 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
+// props: updated post data from UpdatePost function
 export default function LastPage(props) {
+    // submit update
     const handleFinalClick = () => {
         props.handleFinalClick();
     };
 
+    // go back to form
     const handleSubmitPrevClick = () => {
         props.handleSubmitPrevClick();
     }

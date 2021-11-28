@@ -17,6 +17,7 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// props: useState data.location from NewPost and UpdatePost functions
 export default function ThirdPage(props) {
     const [location, setLocation] = useState(props.location || "");
     const handleSetLocation = async (event) => { 

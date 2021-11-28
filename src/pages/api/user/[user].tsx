@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Yoonseo
+api for getting all the posts that certain user created
+*/
+
 import { getPostByUserID } from '../../../../lib/backend/database';
 
  // Finds posts by post type

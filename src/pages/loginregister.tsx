@@ -10,8 +10,7 @@ import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 // Otherwise prompt the login.
 
 export default function LoginRegister({ providers, csrfToken }) {
-
-    const [event, setEvent] = useState("");
+    const [event] = useState("");
 
     return (
         <div>

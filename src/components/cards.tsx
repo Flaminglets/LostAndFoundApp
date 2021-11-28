@@ -17,10 +17,11 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
+// props: a post data
 export default function PostCard(props) {
+    const router = useRouter();
 
     // redirects to detail page of the post
-    const router = useRouter();
     const handleCardClick = () => {
         router.push({
             pathname: `/detailpage/${props.id}`,

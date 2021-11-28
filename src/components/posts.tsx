@@ -7,7 +7,8 @@ passing each post information to postCard
 
 import PostCard from './cards';
 
-// Parameter: list of posts
+// props: list of posts
+// imports PostCard function from cards file, and pass filtered post data
 export default function Posts(props) {
     return (
         <div>

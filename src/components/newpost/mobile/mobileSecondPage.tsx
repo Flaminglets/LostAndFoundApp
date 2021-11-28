@@ -17,6 +17,7 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// props: useState data.(date, time) from NewPost and UpdatePost functions
 export default function SecondPage(props) {
     const [date, setDate] = useState(props.date || "2021-01-01");
     const [time, setTime] = useState(props.time || "00:00");

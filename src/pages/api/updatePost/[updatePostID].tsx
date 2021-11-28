@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Yoonseo
+api for updateing a post
+*/
+
 import { getSinglePost } from '../../../../lib/backend/database';
 
  // Finds a single post by ID

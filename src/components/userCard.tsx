@@ -26,8 +26,10 @@ const FlamingoFoundButton = styled(Button)({
     },
 })
 
+// props: a post data of one of the user's posts
 export default function UserPostCard(props) {
     const router = useRouter();
+    
     // redirect to update post page with post id
     const handleEditClick = () => {
         router.push(`/updatepost/${props.id}`)

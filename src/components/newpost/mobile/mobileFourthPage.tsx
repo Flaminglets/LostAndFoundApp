@@ -19,6 +19,7 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// props: useState data.(lostFname, lostLname, gender, age, weight, height, eyecolor, additional) from NewPost and UpdatePost functions
 export default function FourthPage(props) {
     const [lostFname, setLostFname] = useState(props.lostFname || "");
     const [lostLname, setLostLname] = useState(props.lostLname || "");

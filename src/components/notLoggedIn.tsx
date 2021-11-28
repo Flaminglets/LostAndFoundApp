@@ -16,6 +16,8 @@ const FlamingoEditButton = styled(Button)({
     },
 })
 
+// gives user message to login to access this page
+// provides button that redirects to login page
 export default function NotLoggedIn() {
     const router = useRouter();
 

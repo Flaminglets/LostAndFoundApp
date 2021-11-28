@@ -6,6 +6,7 @@ this file contains footer function that is used in other pages
 
 import React from 'react';
 
+// display footer
 export default function Footer() {
     return (
         <div className="footer_div">

@@ -7,20 +7,23 @@ dashboard will only be displayed if the currentPage is == 1
 */
 
 import * as React from 'react';
+import {useState, useEffect} from 'react';
 import styles from '../styles/Home.module.sass'
 import Footer from '../components/footer';
 import Homepage from '../components/homepage';
-import { getAddPosts } from '../../lib/backend/database';
-import {useState, useEffect} from 'react';
 import Posts from '../components/posts';
 import {ITEMS_PER_PAGE} from '../constants';
+import { getAddPosts } from '../../lib/backend/database';
 import Pagination from '@mui/material/Pagination';
 
+// props: list of all the post datas in the database
+// imports Homepage function from homepage file
 export default function Home(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
+    // pagination
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -69,6 +72,7 @@ export default function Home(props) {
 };
 
 // getting all the posts from database
+// return list of posts
 export async function getServerSideProps() {
     const postdata = await getAddPosts();
     const posts = postdata.reverse().map(
