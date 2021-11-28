@@ -2,6 +2,11 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { createUser, getUser } from '../../../../lib/backend/database';
 
+// By Danny @Flaminglets
+// This file represents the authentication process for users
+// It uses NextAuth to connect the sign in and the register process through a provider
+// The providers  
+
 export default NextAuth({
   session: {
     jwt: true,
