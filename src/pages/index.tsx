@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo, Sarina
+By Yoonseo, Sarina @Flaminglets
 this page is main page
 it displays dashboard and all posts
 dashboard will only be displayed if the currentPage is == 1

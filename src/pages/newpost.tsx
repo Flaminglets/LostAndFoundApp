@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this page is for creating new post
 if user is not logged in, it will tell user to login first
 if user is logged in, the creating new post page will be shown
