@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains header function that is used in all pages
 Contained button elements:
  - Logo: redirect to home page
@@ -82,7 +81,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-// display header
+// @return: display header
 export default function Header () {
     const [session] = useSession()
     const router = useRouter();

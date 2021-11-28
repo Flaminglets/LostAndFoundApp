@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains function for dashboard for the homepage
 dashboard displays 8 recent posts
 if the number of posts in database is less then 8, it will only show that number of posts on dashboard
@@ -15,8 +14,8 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
-// props: all the posts data from database
-// displays most recent posts on dashboard
+// @params: all the posts data from database
+// @return: displays most recent posts on dashboard
 export default function Homepage(props) {
     props = props.props
     const router = useRouter();

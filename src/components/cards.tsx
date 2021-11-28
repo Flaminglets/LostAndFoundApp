@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains a card function that can be used to display each card
 displays a post information including name, image, location, date, time
 when the image is clicked, redirects to detail page with post id
@@ -17,7 +16,8 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
-// props: a post data
+// @params: a post data
+// @return: a post card
 export default function PostCard(props) {
     const router = useRouter();
 

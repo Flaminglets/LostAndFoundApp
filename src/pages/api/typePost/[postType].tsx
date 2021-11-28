@@ -1,12 +1,13 @@
 /*
-Flaminglets
-Yoonseo, Danny
+By Yoonseo, Danny @Flaminglets
 api for getting posts by post type (pet or person)
 */
 
 import { getPostByType } from '../../../../lib/backend/database';
 
  // Finds posts by post type
+ // @params: post type (pet or person)
+ // @return: posts filtered by type
 export default async function handler(req, res) {
     // resource: https://nextjs.org/docs/api-routes/dynamic-api-routes
     const { postType } = req.query

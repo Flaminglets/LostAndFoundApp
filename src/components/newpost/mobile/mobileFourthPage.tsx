@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains fourth page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: (lost pet/person's) firstName, lastName, gender, age, weight, height, eyecolor, additional info
 validates input and show error message when input value is not valid, and prevents from going to next page
@@ -19,7 +18,8 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
-// props: useState data.(lostFname, lostLname, gender, age, weight, height, eyecolor, additional) from NewPost and UpdatePost functions
+// @params: useState data.(lostFname, lostLname, gender, age, weight, height, eyecolor, additional) from NewPost and UpdatePost functions
+// @return: lost pet/person detail information (lostFname, lostLname, gender, age, weight, height, eyecolor, additional) form
 export default function FourthPage(props) {
     const [lostFname, setLostFname] = useState(props.lostFname || "");
     const [lostLname, setLostLname] = useState(props.lostLname || "");

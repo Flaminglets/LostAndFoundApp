@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains second page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes
  ((user's) firstName, lastName, phoneNumber, email)
@@ -25,7 +24,8 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
-// props: useState data from NewPost and UpdatePost functions
+// @params: useState data from NewPost and UpdatePost functions
+// @return: user contact information form
 export default function WebSecondPage(props) {
     const [userFname, setUserFname] = useState(props.userFname || "");
     const [userLname, setUserLname] = useState(props.userLname || "");

@@ -1,12 +1,13 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 api for updateing a post
 */
 
 import { getSinglePost } from '../../../../lib/backend/database';
 
  // Finds a single post by ID
+ // @params: post id
+ // @return: a post data
 export default async function handler(req, res) {
     const { updatePostID } = req.query
     try {

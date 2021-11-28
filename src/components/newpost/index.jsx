@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains create new post form function
 get post information inputs from user and creates new post data to database
 */
@@ -18,6 +17,7 @@ import WebFirstPage from './web/webFirstPage';
 import WebSecondPage from './web/webSecondPage';
 import LastPage from './lastPage';
 
+// @return: create new post page with pages functions
 // handle creating new post
 export default function NewPost() {
     const [session] = useSession();

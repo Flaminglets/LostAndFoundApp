@@ -1,6 +1,5 @@
 /*
-Flaminglets
-Yoonseo
+By Yoonseo @Flaminglets
 this file contains third page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: last seen location
 validates input and show error message when input value is not valid, and prevents from going to next page
@@ -17,7 +16,8 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
-// props: useState data.location from NewPost and UpdatePost functions
+// @params: useState data.location from NewPost and UpdatePost functions
+// @return: location form
 export default function ThirdPage(props) {
     const [location, setLocation] = useState(props.location || "");
     const handleSetLocation = async (event) => { 
