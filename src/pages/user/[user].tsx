@@ -7,6 +7,7 @@ otherwise, it displays user info (image, userid, email), and posts that user cre
 
 import React from "react";
 import { useSession } from 'next-auth/client';
+import { getSession } from "next-auth/client";
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UserPostCard from '../../components/userCard';
@@ -44,7 +45,7 @@ export default function UserPage(props) {
                         <div className="user_image_div">
                             {session.image != '' && (
                                 <>
-                                <img src={session.image} className="user_image"/>
+                                <img src={session.image.toString()} className="user_image"/>
                                 </>
                             )}
                             {session.image == null && (
