@@ -24,17 +24,20 @@ const FlamingoFoundButton = styled(Button)({
     },
 })
 
+// props: a post id of a post that user selected to delete
+// deletes post when Delete button is clicked
 export default function DeletePost(props) {
     const [session] = useSession();
     const router = useRouter();
 
+    // redirect to user page
     const handleCancelClick = () => {
         router.push(`/user/${session.id}`);
     }
 
+    // deletes the post and redirect to user page
     const handleDeleteClick = async () => {
         const postID = props.props.id
-
         const body = postID;
 
         const requestOptions = {

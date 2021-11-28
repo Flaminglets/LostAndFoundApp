@@ -10,8 +10,8 @@ import PostCard from '../../components/cards';
 import {ITEMS_PER_PAGE} from '../../constants';
 import Pagination from '@mui/material/Pagination';
 
-
-
+// props: user input word from search bar
+// imports PostCard function from cards file, and pass filtered posts data
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});

@@ -23,6 +23,7 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
+// props: useState data.(userFname, userLname, phoneNum, email) from NewPost and UpdatePost functions
 export default function SixthPage(props) {
     const [userFname, setUserFname] = useState(props.userFname || "");
     const [userLname, setUserLname] = useState(props.userLname || "");

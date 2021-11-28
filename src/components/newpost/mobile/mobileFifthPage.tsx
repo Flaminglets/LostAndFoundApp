@@ -17,6 +17,7 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// props: useState data.image from NewPost and UpdatePost functions
 export default function FifthPage(props) {
     const [image, setImage] = useState(props.image || "");
     const handleSetImage = async (event) => {

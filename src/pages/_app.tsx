@@ -4,11 +4,10 @@ import '../styles/headerfooter.sass';
 import '../styles/homepage.sass';
 import '../styles/userpage.sass';
 import '../styles/newpost.sass';
-import Header from "../components/header";
 import React from "react";
 import { Provider } from 'next-auth/client'
 import PropTypes from 'prop-types';
-
+import Header from "../components/header";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';

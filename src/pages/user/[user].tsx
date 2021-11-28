@@ -11,7 +11,6 @@ import { useSession } from 'next-auth/client';
 import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UserPostCard from '../../components/userCard';
-
 import Divider from '@mui/material/Divider';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
@@ -24,6 +23,8 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 //     },
 // })
 
+// props: posts that the user created
+// imports UserPostCard function from userCard file, and pass the posts data
 export default function UserPage(props) {
     const [session] = useSession();
     props = props.props

@@ -9,6 +9,8 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 
+// props: the post data that user clicked
+// displays all the data, print this page, copy link of this page
 export default function PopUp(props) {
     const share = () => {
         console.log(window.location.href);

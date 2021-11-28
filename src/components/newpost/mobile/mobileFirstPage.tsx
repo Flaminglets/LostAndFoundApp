@@ -18,6 +18,7 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// props: useState data.type from NewPost and UpdatePost functions
 export default function FirstPage(props) {
     const [type, setType] = useState(props.type || "");
     const handleSetType = (event) => { 

@@ -82,6 +82,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// display header
 export default function Header () {
     const [session] = useSession()
     const router = useRouter();
@@ -89,7 +90,6 @@ export default function Header () {
 
     const handleSearch = (event) => {
         setSearch(event.target.value)
-        console.log(search)
     }
 
     // if user clicks Enter button from keyboard, set search bar input to be empty

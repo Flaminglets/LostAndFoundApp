@@ -25,7 +25,7 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
-
+// props: useState data from NewPost and UpdatePost functions
 export default function WebSecondPage(props) {
     const [userFname, setUserFname] = useState(props.userFname || "");
     const [userLname, setUserLname] = useState(props.userLname || "");

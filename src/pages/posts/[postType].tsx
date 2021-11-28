@@ -11,8 +11,8 @@ import PostCard from '../../components/cards';
 import {ITEMS_PER_PAGE} from "../../constants";
 import Pagination from '@mui/material/Pagination';
 
-
-
+// props: posts filtered by type (pet/person)
+// imports PostCard function from cards file, and pass filtered posts data
 export default function Posts({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [posts, setPosts] = useState({posts: []});
@@ -32,6 +32,7 @@ export default function Posts({props}) {
     }
 
     // resource: https://mui.com/components/app-bar/#back-to-top
+    // back to top button function
     const handleClick = (event) => {
         const anchor = (event.target.ownerDocument || document).querySelector(
             "#top",

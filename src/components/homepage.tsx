@@ -15,6 +15,8 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
+// props: all the posts data from database
+// displays most recent posts on dashboard
 export default function Homepage(props) {
     props = props.props
     const router = useRouter();

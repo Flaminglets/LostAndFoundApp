@@ -13,6 +13,8 @@ import Footer from '../../components/footer';
 import NotLoggedIn from '../../components/notLoggedIn';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
+// props: the post data
+// imports UpdatePost function from updatePost file, and pass the post data
 export default function UpdatePostPage({props}) {
     const [session] = useSession();
 

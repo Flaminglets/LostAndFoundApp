@@ -1,3 +1,9 @@
+/*
+Flaminglets
+Yoonseo, Danny
+api for getting posts by post type (pet or person)
+*/
+
 import { getPostByType } from '../../../../lib/backend/database';
 
  // Finds posts by post type

@@ -17,12 +17,14 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
     },
 })
 
+// props: useState data from NewPost and UpdatePost functions
 export default function WebFirstPage(props) {
     const [type, setType] = useState(props.type || "");
     const [date, setDate] = useState(props.date || "2021-01-01");
