@@ -32,9 +32,10 @@ export default function PostCard(props) {
     }
 
     return (
-        <Card className="home_cards" elevation={5}>
+        <Card className="home_cards" elevation={5}
+            sx={{backgroundColor: "#D2D4C8", padding: "0.5rem"}}>
             {/* redirect to detail page when clicked */}
-            <CardActionArea onClick={handleCardClick} className="home_card">
+            <CardActionArea onClick={handleCardClick} className="home_card" >
                 <Typography gutterBottom variant="h5" component="div" className="home_card_title">
                     {props.lostFname} {props.lostLname}
                 </Typography>
