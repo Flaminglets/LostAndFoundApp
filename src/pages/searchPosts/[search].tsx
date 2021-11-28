@@ -108,7 +108,7 @@ Posts.getInitialProps = async (ctx) => {
             "Content-Type": "application/json"
         }
     };
-    const response = await fetch("http://localhost:3000/api/post", requestOptions);
+    const response = await fetch("/api/post", requestOptions);
     const postdata = await response.json()
 
     const posts = postdata.filter((posts) => {

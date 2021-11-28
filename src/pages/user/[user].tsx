@@ -110,7 +110,7 @@ export default function UserPage(props) {
 UserPage.getInitialProps = async (ctx) => {
     const {query} = ctx;
 
-    const response = await fetch("http://localhost:3000/api/user/" + query.user);
+    const response = await fetch("/api/user/" + query.user);
     const postdata = await response.json()
 
     const posts = postdata.map(
