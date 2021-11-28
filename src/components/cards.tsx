@@ -53,7 +53,7 @@ export default function PostCard(props) {
             <CardActions className="home_card_button_div">
                 {/* resource: https://mui.com/components/popover/ */}
                 {/* display contact info */}
-                <PopupState variant="popover" popupId="demo-popup-popover" className="home_card_button_div">
+                <PopupState variant="popover" popupId="demo-popup-popover">
                     {(popupState) => (
                         <div className="home_card_button_div">
                         <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
