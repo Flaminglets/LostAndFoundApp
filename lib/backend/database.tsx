@@ -2,6 +2,12 @@ import mongoose from 'mongoose';
 import User from './models/User';
 import Addpost from './models/Addpost';
 
+// By Danny, Nicole @Flaminglets
+// This page represents the database for the website.
+// It provides APIs and other pages methods of getting data from MongoDB
+// Uses mongoose library to connect our models and database
+
+
 const uri = process.env.MONGODB_URL;
 
 
