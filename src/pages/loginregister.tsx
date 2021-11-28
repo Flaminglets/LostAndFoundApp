@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { providers, signIn, getSession, getCsrfToken } from "next-auth/client";
 
+// By Danny @Flaminglets
 // Sign in page for users
 // The providers are mapped based of [...nextauth].js content.
 // Only Google and Facebook is provided as a login method.
-
-// Also checks if there is already an existing session.
-// If there is then return the user to the homepage.
-// Otherwise prompt the login.
 
 export default function LoginRegister({ providers, csrfToken }) {
     const [event] = useState("");
@@ -32,8 +29,7 @@ export default function LoginRegister({ providers, csrfToken }) {
                 </div>
                 <div className="overlay-container">
                     <div className="overlay">
-                        <div className="overlay-panel overlay-left">
-                        </div>
+                        <div className="overlay-panel overlay-left"></div>
                     </div>
                 </div>
             </div>
@@ -42,8 +38,9 @@ export default function LoginRegister({ providers, csrfToken }) {
 };
 
 
-// Get initial props to check if there is already a session,
-// otherwise return the providers.
+// Get the initial props of LoginRegister based on the context.
+// @params context, context provides the props with a request or response
+// @return an undefined session, and a Promise for providers and csrftoken
 LoginRegister.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });

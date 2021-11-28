@@ -1,6 +1,13 @@
 import { createAddPosts, getAddPosts, deletePost, updatePost } from '../../../lib/backend/database';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+// By Danny, Nicole @Flaminglets
+// It represents the core API for the the missing poster pages.
+// Requires a request or response when fetching this API.
+// There are four main request methods: POST, DELETE, PUT, and GET.
+// Contains an request interface that specifies typing for different properties
+
+
 interface PostRequestBody {
     type: string,
     date: string,
@@ -29,7 +36,10 @@ interface PostRequestBody extends NextApiRequest {
     body: PostRequestBody;
 }
 
-
+// An async handler function that process a request and a response.
+// @param req the request you want to make that will interact with the database
+// @param res the response you want to make to get a status on the performed action
+// @return None 
 export default async function handler(req: PostRequestBody, res: NextApiResponse) {
     try {
         if (req.method == 'POST') {
@@ -78,14 +88,15 @@ export default async function handler(req: PostRequestBody, res: NextApiResponse
                 {
                     success: true
                 }
-            )
+            );
+            return;
         }
 
         // getPost - gets all the existing post from the database
         else if (req.method == 'GET') {
             const data = await getAddPosts();
             res.status(200).json(data);
-            return
+            return;
         }
 
     } catch {

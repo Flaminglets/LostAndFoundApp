@@ -28,7 +28,7 @@ a.forgot-password
 .provider-button
   cursor: pointer
   border-radius: 7px
-  border: 1.5px solid #5F7470
+  border: 2px solid #5F7470
   background-color: #ffffff
   color: #5F7470
   font-size: 12px
@@ -198,3 +198,33 @@ input.input-fields
 
 .L_container.right-panel-active .overlay-right
   transform: translateX(20%)
+
+@media screen and (max-width: 700px) 
+  h1.h1-title
+    text-overflow: clip
+    font-size: 6vw
+
+  .overlay-container
+    position: relative
+    width: 60%
+
+  form.login-signup-form
+    margin-left: 40vw
+
+  .provider-button
+    cursor: pointer
+    border-radius: 7px
+    border: 2px solid #5F7470
+    background-color: #ffffff
+    color: #5F7470
+    font-size: 12px
+    font-weight: bold
+    padding: 10px 60px
+    letter-spacing: 1px
+    text-transform: uppercase
+    transition: transform 80ms ease-in
+    margin-bottom: 20px
+
+    &:hover
+      background-color: #5F7470
+      color: #ffffff
