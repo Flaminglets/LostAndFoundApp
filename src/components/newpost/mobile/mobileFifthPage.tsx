@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains fifth page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: (lost pet/person's) image
-validates input and show error message when input value is not valid, and prevents from going to next page
-*/
+validates input and show error message when input value is not valid, and prevents from going to next page */
 
 import { useState } from 'react';
 import Button from '@mui/material/Button';
@@ -11,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -23,6 +22,7 @@ const theme = createTheme({
     },
 });
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
@@ -86,12 +86,12 @@ export default function FifthPage(props) {
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Previous
                 </FlamingoNextButton>
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Next
                 </FlamingoNextButton>

@@ -1,8 +1,6 @@
-/* 
-By Yoonseo @Flaminglets
+/*  By Yoonseo @Flaminglets
 this page filters posts by type (pet and person)
-this page is redirected from header component
-*/
+this page is redirected from header component */
 
 import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
@@ -25,7 +23,6 @@ export default function Posts({props}) {
             setPosts({posts: data});
         }
     }, [currentPage]);
-
     function onChangePage($event, page) {
         setCurrentPage(page);
     }

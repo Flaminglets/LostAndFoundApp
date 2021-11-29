@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains first page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: type (pet or person)
-validates input and show error message when input value is not valid, and prevents from going to next page
-*/
+validates input and show error message when input value is not valid, and prevents from going to next page */
 
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
@@ -12,6 +10,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -24,6 +23,7 @@ const theme = createTheme({
     },
 });
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
@@ -34,14 +34,16 @@ const FlamingoNextButton = styled(Button)({
 // @return: type form
 export default function FirstPage(props) {
     const [type, setType] = useState(props.type || "");
+    const [typeError, setTypeError] = useState("");
+
+    // set input value to data
     const handleSetType = (event) => { 
         setType(event.target.value); 
         props.handlePageData({type: event.target.value});
         setTypeError("")
     }
 
-    const [typeError, setTypeError] = useState("");
-
+    // validat input & go to next page
     const handleNextClick = () => {
         if(type == "") { setTypeError("Please select type"); }
 
@@ -75,7 +77,7 @@ export default function FirstPage(props) {
             </div>
             <div className="newpost_buttons_2">
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Next
                 </FlamingoNextButton>
@@ -83,4 +85,3 @@ export default function FirstPage(props) {
         </div>
     )
 }
-

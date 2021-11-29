@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains fourth page of post form for mobile size window used in NewPost and UpdatePost function
 getting inputs from user that includes: (lost pet/person's) firstName, lastName, gender, age, weight, height, eyecolor, additional info
-validates input and show error message when input value is not valid, and prevents from going to next page
-*/
+validates input and show error message when input value is not valid, and prevents from going to next page */
 
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
@@ -13,6 +11,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -25,6 +24,7 @@ const theme = createTheme({
     },
 });
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
@@ -43,6 +43,15 @@ export default function FourthPage(props) {
     const [height, setHeight] = useState(props.height || "");
     const [eyecolor, setEyecolor] = useState(props.eyecolor || "");
     const [additional, setAdditional] = useState(props.additional || "");
+    const [lostFnameError, setLostFnameError] = useState("");
+    const [lostLnameError, setLostLnameError] = useState("");
+    const [genderError, setGenderError] = useState("");
+    const [ageError, setAgeError] = useState("");
+    const [weightError, setWeightError] = useState("");
+    const [heightError, setHeightError] = useState("");
+    const [eyecolorError, setEyecolorError] = useState("");
+
+    // set input value to data
     const handleSetLostFname = async (event) => { props.handlePageData({lostFname: event.target.value}); setLostFname(event.target.value); setLostFnameError("");}
     const handleSetLostLname = async (event) => { props.handlePageData({lostLname: event.target.value}); setLostLname(event.target.value); setLostLnameError("");}
     const handleSetGender = async (event) => { props.handlePageData({gender: event.target.value}); setGender(event.target.value); setGenderError("");}
@@ -52,15 +61,6 @@ export default function FourthPage(props) {
     const handleSetHeight = async (event) => { props.handlePageData({height: event.target.value}); setHeight(event.target.value); setHeightError("");}
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError("");}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value);}
-
-    const [lostFnameError, setLostFnameError] = useState("");
-    const [lostLnameError, setLostLnameError] = useState("");
-    const [genderError, setGenderError] = useState("");
-    const [ageError, setAgeError] = useState("");
-    const [weightError, setWeightError] = useState("");
-    const [heightError, setHeightError] = useState("");
-    const [eyecolorError, setEyecolorError] = useState("");
-
 
     const handleNextClick = () => {
         if(lostFname == "") { setLostFnameError("Please enter first name"); }
@@ -257,12 +257,12 @@ export default function FourthPage(props) {
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Previous
                 </FlamingoNextButton>
                 <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Next
                 </FlamingoNextButton>

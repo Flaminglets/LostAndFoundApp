@@ -1,10 +1,8 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains lastpage of newpost
 getting new data from newpost
 displays the data as what the detail page would look like for user to finalize
-when submit button is clicked, it Submit function is called from NewPost function
-*/
+when submit button is clicked, it Submit function is called from NewPost function */
 
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -12,6 +10,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {

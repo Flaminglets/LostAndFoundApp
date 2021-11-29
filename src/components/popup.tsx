@@ -1,7 +1,5 @@
-/*
-By Yoonseo, Harman @Flaminglets
-this file contains function to display detial information of one post
-*/
+/* By Yoonseo, Harman @Flaminglets
+this file contains function to display detial information of one post */
 
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
@@ -9,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -27,7 +26,6 @@ export default function PopUp(props) {
     const share = () => {
         var toCopy = window.location.href;
         navigator.clipboard.writeText(toCopy);
-        
         alert("URL Copied");
     }
     const print = () => {
@@ -81,7 +79,7 @@ export default function PopUp(props) {
                                 <p>- Date: <strong>{props.date ? `${props.date}` : "N/A"}</strong></p>
                                 <p>- Time: <strong>{props.time ? `${props.time}` : "N/A"}</strong></p>
                                 <p>Contact info</p>
-                                <p>- Phone num: <strong>{props.phoneNum ? `${props.phoneNum}` : "N/A"}</strong></p>
+                                <p>- Phone num: <strong>{props.phoneNum ? `${props.phoneNum}` : "911"}</strong></p>
                                 <p>- Email: <strong>{props.email ? `${props.email}` : "N/A"}</strong></p>
                             </div>
                         </div>

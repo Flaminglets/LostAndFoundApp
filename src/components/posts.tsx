@@ -1,9 +1,6 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains function to display post cards
-passing each post information to postCard
-*/
-
+passing each post information to postCard */
 import PostCard from './cards';
 
 // @params: list of posts

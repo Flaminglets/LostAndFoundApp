@@ -1,3 +1,7 @@
+// By Yoonseo @Flaminglets
+// used in: home page, home dashboard, cards(post pages)  
+
+// home page
 .home_div
     margin: 0
     padding: 0
@@ -12,17 +16,6 @@
 .home_main
     padding: 4rem 0
 
-.home_dashboard
-    width: 85rem
-    margin: 2rem auto 0
-    background-color: #BCB8B1
-    padding: 4rem
-    border-radius: 10px
-    box-shadow: 0 5px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
-    height: 40rem
-    display: flex
-    justify-content: center
-
 .home_title 
     color: white
     font-size: 2.5rem
@@ -35,6 +28,7 @@
     padding: 0
     flex-wrap: wrap
 
+// post cards css
 .home_cards
     margin: 1rem 0.5rem
     width: 14rem
@@ -63,12 +57,25 @@
     margin-top: 0
     color: #505f5f 
 
+// posts page pagination
 .home_pagination_div
     width: 75%
     margin: 2rem auto 10rem auto
 
 .home_pagination
     float: right
+
+// dashboard & dashboard post cards
+.home_dashboard
+    width: 85rem
+    margin: 2rem auto 0
+    background-color: #BCB8B1
+    padding: 4rem
+    border-radius: 10px
+    box-shadow: 0 5px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
+    height: 40rem
+    display: flex
+    justify-content: center
 
 .dashboard_cards
     margin: 1rem
@@ -81,6 +88,7 @@
     background-color: grey
     margin: 0 auto
 
+// dashboard post cards position
 .home_cards_div2
     margin-left: -2rem
     margin-top: 1rem
@@ -129,13 +137,15 @@
 
 
 @media screen and (max-width: 1440px)
+    // home page
+    .home_backcolor
+        height: 28rem
+
+    // dashboard & dashboard post cards
     .home_dashboard
         width: 95%
         padding: 2rem
         height: 36rem
-
-    .home_backcolor
-        height: 28rem
 
     .dashboard_cards
         width: 11.5rem
@@ -156,14 +166,9 @@
     
 
 @media screen and (max-width: 1024px)
+    // home page
     .home_content, .posts_div
         width: 45rem
-
-    .home_dashboard
-        width: 90%
-        padding: 2rem
-        height: 50rem
-        flex-direction: column
 
     .home_backcolor
         height: 35rem
@@ -173,6 +178,13 @@
 
     .home_title 
         font-size: 2rem
+
+    // dashboard & dashboard cards
+    .home_dashboard
+        width: 90%
+        padding: 2rem
+        height: 50rem
+        flex-direction: column
 
     .dashboard_cards
         width: 11.5rem
@@ -188,6 +200,7 @@
     .dashboard_cards button 
         font-size: 0.7rem
 
+    // dashboard post cards position
     .home_cards_div1
         display: flex
         flex-direction: row
@@ -248,6 +261,7 @@
         
 
 @media screen and (max-width: 700px)
+    // home page
     .home_content, .posts_div
         width: 90vw
         margin: 2vw auto 4.5vw
@@ -255,11 +269,6 @@
         padding: 0
         justify-content: space-between
         flex-wrap: wrap
-
-    .home_dashboard
-        width: 95%
-        height: 230vw
-        margin: 2vw auto 0
 
     .home_backcolor
         height: 150vw
@@ -270,6 +279,7 @@
     .home_title 
         font-size: 6vw
 
+    // post cards
     .home_cards
         margin: 1.5vw 0vw
         width: 43vw
@@ -296,7 +306,7 @@
         margin: 0
 
     .home_card_button_div
-        padding: 0 1.5vw
+        padding: 0 // 1.5vw
         margin: 0
 
     .home_card_button_div2
@@ -307,6 +317,11 @@
         padding: 0
         margin: 0
         
+    // dashboard & dashboard post cards
+    .home_dashboard
+        width: 95%
+        height: 230vw
+        margin: 2vw auto 0
 
     .dashboard_cards
         margin: 1.5vw 0vw
@@ -324,6 +339,7 @@
     .dashboard_cards button 
         font-size: 2vw
 
+    // dashboard post cards position
     .home_cards_div1
         display: flex
         flex-direction: row

@@ -1,14 +1,13 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains function that tells user to login first
-and prevents from user to access certian pages without logging in
-*/
+and prevents from user to access certian pages without logging in */
 
 import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -32,7 +31,6 @@ const FlamingoEditButton = styled(Button)({
 // provides button that redirects to login page
 export default function NotLoggedIn() {
     const router = useRouter();
-
     return (
         <div className="no_session">
             <div className="user_backcolor"></div>

@@ -1,10 +1,8 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains a card function that can be used to display each card
 displays a post information including name, image, location, date, time
 when the image is clicked, redirects to detail page with post id
-when 'contact' button is click, displays contact information with popup
-*/
+when 'contact' button is click, displays contact information with popup */
 
 import React from 'react';
 import Card from '@mui/material/Card';
@@ -15,6 +13,7 @@ import { Button, CardActionArea, CardActions, createTheme } from '@mui/material'
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -65,7 +64,7 @@ export default function PostCard(props) {
                         <div className="home_card_button_div">
                         <Button size="small" className="home_card_button" {...bindTrigger(popupState)}
                         sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                        color: "#505f5f", marginLeft: "0.5rem", marginTop: "0.5rem", height: "1.5rem" }}>
+                        color: "#505f5f", marginLeft: "0.5rem", marginTop: "0.5rem", height: "1.5rem"}}>
                             Contact
                         </Button>
                         <Popover
@@ -81,7 +80,7 @@ export default function PostCard(props) {
                         >
                             <Typography sx={{ p: 2 }}>
                                 Contact Info <br />
-                                PhoneNum: {props.phoneNum ? `${props.phoneNum}` : "N/A"} <br />
+                                PhoneNum: {props.phoneNum ? `${props.phoneNum}` : "911"} <br />
                                 Email: {props.email ? `${props.email}` : "N/A"}
                             </Typography>
                         </Popover>

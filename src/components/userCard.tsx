@@ -1,8 +1,6 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains post card function for user page
-which includes post data name, image, edit or delete button
-*/
+which includes post data name, image, edit or delete button */
 
 import React from 'react';
 import Card from '@mui/material/Card';
@@ -11,6 +9,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -66,8 +65,7 @@ export default function UserPostCard(props) {
                     <CardMedia className="user_card_media"
                         component="img"
                         image={props.image}
-                        alt="missing pet/person image"
-                    />
+                        alt="missing pet/person image"/>
                 </CardActionArea>
                 <CardActions className="user_card_buttons">
                     <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit"

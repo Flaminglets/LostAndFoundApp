@@ -1,7 +1,5 @@
-/*
-By Yoonseo @Flaminglets
-this page displays posts that includes the word that user wants to search
-*/
+/* By Yoonseo @Flaminglets
+this page displays posts that includes the word that user wants to search */
 
 import {useState, useEffect} from 'react';
 import Footer from '../../components/footer';
@@ -24,7 +22,6 @@ export default function Posts({props}) {
             setPosts({posts: data});
         }
     }, [currentPage]);
-
     function onChangePage($event, page) {
         setCurrentPage(page);
     }
@@ -35,7 +32,6 @@ export default function Posts({props}) {
         const anchor = (event.target.ownerDocument || document).querySelector(
             "#top",
         );
-    
         if (anchor) {
             anchor.scrollIntoView({
                 behavior: "smooth",
@@ -146,7 +142,6 @@ Posts.getInitialProps = async (ctx) => {
             };
         }
     )
-
     const search = query.search
 
     return {
@@ -155,5 +150,4 @@ Posts.getInitialProps = async (ctx) => {
             search
         }
     }
-    
 }

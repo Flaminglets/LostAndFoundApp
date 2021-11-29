@@ -1,5 +1,4 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains header function that is used in all pages
 Contained button elements:
  - Logo: redirect to home page
@@ -13,8 +12,7 @@ Contained button elements:
  - logout: logout button and redirects to homepage when user has logged out
     when mobile size window
  - hamburger nav drawer
- - bottom nav: includes 'home', 'user', 'newpost' buttons
-*/
+ - bottom nav: includes 'home', 'user', 'newpost' buttons */
 
 import React from 'react';
 import { useRouter } from 'next/router'
@@ -162,8 +160,7 @@ export default function Header () {
                         <Drawer className="header_drawer_container"
                         anchor="left"
                         open={state["left"]}
-                        onClose={toggleDrawer("left", false)}
-                        >
+                        onClose={toggleDrawer("left", false)}>
                         {list()}
                         </Drawer>
                     </React.Fragment>
@@ -174,11 +171,10 @@ export default function Header () {
                     <div className="header_logo_div">
                         <a className="header_logo" href="/">Lost and Found</a>
                     </div>
-
                     <div className="header_nav_wrapper">
                         <ul className="header_nav">
                             <li className="header_list"><a className="header_logout_button header_button" href='/posts/pet'>Pets</a></li>
-                            <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                            <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}} sx={{height: "1rem"}}/>
                             <li className="header_list"><a className="header_logout_button header_button" href='/posts/person'>People</a></li>
                         </ul>
                     </div>
@@ -197,9 +193,7 @@ export default function Header () {
                                 inputProps={{ 'aria-label': 'search' }}
                                 value={search}
                                 onChange={handleSearch}
-                                onKeyDown={handleFinalSearch}
-                            />
-                            
+                                onKeyDown={handleFinalSearch}/>
                         </Search>
                     </div>
                     <div className="header_search_mobile">
@@ -222,10 +216,10 @@ export default function Header () {
                             <div className="header_user">
                                 <ul>
                                     <li className="header_list"><Link href="/newpost">New Post</Link></li>
-                                    <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}} sx={{height: "1rem", marginTop: "0.3rem"}}/>
                                     {/* <li className="header_list"><a href={`/user/${session.id}`}>User</a></li>   */}
                                     <li className="header_list"><Link href="/user">User</Link></li> 
-                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}} sx={{height: "1rem", marginTop: "0.3rem"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>
                             </div>
