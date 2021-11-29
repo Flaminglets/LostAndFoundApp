@@ -39,6 +39,11 @@ const FlamingoFoundButton = styled(Button)({
 // @params: a post data of one of the user's posts
 // @return: post card for user page
 export default function UserPostCard(props) {
+    // redirects to detail page of the post
+    const handleCardClick = () => {
+        location.href = `/detailpage/${props.id}`;
+    }
+
     // redirect to update post page with post id
     const handleEditClick = () => {
         location.href = `/updatepost/${props.id}`;
@@ -54,7 +59,7 @@ export default function UserPostCard(props) {
         <div key={props.id}>
             <Card className="user_cards" elevation={5}
             sx={{ padding: "0.5rem"}}>
-                <CardActionArea>
+                <CardActionArea onClick={handleCardClick}>
                     <p className="user_card_title">
                         {props.lostFname} {props.lostLname}
                     </p>

@@ -14,7 +14,7 @@ const theme = createTheme({
         values: {
             xs: 0,
             sm: 700,
-            md: 900,
+            md: 1024,
             lg: 1200,
             xl: 1536,
         },
@@ -60,6 +60,9 @@ export default function PopUp(props) {
                                 component="img"
                                 image={props.image}
                                 alt="missing pet/person image"
+                                sx={{[theme.breakpoints.down('sm')]: {width: "55vw", height: "45vw"}, 
+                                [theme.breakpoints.down('md')]: {width: "39vw", height: "31vw", borderRadius: "5px"},
+                                width: "25rem", height: "20rem", borderRadius: "5px"}}
                             />
                         </div>
                         <div className="lp_elements">
