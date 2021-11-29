@@ -13,6 +13,7 @@ import UserPostCard from '../components/userCard';
 import Divider from '@mui/material/Divider';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { createTheme } from '@mui/material';
+import { getPostByUserID } from '../../lib/backend/database'
 
 const theme = createTheme({
     breakpoints: {
@@ -44,75 +45,75 @@ export default function UserPage(props) {
         <div>
             {!session && (
                 <>
-                <NotLoggedIn/>
+                    <NotLoggedIn />
                 </>
             )}
             {session && (
                 <>
-                <div className="user_div">
-                    <div className="user_backcolor"></div>
-                    <div className="user_profile">
+                    <div className="user_div">
+                        <div className="user_backcolor"></div>
+                        <div className="user_profile">
 
-                        <div className="user_image_div">
-                            {session.image != '' && (
-                                <>
-                                <img src={session.image.toString()} className="user_image"/>
-                                </>
-                            )}
-                            {session.image == null && (
-                                <>
-                                <AccountCircleRoundedIcon className="user_image"/>
-                                </>
-                            )}
-                        </div>
-                        <div className="user_profile_info">
-                            <p>User ID: {session.name}</p>
-                            <p>Email: {session.email}</p>
-                        </div>
-                        <div className="user_edit_button">
-                            {/* function to edit user can be added later */}
-                            {/* <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
+                            <div className="user_image_div">
+                                {session.image != '' && (
+                                    <>
+                                        <img src={session.image.toString()} className="user_image" />
+                                    </>
+                                )}
+                                {session.image == null && (
+                                    <>
+                                        <AccountCircleRoundedIcon className="user_image" />
+                                    </>
+                                )}
+                            </div>
+                            <div className="user_profile_info">
+                                <p>User ID: {session.name}</p>
+                                <p>Email: {session.email}</p>
+                            </div>
+                            <div className="user_edit_button">
+                                {/* function to edit user can be added later */}
+                                {/* <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit">
                             Edit
                             </FlamingoEditButton> */}
+                            </div>
+                        </div>
+                        <Divider variant="middle" flexItem className="user_divider" style={{ fill: "white" }}
+                            sx={{ [theme.breakpoints.down('sm')]: { width: "94vw" }, [theme.breakpoints.down('md')]: { width: "90vw" }, background: "white", margin: "auto", width: "65rem", height: "0.08rem" }} />
+                        <div className="user_content">
+                            {
+                                props.posts.reverse().map(
+                                    (post) => {
+                                        return (
+                                            <UserPostCard
+                                                id={post.id}
+                                                type={post.type}
+                                                date={post.date}
+                                                time={post.time}
+                                                location={post.location}
+                                                lostFname={post.lostFname}
+                                                lostLname={post.lostLname}
+                                                gender={post.gender}
+                                                otherGender={post.otherGender}
+                                                age={post.age}
+                                                weight={post.weight}
+                                                height={post.height}
+                                                eyecolor={post.eyecolor}
+                                                additional={post.additional}
+                                                image={post.image}
+                                                userFname={post.userFname}
+                                                userLname={post.userLname}
+                                                phoneNum={post.phoneNum}
+                                                email={post.email}
+                                            />
+                                        )
+                                    }
+                                )
+                            }
                         </div>
                     </div>
-                    <Divider variant="middle" flexItem className="user_divider" style={{fill: "white"}}
-                    sx={{[theme.breakpoints.down('sm')]: {width: "94vw"}, [theme.breakpoints.down('md')]: {width: "90vw"}, background: "white", margin: "auto", width: "65rem", height: "0.08rem"}}/>
-                    <div className="user_content">
-                        {
-                            props.posts.reverse().map(
-                                (post) => {
-                                    return (
-                                        <UserPostCard 
-                                            id={post.id}
-                                            type={post.type}
-                                            date={post.date}
-                                            time={post.time}
-                                            location={post.location}
-                                            lostFname={post.lostFname}
-                                            lostLname={post.lostLname}
-                                            gender={post.gender}
-                                            otherGender={post.otherGender}
-                                            age={post.age}
-                                            weight={post.weight}
-                                            height={post.height}
-                                            eyecolor={post.eyecolor}
-                                            additional={post.additional}
-                                            image={post.image}
-                                            userFname={post.userFname}
-                                            userLname={post.userLname}
-                                            phoneNum={post.phoneNum}
-                                            email={post.email}
-                                        />  
-                                    )
-                                }
-                            )
-                        }
-                    </div>
-                </div>
                 </>
             )}
-            <Footer/>
+            <Footer />
         </div>
     )
 }
@@ -122,19 +123,18 @@ export default function UserPage(props) {
 // @return: list of posts data from user
 export async function getServerSideProps(ctx) {
     const { req } = ctx;
-    const session = await getSession({req});
+    const session = await getSession({ req });
     if (!session) {
         return {
-            props : {
+            props: {
                 posts: null,
                 session: null
             }
         }
     }
     else if (session) {
-        const response = await fetch(`/api/user/` + session.id);
-        const postdata = await response.json()
-
+        const postdata = await getPostByUserID(session.id);
+        
         const posts = postdata.map(
             (post) => {
                 return {
@@ -162,7 +162,7 @@ export async function getServerSideProps(ctx) {
         )
 
         return {
-            props : {
+            props: {
                 posts,
                 session
             }

@@ -37,7 +37,7 @@ export default function UpdatePost(props) {
     // submit the updated data to the database
     // this is called in lastPage
     const handleFinalClick = async () => {
-        const host = window.location.host;
+        
         const postID = props.id
         const newData = {
             type: data.type,
