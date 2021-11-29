@@ -1,4 +1,4 @@
-/* By Yoonseo, Harman @Flaminglets
+/* By Harman, Yoonseo @Flaminglets
 this file contains function to display detial information of one post */
 
 import PrintIcon from '@mui/icons-material/Print';
