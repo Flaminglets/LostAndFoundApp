@@ -23,7 +23,7 @@ export default NextAuth({
   ],
 
   pages: {
-    signIn: "/loginregister",
+    signIn: 'auth/loginregister',
   },
 
   callbacks: {

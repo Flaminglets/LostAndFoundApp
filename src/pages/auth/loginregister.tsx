@@ -6,7 +6,7 @@ import { getProviders, signIn, getSession, getCsrfToken } from "next-auth/client
 // The providers are mapped based of [...nextauth].js content.
 // Only Google and Facebook is provided as a login method.
 
-export default function LoginRegister({ providers, csrfToken }) {
+export default function LoginRegister({ providers }) {
     const [event] = useState("");
 
     return (
@@ -15,11 +15,15 @@ export default function LoginRegister({ providers, csrfToken }) {
                 <div className="form-container sign-in-container">
                     <form className="login-signup-form">
                         <h1 className="h1-title">Login/Register</h1>
-                        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         {Object.values(providers).map((provider: any) => {
                             return (
                                 <div key={provider.name}>
-                                    <button className="provider-button" onClick={() => signIn(provider.id)}>
+                                    <button className="provider-button" onClick={
+                                        () => {
+                                            signIn(provider.id)
+                                            console.log(provider.id)
+                                        }
+                                    }>
                                         Sign in with {provider.name}
                                     </button>
                                 </div>
@@ -38,24 +42,31 @@ export default function LoginRegister({ providers, csrfToken }) {
 };
 
 
-// Get the initial props of LoginRegister based on the context.
+// Get the LoginRegister based on the context.
 // @params context, context provides the props with a request or response
 // @return an undefined session, and a Promise for providers and csrftoken
-LoginRegister.getInitialProps = async (context) => {
+export async function getServerSideProps(context) {
     const { req, res } = context;
     const session = await getSession({ req });
+    const providers = await getProviders();
+    const csrfToken = await getCsrfToken(context);
+
+    console.log("providers", providers);
+    console.log("csrfToken", csrfToken);
 
     if (session && res) {
         res.writeHead(302, {
             Location: "/",
         });
         res.end();
-        return;
+        // return;
     }
 
     return {
-        session: undefined,
-        providers: await getProviders(),
-        csrfToken: await getCsrfToken(context),
+        props: {
+            providers,
+            csrfToken,
+            session: null,
+        }
     };
 };
