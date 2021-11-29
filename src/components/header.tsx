@@ -121,8 +121,8 @@ export default function Header () {
             {!session && (
                 <>
                 <ul className="header_drawer_list">
-                    <li><Link href="/loginregister">Log In</Link></li>
-                    <li><Link href="/loginregister">Register</Link></li>
+                    <li><Link href="/auth/loginregister">Log In</Link></li>
+                    <li><Link href="/auth/loginregister">Register</Link></li>
                 </ul>
                 </>
             )}
@@ -211,7 +211,7 @@ export default function Header () {
                         <>
                             <div className="header_user">
                                 <ul>
-                                    <li className="header_list"><Link href="auth/loginregister">Log In / Register</Link></li>
+                                    <li className="header_list"><Link href="/auth/loginregister">Log In / Register</Link></li>
                                 </ul>
                             </div>
                         </>
