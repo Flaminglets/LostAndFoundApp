@@ -6,27 +6,39 @@ otherwise, it displays user info (image, userid, email), and posts that user cre
 */
 
 import React from "react";
-import { useSession } from 'next-auth/client';
-import Footer from '../../components/footer';
-import NotLoggedIn from '../../components/notLoggedIn';
-import UserPostCard from '../../components/userCard';
+import { getSession } from 'next-auth/client';
+import Footer from '../components/footer';
+import NotLoggedIn from '../components/notLoggedIn';
+import UserPostCard from '../components/userCard';
 import Divider from '@mui/material/Divider';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import { createTheme } from '@mui/material';
 
-// these are for later use for user edit button
-// import { Button } from '@mui/material';
-// import { styled } from '@mui/material/styles';
-// const FlamingoEditButton = styled(Button)({
-//     "&:hover": {
-//         backgroundColor: "#B0B7AB"
-//     },
-// })
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 730,
+            md: 1050,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
+
+// ** these are for later use for user edit button
+/* import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+const FlamingoEditButton = styled(Button)({
+    "&:hover": {
+        backgroundColor: "#B0B7AB"
+    },
+}) */
 
 // @params: posts that the user created
 // @return: NotLoggedIn when no session, User page with UserPostCard function from userCard file, and pass the posts data, and Footer
 export default function UserPage(props) {
-    const [session] = useSession();
-    props = props.props
+    const session = props.session
 
     return (
         <div>
@@ -64,7 +76,8 @@ export default function UserPage(props) {
                             </FlamingoEditButton> */}
                         </div>
                     </div>
-                    <Divider variant="middle" flexItem className="user_divider" style={{fill: "white"}}/>
+                    <Divider variant="middle" flexItem className="user_divider" style={{fill: "white"}}
+                    sx={{[theme.breakpoints.down('sm')]: {width: "94vw"}, [theme.breakpoints.down('md')]: {width: "90vw"}, background: "white", margin: "auto", width: "65rem", height: "0.08rem"}}/>
                     <div className="user_content">
                         {
                             props.posts.reverse().map(
@@ -106,42 +119,53 @@ export default function UserPage(props) {
 
 // getting posts of user in session created
 // @params: user id
-// @ return: list of posts data from user
-UserPage.getInitialProps = async (ctx) => {
-    const {query} = ctx;
-
-    const response = await fetch(`${process.env.PUBLIC_URL}/api/user/` + query.user);
-    const postdata = await response.json()
-
-    const posts = postdata.map(
-        (post) => {
-            return {
-                id: post._id,
-                type: post.type || null,
-                date: post.date || null,
-                time: post.time || null,
-                location: post.location || null,
-                lostFname: post.lostFname || null,
-                lostLname: post.lostLname || null,
-                gender: post.gender || null,
-                otherGender: post.otherGender || null,
-                age: post.age || null,
-                weight: post.weight || null,
-                height: post.height || null,
-                eyecolor: post.eyecolor || null,
-                additional: post.additional || null,
-                image: post.image || null,
-                userFname: post.userFname || null,
-                userLname: post.userLname || null,
-                phoneNum: post.phoneNum || null,
-                email: post.email || null
-            };
+// @return: list of posts data from user
+export async function getServerSideProps(ctx) {
+    const { req } = ctx;
+    const session = await getSession({req});
+    if (!session) {
+        return {
+            props : {
+                posts: null,
+                session: null
+            }
         }
-    )
+    }
+    else if (session) {
+        const response = await fetch(`${process.env.PUBLIC_URL}/api/user/` + session.id);
+        const postdata = await response.json()
 
-    return {
-        props : {
-            posts
+        const posts = postdata.map(
+            (post) => {
+                return {
+                    id: post._id,
+                    type: post.type || null,
+                    date: post.date || null,
+                    time: post.time || null,
+                    location: post.location || null,
+                    lostFname: post.lostFname || null,
+                    lostLname: post.lostLname || null,
+                    gender: post.gender || null,
+                    otherGender: post.otherGender || null,
+                    age: post.age || null,
+                    weight: post.weight || null,
+                    height: post.height || null,
+                    eyecolor: post.eyecolor || null,
+                    additional: post.additional || null,
+                    image: post.image || null,
+                    userFname: post.userFname || null,
+                    userLname: post.userLname || null,
+                    phoneNum: post.phoneNum || null,
+                    email: post.email || null
+                };
+            }
+        )
+
+        return {
+            props : {
+                posts,
+                session
+            }
         }
     }
 }

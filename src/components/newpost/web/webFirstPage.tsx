@@ -16,6 +16,19 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 1024,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 // button style
 const FlamingoNextButton = styled(Button)({
@@ -138,6 +151,7 @@ export default function WebFirstPage(props) {
                 value={type}
                 error={!!typeError}
                 helperText={typeError}
+                sx={{margin: "0.5rem 0"}}
             >
                 <MenuItem value="pet">Pet</MenuItem>
                 <MenuItem value="person">Person</MenuItem>
@@ -157,6 +171,7 @@ export default function WebFirstPage(props) {
                     value={date}
                     error={!!dateError}
                     helperText={dateError}
+                    sx={{margin: "0.5rem 0"}}
                 />
                 <TextField
                     required
@@ -171,6 +186,7 @@ export default function WebFirstPage(props) {
                     value={time}
                     error={!!timeError}
                     helperText={timeError}
+                    sx={{margin: "0.5rem 0"}}
                 />
             </div>
             <p className="newpost_form_label">Where have you lost pet/person?</p>
@@ -187,6 +203,7 @@ export default function WebFirstPage(props) {
                 value={location}
                 error={!!locationError}
                 helperText={locationError}
+                sx={{margin: "0.5rem 0"}}
             />
             <p className="newpost_form_label">Lost pet/person information</p>
             <TextField
@@ -202,6 +219,7 @@ export default function WebFirstPage(props) {
                 value={lostFname}
                 error={!!lostFnameError}
                 helperText={lostFnameError}
+                sx={{margin: "0.5rem 0"}}
             />
             <TextField
                 required
@@ -216,6 +234,7 @@ export default function WebFirstPage(props) {
                 value={lostLname}
                 error={!!lostLnameError}
                 helperText={lostLnameError}
+                sx={{margin: "0.5rem 0"}}
             />
             <div className="newpost_form_lostinfo">
                 <TextField
@@ -231,6 +250,7 @@ export default function WebFirstPage(props) {
                     value={gender}
                     error={!!genderError}
                     helperText={genderError}
+                    sx={{margin: "0.5rem 0"}}
                 >
                     <MenuItem value="male">Male</MenuItem>
                     <MenuItem value="female">Female</MenuItem>
@@ -251,6 +271,7 @@ export default function WebFirstPage(props) {
                     value={age}
                     error={!!ageError}
                     helperText={ageError}
+                    sx={{margin: "0.5rem 0"}}
                 />
                 <TextField
                     required
@@ -272,6 +293,7 @@ export default function WebFirstPage(props) {
                     value={weight}
                     error={!!weightError}
                     helperText={weightError}
+                    sx={{margin: "0.5rem 0"}}
                 />
                 <TextField
                     required
@@ -293,6 +315,7 @@ export default function WebFirstPage(props) {
                     value={height}
                     error={!!heightError}
                     helperText={heightError}
+                    sx={{margin: "0.5rem 0"}}
                 />
                 <TextField
                     required
@@ -307,6 +330,7 @@ export default function WebFirstPage(props) {
                     value={eyecolor}
                     error={!!eyecolorError}
                     helperText={eyecolorError}
+                    sx={{margin: "0.5rem 0"}}
                 />
             </div>
             {gender == "other" && (
@@ -323,6 +347,7 @@ export default function WebFirstPage(props) {
                     value={otherGender}
                     error={!!genderError}
                     helperText={genderError}
+                    sx={{margin: "0.5rem 0"}}
                 />
             )}
             <TextField
@@ -337,6 +362,7 @@ export default function WebFirstPage(props) {
                 inputProps={{ maxLength:  500}}
                 onChange={handleSetAdditional}
                 value={additional}
+                sx={{margin: "0.5rem 0"}}
             />
             <p className="newpost_form_label">Uplouad a most recent photo of the missing pet/person</p>
             <div className="newpost_form_image">
@@ -356,12 +382,16 @@ export default function WebFirstPage(props) {
                             component="img"
                             image={props.image}
                             alt="missing pet/person image"
+                            sx={{width: "13rem", height: "10rem"}}
                         />
                     </div>
                 )}
             </div>
             <div className="newpost_buttons">
-                <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handleNextClick} className="newpost_button_next"
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw", width: "40vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                [theme.breakpoints.down('md')]: {margin: "1.5vw 0 1.5vw 1.5vw"},
+                backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Next
                 </FlamingoNextButton>
             </div>

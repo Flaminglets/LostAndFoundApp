@@ -6,7 +6,6 @@ and update the post data in the database
 */
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import FirstPage from '../newpost/mobile/mobileFirstPage';
 import SecondPage from '../newpost/mobile/mobileSecondPage';
@@ -16,14 +15,13 @@ import FifthPage from '../newpost/mobile/mobileFifthPage';
 import SixthPage from '../newpost/mobile/mobileSixthPage';
 import WebFirstPage from '../newpost/web/webFirstPage';
 import WebSecondPage from '../newpost/web/webSecondPage';
-import LastPage from './lastPage';
+import LastPage from '../newpost/lastPage';
 
 // @params: a post data that user selected to update
 // @return: update post page with pages functions
 // handle updating data
 export default function UpdatePost(props) {
     const [session] = useSession();
-    const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState(props);
 
@@ -75,9 +73,9 @@ export default function UpdatePost(props) {
             body: body
         };
 
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
+        const response = await fetch(`https://lost-and-found-app-flaminglets.vercel.app/api/post`, requestOptions);
         const json = await response.json();
-        router.push(`/user/${session.id}`);
+        location.href = "/user";
     }
 
     return(

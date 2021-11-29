@@ -21,7 +21,6 @@ export default function LoginRegister({ providers }) {
                                     <button className="provider-button" onClick={
                                         () => {
                                             signIn(provider.id)
-                                            console.log(provider.id)
                                         }
                                     }>
                                         Sign in with {provider.name}
@@ -50,9 +49,6 @@ export async function getServerSideProps(context) {
     const session = await getSession({ req });
     const providers = await getProviders();
     const csrfToken = await getCsrfToken(context);
-
-    console.log("providers", providers);
-    console.log("csrfToken", csrfToken);
 
     if (session && res) {
         res.writeHead(302, {

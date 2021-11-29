@@ -7,12 +7,24 @@ import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 // @params: the post data that user clicked
 // @return: displays all the data, print this page, copy link of this page
 export default function PopUp(props) {
     const share = () => {
-        console.log(window.location.href);
         var toCopy = window.location.href;
         navigator.clipboard.writeText(toCopy);
         
@@ -25,7 +37,6 @@ export default function PopUp(props) {
         window.print();
         document.body.innerHTML = originalContent;
     }
-    console.log(props.data);
     props = props.data
     return (
         <div  >
@@ -59,7 +70,8 @@ export default function PopUp(props) {
                                 <p>Height: <strong>{props.height ? `${props.height}` : "N/A"} cm</strong></p>
                                 <p>Eye color: <strong>{props.eyecolor ? `${props.eyecolor}` : "N/A"}</strong></p>
                             </div>
-                            <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}/>
+                            <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}
+                            sx={{[theme.breakpoints.down('sm')]: {width: "0.7vw", marginRight: "2vw"}}}/>
                             <div className="lp_element_right">
                                 <p>Last seen</p>
                                 <p>- Location: <strong>{props.location ? `${props.location}` : "N/A"}</strong></p>

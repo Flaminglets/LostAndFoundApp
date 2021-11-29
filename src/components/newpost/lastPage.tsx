@@ -10,6 +10,19 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 1024,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 // button style
 const FlamingoNextButton = styled(Button)({
@@ -59,7 +72,8 @@ export default function LastPage(props) {
                         <p>Height: <strong>{props.height} kg</strong></p>
                         <p>Eye color: <strong>{props.eyecolor}</strong></p>
                     </div>
-                    <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}/>
+                    <Divider orientation="vertical" variant="middle" flexItem className="lp_divider" style={{fill: "black"}}
+                    sx={{[theme.breakpoints.down('sm')]: {width: "0.7vw", marginRight: "2vw"}}}/>
                     <div className="lp_element_right">
                         <p>Last seen</p>
                         <p>- Location: <strong>{props.location}</strong></p>
@@ -79,10 +93,16 @@ export default function LastPage(props) {
             </div>
             
             <div className="newpost_buttons">
-                <FlamingoNextButton variant="contained" onClick={handleSubmitPrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handleSubmitPrevClick} className="newpost_button_next"
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw", width: "40vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                [theme.breakpoints.down('md')]: {margin: "1.5vw 0 1.5vw 1.5vw"},
+                backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Previous
                 </FlamingoNextButton>
-                <FlamingoSubmitButton variant="contained" onClick={handleFinalClick} className="newpost_button_next newpost_button_submit">
+                <FlamingoSubmitButton variant="contained" onClick={handleFinalClick} className="newpost_button_next newpost_button_submit"
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw", width: "40vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                [theme.breakpoints.down('md')]: {margin: "1.5vw 0 1.5vw 1.5vw"},
+                backgroundColor: "#5F7470", margin: "1rem 0 1rem 1rem", color:"white", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Submit
                 </FlamingoSubmitButton>
             </div>
