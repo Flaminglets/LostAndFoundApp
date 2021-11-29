@@ -61,7 +61,7 @@ export default function DeletePost(props) {
             body: body
         };
 
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
+        const response = await fetch("/api/post", requestOptions);
         location.href = "/user";
     }
 
