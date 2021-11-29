@@ -131,7 +131,7 @@ export default function Header () {
                 <ul className="header_drawer_list">
                     <li><Link href="/newpost">New Post</Link></li>
                     <li><Link href={`/user/${session.id}`}>User</Link></li>
-                    <li><button className="header_logout_button header_button logout_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></li>
+                    <li><button className="header_logout_button header_button logout_button" onClick={() => signOut()}>Logout</button></li>
                 </ul>
                 </>
             )}
@@ -225,7 +225,7 @@ export default function Header () {
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
                                     <li className="header_list"><Link href={`/user/${session.id}`}>User</Link></li>  
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
-                                    <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
+                                    <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut();}}>Logout</button></Link></li>
                                 </ul>
                             </div>
                         </>

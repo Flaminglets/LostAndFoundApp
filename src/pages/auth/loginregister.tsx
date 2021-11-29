@@ -54,6 +54,7 @@ export async function getServerSideProps(context) {
     
     console.log("providers",providers);
     console.log("csrfToken",csrfToken);
+    
     if (session && res) {
         res.writeHead(302, {
             Location: "/",
