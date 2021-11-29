@@ -1,4 +1,4 @@
-/* By Yoonseo, Sarina @Flaminglets
+/* By Abbe, Harman, Yoonseo, Sarina @Flaminglets
 this file contains first page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes
  (type, date(lastSeen), time(lastSeen), location(lastSeen), 
@@ -97,17 +97,45 @@ export default function WebFirstPage(props) {
         };
     };
 
+
     // validat input & go to next page
     const handleNextClick = () => {
+        // resource: https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+
+        var newdate = year + "-" + month + "-" + day;
+
+        var date_year = parseInt(date.substr(0, 4));
+        var date_month = parseInt(date.substr(5,2));
+        var date_day = parseInt(date.substr(8));
+
+        
         if(type == "") { setTypeError("Please select type"); }
         else if(date == "2021-01-01") {setDateError("Please select date"); }
+        else if(date_year > year ) {setDateError("Invalid year selected"); }
+        else if(date_year <= year ){
+            if(date_month > month) {
+                setDateError("Invalid month selected")
+            }
+        }
+        else if(date_year < year) {
+            if(date_month < month) {
+                if(date_day > day) {
+                    setDateError("Invalid day selected")
+                }
+            }
+        }
         else if(time == "00:00") { setTimeError("Please select time"); }
         else if(location == "") { setLocationError("Please enter location"); }
         else if(lostFname == "") { setLostFnameError("Please enter first name"); }
         else if(lostLname == "") { setLostLnameError("Please enter last name"); }
         else if(gender == "") { setGenderError("Please select gender"); }
         else if(age == "") { setAgeError("Please enter age"); }
-        else if(parseInt(age) <= 0) { setAgeError("Please enter proper age"); }
+        else if(parseInt(age) < 0) { setAgeError("Please enter proper age"); }
+        else if(parseInt(age) % 1 > 0) {setAgeError("Invalid age selected");}
         else if(weight == "") { setWeightError("Please enter weight"); }
         else if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
         else if(height == "") { setHeightError("Please enter height"); }
@@ -116,19 +144,35 @@ export default function WebFirstPage(props) {
 
         if (type != "" && 
         date != "2021-01-01" && 
+        date_year < year &&
         time != "00:00" && 
         location != "" &&
         lostFname != "" &&
         lostLname != "" &&
         gender != "" &&
         age != "" && 
+        parseInt(age) % 1 === 0 &&
         parseInt(age) > 0 &&
         weight != "" && 
         parseInt(weight) > 0 &&
         height != "" && 
         parseInt(height) > 0 &&
         eyecolor != "") {
-            props.handleNextClick();
+            // date_year is year inputted by user
+            // year is todays current year
+            if (date_year <= year) {
+                console.log("year is fine")
+                if (date_month <= month) {
+                    console.log("month is fine")
+                    
+                }
+                if (date_day <= day) {
+                    console.log("month is fine")
+                    props.handleNextClick();
+                } else {
+                    setDateError("Error.");
+                }
+            }
         }
         
     };
@@ -246,6 +290,7 @@ export default function WebFirstPage(props) {
                     color="success"
                     className="newpost_form_element newpost_form_lostinfo_element"
                     onChange={handleSetGender}
+                    inputProps={{ maxLength:  30}}
                     value={gender}
                     error={!!genderError}
                     helperText={genderError}
@@ -265,7 +310,7 @@ export default function WebFirstPage(props) {
                     color="success"
                     type="number"
                     className="newpost_form_element newpost_form_lostinfo_element"
-                    InputProps={{ inputProps: { min: 0, max: 120 } }}
+                    InputProps={{ inputProps: { min: 0, max: 130 } }}
                     onChange={handleSetAge}
                     value={age}
                     error={!!ageError}
@@ -286,7 +331,7 @@ export default function WebFirstPage(props) {
                             <InputAdornment position="start">kg
                             </InputAdornment>
                         ),
-                        inputProps: { min: 0, max: 300 }
+                        inputProps: { min: 0, max: 450 }
                     }}
                     onChange={handleSetWeight}
                     value={weight}
@@ -308,7 +353,7 @@ export default function WebFirstPage(props) {
                             <InputAdornment position="start">cm
                             </InputAdornment>
                         ),
-                        inputProps: { min: 0, max: 300 }
+                        inputProps: { min: 0, max: 230 }
                     }}
                     onChange={handleSetHeight}
                     value={height}
