@@ -32,7 +32,7 @@ export default function DeletePost(props) {
 
     // redirect to user page
     const handleCancelClick = () => {
-        router.push(`/user/${session.id}`);
+        location.href = "/user";
     }
 
     // deletes the post and redirect to user page
@@ -49,7 +49,7 @@ export default function DeletePost(props) {
         };
 
         const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
-        router.push(`/user/${session.id}`);
+        location.href = "/user";
     }
 
     return (

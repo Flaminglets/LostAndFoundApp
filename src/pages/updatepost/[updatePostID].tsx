@@ -19,36 +19,27 @@ export default function UpdatePostPage({props}) {
 
     return (
         <div>
-            {!session && (
-                <>
-                <NotLoggedIn/>
-                </>
-            )}
-            {session && (
-                <>
-                <UpdatePost
-                    id={props.post.id}
-                    type={props.post.type}
-                    date={props.post.date}
-                    time={props.post.time}
-                    location={props.post.location}
-                    lostFname={props.post.lostFname}
-                    lostLname={props.post.lostLname}
-                    gender={props.post.gender}
-                    otherGender={props.post.otherGender}
-                    age={props.post.age}
-                    weight={props.post.weight}
-                    height={props.post.height}
-                    eyecolor={props.post.eyecolor}
-                    additional={props.post.additional}
-                    image={props.post.image}
-                    userFname={props.post.userFname}
-                    userLname={props.post.userLname}
-                    phoneNum={props.post.phoneNum}
-                    email={props.post.email}
-                />
-                </>
-            )}
+            <UpdatePost
+                id={props.post.id}
+                type={props.post.type}
+                date={props.post.date}
+                time={props.post.time}
+                location={props.post.location}
+                lostFname={props.post.lostFname}
+                lostLname={props.post.lostLname}
+                gender={props.post.gender}
+                otherGender={props.post.otherGender}
+                age={props.post.age}
+                weight={props.post.weight}
+                height={props.post.height}
+                eyecolor={props.post.eyecolor}
+                additional={props.post.additional}
+                image={props.post.image}
+                userFname={props.post.userFname}
+                userLname={props.post.userLname}
+                phoneNum={props.post.phoneNum}
+                email={props.post.email}
+            />
             <Footer/>
         </div>
     )

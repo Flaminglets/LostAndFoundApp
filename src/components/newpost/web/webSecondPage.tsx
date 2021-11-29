@@ -11,6 +11,19 @@ import {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 1024,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
@@ -77,6 +90,7 @@ export default function WebSecondPage(props) {
                 value={userFname}
                 error={!!userFnameError}
                 helperText={userFnameError}
+                sx={{margin: "0.5rem 0"}}
             />
             <TextField
                 name="userLname"
@@ -90,6 +104,7 @@ export default function WebSecondPage(props) {
                 value={userLname}
                 error={!!userLnameError}
                 helperText={userLnameError}
+                sx={{margin: "0.5rem 0"}}
             />
             <TextField
                 required
@@ -98,13 +113,13 @@ export default function WebSecondPage(props) {
                 label="Phone Number"
                 variant="filled"
                 color="success"
-                // type="tel"
                 className="newpost_form_element"
                 inputProps={{ minLength: 10, maxLength: 12, }}
                 onChange={handleSetPhoneNum}
                 value={phoneNum}
                 error={!!phoneNumError}
                 helperText={phoneNumError}
+                sx={{margin: "0.5rem 0"}}
             />
             <TextField
                 required
@@ -120,12 +135,19 @@ export default function WebSecondPage(props) {
                 value={email}
                 error={!!emailError}
                 helperText={emailError}
+                sx={{margin: "0.5rem 0"}}
             />
             <div className="newpost_buttons">
-                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next">
+                <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next"
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw", width: "40vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                [theme.breakpoints.down('md')]: {margin: "1.5vw 0 1.5vw 1.5vw"},
+                backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Previous
                 </FlamingoNextButton>
-                <FlamingoSubmitButton type="submit" variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit">
+                <FlamingoSubmitButton type="submit" variant="contained" color="success" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit"
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw", width: "40vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                [theme.breakpoints.down('md')]: {margin: "1.5vw 0 1.5vw 1.5vw"},
+                backgroundColor: "#5F7470", margin: "1rem 0 1rem 1rem", color:"white", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Finish
                 </FlamingoSubmitButton>
             </div>

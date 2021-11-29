@@ -13,6 +13,19 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 // @params: all the posts data from database
 // @return: displays most recent posts on dashboard
@@ -28,22 +41,27 @@ export default function Homepage(props) {
                     {props.posts.length > 0 && (
                         <>
                         <div className="home_cards_div1">
-                            <Card className="dashboard_cards card_1" elevation={5}>
-                                <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[0].id}`)}>
-                                    <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                            <Card className="dashboard_cards card_1" elevation={5}
+                            sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[0].id}`}
+                                sx={{padding: "0", margin: "0"}}>
+                                    <p className="home_card_title">
                                         {props.posts[0].lostFname} {props.posts[0].lostLname}
-                                    </Typography>
+                                    </p>
                                     <CardMedia className="dashboard_card_media"
                                     component="img"
                                     image={props.posts[0].image}
                                     alt="lost pet/person image"
                                     />
                                 </CardActionArea >
-                                <CardActions className="home_card_button_div home_card_button_div2">
+                                <CardActions className="home_card_button_div home_card_button_div2"
+                                sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                     <PopupState variant="popover" popupId="demo-popup-popover">
                                         {(popupState) => (
                                             <div className="home_card_button_div">
-                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                            sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                 Contact
                                             </Button>
                                             <Popover
@@ -69,22 +87,27 @@ export default function Homepage(props) {
                                 </CardActions>
                             </Card>
                             {props.posts.length > 1 && (
-                                <Card className="dashboard_cards card_2" elevation={5}>
-                                <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[1].id}`)}>
-                                    <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Card className="dashboard_cards card_2" elevation={5}
+                                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[1].id}`}
+                                sx={{padding: "0", margin: "0"}}>
+                                    <p className="home_card_title">
                                         {props.posts[1].lostFname} {props.posts[1].lostLname}
-                                    </Typography>
+                                    </p>
                                     <CardMedia className="dashboard_card_media"
                                     component="img"
                                     image={props.posts[1].image}
                                     alt="lost pet/person image"
                                     />
                                 </CardActionArea>
-                                <CardActions className="home_card_button_div home_card_button_div2">
+                                <CardActions className="home_card_button_div home_card_button_div2"
+                                sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                     <PopupState variant="popover" popupId="demo-popup-popover">
                                         {(popupState) => (
                                             <div className="home_card_button_div">
-                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                            sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                 Contact
                                             </Button>
                                             <Popover
@@ -114,22 +137,27 @@ export default function Homepage(props) {
                         {props.posts.length > 2 && (
                             <>
                             <div className="home_cards_div2">
-                                <Card className="dashboard_cards card_3" elevation={5}>
-                                    <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[2].id}`)}>
-                                        <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                <Card className="dashboard_cards card_3" elevation={5}
+                                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                    <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[2].id}`}
+                                    sx={{padding: "0", margin: "0"}}>
+                                        <p className="home_card_title">
                                             {props.posts[2].lostFname} {props.posts[2].lostLname}
-                                        </Typography>
+                                        </p>
                                         <CardMedia className="dashboard_card_media"
                                         component="img"
                                         image={props.posts[2].image}
                                         alt="lost pet/person image"
                                         />
                                     </CardActionArea>
-                                    <CardActions className="home_card_button_div home_card_button_div2">
+                                    <CardActions className="home_card_button_div home_card_button_div2"
+                                    sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                         <PopupState variant="popover" popupId="demo-popup-popover">
                                             {(popupState) => (
                                                 <div className="home_card_button_div">
-                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                     Contact
                                                 </Button>
                                                 <Popover
@@ -158,22 +186,27 @@ export default function Homepage(props) {
                             {props.posts.length > 3 && (
                                 <>
                                 <div className="home_cards_div3">
-                                    <Card className="dashboard_cards card_4" elevation={5}>
-                                        <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[3].id}`)}>
-                                            <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                    <Card className="dashboard_cards card_4" elevation={5}
+                                    sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                        <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[3].id}`}
+                                        sx={{padding: "0", margin: "0"}}>
+                                            <p className="home_card_title">
                                                 {props.posts[3].lostFname} {props.posts[3].lostLname}
-                                            </Typography>
+                                            </p>
                                             <CardMedia className="dashboard_card_media"
                                             component="img"
                                             image={props.posts[3].image}
                                             alt="lost pet/person image"
                                             />
                                         </CardActionArea>
-                                        <CardActions className="home_card_button_div home_card_button_div2">
+                                        <CardActions className="home_card_button_div home_card_button_div2"
+                                        sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                             <PopupState variant="popover" popupId="demo-popup-popover">
                                                 {(popupState) => (
                                                     <div className="home_card_button_div">
-                                                    <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                    <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                    sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                    color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                         Contact
                                                     </Button>
                                                     <Popover
@@ -199,22 +232,27 @@ export default function Homepage(props) {
                                         </CardActions>
                                     </Card>
                                     {props.posts.length > 4 && (
-                                        <Card className="dashboard_cards card_5" elevation={5}>
-                                            <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[4].id}`)}>
-                                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                        <Card className="dashboard_cards card_5" elevation={5}
+                                        sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                            <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[4].id}`}
+                                            sx={{padding: "0", margin: "0"}}>
+                                                <p className="home_card_title">
                                                     {props.posts[4].lostFname} {props.posts[4].lostLname}
-                                                </Typography>
+                                                </p>
                                                 <CardMedia className="dashboard_card_media"
                                                 component="img"
                                                 image={props.posts[4].image}
                                                 alt="lost pet/person image"
                                                 />
                                             </CardActionArea>
-                                            <CardActions className="home_card_button_div home_card_button_div2">
+                                            <CardActions className="home_card_button_div home_card_button_div2"
+                                            sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                                 <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <div className="home_card_button_div">
-                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                        sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                             Contact
                                                         </Button>
                                                         <Popover
@@ -244,22 +282,27 @@ export default function Homepage(props) {
                                 {props.posts.length > 5 && (
                                     <>
                                     <div className="home_cards_div4">
-                                        <Card className="dashboard_cards card_6" elevation={5}>
-                                            <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[5].id}`)}>
-                                                <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                        <Card className="dashboard_cards card_6" elevation={5}
+                                        sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                            <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[5].id}`}
+                                            sx={{padding: "0", margin: "0"}}>
+                                                <p className="home_card_title">
                                                     {props.posts[5].lostFname} {props.posts[5].lostLname}
-                                                </Typography>
+                                                </p>
                                                 <CardMedia className="dashboard_card_media"
                                                 component="img"
                                                 image={props.posts[5].image}
                                                 alt="lost pet/person image"
                                                 />
                                             </CardActionArea>
-                                            <CardActions className="home_card_button_div home_card_button_div2">
+                                            <CardActions className="home_card_button_div home_card_button_div2"
+                                            sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                                 <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <div className="home_card_button_div">
-                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                        <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                        sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                             Contact
                                                         </Button>
                                                         <Popover
@@ -288,22 +331,27 @@ export default function Homepage(props) {
                                     {props.posts.length > 6 && (
                                         <>
                                         <div className="home_cards_div5">
-                                            <Card className="dashboard_cards card_7" elevation={5}>
-                                                <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[6].id}`)}>
-                                                    <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                            <Card className="dashboard_cards card_7" elevation={5}
+                                            sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                                <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[6].id}`}
+                                                sx={{padding: "0", margin: "0"}}>
+                                                    <p className="home_card_title">
                                                         {props.posts[6].lostFname} {props.posts[6].lostLname}
-                                                    </Typography>
+                                                    </p>
                                                     <CardMedia className="dashboard_card_media"
                                                     component="img"
                                                     image={props.posts[6].image}
                                                     alt="lost pet/person image"
                                                     />
                                                 </CardActionArea>
-                                                <CardActions className="home_card_button_div home_card_button_div2">
+                                                <CardActions className="home_card_button_div home_card_button_div2"
+                                                sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                                     <PopupState variant="popover" popupId="demo-popup-popover">
                                                         {(popupState) => (
                                                             <div className="home_card_button_div">
-                                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                            <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                            sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                                 Contact
                                                             </Button>
                                                             <Popover
@@ -329,22 +377,27 @@ export default function Homepage(props) {
                                                 </CardActions>
                                             </Card>
                                             {props.posts.length > 7 && (
-                                                <Card className="dashboard_cards card_8" elevation={5}>
-                                                    <CardActionArea onClick={() => router.push(`/detailpage/${props.posts[7].id}`)}>
-                                                        <Typography gutterBottom variant="h5" component="div" className="home_card_title">
+                                                <Card className="dashboard_cards card_8" elevation={5}
+                                                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", height: "52vw"}, padding: "0.5rem", height: "15rem"}}>
+                                                    <CardActionArea onClick={() => location.href = `/detailpage/${props.posts[7].id}`}
+                                                    sx={{padding: "0", margin: "0"}}>
+                                                        <p className="home_card_title">
                                                             {props.posts[7].lostFname} {props.posts[7].lostLname}
-                                                        </Typography>
+                                                        </p>
                                                         <CardMedia className="dashboard_card_media"
                                                         component="img"
                                                         image={props.posts[7].image}
                                                         alt="lost pet/person image"
                                                         />
                                                     </CardActionArea>
-                                                    <CardActions className="home_card_button_div home_card_button_div2">
+                                                    <CardActions className="home_card_button_div home_card_button_div2"
+                                                    sx={{[theme.breakpoints.down('sm')]: {padding: "0", margin: "0"}, padding: "0"}}>
                                                         <PopupState variant="popover" popupId="demo-popup-popover">
                                                             {(popupState) => (
                                                                 <div className="home_card_button_div">
-                                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}>
+                                                                <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
+                                                                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
+                                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
                                                                     Contact
                                                                 </Button>
                                                                 <Popover

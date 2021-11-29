@@ -70,7 +70,7 @@ export default function NewPost() {
         };
 
         const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
-        router.push(`/user/${session.id}`);
+        location.href = "/user";
     }
 
     return(
