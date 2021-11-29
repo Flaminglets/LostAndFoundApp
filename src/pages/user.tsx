@@ -6,7 +6,7 @@ otherwise, it displays user info (image, userid, email), and posts that user cre
 */
 
 import React from "react";
-import { useSession, getSession } from 'next-auth/client';
+import { getSession } from 'next-auth/client';
 import Footer from '../components/footer';
 import NotLoggedIn from '../components/notLoggedIn';
 import UserPostCard from '../components/userCard';
@@ -26,14 +26,14 @@ const theme = createTheme({
     },
 });
 
-// these are for later use for user edit button
-// import { Button } from '@mui/material';
-// import { styled } from '@mui/material/styles';
-// const FlamingoEditButton = styled(Button)({
-//     "&:hover": {
-//         backgroundColor: "#B0B7AB"
-//     },
-// })
+// ** these are for later use for user edit button
+/* import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+const FlamingoEditButton = styled(Button)({
+    "&:hover": {
+        backgroundColor: "#B0B7AB"
+    },
+}) */
 
 // @params: posts that the user created
 // @return: NotLoggedIn when no session, User page with UserPostCard function from userCard file, and pass the posts data, and Footer
@@ -121,9 +121,8 @@ export default function UserPage(props) {
 // @params: user id
 // @return: list of posts data from user
 export async function getServerSideProps(ctx) {
-    const { req, res } = ctx;
+    const { req } = ctx;
     const session = await getSession({req});
-    const {query} = ctx;
     if (!session) {
         return {
             props : {

@@ -40,8 +40,9 @@ export default function NotLoggedIn() {
             <h1>Please log in first</h1>
             <p>Click the button to go to login page</p>
             <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit" 
-                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", fontSize: "2vw", height: "6vw", width: "15vw"}, backgroundColor: "#D2D4C8", color:"black", height: "2rem", width: "5rem"}}
-                onClick={() => (router.push("/loginregister"))}>
+                sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", fontSize: "2vw", height: "6vw", width: "15vw"}, 
+                backgroundColor: "#D2D4C8", color:"black", height: "2rem", width: "5rem"}}
+                onClick={() => (router.push("/auth/loginregister"))}>
                 Log In
             </FlamingoEditButton>
         </div>

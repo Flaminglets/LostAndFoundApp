@@ -9,6 +9,19 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import { Button, CardActions } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 700,
+            md: 1024,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 
 // button style
 const FlamingoEditButton = styled(Button)({
@@ -32,7 +45,7 @@ export default function DeletePost(props) {
 
     // redirect to user page
     const handleCancelClick = () => {
-        location.href = "/user";
+        router.push("/user");
     }
 
     // deletes the post and redirect to user page
@@ -48,7 +61,7 @@ export default function DeletePost(props) {
             body: body
         };
 
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
+        const response = await fetch(`https://lost-and-found-app-flaminglets.vercel.app/api/post`, requestOptions);
         location.href = "/user";
     }
 
@@ -59,10 +72,14 @@ export default function DeletePost(props) {
             <p>Are you sure you want to delete the post?</p>
             <CardActions className="user_card_buttons">
                 <FlamingoEditButton size="small" variant="contained" className="user_card_button user_card_button_edit" 
+                    sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", fontSize: "2vw", height: "6vw", width: "15vw"}, 
+                    backgroundColor: "#D2D4C8", color:"black", height: "2rem", width: "5rem"}}
                     onClick={handleCancelClick}>
                     Cancel
                 </FlamingoEditButton>
                 <FlamingoFoundButton size="small" variant="contained" className="user_card_button user_card_button_found"
+                    sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", fontSize: "2vw", height: "6vw", width: "15vw"}, 
+                    backgroundColor: "#5F7470", color:"white", height: "2rem", width: "5rem"}}
                     onClick={handleDeleteClick}>
                     Delete
                 </FlamingoFoundButton>

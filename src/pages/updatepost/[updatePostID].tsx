@@ -9,7 +9,6 @@ if not logged in, it tells user to login first
 
 import {useSession} from 'next-auth/client';
 import Footer from '../../components/footer';
-import NotLoggedIn from '../../components/notLoggedIn';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
 // @params: the post data

@@ -5,7 +5,6 @@ get post information inputs from user and creates new post data to database
 */
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import FirstPage from './mobile/mobileFirstPage';
 import SecondPage from './mobile/mobileSecondPage';
@@ -21,7 +20,6 @@ import LastPage from './lastPage';
 // handle creating new post
 export default function NewPost() {
     const [session] = useSession();
-    const router = useRouter();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
 
@@ -69,7 +67,7 @@ export default function NewPost() {
             body: body
         };
 
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
+        const response = await fetch(`https://lost-and-found-app-flaminglets.vercel.app/api/post`, requestOptions);
         location.href = "/user";
     }
 

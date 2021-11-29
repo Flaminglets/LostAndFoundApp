@@ -7,7 +7,6 @@ when 'contact' button is click, displays contact information with popup
 */
 
 import React from 'react';
-import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -31,8 +30,6 @@ const theme = createTheme({
 // @params: a post data
 // @return: a post card
 export default function PostCard(props) {
-    const router = useRouter();
-
     // redirects to detail page of the post
     const handleCardClick = () => {
         location.href = `/detailpage/${props.id}`;

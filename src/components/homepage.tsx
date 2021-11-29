@@ -6,7 +6,6 @@ if the number of posts in database is less then 8, it will only show that number
 */
 
 import React from 'react';
-import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -31,7 +30,6 @@ const theme = createTheme({
 // @return: displays most recent posts on dashboard
 export default function Homepage(props) {
     props = props.props
-    const router = useRouter();
     return (
         <div className="home_div">
             <div className="home_backcolor"></div>
