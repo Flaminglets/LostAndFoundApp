@@ -23,8 +23,7 @@ export default function LoginRegister({ providers }) {
                                             signIn(provider.id)
                                             console.log(provider.id)
                                         }
-                                        
-                                        }>
+                                    }>
                                         Sign in with {provider.name}
                                     </button>
                                 </div>
@@ -51,16 +50,16 @@ export async function getServerSideProps(context) {
     const session = await getSession({ req });
     const providers = await getProviders();
     const csrfToken = await getCsrfToken(context);
-    
-    console.log("providers",providers);
-    console.log("csrfToken",csrfToken);
-    
+
+    console.log("providers", providers);
+    console.log("csrfToken", csrfToken);
+
     if (session && res) {
         res.writeHead(302, {
             Location: "/",
         });
         res.end();
-        return;
+        // return;
     }
 
     return {
