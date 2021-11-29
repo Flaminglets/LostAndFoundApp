@@ -61,6 +61,9 @@ export default function LastPage(props) {
                         component="img"
                         image={props.image}
                         alt="missing pet/person image"
+                        sx={{[theme.breakpoints.down('sm')]: {width: "55vw", height: "45vw"}, 
+                        [theme.breakpoints.down('md')]: {width: "39vw", height: "31vw", borderRadius: "5px"},
+                        width: "25rem", height: "20rem", borderRadius: "5px"}}
                     />
                 </div>
                 <div className="lp_elements">

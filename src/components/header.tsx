@@ -186,7 +186,7 @@ export default function Header () {
                         {/* search bar */}
                         <Search>
                             <SearchIconWrapper>
-                            <SearchIcon />
+                            <SearchIcon sx={{ fill: "white" }} />
                             </SearchIconWrapper>
                             <StyledInputBase
                                 placeholder="Search…"
