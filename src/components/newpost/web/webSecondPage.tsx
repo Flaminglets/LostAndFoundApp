@@ -1,4 +1,4 @@
-/* By Yoonseo @Flaminglets
+/* By Abbe, Harman, Yoonseo @Flaminglets
 this file contains second page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes
  ((user's) firstName, lastName, phoneNumber, email)
@@ -37,6 +37,21 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
+// validate name
+const isNameValid = (name) => { 
+    if(/^[a-z]+$/i.test(name)) {
+        return true;
+    } else {
+        return false;  
+    }
+}
+
+// validate phone number
+const isPhoneValid = (phoneNum) => {
+    var requirements = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(phoneNum);
+    return requirements;
+}
+
 // @params: useState data from NewPost and UpdatePost functions
 // @return: user contact information form
 export default function WebSecondPage(props) {
@@ -57,15 +72,21 @@ export default function WebSecondPage(props) {
 
     // validat input & go to last page
     const handleSubmitClick = () => {
-        if (userFname == "") {setUserFnameError("Please enter first name")}
-        else if (userLname == "") {setUserLnameError("Please enter last name")}
-        else if (phoneNum == "") {setPhoneNumError("Please enter phone number")}
-        else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
-        else if (email == "") {setEmailError("Please enter email")}
+        if (userFname == "") {setUserFnameError("Please enter a first name")}
+        else if(!isNameValid(userFname)) { setUserFnameError("Please enter a valid first name")}
+        else if (userLname == "") {setUserLnameError("Please enter a last name")}
+        else if(!isNameValid(userLname)) { setUserLnameError("Please enter a valid last name") }
+        else if (phoneNum == "") {setPhoneNumError("Please enter a phone number")}
+        else if(!isPhoneValid(phoneNum)){ setPhoneNumError("Please enter a valid phone number.") }
+        else if (phoneNum.length < 10) {setPhoneNumError("Please enter a phone number with minimum 10 numbers")}
+        else if (email == "") {setEmailError("Please enter an email")}
 
         if (userFname != "" && 
         userLname != "" &&
+        isNameValid(userFname) &&
+        isNameValid(userLname) &&
         phoneNum != ""  &&
+        isPhoneValid(phoneNum) &&
         email != "") {
             props.handleSubmitClick();
         }
