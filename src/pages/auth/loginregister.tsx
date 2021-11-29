@@ -29,6 +29,9 @@ export default function LoginRegister({ providers }) {
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left"></div>
+                        <div className="overlay-panel overlay-right">
+                            <img src="/LAFLogo.png" alt="LAF-Logo" />
+                        </div>
                     </div>
                 </div>
             </div>
