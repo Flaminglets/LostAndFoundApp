@@ -86,7 +86,6 @@ export default function Posts({props}) {
             </div>
             <Footer/>
         </div>
-        
     );
 };
 
