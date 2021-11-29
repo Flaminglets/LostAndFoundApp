@@ -106,8 +106,6 @@ export default function WebFirstPage(props) {
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
 
-        var newdate = year + "-" + month + "-" + day;
-
         var date_year = parseInt(date.substr(0, 4));
         var date_month = parseInt(date.substr(5,2));
         var date_day = parseInt(date.substr(8));
@@ -116,18 +114,16 @@ export default function WebFirstPage(props) {
         if(type == "") { setTypeError("Please select type"); }
         else if(date == "2021-01-01") {setDateError("Please select date"); }
         else if(date_year > year ) {setDateError("Invalid year selected"); }
-        else if(date_year <= year ){
+        else if(date_year == year) {
             if(date_month > month) {
                 setDateError("Invalid month selected")
-            }
-        }
-        else if(date_year < year) {
-            if(date_month < month) {
+            } else {
                 if(date_day > day) {
                     setDateError("Invalid day selected")
                 }
             }
         }
+
         else if(time == "00:00") { setTimeError("Please select time"); }
         else if(location == "") { setLocationError("Please enter location"); }
         else if(lostFname == "") { setLostFnameError("Please enter first name"); }
@@ -135,7 +131,7 @@ export default function WebFirstPage(props) {
         else if(gender == "") { setGenderError("Please select gender"); }
         else if(age == "") { setAgeError("Please enter age"); }
         else if(parseInt(age) < 0) { setAgeError("Please enter proper age"); }
-        else if(parseInt(age) % 1 > 0) {setAgeError("Invalid age selected");}
+        else if(age % 1 != 0) {setAgeError("Invalid age selected");}
         else if(weight == "") { setWeightError("Please enter weight"); }
         else if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
         else if(height == "") { setHeightError("Please enter height"); }
@@ -151,7 +147,7 @@ export default function WebFirstPage(props) {
         lostLname != "" &&
         gender != "" &&
         age != "" && 
-        parseInt(age) % 1 === 0 &&
+        age % 1 === 0 &&
         parseInt(age) > 0 &&
         weight != "" && 
         parseInt(weight) > 0 &&
