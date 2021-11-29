@@ -130,7 +130,7 @@ export default function Header () {
                 <>
                 <ul className="header_drawer_list">
                     <li><Link href="/newpost">New Post</Link></li>
-                    <li><Link href={`/user/${session.id}`}>User</Link></li>
+                    <li><Link href="/user">User</Link></li>
                     <li><button className="header_logout_button header_button logout_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></li>
                 </ul>
                 </>
@@ -223,7 +223,8 @@ export default function Header () {
                                 <ul>
                                     <li className="header_list"><Link href="/newpost">New Post</Link></li>
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
-                                    <li className="header_list"><Link href={`/user/${session.id}`}>User</Link></li>  
+                                    {/* <li className="header_list"><a href={`/user/${session.id}`}>User</a></li>   */}
+                                    <li className="header_list"><Link href="/user">User</Link></li> 
                                     <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>
@@ -240,12 +241,7 @@ export default function Header () {
                 <BottomNavigation sx={{bgcolor: "#5F7470"}}>
                 <BottomNavigationAction label="Add Post" onClick={() => (router.push("/newpost"))} icon={<AddCircleRoundedIcon />} sx={{color: "white"}}/>
                 <BottomNavigationAction label="Home" onClick={() => (router.push("/"))} icon={<HomeRoundedIcon />} sx={{color: "white"}}/>
-                {!session && (
-                    <BottomNavigationAction label="User" onClick={() => (router.push(`/user/noSession`))} icon={<AccountCircleRoundedIcon />} sx={{color: "white"}}/>
-                )}
-                {session && (
-                    <BottomNavigationAction label="User" onClick={() => (router.push(`/user/${session.id}`))} icon={<AccountCircleRoundedIcon />} sx={{color: "white"}}/>
-                )}
+                <BottomNavigationAction label="User" onClick={() => (router.push("/user"))} icon={<AccountCircleRoundedIcon />} sx={{color: "white"}}/>
                 </BottomNavigation>
             </Paper>
             </div>
