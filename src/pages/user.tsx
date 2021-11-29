@@ -132,7 +132,7 @@ export async function getServerSideProps(ctx) {
         }
     }
     else if (session) {
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/user/` + session.id);
+        const response = await fetch(`/api/user/` + session.id);
         const postdata = await response.json()
 
         const posts = postdata.map(

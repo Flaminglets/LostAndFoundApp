@@ -37,6 +37,7 @@ export default function UpdatePost(props) {
     // submit the updated data to the database
     // this is called in lastPage
     const handleFinalClick = async () => {
+        const host = window.location.host;
         const postID = props.id
         const newData = {
             type: data.type,
@@ -73,7 +74,7 @@ export default function UpdatePost(props) {
             body: body
         };
 
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
+        const response = await fetch("/api/post", requestOptions);
         const json = await response.json();
         location.href = "/user";
     }
