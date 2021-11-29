@@ -59,7 +59,7 @@ export default function Homepage(props) {
                                             <div className="home_card_button_div">
                                             <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                             sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                 Contact
                                             </Button>
                                             <Popover
@@ -105,7 +105,7 @@ export default function Homepage(props) {
                                             <div className="home_card_button_div">
                                             <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                             sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                 Contact
                                             </Button>
                                             <Popover
@@ -155,7 +155,7 @@ export default function Homepage(props) {
                                                 <div className="home_card_button_div">
                                                 <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                 sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                     Contact
                                                 </Button>
                                                 <Popover
@@ -204,7 +204,7 @@ export default function Homepage(props) {
                                                     <div className="home_card_button_div">
                                                     <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                     sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                    color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                    color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                         Contact
                                                     </Button>
                                                     <Popover
@@ -250,7 +250,7 @@ export default function Homepage(props) {
                                                         <div className="home_card_button_div">
                                                         <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                         sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                             Contact
                                                         </Button>
                                                         <Popover
@@ -300,7 +300,7 @@ export default function Homepage(props) {
                                                         <div className="home_card_button_div">
                                                         <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                         sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                        color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                             Contact
                                                         </Button>
                                                         <Popover
@@ -349,7 +349,7 @@ export default function Homepage(props) {
                                                             <div className="home_card_button_div">
                                                             <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                             sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                            color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                                 Contact
                                                             </Button>
                                                             <Popover
@@ -395,7 +395,7 @@ export default function Homepage(props) {
                                                                 <div className="home_card_button_div">
                                                                 <Button size="small" color="primary" className="home_card_button" {...bindTrigger(popupState)}
                                                                 sx={{[theme.breakpoints.down('sm')]: {padding: "1vw", marginTop: "2vw", fontSize: "2.5vw"}, 
-                                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.7rem", height: "1.5rem" }}>
+                                                                color: "#505f5f", paddingRight: "0.2rem", marginTop: "0.5rem", height: "1.5rem" }}>
                                                                     Contact
                                                                 </Button>
                                                                 <Popover

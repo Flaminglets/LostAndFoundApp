@@ -178,7 +178,7 @@ export default function Header () {
                     <div className="header_nav_wrapper">
                         <ul className="header_nav">
                             <li className="header_list"><a className="header_logout_button header_button" href='/posts/pet'>Pets</a></li>
-                            <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                            <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}} sx={{height: "1rem"}}/>
                             <li className="header_list"><a className="header_logout_button header_button" href='/posts/person'>People</a></li>
                         </ul>
                     </div>
@@ -222,10 +222,10 @@ export default function Header () {
                             <div className="header_user">
                                 <ul>
                                     <li className="header_list"><Link href="/newpost">New Post</Link></li>
-                                    <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}}/>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider one_divider" style={{fill: "white"}} sx={{height: "1rem", marginTop: "0.3rem"}}/>
                                     {/* <li className="header_list"><a href={`/user/${session.id}`}>User</a></li>   */}
                                     <li className="header_list"><Link href="/user">User</Link></li> 
-                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}}/>
+                                    <Divider orientation="vertical" variant="middle" flexItem className="divider" style={{fill: "white"}} sx={{height: "1rem", marginTop: "0.3rem"}}/>
                                     <li className="header_list"><Link href="/"><button className="header_logout_button header_button" onClick={() => {signOut({redirect: false, callbackUrl: "/"});}}>Logout</button></Link></li>
                                 </ul>
                             </div>

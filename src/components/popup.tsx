@@ -81,7 +81,7 @@ export default function PopUp(props) {
                                 <p>- Date: <strong>{props.date ? `${props.date}` : "N/A"}</strong></p>
                                 <p>- Time: <strong>{props.time ? `${props.time}` : "N/A"}</strong></p>
                                 <p>Contact info</p>
-                                <p>- Phone num: <strong>{props.phoneNum ? `${props.phoneNum}` : "N/A"}</strong></p>
+                                <p>- Phone num: <strong>{props.phoneNum ? `${props.phoneNum}` : "911"}</strong></p>
                                 <p>- Email: <strong>{props.email ? `${props.email}` : "N/A"}</strong></p>
                             </div>
                         </div>

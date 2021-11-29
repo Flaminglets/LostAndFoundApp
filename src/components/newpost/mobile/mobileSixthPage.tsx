@@ -138,12 +138,12 @@ export default function SixthPage(props) {
             </div>
             <div className="newpost_buttons">
                 <FlamingoNextButton variant="contained" onClick={handlePrevClick} className="newpost_button_next"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#B8BDB5", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Previous
                 </FlamingoNextButton>
                 <FlamingoSubmitButton variant="contained" onClick={handleSubmitClick} className="newpost_button_next newpost_button_submit"
-                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "41vw", fontSize: "2.5vw", height: "2.3rem"}, 
+                sx={{[theme.breakpoints.down('sm')]: {margin: "1vw 0", width: "39.6vw", fontSize: "2.5vw", height: "2.3rem"}, 
                 backgroundColor: "#5F7470", margin: "1rem 0 1rem 1rem", color:"black", minHeight: "1.6rem", width: "6.5rem", fontSize: "0.7rem"}}>
                     Finish
                 </FlamingoSubmitButton>
