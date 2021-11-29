@@ -363,7 +363,7 @@ export default function WebFirstPage(props) {
                 value={additional}
                 sx={{margin: "0.5rem 0"}}
             />
-            <p className="newpost_form_label">Uplouad a most recent photo of the missing pet/person</p>
+            <p className="newpost_form_label">Upload a most recent photo of the missing pet/person</p>
             <div className="newpost_form_image">
                 <input
                     name="image"
