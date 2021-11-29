@@ -14,7 +14,6 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme } from '@mui/material';
-import { FlareSharp } from '@mui/icons-material';
 
 // for mui style
 const theme = createTheme({
