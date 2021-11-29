@@ -1,7 +1,5 @@
-/*
-By Harman @Flaminglets
-this page displays a post detail information
-*/
+/* By Harman @Flaminglets
+this page displays a post detail information */
 
 import PopUp from '../../components/popup';
 

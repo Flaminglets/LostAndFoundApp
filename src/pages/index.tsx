@@ -1,9 +1,7 @@
-/*
-By Yoonseo, Sarina @Flaminglets
+/* By Yoonseo, Sarina @Flaminglets
 this page is main page
 it displays dashboard and all posts
-dashboard will only be displayed if the currentPage is == 1
-*/
+dashboard will only be displayed if the currentPage is == 1 */
 
 import * as React from 'react';
 import {useState, useEffect} from 'react';
@@ -23,13 +21,11 @@ export default function Home(props) {
     const pages = Math.ceil(props.posts.length / ITEMS_PER_PAGE);
 
     // pagination
-    /*
-    The current page start at 1
+    /* The current page start at 1
     This function gets all the posts and stores it in an array then with the variable ITEMS_PER_PAGE
     first devides all the post by the variable so we get the number of pages 
     then we create another array data =[] for arranging numbers of posts per page
-    this makes each page have certain posts (data) assigned to them.
-    */
+    this makes each page have certain posts (data) assigned to them. */
     useEffect(() => {
         let data = [];
         if (props.posts && props.posts.length > 0) {
@@ -37,7 +33,6 @@ export default function Home(props) {
             setPosts({posts: data});
         }
     }, [currentPage]);
-
     function onChangePage($event, page) {
         setCurrentPage(page);
     }
@@ -48,7 +43,6 @@ export default function Home(props) {
         const anchor = (event.target.ownerDocument || document).querySelector(
             "#top",
         );
-    
         if (anchor) {
             anchor.scrollIntoView({
                 behavior: "smooth",
@@ -69,8 +63,7 @@ export default function Home(props) {
                     onChange={(event, page) => onChangePage(event, page)}
                     shape="rounded"
                     className="home_pagination"
-                    onClick={handleClick}
-                />
+                    onClick={handleClick}/>
             </div>
             <Footer/>
         </div>

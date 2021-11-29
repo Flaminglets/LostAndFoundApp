@@ -1,10 +1,8 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains a card function that can be used to display each card
 displays a post information including name, image, location, date, time
 when the image is clicked, redirects to detail page with post id
-when 'contact' button is click, displays contact information with popup
-*/
+when 'contact' button is click, displays contact information with popup */
 
 import React from 'react';
 import Card from '@mui/material/Card';
@@ -15,6 +13,7 @@ import { Button, CardActionArea, CardActions, createTheme } from '@mui/material'
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {

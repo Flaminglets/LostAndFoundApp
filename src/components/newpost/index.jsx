@@ -1,8 +1,6 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains create new post form function
-get post information inputs from user and creates new post data to database
-*/
+get post information inputs from user and creates new post data to database */
 
 import { useState } from 'react';
 import { useSession } from 'next-auth/client';
@@ -22,7 +20,8 @@ export default function NewPost() {
     const [session] = useSession();
     const [page, setPage] = useState(1);
     const [data, setData] = useState({});
-
+    
+    // set input data
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
     // set page number to switch page functions

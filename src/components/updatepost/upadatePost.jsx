@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains update post form function
 gets a post information and after user update data that need to be updated,
-and update the post data in the database
-*/
+and update the post data in the database */
 
 import { useState } from 'react';
 import { useSession } from 'next-auth/client';
@@ -25,6 +23,7 @@ export default function UpdatePost(props) {
     const [page, setPage] = useState(1);
     const [data, setData] = useState(props);
 
+    // set input data
     const handlePageData = (newData) => {setData({...data, ...newData});}
 
     // set page number to switch page functions
@@ -255,6 +254,3 @@ export default function UpdatePost(props) {
         </div>
     )
 }
-
-
-

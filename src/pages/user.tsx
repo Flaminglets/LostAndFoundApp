@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this page is User page
 if user is not logged in, it will tell user to login first
-otherwise, it displays user info (image, userid, email), and posts that user created
-*/
+otherwise, it displays user info (image, userid, email), and posts that user created */
 
 import React from "react";
 import { getSession } from 'next-auth/client';
@@ -15,6 +13,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { createTheme } from '@mui/material';
 import { getPostByUserID } from '../../lib/backend/database'
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {

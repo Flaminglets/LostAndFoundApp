@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains function for dashboard for the homepage
 dashboard displays 8 recent posts
-if the number of posts in database is less then 8, it will only show that number of posts on dashboard
-*/
+if the number of posts in database is less then 8, it will only show that number of posts on dashboard */
 
 import React from 'react';
 import Card from '@mui/material/Card';
@@ -14,6 +12,7 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -437,4 +436,3 @@ export default function Homepage(props) {
         </div>
     );
 };
-

@@ -1,7 +1,5 @@
-/*
-By Yoonseo @Flaminglets
-api for updateing a post
-*/
+/* By Yoonseo @Flaminglets
+api for updateing a post */
 
 import { getSinglePost } from '../../../../lib/backend/database';
 

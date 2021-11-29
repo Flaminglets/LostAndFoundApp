@@ -1,12 +1,9 @@
-/*
-Flaminglets
-Yoonseo, Sarina
+/* By Yoonseo, Sarina @Flaminglets
 this file contains first page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes
  (type, date(lastSeen), time(lastSeen), location(lastSeen), 
     (lost pet/person's) firstName, lastName, gender, age, weight, height, eyecolor, additional info, image)
-validates input and show error message when input value is not valid, and prevents from going to next page
-*/
+validates input and show error message when input value is not valid, and prevents from going to next page */
 
 import * as React from 'react';
 import {useState} from 'react';
@@ -18,6 +15,7 @@ import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -54,7 +52,19 @@ export default function WebFirstPage(props) {
     const [eyecolor, setEyecolor] = useState(props.eyecolor || "");
     const [additional, setAdditional] = useState(props.additional || "");
     const [image, setImage] = useState(props.image || "");
+    const [typeError, setTypeError] = useState("");
+    const [dateError, setDateError] = useState("");
+    const [timeError, setTimeError] = useState("");
+    const [locationError, setLocationError] = useState("");
+    const [lostFnameError, setLostFnameError] = useState("");
+    const [lostLnameError, setLostLnameError] = useState("");
+    const [genderError, setGenderError] = useState("");
+    const [ageError, setAgeError] = useState("");
+    const [weightError, setWeightError] = useState("");
+    const [heightError, setHeightError] = useState("");
+    const [eyecolorError, setEyecolorError] = useState("");
 
+    // set input value to data
     const handleSetType = async (event) => { setType(event.target.value); props.handlePageData({type: event.target.value}); setTypeError("")}
     const handleSetDate = async (event) => { props.handlePageData({date: event.target.value}); setDate(event.target.value); setDateError("")}
     const handleSetTime = async (event) => { props.handlePageData({time: event.target.value}); setTime(event.target.value); setTimeError("")}
@@ -87,18 +97,7 @@ export default function WebFirstPage(props) {
         };
     };
 
-    const [typeError, setTypeError] = useState("");
-    const [dateError, setDateError] = useState("");
-    const [timeError, setTimeError] = useState("");
-    const [locationError, setLocationError] = useState("");
-    const [lostFnameError, setLostFnameError] = useState("");
-    const [lostLnameError, setLostLnameError] = useState("");
-    const [genderError, setGenderError] = useState("");
-    const [ageError, setAgeError] = useState("");
-    const [weightError, setWeightError] = useState("");
-    const [heightError, setHeightError] = useState("");
-    const [eyecolorError, setEyecolorError] = useState("");
-
+    // validat input & go to next page
     const handleNextClick = () => {
         if(type == "") { setTypeError("Please select type"); }
         else if(date == "2021-01-01") {setDateError("Please select date"); }

@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this file contains sixth page of post form used in NewPost and UpdatePost function
 getting inputs from user that includes: (user's) firstName, lastName, phoneNumber, email
-validates input and show error message when input value is not valid, and prevents from going to next page
-*/
+validates input and show error message when input value is not valid, and prevents from going to next page */
 
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
@@ -11,6 +9,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -23,6 +22,7 @@ const theme = createTheme({
     },
 });
 
+// button style
 const FlamingoNextButton = styled(Button)({
     "&:hover": {
         backgroundColor: "#A2AA9D"
@@ -42,16 +42,18 @@ export default function SixthPage(props) {
     const [userLname, setUserLname] = useState(props.userLname || "");
     const [phoneNum, setPhoneNum] = useState(props.phoneNum || "");
     const [email, setEmail] = useState(props.email || "");
-    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); setUserFname(event.target.value); setUserFnameError("")}
-    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); setUserLname(event.target.value); setUserLnameError("")}
-    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError("")}
-    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError("")}
-
     const [userFnameError, setUserFnameError] = useState("");
     const [userLnameError, setUserLnameError] = useState("");
     const [phoneNumError, setPhoneNumError] = useState("");
     const [emailError, setEmailError] = useState("");
 
+    // set input value to data
+    const handleSetUserFname = async (event) => { props.handlePageData({userFname: event.target.value}); setUserFname(event.target.value); setUserFnameError("")}
+    const handleSetUserLname = async (event) => { props.handlePageData({userLname: event.target.value}); setUserLname(event.target.value); setUserLnameError("")}
+    const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError("")}
+    const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError("")}
+
+    // validat input & go to last page
     const handleSubmitClick = () => {
         if (userFname == "") {setUserFnameError("Please enter first name")}
         else if (userLname == "") {setUserLnameError("Please enter last name")}

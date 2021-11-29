@@ -1,9 +1,7 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this page is for preventing user from deleting the post accidentally
 this page is redirected from userCard, when the 'Found' button is clicked
-user can choose to go back to user page or delete the post
-*/
+user can choose to go back to user page or delete the post */
 
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
@@ -11,6 +9,7 @@ import { Button, CardActions } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {

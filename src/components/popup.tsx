@@ -1,7 +1,5 @@
-/*
-By Yoonseo, Harman @Flaminglets
-this file contains function to display detial information of one post
-*/
+/* By Yoonseo, Harman @Flaminglets
+this file contains function to display detial information of one post */
 
 import PrintIcon from '@mui/icons-material/Print';
 import IosShareIcon from '@mui/icons-material/IosShare';
@@ -9,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import { createTheme } from '@mui/material';
 
+// for mui style
 const theme = createTheme({
     breakpoints: {
         values: {
@@ -27,7 +26,6 @@ export default function PopUp(props) {
     const share = () => {
         var toCopy = window.location.href;
         navigator.clipboard.writeText(toCopy);
-        
         alert("URL Copied");
     }
     const print = () => {

@@ -1,7 +1,5 @@
-/*
-By Yoonseo, Danny @Flaminglets
-api for getting posts by post type (pet or person)
-*/
+/* By Yoonseo, Danny @Flaminglets
+api for getting posts by post type (pet or person) */
 
 import { getPostByType } from '../../../../lib/backend/database';
 

@@ -1,21 +1,16 @@
-/*
-By Yoonseo @Flaminglets
+/* By Yoonseo @Flaminglets
 this page is update post page
 redirected from userCard
 similar to newpost page, but with the certian post information already filled out
 for user to check the update information
-if not logged in, it tells user to login first
-*/
+if not logged in, it tells user to login first */
 
-import {useSession} from 'next-auth/client';
 import Footer from '../../components/footer';
 import UpdatePost from '../../components/updatepost/upadatePost';
 
 // @params: the post data
-// @return:  UpdatePost function from updatePost file, and pass the post data, NotLoggedIn when no session, and Footer
+// @return:  UpdatePost function from updatePost file, and pass the post data, and Footer
 export default function UpdatePostPage({props}) {
-    const [session] = useSession();
-
     return (
         <div>
             <UpdatePost
