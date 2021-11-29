@@ -129,7 +129,7 @@ export default function Header () {
                 <ul className="header_drawer_list">
                     <li><Link href="/newpost">New Post</Link></li>
                     <li><Link href="/user">User</Link></li>
-                    <li><button className="header_logout_button header_button logout_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></li>
+                    <li><Link href="/"><button className="header_logout_button header_button logout_button" onClick={() => signOut({redirect: false, callbackUrl: "/"})}>Logout</button></Link></li>
                 </ul>
                 </>
             )}
