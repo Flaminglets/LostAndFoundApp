@@ -18,7 +18,7 @@ export default function DetailPage({userData}) {
 // @return: a post get by post id
 DetailPage.getInitialProps = async (ctx) => {
     const { query } = ctx;
-    const response = await fetch(`/api/updatePost/` + query.detailpost);   
+    const response = await fetch(`${process.env.PUBLIC_URL}/api/updatePost/` + query.detailpost);   
     const data = await response.json();
     return{userData: data}
 }
