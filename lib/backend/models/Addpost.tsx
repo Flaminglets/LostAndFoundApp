@@ -1,5 +1,9 @@
 import mongoose, { Mongoose } from 'mongoose';
 
+// By Nicole @Flaminglets
+// This page represents the Missing Poster model/schema.
+// Each property has a specified type that is used to collect data.
+
 const addpostSchema = new mongoose.Schema(
     {
         type: String,
