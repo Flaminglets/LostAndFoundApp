@@ -40,7 +40,7 @@ export default function LoginRegister({ providers }) {
 };
 
 
-// Get the LoginRegister based on the context.
+// Get the ServerSideProps for LoginRegister based on the context.
 // @params context, context provides the props with a request or response
 // @return an undefined session, and a Promise for providers and csrftoken
 export async function getServerSideProps(context) {
