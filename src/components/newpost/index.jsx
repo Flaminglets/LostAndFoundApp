@@ -67,7 +67,7 @@ export default function NewPost() {
             body: body
         };
 
-        const response = await fetch(`https://lost-and-found-app-flaminglets.vercel.app/api/post`, requestOptions);
+        const response = await fetch(`${process.env.PUBLIC_URL}/api/post`, requestOptions);
         location.href = "/user";
     }
 
