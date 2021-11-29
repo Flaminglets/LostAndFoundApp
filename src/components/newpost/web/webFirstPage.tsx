@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme } from '@mui/material';
+import { FlareSharp } from '@mui/icons-material';
 
 // for mui style
 const theme = createTheme({
@@ -97,6 +98,16 @@ export default function WebFirstPage(props) {
         };
     };
 
+    
+    const isValidName = (name) => {
+        if(/^[a-z]+$/i.test(name)) {
+            return true;
+        } else {
+            return false;  
+        }
+    }
+
+    
 
     // validat input & go to next page
     const handleNextClick = () => {
@@ -106,10 +117,13 @@ export default function WebFirstPage(props) {
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
 
+        var newdate = year + "-" + month + "-" + day;
+
         var date_year = parseInt(date.substr(0, 4));
         var date_month = parseInt(date.substr(5,2));
         var date_day = parseInt(date.substr(8));
 
+        //console.log('fired');
         
         if(type == "") { setTypeError("Please select type"); }
         else if(date == "2021-01-01") {setDateError("Please select date"); }
@@ -127,7 +141,9 @@ export default function WebFirstPage(props) {
         else if(time == "00:00") { setTimeError("Please select time"); }
         else if(location == "") { setLocationError("Please enter location"); }
         else if(lostFname == "") { setLostFnameError("Please enter first name"); }
+        else if(!isValidName(lostFname)) {  setLostFnameError("Please enter a valid name") }
         else if(lostLname == "") { setLostLnameError("Please enter last name"); }
+        else if(!isValidName(lostLname)) { setLostLnameError("Please enter a valid last name")}
         else if(gender == "") { setGenderError("Please select gender"); }
         else if(age == "") { setAgeError("Please enter age"); }
         else if(parseInt(age) < 0) { setAgeError("Please enter proper age"); }
@@ -139,8 +155,10 @@ export default function WebFirstPage(props) {
         else if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
 
         if (type != "" && 
+        isValidName(lostFname) &&
+        isValidName(lostLname) &&
         date != "2021-01-01" && 
-        date_year < year &&
+        date_year <= year &&
         time != "00:00" && 
         location != "" &&
         lostFname != "" &&
@@ -154,20 +172,19 @@ export default function WebFirstPage(props) {
         height != "" && 
         parseInt(height) > 0 &&
         eyecolor != "") {
+            console.log('fired (2)' );
             // date_year is year inputted by user
             // year is todays current year
             if (date_year <= year) {
                 console.log("year is fine")
                 if (date_month <= month) {
                     console.log("month is fine")
-                    
+                    if (date_day <= day) {
+                        console.log("month is fine")
+                        props.handleNextClick();
+                    } 
                 }
-                if (date_day <= day) {
-                    console.log("month is fine")
-                    props.handleNextClick();
-                } else {
-                    setDateError("Error.");
-                }
+                
             }
         }
         
