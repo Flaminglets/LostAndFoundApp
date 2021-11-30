@@ -39,9 +39,8 @@ export default function PopUp(props) {
 
     props = props.data
 
-    const rootURL = process.env.PUBLIC_URL;
-    const qrValue = `https://lost-and-found-flamingo.herokuapp.com/detailpage/` + props._id;
-
+    const qrValue = `${process.env.PUBLIC_URL}/detailpage/` + props._id;
+    
     return (
         <div  >
             <div className="newpost">
@@ -105,6 +104,7 @@ export default function PopUp(props) {
                             value={qrValue}
                             size={100}
                             level={"H"}
+                            renderAs={"svg"}
                         />
                         <p>Scan to view info on website</p>
                         </div>
