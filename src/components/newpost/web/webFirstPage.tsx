@@ -35,6 +35,15 @@ const FlamingoNextButton = styled(Button)({
     },
 })
 
+// validate name
+const isNameValid = (name) => {
+    if(/^[a-z]+$/i.test(name)) {
+        return true;
+    } else {
+        return false;  
+    }
+}
+
 // @params: useState data from NewPost and UpdatePost functions
 // @return: lost pet/person information form
 export default function WebFirstPage(props) {
@@ -97,14 +106,7 @@ export default function WebFirstPage(props) {
         };
     };
 
-    // validate name
-    const isNameValid = (name) => {
-        if(/^[a-z]+$/i.test(name)) {
-            return true;
-        } else {
-            return false;  
-        }
-    }
+
 
     // validat input & go to next page
     const handleNextClick = () => {
@@ -121,15 +123,6 @@ export default function WebFirstPage(props) {
         if(type == "") { setTypeError("Please select type"); }
         else if(date == "2021-01-01") {setDateError("Please select date"); }
         else if(date_year > year ) {setDateError("Invalid year selected"); }
-        else if(date_year == year) {
-            if(date_month > month) {
-                setDateError("Invalid month selected")
-            } else {
-                if(date_day > day) {
-                    setDateError("Invalid day selected")
-                }
-            }
-        }
         else if(time == "00:00") { setTimeError("Please select time"); }
         else if(location == "") { setLocationError("Please enter location"); }
         else if(lostFname == "") { setLostFnameError("Please enter first name"); }
@@ -145,6 +138,15 @@ export default function WebFirstPage(props) {
         else if(height == "") { setHeightError("Please enter height"); }
         else if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
         else if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
+        else if(date_year == year) {
+            if(date_month > month) {
+                setDateError("Invalid month selected")
+            } else {
+                if(date_day > day) {
+                    setDateError("Invalid day selected")
+                }
+            }
+        }
 
         if (type != "" && 
         date != "2021-01-01" && 

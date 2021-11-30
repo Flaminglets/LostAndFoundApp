@@ -62,6 +62,7 @@ export default function FourthPage(props) {
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError("");}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value);}
 
+    // validat input & go to next page
     const handleNextClick = () => {
         if(lostFname == "") { setLostFnameError("Please enter first name"); }
         else if(lostLname == "") { setLostLnameError("Please enter last name"); }
