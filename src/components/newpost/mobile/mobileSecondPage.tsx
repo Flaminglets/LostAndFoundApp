@@ -51,11 +51,42 @@ export default function SecondPage(props) {
 
     // validat input & go to next page
     const handleNextClick = () => {
-        if(date == "2021-01-01") {setDateError("Please select date"); }
-        else if(time == "00:00") { setTimeError("Please select time"); }
+        var dateObj = new Date();
+        // current date
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+        // input date
+        var date_year = parseInt(date.substr(0, 4));
+        var date_month = parseInt(date.substr(5,2));
+        var date_day = parseInt(date.substr(8, 2));
 
-        if (date != "2021-01-01" && time != "00:00") {
-            props.handleNextClick();
+        if(date == "2021-01-01") {setDateError("Please select date"); }
+        if(time == "00:00") { setTimeError("Please select time"); }
+        if(date_year > year ) {setDateError("Invalid year selected"); }
+        if(date_year == year) {
+            if(date_month > month) {
+                setDateError("Invalid month selected")
+            } 
+        }
+        if(date_year == year) {
+            if(date_month == month) {
+                if(date_day > day) {
+                    setDateError("Invalid day selected")
+                }
+            }
+        }
+
+        if (date != "2021-01-01" && 
+        date_year <= year &&
+        time != "00:00") {
+            if (date_year <= year) {
+                if (date_month <= month) {
+                    if (date_day <= day) {
+                        props.handleNextClick();
+                    } 
+                }
+            }
         }
     };
 

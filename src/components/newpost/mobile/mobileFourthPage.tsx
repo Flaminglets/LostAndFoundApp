@@ -62,24 +62,36 @@ export default function FourthPage(props) {
     const handleSetEyecolor = async (event) => { props.handlePageData({eyecolor: event.target.value}); setEyecolor(event.target.value); setEyecolorError("");}
     const handleSetAdditional = async (event) => { props.handlePageData({additional: event.target.value}); setAdditional(event.target.value);}
 
+    // validate name
+    const isNameValid = (name) => { 
+        var valid = /^[a-z]+$/i.test(name);
+        return valid;
+    }
+
     // validat input & go to next page
     const handleNextClick = () => {
         if(lostFname == "") { setLostFnameError("Please enter first name"); }
-        else if(lostLname == "") { setLostLnameError("Please enter last name"); }
-        else if(gender == "") { setGenderError("Please select gender"); }
-        else if(age == "") { setAgeError("Please enter age"); }
-        else if(parseInt(age) <= 0) { setAgeError("Please enter proper age"); }
-        else if(weight == "") { setWeightError("Please enter weight"); }
-        else if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
-        else if(height == "") { setHeightError("Please enter height"); }
-        else if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
-        else if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
+        if(!isNameValid(lostFname)) {  setLostFnameError("Please enter a valid name") }
+        if(lostLname == "") { setLostLnameError("Please enter last name"); }
+        if(!isNameValid(lostLname)) { setLostLnameError("Please enter a valid last name")}
+        if(gender == "") { setGenderError("Please select gender"); }
+        if(age == "") { setAgeError("Please enter age"); }
+        if(parseInt(age) <= 0) { setAgeError("Please enter proper age"); }
+        if(age % 1 != 0) {setAgeError("Invalid age selected");}
+        if(weight == "") { setWeightError("Please enter weight"); }
+        if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
+        if(height == "") { setHeightError("Please enter height"); }
+        if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
+        if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
 
         if (lostFname != "" &&
         lostLname != "" &&
+        isNameValid(lostFname) &&
+        isNameValid(lostLname) &&
         gender != "" &&
         age != "" && 
         parseInt(age) > 0 &&
+        age % 1 === 0 &&
         weight != "" && 
         parseInt(weight) > 0 &&
         height != "" && 

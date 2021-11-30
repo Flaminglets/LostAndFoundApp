@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import { createTheme } from '@mui/material';
 import QRCode from 'qrcode.react';
-import { useRouter } from 'next/router';
 
 // for mui style
 const theme = createTheme({
@@ -56,7 +55,6 @@ export default function PopUp(props) {
                 </div>
                 <div className="newpost_form" id="missing-card">
                     <div className="newpost_form_last_info">
-
                         <div className="newpost_lp_name">
                             <p>{props.lostFname} {props.lostLname}</p>
                         </div>
@@ -98,15 +96,19 @@ export default function PopUp(props) {
                                 <p><strong>{props.additional}</strong></p>
 
                                  {/* Reference = https://codesandbox.io/s/3zcbs */}
-                                 <QRCode
-                                    id="qr-gen"
-                                    value={qrValue}
-                                    size={150}
-                                    level={"H"}
-                                    includeMargin={true}
-                                />
+                                 
                             </div>
                         )}
+                        <div className="missing_qrcode">
+                        <QRCode
+                            id="qr-gen"
+                            value={qrValue}
+                            size={100}
+                            level={"H"}
+                        />
+                        <p>Scan to view info on website</p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

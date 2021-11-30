@@ -33,10 +33,12 @@ const FlamingoNextButton = styled(Button)({
 // @return: image form
 export default function FifthPage(props) {
     const [image, setImage] = useState(props.image || "");
+    const [imageError, setImageError] = useState("");
     const handleSetImage = async (event) => {
         await getImageToBase64(event.target.files[0], (result) => {
             props.handlePageData({ image: result });
             setImage(result);
+            setImageError("");
         });
     };
     const getImageToBase64 = (file: any, cb: any) => {
@@ -51,7 +53,10 @@ export default function FifthPage(props) {
     };
 
     const handleNextClick = () => {
-        props.handleNextClick();
+        if (image == "") {setImageError("Please select image")}
+        if (image != "") {
+            props.handleNextClick();
+        }
     };
 
     const handlePrevClick = () => {
@@ -70,7 +75,11 @@ export default function FifthPage(props) {
                         accept="image/*"
                         className="myimage"
                         onChange={handleSetImage}
+                        required
                     />
+                    {image == "" && (
+                        <p className="newpost_image_error">{imageError}</p>
+                    )}
                     {image != "" && (
                         <div className="input_image_div">
                             <p>Chosen image</p>
