@@ -37,21 +37,6 @@ const FlamingoSubmitButton = styled(Button)({
     },
 })
 
-// validate name
-const isNameValid = (name) => { 
-    if(/^[a-z]+$/i.test(name)) {
-        return true;
-    } else {
-        return false;  
-    }
-}
-
-// validate phone number
-const isPhoneValid = (phoneNum) => {
-    var requirements = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(phoneNum);
-    return requirements;
-}
-
 // @params: useState data from NewPost and UpdatePost functions
 // @return: user contact information form
 export default function WebSecondPage(props) {
@@ -70,24 +55,44 @@ export default function WebSecondPage(props) {
     const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError("")}
     const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError("")}
 
+    // validate name
+    const isNameValid = (name) => { 
+        var valid = /^[a-z]+$/i.test(name);
+        return valid;
+    }
+
+    // validate phone number
+    const isPhoneValid = (phoneNum) => {
+        var valid = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(phoneNum);
+        return valid;
+    }
+
+    const isEmailValid = (email) => {
+        var valid = /\S+@\S+\.\S+/.test(email);
+        return valid;
+    }
+
     // validat input & go to last page
     const handleSubmitClick = () => {
         if (userFname == "") {setUserFnameError("Please enter a first name")}
-        else if(!isNameValid(userFname)) { setUserFnameError("Please enter a valid first name")}
-        else if (userLname == "") {setUserLnameError("Please enter a last name")}
-        else if(!isNameValid(userLname)) { setUserLnameError("Please enter a valid last name") }
-        else if (phoneNum == "") {setPhoneNumError("Please enter a phone number")}
-        else if(!isPhoneValid(phoneNum)){ setPhoneNumError("Please enter a valid phone number.") }
-        else if (phoneNum.length < 10) {setPhoneNumError("Please enter a phone number with minimum 10 numbers")}
-        else if (email == "") {setEmailError("Please enter an email")}
+        if(!isNameValid(userFname)) { setUserFnameError("Please enter a valid first name")}
+        if (userLname == "") {setUserLnameError("Please enter a last name")}
+        if(!isNameValid(userLname)) { setUserLnameError("Please enter a valid last name") }
+        if (phoneNum == "") {setPhoneNumError("Please enter a phone number")}
+        if(!isPhoneValid(phoneNum)){ setPhoneNumError("Please enter a valid phone number.") }
+        if (phoneNum.length < 10) {setPhoneNumError("Please enter a phone number with minimum 10 numbers")}
+        if (email == "") {setEmailError("Please enter an email")}
+        if (!isEmailValid(email)) {setEmailError("Please enter an valid email")}
 
         if (userFname != "" && 
         userLname != "" &&
+        phoneNum != ""  &&
+        email != "" &&
         isNameValid(userFname) &&
         isNameValid(userLname) &&
-        phoneNum != ""  &&
         isPhoneValid(phoneNum) &&
-        email != "") {
+        isEmailValid(email)
+        ) {
             props.handleSubmitClick();
         }
     };
@@ -135,6 +140,7 @@ export default function WebSecondPage(props) {
                 variant="filled"
                 color="success"
                 className="newpost_form_element"
+                placeholder="000-000-0000"
                 inputProps={{ minLength: 10, maxLength: 12, }}
                 onChange={handleSetPhoneNum}
                 value={phoneNum}

@@ -137,7 +137,7 @@ export async function getServerSideProps(ctx) {
         const posts = postdata.map(
             (post) => {
                 return {
-                    id: post._id,
+                    id: post.id.toString(),
                     type: post.type || null,
                     date: post.date || null,
                     time: post.time || null,

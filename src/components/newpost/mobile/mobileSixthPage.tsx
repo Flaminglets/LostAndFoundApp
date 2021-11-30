@@ -53,18 +53,44 @@ export default function SixthPage(props) {
     const handleSetPhoneNum = async (event) => { props.handlePageData({phoneNum: event.target.value}); setPhoneNum(event.target.value); setPhoneNumError("")}
     const handleSetEmail = async (event) => { props.handlePageData({email: event.target.value}); setEmail(event.target.value); setEmailError("")}
 
+    // validate name
+    const isNameValid = (name) => { 
+        var valid = /^[a-z]+$/i.test(name);
+        return valid;
+    }
+
+    // validate phone number
+    const isPhoneValid = (phoneNum) => {
+        var valid = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(phoneNum);
+        return valid;
+    }
+
+    const isEmailValid = (email) => {
+        var valid = /\S+@\S+\.\S+/.test(email);
+        return valid;
+    }
+
     // validat input & go to last page
     const handleSubmitClick = () => {
-        if (userFname == "") {setUserFnameError("Please enter first name")}
-        else if (userLname == "") {setUserLnameError("Please enter last name")}
-        else if (phoneNum == "") {setPhoneNumError("Please enter phone number")}
-        else if (phoneNum.length < 10) {setPhoneNumError("Please enter phone number with minimum 10 numbers")}
-        else if (email == "") {setEmailError("Please enter email")}
+        if (userFname == "") {setUserFnameError("Please enter a first name")}
+        if(!isNameValid(userFname)) { setUserFnameError("Please enter a valid first name")}
+        if (userLname == "") {setUserLnameError("Please enter a last name")}
+        if(!isNameValid(userLname)) { setUserLnameError("Please enter a valid last name") }
+        if (phoneNum == "") {setPhoneNumError("Please enter a phone number")}
+        if(!isPhoneValid(phoneNum)){ setPhoneNumError("Please enter a valid phone number.") }
+        if (phoneNum.length < 10) {setPhoneNumError("Please enter a phone number with minimum 10 numbers")}
+        if (email == "") {setEmailError("Please enter an email")}
+        if (!isEmailValid(email)) {setEmailError("Please enter an valid email")}
 
         if (userFname != "" && 
         userLname != "" &&
         phoneNum != ""  &&
-        email != "") {
+        email != "" &&
+        isNameValid(userFname) &&
+        isNameValid(userLname) &&
+        isPhoneValid(phoneNum) &&
+        isEmailValid(email)
+        ) {
             props.handleSubmitClick();
         }
     };
@@ -114,6 +140,7 @@ export default function SixthPage(props) {
                     color="success"
                     type="tel"
                     className="newpost_form_element"
+                    placeholder="000-000-0000"
                     inputProps={{ minLength: 10, maxLength: 12, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}"}}
                     onChange={handleSetPhoneNum}
                     value={phoneNum}

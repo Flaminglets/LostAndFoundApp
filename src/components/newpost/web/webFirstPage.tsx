@@ -63,6 +63,7 @@ export default function WebFirstPage(props) {
     const [weightError, setWeightError] = useState("");
     const [heightError, setHeightError] = useState("");
     const [eyecolorError, setEyecolorError] = useState("");
+    const [imageError, setImageError] = useState("");
 
     // set input value to data
     const handleSetType = async (event) => { setType(event.target.value); props.handlePageData({type: event.target.value}); setTypeError("")}
@@ -84,6 +85,7 @@ export default function WebFirstPage(props) {
         await getImageToBase64(event.target.files[0], (result) => {
             props.handlePageData({ image: result });
             setImage(result);
+            setImageError("");
         });
     };
     const getImageToBase64 = (file: any, cb: any) => {
@@ -98,53 +100,55 @@ export default function WebFirstPage(props) {
     };
 
     // validate name
-    const isNameValid = (name) => {
-        if(/^[a-z]+$/i.test(name)) {
-            return true;
-        } else {
-            return false;  
-        }
+    const isNameValid = (name) => { 
+        var valid = /^[a-z]+$/i.test(name);
+        return valid;
     }
 
     // validat input & go to next page
     const handleNextClick = () => {
         // resource: https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
         var dateObj = new Date();
+        // current date
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
-
+        // input date
         var date_year = parseInt(date.substr(0, 4));
         var date_month = parseInt(date.substr(5,2));
-        var date_day = parseInt(date.substr(8));
+        var date_day = parseInt(date.substr(8, 2));
         
         if(type == "") { setTypeError("Please select type"); }
-        else if(date == "2021-01-01") {setDateError("Please select date"); }
-        else if(date_year > year ) {setDateError("Invalid year selected"); }
-        else if(date_year == year) {
+        if(date == "2021-01-01") {setDateError("Please select date"); }
+        if(date_year > year ) {setDateError("Invalid year selected"); }
+        if(time == "00:00") { setTimeError("Please select time"); }
+        if(location == "") { setLocationError("Please enter location"); }
+        if(lostFname == "") { setLostFnameError("Please enter first name"); }
+        if(!isNameValid(lostFname)) {  setLostFnameError("Please enter a valid name") }
+        if(lostLname == "") { setLostLnameError("Please enter last name"); }
+        if(!isNameValid(lostLname)) { setLostLnameError("Please enter a valid last name")}
+        if(gender == "") { setGenderError("Please select gender"); }
+        if(age == "") { setAgeError("Please enter age"); }
+        if(parseInt(age) < 0) { setAgeError("Please enter proper age"); }
+        if(age % 1 != 0) {setAgeError("Invalid age selected");}
+        if(weight == "") { setWeightError("Please enter weight"); }
+        if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
+        if(height == "") { setHeightError("Please enter height"); }
+        if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
+        if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
+        if (image == "") {setImageError("Please select image")}
+        if(date_year == year) {
             if(date_month > month) {
                 setDateError("Invalid month selected")
-            } else {
+            } 
+        }
+        if(date_year == year) {
+            if(date_month == month) {
                 if(date_day > day) {
                     setDateError("Invalid day selected")
                 }
             }
         }
-        else if(time == "00:00") { setTimeError("Please select time"); }
-        else if(location == "") { setLocationError("Please enter location"); }
-        else if(lostFname == "") { setLostFnameError("Please enter first name"); }
-        else if(!isNameValid(lostFname)) {  setLostFnameError("Please enter a valid name") }
-        else if(lostLname == "") { setLostLnameError("Please enter last name"); }
-        else if(!isNameValid(lostLname)) { setLostLnameError("Please enter a valid last name")}
-        else if(gender == "") { setGenderError("Please select gender"); }
-        else if(age == "") { setAgeError("Please enter age"); }
-        else if(parseInt(age) < 0) { setAgeError("Please enter proper age"); }
-        else if(age % 1 != 0) {setAgeError("Invalid age selected");}
-        else if(weight == "") { setWeightError("Please enter weight"); }
-        else if(parseInt(weight) <= 0) { setWeightError("Please enter proper weight"); }
-        else if(height == "") { setHeightError("Please enter height"); }
-        else if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
-        else if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
 
         if (type != "" && 
         date != "2021-01-01" && 
@@ -163,7 +167,8 @@ export default function WebFirstPage(props) {
         parseInt(weight) > 0 &&
         height != "" && 
         parseInt(height) > 0 &&
-        eyecolor != "") {
+        eyecolor != "" &&
+        image != "") {
             if (date_year <= year) {
                 if (date_month <= month) {
                     if (date_day <= day) {
@@ -291,8 +296,7 @@ export default function WebFirstPage(props) {
                     value={gender}
                     error={!!genderError}
                     helperText={genderError}
-                    sx={{margin: "0.5rem 0"}}
-                >
+                    sx={{margin: "0.5rem 0"}}>
                     <MenuItem value="male">Male</MenuItem>
                     <MenuItem value="female">Female</MenuItem>
                     <MenuItem value="other">Other</MenuItem>
@@ -416,6 +420,9 @@ export default function WebFirstPage(props) {
                     onChange={handleSetImage}
                     required
                 />
+                {image == "" && (
+                    <p className="newpost_image_error">{imageError}</p>
+                )}
                 {image != "" && (
                     <div className="input_image_div">
                         <p>Chosen image</p>
