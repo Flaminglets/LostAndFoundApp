@@ -29,6 +29,8 @@ export default function PopUp(props) {
         navigator.clipboard.writeText(toCopy);
         alert("URL Copied");
     }
+
+    // resource: https://gist.github.com/andrewlimaza/490a69417d9fe2df3f668195a7661605
     const print = () => {
         var toPrint = document.getElementById("missing-card").innerHTML;
         var originalContent = document.body.innerHTML;
