@@ -109,12 +109,10 @@ export default function WebFirstPage(props) {
     const handleNextClick = () => {
         // resource: https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
         var dateObj = new Date();
-        console.log(dateObj)
         // current date
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = parseInt(dateObj.toString().substr(8, 2));
-        console.log(parseInt(dateObj.toString().substr(8, 2)));
-        var year = dateObj.getUTCFullYear();
+        var month = dateObj.getMonth() + 1; //months from 1-12
+        var day = dateObj.getDate();
+        var year = dateObj.getFullYear();
         // input date
         var date_year = parseInt(date.substr(0, 4));
         var date_month = parseInt(date.substr(5,2));
@@ -139,17 +137,14 @@ export default function WebFirstPage(props) {
         if(parseInt(height) <= 0) { setHeightError("Please enter proper height"); }
         if(eyecolor == "") { setEyecolorError("Please enter eye colour"); }
         if (image == "") {setImageError("Please select image")}
-        console.log("herewer")
         if(date_year == year) {
             if(date_month > month) {
-                console.log("here")
                 setDateError("Invalid month selected")
             } 
         }
         if(date_year == year) {
             if(date_month == month) {
                 if(date_day > day) {
-                    console.log("here 2")
                     setDateError("Invalid day selected")
                 }
             }
@@ -174,15 +169,9 @@ export default function WebFirstPage(props) {
         parseInt(height) > 0 &&
         eyecolor != "" &&
         image != "") {
-            console.log("here2wef33")
             if (date_year <= year) {
-                console.log("yesr")
                 if (date_month <= month) {
-                    console.log("month")
-                    console.log(day)
                     if (date_day <= day) {
-                        console.log(date_day)
-                        console.log("here33")
                         props.handleNextClick();
                     } 
                 }
