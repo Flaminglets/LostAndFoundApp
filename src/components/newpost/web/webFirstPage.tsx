@@ -110,9 +110,9 @@ export default function WebFirstPage(props) {
         // resource: https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
         var dateObj = new Date();
         // current date
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = parseInt(dateObj.toString().substr(8, 2));
-        var year = dateObj.getUTCFullYear();
+        var month = dateObj.getMonth() + 1; //months from 1-12
+        var day = dateObj.getDate();
+        var year = dateObj.getFullYear();
         // input date
         var date_year = parseInt(date.substr(0, 4));
         var date_month = parseInt(date.substr(5,2));
