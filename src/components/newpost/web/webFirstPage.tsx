@@ -111,7 +111,7 @@ export default function WebFirstPage(props) {
         var dateObj = new Date();
         // current date
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
+        var day = parseInt(dateObj.toString().substr(8, 2));
         var year = dateObj.getUTCFullYear();
         // input date
         var date_year = parseInt(date.substr(0, 4));
