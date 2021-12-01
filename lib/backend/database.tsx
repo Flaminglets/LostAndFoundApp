@@ -56,7 +56,7 @@ export async function getPostByUserID(userID) {
 export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
-    let users = await User.find({ email: user.email }).exec();
+    let users = await User.findOne({ email: user.email }).exec();
 
     if (!users) {
         users = await createUser(user.name, user.email, user.image);
