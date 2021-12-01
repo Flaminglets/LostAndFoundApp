@@ -56,7 +56,7 @@ export async function getPostByUserID(userID) {
 export async function getUser(user) {
     // connect to the client
     const client = await mongoose.connect(uri);
-    let users = await User.findOne(user);
+    let users = await User.find({ email: user.email }).exec();
 
     if (!users) {
         users = await createUser(user.name, user.email, user.image);
@@ -126,24 +126,24 @@ export async function createAddPosts(type, date, time, location, lostFname, lost
     const client = mongoose.connect(uri);
     const addpost = await new Addpost(
         {
-            type, 
-            date, 
-            time, 
-            location, 
-            lostFname, 
-            lostLname, 
-            gender, 
-            otherGender, 
-            age, 
-            weight, 
-            height, 
-            eyecolor, 
-            additional, 
+            type,
+            date,
+            time,
+            location,
+            lostFname,
+            lostLname,
+            gender,
+            otherGender,
+            age,
+            weight,
+            height,
+            eyecolor,
+            additional,
             image,
-            userFname, 
-            userLname, 
-            phoneNum, 
-            email, 
+            userFname,
+            userLname,
+            phoneNum,
+            email,
             userID
         }
     )
